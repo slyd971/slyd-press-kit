@@ -165,35 +165,30 @@ export default function Home() {
   }>(null);
 
   useEffect(() => {
+    lastScrollY.current = window.scrollY;
+
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
+      const delta = currentScrollY - lastScrollY.current;
 
-      if (currentScrollY < 20) {
-        setIsHeaderVisible(true);
-        setIsHeaderCompact(false);
-        lastScrollY.current = currentScrollY;
-        return;
-      }
+      // ignore tiny jitter
+      if (Math.abs(delta) < 8) return;
 
-      if (currentScrollY > lastScrollY.current) {
-        // scroll down
-        setIsHeaderVisible(false);
-        setIsHeaderCompact(true);
-        setMenuOpen(false); // ferme le menu mobile quand on descend
-      } else {
-        // scroll up
-        setIsHeaderVisible(true); // <- c’était ici le bug
-        setIsHeaderCompact(false);
+      const shouldShowHeader = currentScrollY < 20 || delta < 0;
+      const shouldBeCompact = currentScrollY >= 20;
+
+      setIsHeaderVisible(shouldShowHeader);
+      setIsHeaderCompact(shouldBeCompact);
+
+      if (!shouldShowHeader) {
+        setMenuOpen(false);
       }
 
       lastScrollY.current = currentScrollY;
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
@@ -360,126 +355,113 @@ export default function Home() {
   )}
 </header>
 
-      {/* HERO */}
-      <section
-        id="home"
-  className="scroll-mt-24 pt-24 md:pt-32"
-      >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_15%,rgba(181,31,36,0.28),transparent_30%),radial-gradient(circle_at_80%_0%,rgba(181,31,36,0.14),transparent_24%),radial-gradient(circle_at_50%_100%,rgba(255,255,255,0.04),transparent_30%)]" />
-        <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] [background-size:34px_34px]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#200204]/25 via-transparent to-[#050505]" />
+  {/* HERO SHOWCASE */}
+<section
+  id="home"
+  className="relative scroll-mt-24 overflow-hidden pt-24 md:pt-28"
+>
+  <div className="absolute inset-0">
+    <img
+      src="/press-kit/2025-12-29-22-31-08-761.jpg"
+      alt="Sly'D live performance"
+      className="h-full w-full object-cover object-center"
+    />
+    <div className="absolute inset-0 bg-black/60" />
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(217,37,42,0.22),transparent_28%),radial-gradient(circle_at_80%_0%,rgba(255,255,255,0.08),transparent_24%),radial-gradient(circle_at_50%_100%,rgba(217,37,42,0.12),transparent_32%)]" />
+    <div className="absolute inset-0 opacity-15 [background-image:linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] [background-size:34px_34px]" />
+    <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-black/30 to-black/20" />
+  </div>
 
-        <div className="relative mx-auto grid min-h-[100svh] max-w-7xl items-center gap-8 px-4 pb-6 md:grid-cols-[1.02fr_0.98fr] md:gap-10 md:px-6 md:pb-12">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.85, delay: 0.12 }}
-            className="relative order-1 md:order-2"
-          >
-            <div className="absolute -left-8 top-12 h-32 w-32 rounded-full bg-[#D9252A]/25 blur-3xl" />
-            <div className="absolute -right-6 bottom-8 h-40 w-40 rounded-full bg-white/10 blur-3xl" />
+  <div className="relative mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-end px-4 pb-8 md:px-6 md:pb-10">
+    <motion.div
+      initial={{ opacity: 0, y: 26 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.08 }}
+      className="w-full max-w-3xl"
+    >
+      <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/35 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-white/75 backdrop-blur-md md:px-4 md:py-2 md:text-[11px] md:tracking-[0.28em]">
+        <Disc3 className="h-3 w-3 text-[#D9252A] md:h-3.5 md:w-3.5" />
+        Open format DJ • Paris • International
+      </div>
 
-            <div className="relative overflow-hidden rounded-[1.6rem] border border-white/10 bg-white/5 p-2.5 shadow-2xl shadow-black/40 backdrop-blur-sm md:rounded-[2rem] md:p-3">
-              <img
-                src="/press-kit/2025-12-29-22-31-08-761.jpg"
-                alt="Sly'D hero visual"
-                className="h-[48svh] w-full rounded-[1.2rem] object-cover object-center md:h-[76svh] md:rounded-[1.4rem]"
-              />
+      <h1 className="mt-5 text-[2.9rem] font-black uppercase leading-[0.88] tracking-tight text-white sm:text-6xl md:mt-7 md:text-7xl xl:text-[7.4rem]">
+        DJ SLY&apos;D
+      </h1>
 
-              <div className="absolute inset-0 rounded-[1.6rem] bg-gradient-to-t from-black/55 via-transparent to-transparent md:rounded-[2rem]" />
+      <p className="mt-4 max-w-2xl text-sm leading-6 text-white/78 md:mt-6 md:text-xl md:leading-8">
+        Hip-hop, RnB, afro, baile funk and club-ready energy — curated for
+        nights that need more than just music.
+      </p>
 
-              <div className="absolute inset-x-4 bottom-4 rounded-[1.1rem] border border-white/10 bg-black/50 p-4 backdrop-blur-md md:inset-x-8 md:bottom-8 md:rounded-[1.5rem] md:p-5">
-                <div className="text-[9px] uppercase tracking-[0.22em] text-[#ff7a7e] md:text-[11px] md:tracking-[0.28em]">
-                  DJ • Producer • Curator
-                </div>
-                <div className="mt-2 text-lg font-black uppercase leading-tight md:text-3xl">
-                  Paris to international stages
-                </div>
-              </div>
-            </div>
-          </motion.div>
+      <div className="mt-7 flex flex-wrap gap-2.5 md:mt-9 md:gap-3">
+  <a
+    href="#gallery"
+    className="rounded-full bg-[#D9252A] px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-white transition hover:-translate-y-0.5 hover:bg-[#e32d32] md:px-7 md:py-3 md:text-sm md:tracking-[0.22em]"
+  >
+    Feel the vibe
+  </a>
 
-          <motion.div
-            initial="hidden"
-            animate="show"
-            variants={reveal}
-            transition={{ duration: 0.75 }}
-            className="relative z-10 order-2 md:order-1"
-          >
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-white/70 backdrop-blur-sm md:mb-5 md:px-4 md:py-2 md:text-[11px] md:tracking-[0.28em]">
-              <Disc3 className="h-3 w-3 text-[#B51F24] md:h-3.5 md:w-3.5" />
-              Press kit cinematic experience
-            </div>
+  <a
+    href="#sound"
+    className="rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-white transition hover:border-white/30 hover:bg-white/10 md:px-7 md:py-3 md:text-sm md:tracking-[0.22em]"
+  >
+    Listen now
+  </a>
+</div>
 
-            <h1 className="max-w-4xl text-[2.45rem] font-black uppercase leading-[0.92] tracking-tight sm:text-5xl md:text-7xl xl:text-[7rem]">
-              DJ SLY&apos;D
-              <span className="block text-[#D9252A]">THE ECLECTIC</span>
-            </h1>
+      <div className="mt-10 flex items-center gap-3 text-[10px] uppercase tracking-[0.22em] text-white/50 md:mt-14 md:text-[11px] md:tracking-[0.28em]">
+        <span className="h-px w-10 bg-white/20 md:w-14" />
+        Scroll to explore
+      </div>
+    </motion.div>
 
-            <p className="mt-4 max-w-2xl text-sm leading-6 text-white/72 md:mt-6 md:text-lg md:leading-7">
-              Hip-hop, RnB, afro, baile funk, future beats and club-ready
-              transitions. A premium open-format identity designed for nightlife,
-              lifestyle events and high-energy bookings.
-            </p>
-
-            <div className="mt-6 flex flex-wrap gap-2.5 md:mt-8 md:gap-3">
-              <a
-                href="#contact"
-                className="rounded-full bg-[#D9252A] px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-white transition hover:-translate-y-0.5 hover:bg-[#e32d32] md:px-7 md:py-3 md:text-sm md:tracking-[0.22em]"
-              >
-                Book now
-              </a>
-
-              <Link
-                href="/gallery"
-                className="rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-white transition hover:border-white/30 hover:bg-white/10 md:px-7 md:py-3 md:text-sm md:tracking-[0.22em]"
-              >
-                Open gallery
-              </Link>
-            </div>
-
-            <div className="mt-8 grid grid-cols-2 gap-3 md:mt-12 md:gap-4 md:grid-cols-4">
-              <div className="rounded-[1.2rem] border border-white/10 bg-white/5 p-3.5 backdrop-blur-sm md:rounded-[1.8rem] md:p-5">
-                <div className="text-xl font-black uppercase leading-none text-[#D9252A] md:text-3xl">
-                  20+
-                </div>
-                <div className="mt-2 text-[10px] uppercase tracking-[0.16em] text-white/50 md:mt-3 md:text-sm md:tracking-[0.22em]">
-                  Years of career
-                </div>
-              </div>
-
-              <div className="rounded-[1.2rem] border border-white/10 bg-white/5 p-3.5 backdrop-blur-sm md:rounded-[1.8rem] md:p-5">
-                <div className="text-xl font-black uppercase leading-none text-[#D9252A] md:text-3xl">
-                  FR + INTL
-                </div>
-                <div className="mt-2 text-[10px] uppercase tracking-[0.16em] text-white/50 md:mt-3 md:text-sm md:tracking-[0.22em]">
-                  Bookings
-                </div>
-              </div>
-
-              <div className="rounded-[1.2rem] border border-white/10 bg-white/5 p-3.5 backdrop-blur-sm md:rounded-[1.4rem] md:p-5">
-                <div className="text-[1rem] font-black uppercase leading-[1.02] text-[#D9252A] text-left md:text-2xl">
-                  OPEN
-                  <br />
-                  FORMAT
-                </div>
-                <div className="mt-2 text-[10px] uppercase tracking-[0.16em] text-white/50 md:mt-3 md:text-sm md:tracking-[0.22em]">
-                  Signature sound
-                </div>
-              </div>
-
-              <div className="rounded-[1.2rem] border border-white/10 bg-white/5 p-3.5 backdrop-blur-sm md:rounded-[1.8rem] md:p-5">
-                <div className="text-xl font-black uppercase leading-none text-[#D9252A] md:text-3xl">
-                  150+
-                </div>
-                <div className="mt-2 text-[10px] uppercase tracking-[0.16em] text-white/50 md:mt-3 md:text-sm md:tracking-[0.22em]">
-                  Bookings in 2025
-                </div>
-              </div>
-            </div>
-          </motion.div>
+    {/* KPI STRIP */}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.2 }}
+      className="mt-8 grid grid-cols-2 gap-3 md:mt-10 md:grid-cols-4 md:gap-4"
+    >
+      <div className="rounded-[1.2rem] border border-white/10 bg-black/35 p-3.5 backdrop-blur-md md:rounded-[1.6rem] md:p-5">
+        <div className="text-xl font-black uppercase leading-none text-[#D9252A] md:text-3xl">
+          20+
         </div>
-      </section>
+        <div className="mt-2 text-[10px] uppercase tracking-[0.16em] text-white/55 md:mt-3 md:text-sm md:tracking-[0.22em]">
+          Years of career
+        </div>
+      </div>
+
+      <div className="rounded-[1.2rem] border border-white/10 bg-black/35 p-3.5 backdrop-blur-md md:rounded-[1.6rem] md:p-5">
+        <div className="text-xl font-black uppercase leading-none text-[#D9252A] md:text-3xl">
+          FR + INTL
+        </div>
+        <div className="mt-2 text-[10px] uppercase tracking-[0.16em] text-white/55 md:mt-3 md:text-sm md:tracking-[0.22em]">
+          Bookings
+        </div>
+      </div>
+
+      <div className="rounded-[1.2rem] border border-white/10 bg-black/35 p-3.5 backdrop-blur-md md:rounded-[1.6rem] md:p-5">
+        <div className="text-[1rem] font-black uppercase leading-[1.02] text-[#D9252A] md:text-2xl">
+          OPEN
+          <br />
+          FORMAT
+        </div>
+        <div className="mt-2 text-[10px] uppercase tracking-[0.16em] text-white/55 md:mt-3 md:text-sm md:tracking-[0.22em]">
+          Signature sound
+        </div>
+      </div>
+
+      <div className="rounded-[1.2rem] border border-white/10 bg-black/35 p-3.5 backdrop-blur-md md:rounded-[1.6rem] md:p-5">
+        <div className="text-xl font-black uppercase leading-none text-[#D9252A] md:text-3xl">
+          150+
+        </div>
+        <div className="mt-2 text-[10px] uppercase tracking-[0.16em] text-white/55 md:mt-3 md:text-sm md:tracking-[0.22em]">
+          Bookings in 2025
+        </div>
+      </div>
+    </motion.div>
+  </div>
+</section>
 
       {/* ABOUT */}
       <section
