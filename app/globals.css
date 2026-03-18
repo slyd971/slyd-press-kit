@@ -1,22 +1,30 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-<<<<<<< HEAD
-body {
-  background: black;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
-=======
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
 html,
 body {
   margin: 0;
   padding: 0;
-  background: black;
+  overflow-x: hidden;
+  background: #050505;
   color: white;
 }
 
-* {
-  box-sizing: border-box;
+body {
+  min-height: 100vh;
+  text-rendering: optimizeLegibility;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1.5;
 }
 
 a {
@@ -24,8 +32,24 @@ a {
   text-decoration: none;
 }
 
-img {
+img,
+video,
+canvas,
+svg {
   display: block;
   max-width: 100%;
+  height: auto;
 }
->>>>>>> 3e4f539 (update press kit)
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+::selection {
+  background: #B51F24;
+  color: white;
+}
