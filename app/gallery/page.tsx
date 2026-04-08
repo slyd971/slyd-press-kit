@@ -3,6 +3,7 @@ import { DevControlPanel } from "@/components/press-kit/DevControlPanel";
 import { Header } from "@/components/press-kit/Header";
 import { getFontPreset, getFontStyle } from "@/data/font-presets";
 import {
+  getArtistHomeHref,
   getPressKitEntry,
   getResolvedNavigation,
   hasGalleryContent,
@@ -29,8 +30,7 @@ export default async function GalleryPage({ searchParams }: GalleryPageProps) {
   const showLocalSwitchers = await isLocalRequest();
   const hasGallery = hasGalleryContent(pressKitConfig);
   const navigation = getResolvedNavigation(pressKitConfig);
-  const homeHref =
-    pressKitEntry.id === "slyd" ? "/" : `/?artist=${pressKitEntry.id}`;
+  const homeHref = getArtistHomeHref(pressKitEntry.id);
 
   return (
     <main

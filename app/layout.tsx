@@ -1,10 +1,10 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { pressKitConfig } from "@/data/config";
+import { yoruboyPressKitConfig } from "@/data/artists/yoruboy";
 
 export const metadata: Metadata = {
-  title: pressKitConfig.metadata.title,
-  description: pressKitConfig.metadata.description,
+  title: yoruboyPressKitConfig.metadata.title,
+  description: yoruboyPressKitConfig.metadata.description,
 };
 
 export default function RootLayout({

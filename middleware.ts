@@ -12,6 +12,14 @@ function rewriteToArtistPage(request: NextRequest, pathname: string, artist: str
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  if (pathname === "/slyd") {
+    return rewriteToArtistPage(request, "/", "slyd");
+  }
+
+  if (pathname === "/slyd/gallery") {
+    return rewriteToArtistPage(request, "/gallery", "slyd");
+  }
+
   if (pathname === "/yoruboy") {
     return rewriteToArtistPage(request, "/", "yoruboy");
   }
@@ -24,5 +32,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/yoruboy", "/yoruboy/gallery"],
+  matcher: ["/slyd", "/slyd/gallery", "/yoruboy", "/yoruboy/gallery"],
 };
