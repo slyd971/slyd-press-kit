@@ -9,6 +9,10 @@ const instagramUrl = "https://www.instagram.com/slvr_dj/";
 const tikTokUrl = "https://www.tiktok.com/@slvr_dj";
 const youtubeChannelUrl =
   "https://www.youtube.com/channel/UCuH8Wy4BwCt_vGExn_xZEVA?app=desktop";
+const bookingEmail = "silverdj225booking@gmail.com";
+const bookingPhone = "(+225) 07 87 87 97 80";
+const bookingWhatsapp = "https://wa.me/2250101535174";
+const heroImage = "/silver-dj/gallery/optimized/gallery-silver1.jpg";
 const spotifyUrl =
   "https://open.spotify.com/playlist/37i9dQZF1E4yYwPTq3OA1m?utm_source=generator&theme=0";
 const appleMusicUrl =
@@ -16,9 +20,10 @@ const appleMusicUrl =
 
 const silverDjPressKit: PressKitConfig = {
   metadata: {
-    title: "Silver DJ Dossier de presse | Open Format, Afro, House & Énergie Club",
+    title:
+      "Silver DJ | Press kit officiel, champion DMC West Africa",
     description:
-      "Découvrez Silver DJ, DJ open format basé à Abidjan, entre Afro, House, Hip-Hop et énergie club pour dates, marques et événements privés.",
+      "Press kit officiel de Silver DJ, DJ producteur ivoirien basé à Abidjan, triple champion DMC West Africa, vice-champion DMC World 2024 et 3e DMC World 2025.",
   },
   ui: {
     openMenuLabel: "Ouvrir le menu",
@@ -31,10 +36,10 @@ const silverDjPressKit: PressKitConfig = {
   },
   artist: {
     name: "Silver DJ",
-    stageLabel: "DJ open format • Abidjan • Cote d'Ivoire & international",
+    stageLabel: "DJ producteur • Abidjan & international",
     logo: {
-      src: "",
-      alt: "Silver DJ logo",
+      src: "/silver-dj/logo/logo-silverdj.PNG",
+      alt: "Logo Silver DJ",
     },
   },
   navigation: {
@@ -47,7 +52,7 @@ const silverDjPressKit: PressKitConfig = {
       { label: "Spotify", href: "#spotify" },
     ],
     cta: {
-      label: "Book Silver",
+      label: "Booking",
       href: "#contact",
       variant: "primary",
     },
@@ -66,49 +71,49 @@ const silverDjPressKit: PressKitConfig = {
       title: "SILVER",
       accent: "DJ",
       description:
-        "Afro. House. Hip-Hop. Énergie pure. Silver DJ transforme chaque événement en expérience mémorable pour clubs, marques et formats privés haut de gamme.",
+        "Triple champion DMC West Africa, vice-champion DMC World Paris 2024 et 3e mondial à Tokyo 2025, Silver DJ mêle technique, show et énergie afro-internationale.",
       layout: "impact",
       image: {
-        src: "/silver-dj/hero-silverdj.png",
+        src: heroImage,
         alt: "Visuel principal de Silver DJ",
         badge: "Silver DJ",
-        caption: "From Africa to the World",
+        caption: "Champion DMC West Africa",
       },
       ctas: [
-        { label: "Book Silver", href: "#contact", variant: "primary" },
+        { label: "Booking", href: "#contact", variant: "primary" },
         { label: "Voir vidéos", href: "#videos", variant: "secondary" },
       ],
       stats: [
-        { value: "27K", label: "TikTok" },
-        { value: "13K", label: "Instagram" },
-        { value: "3X", label: "Champion DMC Afrique" },
-        { value: "VICE-CHAMPION", label: "DMC Monde" },
+        { value: "3X", label: "Champion DMC West Africa" },
+        { value: "VICE-CHAMP.", label: "DMC World Paris 2024" },
+        { value: "3E", label: "DMC World Tokyo 2025" },
+        { value: "BEST INTL DJ", label: "Guinness Ghana DJ Awards" },
       ],
       proofline:
-        "Clubs · Événements privés · Dates internationales",
+        "Abidjan · Casablanca · Lyon · Congo · Tokyo · Paris",
     },
     interactive: {
       eyebrow: "Expérience live • Abidjan",
       title: "SILVER",
       accent: "DJ",
       description:
-        "Afro. House. Hip-Hop. Énergie pure. Silver DJ signe des expériences mémorables pour clubs, marques et formats privés haut de gamme.",
+        "Des clubs d'Abidjan aux compétitions DMC, Silver DJ construit des sets techniques, festifs et mémorables, portés par une vraie lecture du public.",
       layout: "interactive",
       image: {
-        src: "/silver-dj/hero-silverdj.png",
+        src: heroImage,
         alt: "Visuel live de Silver DJ",
         badge: "Silver DJ",
-        caption: "From Africa to the World",
+        caption: "Compétition · club · festivals",
       },
       ctas: [
-        { label: "Book Silver", href: "#contact", variant: "primary" },
+        { label: "Booking", href: "#contact", variant: "primary" },
         { label: "Voir vidéos", href: "#videos", variant: "secondary" },
       ],
       stats: [
-        { value: "27K", label: "TikTok" },
-        { value: "13K", label: "Instagram" },
-        { value: "3X", label: "Champion DMC Afrique" },
-        { value: "VICE-CHAMPION", label: "DMC Monde" },
+        { value: "26K+", label: "TikTok" },
+        { value: "13K+", label: "Instagram" },
+        { value: "12K+", label: "YouTube" },
+        { value: "20+", label: "Mix & remixes" },
       ],
       proofline:
         "Clubs · Événements privés · Dates internationales",
@@ -118,23 +123,23 @@ const silverDjPressKit: PressKitConfig = {
       title: "SILVER",
       accent: "DJ",
       description:
-        "Afro. House. Hip-Hop. Énergie pure. Silver DJ transforme chaque événement en expérience mémorable pour clubs, marques et formats privés haut de gamme.",
+        "Né à Bouaké et formé à la DJ School d'Abidjan, Silver DJ s'impose comme une référence du deejaying africain par sa précision, sa créativité et son énergie scénique.",
       layout: "showcase",
       image: {
-        src: "/silver-dj/hero-silverdj.png",
+        src: heroImage,
         alt: "Visuel de performance de Silver DJ",
         badge: "Silver DJ",
-        caption: "From Africa to the World",
+        caption: "Abidjan vers l'international",
       },
       ctas: [
-        { label: "Book Silver", href: "#contact", variant: "primary" },
+        { label: "Booking", href: "#contact", variant: "primary" },
         { label: "Voir vidéos", href: "#videos", variant: "secondary" },
       ],
       stats: [
-        { value: "27K", label: "TikTok" },
-        { value: "13K", label: "Instagram" },
-        { value: "3X", label: "Champion DMC Afrique" },
-        { value: "VICE-CHAMPION", label: "DMC Monde" },
+        { value: "2024", label: "Champion DMC West Africa" },
+        { value: "2025", label: "Champion DMC West Africa" },
+        { value: "2026", label: "Champion DMC West Africa" },
+        { value: "2024", label: "Best International DJ" },
       ],
       proofline:
         "Clubs · Événements privés · Dates internationales",
@@ -143,41 +148,90 @@ const silverDjPressKit: PressKitConfig = {
   },
   about: {
     eyebrow: "À propos",
-    title: "Exporter la culture africaine,\nà travers le monde",
-    signatureLabel: "Positionnement",
+    title: "Une référence\ndu deejaying africain.",
+    signatureLabel: "Signature",
     signatureQuote:
-      "Silver DJ joue pour connecter: lire la salle, créer la montée et laisser une vraie trace après le set.",
+      "Une technique de compétition, une énergie contagieuse et une capacité rare à lire la foule.",
     supportingText:
-      "Son univers part d'Abidjan et circule entre clubs, événements privés, compétitions DJ et formats internationaux.",
+      "Son parcours relie Bouaké, Abidjan, Paris, Tokyo, Casablanca et les grandes scènes d'Afrique de l'Ouest.",
     tags: [
-      "Open Format",
+      "Champion DMC",
+      "Turntablism",
       "Afro",
-      "House",
       "Hip-Hop",
-      "Club",
-      "Événements de marque",
+      "Dancehall",
+      "House",
+      "Soca",
+      "Trap",
     ],
     paragraphs: [
-      "Silver DJ avance avec une énergie directe: des sets ouverts, une vraie présence aux platines et une culture musicale qui passe naturellement de l'Afro à la House, du Hip-Hop aux sons club.",
-      "Champion DMC Afrique à plusieurs reprises et vice-champion DMC Monde, il apporte autant de technique que d'instinct dans ses performances.",
-      "Sur scène, son objectif reste simple: comprendre le public, garder la tension juste et transformer chaque date en moment vivant.",
+      "Né à Bouaké le 04 septembre 2001, Silver DJ, alias Coulibaly Siaka, est un DJ ivoirien marqué par une passion profonde pour la musique, la performance scénique et la culture du deejaying.",
+      "Issu de la première promotion de la DJ School à Abidjan, il fait ses premiers pas en compétition en 2021 lors de la Battle DJ Highlander, qu'il remporte brillamment. Cette victoire l'installe rapidement dans le milieu professionnel abidjanais.",
+      "De 2021 à 2024, il devient DJ résident au Felah, un lieu emblématique de la jeunesse abidjanaise. Il y affine son identité, sa technique et sa présence, avant de confirmer son rayonnement avec les titres de champion DMC West Africa 2024, 2025 et 2026.",
+      "Vice-champion DMC World 2024 à Paris, 3e DMC World 2025 à Tokyo et Best International DJ aux Guinness Ghana DJ Awards 2024, Silver DJ continue d'élargir son influence entre clubs, festivals, médias, institutions et scènes internationales.",
     ],
   },
   clubs: {
     eyebrow: "Expérience",
-    title: "Des scènes, des formats,\nun même sens du public.",
+    title: "Des grandes scènes,\nun impact international.",
     description:
-      "Silver DJ navigue entre clubs, soirées privées, scènes compétitives et rendez-vous internationaux avec une même exigence: faire monter l'énergie sans perdre le lien avec la salle.",
+      "Silver DJ navigue entre résidences club, festivals, compétitions mondiales, événements institutionnels et tournées internationales avec une même exigence: transformer chaque prestation en expérience mémorable.",
     regions: [
       {
-        title: "Afrique",
+        title: "Scènes & festivals",
         icon: "map-pin",
-        items: ["BLOOM", "DESPE SECRET PARTY"],
+        items: [
+          "Concert Didi B - Stade Felix Houphouet-Boigny",
+          "Happy Run - 50K pers",
+          "Ivo Chella - 20K+ pers",
+          "Mother Africa Festival - 40K+ pers",
+          "Festival des Grillades",
+          "King of Rap",
+          "Drink It",
+          "BKE Chill Festival",
+        ],
       },
       {
         title: "International",
         icon: "globe",
-        items: ["Japon"],
+        items: [
+          "DMC World Paris 2024",
+          "DMC World Tokyo 2025",
+          "Casablanca - Joker Club",
+          "Casablanca - Morocco Mall Fan Zone",
+          "AfroChill Lyon",
+          "Nikki Beach Congo",
+          "La Bagatelle Pointe-Noire",
+          "Le Zanzi Club Congo",
+        ],
+      },
+      {
+        title: "Clubs & lieux premium",
+        icon: "map-pin",
+        items: [
+          "Bloom Abidjan",
+          "Le Felah",
+          "The Jungle",
+          "Skinny Abidjan",
+          "The Jarules",
+          "Novotel Abidjan",
+          "Pullman Abidjan",
+          "Movenpick Abidjan",
+        ],
+      },
+      {
+        title: "Institutions & médias",
+        icon: "globe",
+        items: [
+          "Banque Africaine de Développement",
+          "Ambassade de France en Côte d'Ivoire",
+          "Ministere de la Culture et de la Francophonie",
+          "Trace FM CI",
+          "RTI",
+          "Hit Radio / Vibe Radio",
+          "Flow 225",
+          "Life TV - Willy à Midi",
+        ],
       },
     ],
   },
@@ -185,8 +239,9 @@ const silverDjPressKit: PressKitConfig = {
     eyebrow: "Son",
     title: "À l'écoute.",
     paragraphs: [
-      "Ses sélections gardent cette couleur open format: des rythmes afro, des textures house, des passages hip-hop et une approche pensée pour faire bouger sans enfermer le set dans une seule case.",
-      "Le SoundCloud permet d'entrer directement dans son univers et de sentir comment il construit l'ambiance avant même la première prise de contact.",
+      "Silver DJ mélange avec fluidité les sonorités africaines et internationales: hip-hop, dancehall, house, funk, soca, trap, drill et afro house.",
+      "Sa signature repose sur les scratches, mashups, toneplay et transitions complexes, mais aussi sur sa capacité à raconter une histoire et créer une connexion festive avec le public.",
+      "Ses contenus regroupent performances live, remixes, mashups, mixtapes et séries audio comme Monkey's Piano Mix ou Home Session, avec plus de 20 mixes et remixes disponibles.",
     ],
     cta: {
       label: "Écouter sur SoundCloud",
@@ -198,9 +253,9 @@ const silverDjPressKit: PressKitConfig = {
   },
   videos: {
     eyebrow: "Vidéos",
-    title: "Extraits vidéo.",
+    title: "Performances live,\nmixtapes et mashups.",
     description:
-      "Chaque extrait montre Silver DJ au plus près du public: les transitions, l'énergie aux platines et cette façon de tenir une salle jusqu'au dernier morceau.",
+      "Les extraits montrent toute l'énergie de Silver DJ: shows live, remixes, mashups et performances captées au plus près du public.",
     items: [
       {
         id: "silver-dj-video-1",
@@ -223,17 +278,45 @@ const silverDjPressKit: PressKitConfig = {
         src: "/silver-dj/videos/videos-silverdj-3.mp4",
         poster: "/silver-dj/videos/videos-silverdj-3-poster.jpg",
       },
+      {
+        id: "silver-dj-video-4",
+        title: "Extrait live 04",
+        description: "",
+        src: "/silver-dj/videos/videos-silverdj-4.mp4",
+        poster: "/silver-dj/videos/videos-silverdj-4-poster.jpg",
+      },
+      {
+        id: "silver-dj-video-5",
+        title: "Extrait live 05",
+        description: "",
+        src: "/silver-dj/videos/videos-silverdj-5.mp4",
+        poster: "/silver-dj/videos/videos-silverdj-5-poster.jpg",
+      },
+      {
+        id: "silver-dj-video-6",
+        title: "Extrait live 06",
+        description: "",
+        src: "/silver-dj/videos/videos-silverdj-6.mp4",
+        poster: "/silver-dj/videos/videos-silverdj-6-poster.jpg",
+      },
+      {
+        id: "silver-dj-video-7",
+        title: "Extrait live 07",
+        description: "",
+        src: "/silver-dj/videos/videos-silverdj-7.mp4",
+        poster: "/silver-dj/videos/videos-silverdj-7-poster.jpg",
+      },
     ],
   },
   spotify: {
     eyebrow: "Spotify",
-    title: "Radio Silver",
+    title: "Silver Radio",
     description:
-      "Une sélection Spotify intégrée directement au dossier de presse pour donner un aperçu immédiat de l'univers musical de Silver DJ.",
+      "Mixes, remixes et sélections club signés Silver DJ — disponibles en streaming.",
     playlists: [
       {
         id: "silver-radio",
-        title: "Radio Silver",
+        title: "Mix & sélections Silver DJ",
         embedUrl:
           "https://open.spotify.com/embed/playlist/37i9dQZF1E4yYwPTq3OA1m?utm_source=generator&theme=0",
       },
@@ -241,37 +324,73 @@ const silverDjPressKit: PressKitConfig = {
     badgeLabel: "Sélection Silver DJ",
   },
   brands: {
-    eyebrow: "Brand show",
-    title: "Une présence claire,\npensée pour les formats marque.",
+    eyebrow: "Partenaires",
+    title: "Marques, institutions\net lieux d'excellence.",
     intro:
-      "Silver DJ peut porter un moment de marque sans le rendre froid: une énergie club, un sens du rythme et une image assez nette pour accompagner des formats lifestyle, culture ou nightlife.",
+      "Silver DJ est sollicité par des marques, institutions, hôtels, clubs et événements majeurs qui misent sur une présence artistique à la hauteur de leur image.",
     supportingText:
-      "L'idée: créer un show qui garde l'identité de l'événement tout en donnant au public une vraie raison de rester, filmer, danser et partager.",
-    categories: ["Vie nocturne", "Mode", "Art de vivre", "Culture"],
-    itemLabel: "Univers compatibles",
-    items: [],
+      "Desperados, Heineken, Martini, la BAD, l'Ambassade de France, Novotel, Pullman ou Movenpick font partie des environnements où son énergie scénique rencontre des exigences premium.",
+    categories: [
+      "Institutions",
+      "Hôtels & resorts",
+      "Clubs",
+      "Festivals",
+      "Médias",
+      "Boissons",
+    ],
+    itemLabel: "Références",
+    items: [
+      "Desperados CI",
+      "Heineken CI",
+      "Martini",
+      "Banque Africaine de Développement",
+      "Ambassade de France en Côte d'Ivoire",
+      "Novotel Abidjan",
+      "Pullman Abidjan",
+      "Movenpick Abidjan",
+      "Palm Resort Assinie",
+      "DJ School Abidjan",
+      "Key Agency",
+      "Trace FM CI",
+      "RTI",
+      "Hit Radio",
+    ],
     fit: {
       eyebrow: "Pourquoi Silver DJ",
-      title: "Technique, présence et lecture du public.",
+      title: "Palmarès, présence et fiabilité scénique.",
       points: [
-        "Une image forte, facile à intégrer dans un dispositif événementiel",
-        "Une culture musicale large pour s'adapter au public sans perdre son identité",
-        "Une expérience de compétition qui apporte précision, impact et maîtrise",
+        "Triple champion DMC West Africa 2024, 2025 et 2026",
+        "Vice-champion DMC World 2024 et 3e DMC World 2025",
+        "Une expérience confirmée sur clubs, festivals, institutions et événements sold out",
       ],
     },
   },
   contact: {
     eyebrow: "Contact",
-    title: "Booking & Demandes.",
+    title: "Booking.",
     description:
-      "Pour une date club, un événement privé, un brand show ou une demande média, contactez Silver DJ directement via les liens ci-dessous.",
+      "Pour vos soirées, festivals, événements privés ou institutionnels — Silver DJ est disponible depuis Abidjan, en Côte d'Ivoire et à l'international.",
     methods: [
       {
+        label: "Email",
+        value: bookingEmail,
+        href: `mailto:${bookingEmail}`,
+        icon: "mail",
+        external: false,
+      },
+      {
         label: "WhatsApp",
-        value: "(+225)07.87.87.97.80",
-        href: "https://wa.me/2250787879780",
+        value: "(+225) 01 01 53 51 74",
+        href: bookingWhatsapp,
         icon: "whatsapp",
         external: true,
+      },
+      {
+        label: "Téléphone",
+        value: bookingPhone,
+        href: "tel:+2250787879780",
+        icon: "phone",
+        external: false,
       },
       {
         label: "Instagram",
@@ -280,42 +399,31 @@ const silverDjPressKit: PressKitConfig = {
         icon: "instagram",
         external: true,
       },
-      {
-        label: "TikTok",
-        value: "@slvr_dj",
-        href: tikTokUrl,
-        icon: "tiktok",
-        external: true,
-      },
-      {
-        label: "YouTube",
-        value: "Chaîne Silver DJ",
-        href: youtubeChannelUrl,
-        icon: "youtube",
-        external: true,
-      },
-      {
-        label: "SoundCloud",
-        value: "Profil officiel",
-        href: soundCloudUrl,
-        icon: "music",
-        external: true,
-      },
     ],
   },
   gallery: {
     eyebrow: "Galerie",
-    title: "Galerie",
+    title: "Scène & platines.",
     description:
-      "Une sélection d'images entre scène, compétition et moments de public pour donner un aperçu plus concret de l'univers Silver DJ.",
+      "Une sélection d'images entre scène, compétition et moments live pour illustrer l'univers Silver DJ.",
     homepageTitle: "Univers visuel",
     homepageCtaLabel: "Ouvrir la galerie",
     images: [
       {
-        src: "/silver-dj/gallery/silverdj-champion-1.jpg",
-        alt: "Portrait champion de Silver DJ",
+        src: "/silver-dj/gallery/optimized/gallery-silver1.jpg",
+        alt: "Silver DJ en portrait scénique",
         size: "md:col-span-2",
-        position: "center 22%",
+        position: "center 20%",
+      },
+      {
+        src: "/silver-dj/gallery/silverdj-dmc-selection-1.jpg",
+        alt: "Sélection DMC de Silver DJ",
+        position: "center 24%",
+      },
+      {
+        src: "/silver-dj/gallery/optimized/gallery-silver13.jpg",
+        alt: "Silver DJ en live grand format",
+        position: "center 35%",
       },
       {
         src: "/silver-dj/gallery/silverdj-bloom-1.jpg",
@@ -323,9 +431,72 @@ const silverDjPressKit: PressKitConfig = {
         position: "center 18%",
       },
       {
-        src: "/silver-dj/gallery/silverdj-dmc-selection-1.jpg",
-        alt: "Sélection DMC de Silver DJ",
-        position: "center 24%",
+        src: "/silver-dj/gallery/optimized/gallery-silver2.jpg",
+        alt: "Silver DJ en performance live",
+        position: "center 18%",
+      },
+      {
+        src: "/silver-dj/gallery/optimized/gallery-silver3.jpg",
+        alt: "Silver DJ derrière les platines",
+        position: "center 20%",
+      },
+      {
+        src: "/silver-dj/gallery/optimized/gallery-silver4.jpg",
+        alt: "Silver DJ pendant un show",
+        position: "center 18%",
+      },
+      {
+        src: "/silver-dj/gallery/optimized/gallery-silver5.jpg",
+        alt: "Silver DJ en moment live",
+        size: "md:col-span-2",
+        position: "center 22%",
+      },
+      {
+        src: "/silver-dj/gallery/optimized/gallery-silver6.jpg",
+        alt: "Portrait événementiel de Silver DJ",
+        position: "center 18%",
+      },
+      {
+        src: "/silver-dj/gallery/optimized/gallery-silver7.jpg",
+        alt: "Silver DJ sur scène",
+        position: "center 18%",
+      },
+      {
+        src: "/silver-dj/gallery/optimized/gallery-silver8.jpg",
+        alt: "Visuel Silver DJ",
+        position: "center",
+      },
+      {
+        src: "/silver-dj/gallery/optimized/gallery-silver9.jpg",
+        alt: "Silver DJ sélection visuelle",
+        position: "center",
+      },
+      {
+        src: "/silver-dj/gallery/optimized/gallery-silver10.jpg",
+        alt: "Silver DJ en portrait",
+        position: "center 18%",
+      },
+      {
+        src: "/silver-dj/gallery/optimized/gallery-silver11.jpg",
+        alt: "Silver DJ en compétition",
+        position: "center 20%",
+      },
+      {
+        src: "/silver-dj/gallery/optimized/gallery-silver12.jpg",
+        alt: "Silver DJ face au public",
+        position: "center 20%",
+      },
+      {
+        src: "/silver-dj/gallery/optimized/gallery-silver14.jpg",
+        alt: "Silver DJ sur une scène internationale",
+        size: "md:col-span-2",
+        position: "center 35%",
+      },
+      {
+        src: "/silver-dj/gallery/silverdj-champion-1.jpg",
+        alt: "Portrait champion de Silver DJ",
+        size: "md:col-span-2",
+        position: "center 22%",
       },
       {
         src: "/silver-dj/gallery/silverdj-BSFS-1.jpg",
@@ -381,55 +552,61 @@ export const silverDjClient: ClientConfig = {
     "silver-dj-git-main-slyd971s-projects.vercel.app",
   ],
   name: "Silver DJ",
-  tagline: "DJ open format • Abidjan • Cote d'Ivoire & international",
+  tagline: "DJ producteur • Abidjan & international",
   city: "Abidjan",
-  country: "Cote d'Ivoire",
-  category: "DJ open format / dossier de presse en préparation",
+  country: "Côte d'Ivoire",
+  category: "DJ producteur / champion DMC / open format international",
   description: silverDjPressKit.metadata.description,
   longBio: silverDjPressKit.about.paragraphs.join(" "),
-  heroImage: "/silver-dj/hero-silverdj.png",
+  heroImage,
   gallery: silverDjPressKit.gallery.images,
   socials: {
     instagram: instagramUrl,
     soundCloud: soundCloudUrl,
     tikTok: tikTokUrl,
+    spotify: spotifyUrl,
     website: youtubeChannelUrl,
   },
   contact: {
-    email: "booking@silver-dj.com",
-    phone: "(+225)07.87.87.97.80",
+    email: bookingEmail,
+    phone: bookingPhone,
     city: "Abidjan",
-    country: "Cote d'Ivoire",
+    country: "Côte d'Ivoire",
   },
   services: [
     {
       title: "Soirées club",
       description:
-        "Sets open format pensés pour garder la piste active, passer d'une couleur à l'autre et maintenir l'énergie jusqu'au dernier morceau.",
+        "Sets techniques et festifs pour clubs, résidences, dancefloors premium et nuits sold out.",
     },
     {
-      title: "Brand show",
+      title: "Festivals & institutions",
       description:
-        "Présence DJ taillée pour les lancements, activations et rendez-vous lifestyle qui ont besoin d'un moment musical fort.",
+        "Performances adaptées aux grands événements, festivals, institutions et activations à forte visibilité.",
     },
     {
-      title: "Événements privés",
+      title: "Événements privés & internationaux",
       description:
-        "Une approche flexible pour anniversaires, soirées d'entreprise, formats premium et événements sur mesure.",
+        "Une approche flexible pour événements privés, hôtels, showcases et dates hors Côte d'Ivoire.",
     },
   ],
   testimonials: [],
-  bookingEmail: "booking@silver-dj.com",
+  bookingEmail,
   seo: {
     title: silverDjPressKit.metadata.title,
     description: silverDjPressKit.metadata.description,
     keywords: [
       "Silver DJ",
       "DJ Abidjan",
-      "open format DJ",
+      "Champion DMC West Africa",
+      "DMC World Paris 2024",
+      "DMC World Tokyo 2025",
+      "DJ DMC Côte d'Ivoire",
+      "DJ festivals Afrique",
+      "DJ ivoirien",
       "dossier de presse DJ",
       "réservation DJ Abidjan",
-      "dossier de presse DJ YouTube",
+      "booking DJ Côte d'Ivoire",
     ],
     ogImage: "/opengraph-image",
   },

@@ -21,6 +21,10 @@ export function buildClientMetadata(
     overrides?.imageAlt ?? `Aperçu du dossier de presse de ${client.name}`;
   const canonicalUrl = getCanonicalUrl(client, path);
   const imageUrl = new URL(image, canonicalUrl).toString();
+  const instagramHandle = client.socials.instagram
+    ?.replace(/\/+$/, "")
+    .split("/")
+    .pop();
 
   return {
     metadataBase: new URL(`https://${getPrimaryHostname(client)}`),
@@ -32,6 +36,10 @@ export function buildClientMetadata(
     creator: client.name,
     publisher: client.name,
     category: client.category,
+    other: {
+      "music:musician": client.name,
+      "profile:username": client.slug,
+    },
     alternates: {
       canonical: canonicalUrl,
     },
@@ -66,9 +74,7 @@ export function buildClientMetadata(
       card: "summary_large_image",
       title,
       description,
-      creator: client.socials.instagram
-        ? `@${client.socials.instagram.split("/").pop()}`
-        : undefined,
+      creator: instagramHandle ? `@${instagramHandle}` : undefined,
       images: [imageUrl],
     },
   };
@@ -121,6 +127,7 @@ export function buildSiteJsonLd(client: ClientConfig) {
       },
       sameAs: Object.values(client.socials).filter(Boolean),
       knowsAbout: client.services.map((service) => service.title),
+      award: client.seo.keywords.filter((keyword) => keyword.includes("DMC")),
     },
     {
       "@context": "https://schema.org",

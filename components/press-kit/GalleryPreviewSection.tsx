@@ -54,16 +54,10 @@ export function GalleryPreviewSection({
               }}
             />
 
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/32 via-transparent to-transparent" />
 
-            <div className="absolute inset-x-4 bottom-4 flex items-end justify-between gap-3 md:inset-x-5 md:bottom-5 md:gap-4">
-              <div className="text-[11px] font-medium uppercase tracking-[0.18em] text-white/90 md:text-sm md:tracking-[0.24em]">
-                {image.alt}
-              </div>
-
-              <div className="rounded-full border border-white/15 bg-black/35 p-2.5 backdrop-blur-sm md:p-3">
-                <ArrowUpRight className="h-3.5 w-3.5 text-white/85 md:h-4 md:w-4" />
-              </div>
+            <div className="absolute right-4 top-4 rounded-full border border-white/15 bg-black/35 p-2.5 backdrop-blur-sm md:right-5 md:top-5 md:p-3">
+              <ArrowUpRight className="h-3.5 w-3.5 text-white/85 md:h-4 md:w-4" />
             </div>
           </Link>
         ))}

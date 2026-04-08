@@ -4,6 +4,7 @@ import { BrandsSection } from "@/components/press-kit/BrandsSection";
 import { ClubsSection } from "@/components/press-kit/ClubsSection";
 import { ContactSection } from "@/components/press-kit/ContactSection";
 import { DevControlPanel } from "@/components/press-kit/DevControlPanel";
+import { Footer } from "@/components/press-kit/Footer";
 import { GalleryPreviewSection } from "@/components/press-kit/GalleryPreviewSection";
 import { Header } from "@/components/press-kit/Header";
 import { HeroSection } from "@/components/press-kit/HeroSection";
@@ -15,6 +16,7 @@ import {
   createPressKitEntry,
   getArtistGalleryHref,
   getArtistHomeHref,
+  getArtistVideosHref,
   getResolvedNavigation,
   hasBrandsContent,
   hasGalleryContent,
@@ -68,6 +70,7 @@ export default async function Home({ searchParams }: HomeProps) {
   const showLocalSwitchers = await isLocalRequest();
   const navigation = getResolvedNavigation(pressKitConfig);
   const galleryHref = getArtistGalleryHref(pressKitEntry.id);
+  const videosHref = getArtistVideosHref(pressKitEntry.id);
   const homeHref = getArtistHomeHref(pressKitEntry.id);
 
   return (
@@ -103,7 +106,7 @@ export default async function Home({ searchParams }: HomeProps) {
         />
       )}
       {hasVideoContent(pressKitConfig) && (
-        <VideoSection videos={pressKitConfig.videos} />
+        <VideoSection videos={pressKitConfig.videos} limit={3} videosHref={videosHref} />
       )}
       {hasSoundContent(pressKitConfig) && (
         <SoundSection sound={pressKitConfig.sound} />
@@ -115,6 +118,13 @@ export default async function Home({ searchParams }: HomeProps) {
         <BrandsSection brands={pressKitConfig.brands} />
       )}
       <ContactSection contact={pressKitConfig.contact} />
+      <Footer
+        client={client}
+        navigation={navigation}
+        homeHref={homeHref}
+        galleryHref={galleryHref}
+        videosHref={videosHref}
+      />
     </main>
   );
 }

@@ -94,15 +94,15 @@ export function Header({ artist, navigation, ui, homeHref = "/" }: HeaderProps) 
             <div
               className={`flex items-center overflow-hidden transition-all duration-300 ${
                 isHeaderCompact
-                  ? "h-8 w-[128px] md:h-9 md:w-[152px]"
-                  : "h-10 w-[146px] md:h-11 md:w-[172px]"
+                  ? "h-8 w-[78px] md:h-9 md:w-[88px]"
+                  : "h-10 w-[88px] md:h-11 md:w-[98px]"
               }`}
             >
               {hasLogoImage ? (
                 <img
                   src={artist.logo.src}
                   alt={artist.logo.alt}
-                  className="h-[175%] w-auto max-w-none shrink-0 object-contain object-left md:h-[185%]"
+                  className="h-[72%] w-full shrink-0 object-contain object-left md:h-[74%]"
                 />
               ) : (
                 <div className="flex flex-col leading-none text-white">

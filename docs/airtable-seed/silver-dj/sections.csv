@@ -1,16 +1,25 @@
 clientSlug,sectionKey,eyebrow,title,description,supportingText,signatureLabel,signatureQuote,paragraphs,tags
-"silver-dj","about","A propos","Une base ouverte,
-prete a etre habillee","","Cette version sert de structure de depart en attendant les contenus definitifs.","Positionnement","Un press kit Silver DJ deja branche sur la meme logique que les autres profils.","Silver DJ est configure comme un profil open format capable d'accueillir rapidement une direction editoriale complete.
-La structure reprend les blocs deja utilises dans le projet pour accelerer l'integration des textes, references, medias et informations de booking.
-Les contenus finaux pourront ensuite remplacer progressivement les placeholders sans changer l'architecture generale.","Open Format
+"silver-dj","about","À propos","Une force montante
+du deejaying africain.","","Son parcours relie Bouaké, Abidjan, Paris, Tokyo, Casablanca et les grandes scènes d'Afrique de l'Ouest.","Signature","Une technique de compétition, une énergie contagieuse et une capacité rare à lire la foule.","Né à Bouaké le 04 septembre 2001, Silver DJ, alias Coulibaly Siaka, est un DJ ivoirien marqué par une passion profonde pour la musique, la performance scénique et la culture du deejaying.
+Issu de la première promotion de la DJ School à Abidjan, il fait ses premiers pas en compétition en 2021 lors de la Battle DJ Highlander, qu'il remporte brillamment. Cette victoire l'installe rapidement dans le milieu professionnel abidjanais.
+De 2021 à 2024, il devient DJ résident au Felah, un lieu emblématique de la jeunesse abidjanaise. Il y affine son identité, sa technique et sa présence, avant de confirmer son rayonnement avec les titres de champion DMC West Africa 2024, 2025 et 2026.
+Vice-champion DMC World 2024 à Paris, 3e DMC World 2025 à Tokyo et Best International DJ aux Guinness Ghana DJ Awards 2024, Silver DJ continue d'élargir son influence entre clubs, festivals, médias, institutions et scènes internationales.","Champion DMC
+Turntablism
 Afro
-House
 Hip-Hop
-Club
-Brand Events"
-"silver-dj","clubs","Experience","References et formats.","Section prete a recevoir les lieux, residencies, formats de booking et references Silver DJ.","","","","",""
-"silver-dj","sound","Son","A l'ecoute.","","","","","Le bloc SoundCloud est deja prepare et pourra etre mis a jour des que le profil officiel sera confirme.
-La structure permet de garder la meme logique de presentation que les autres DJs du projet.",""
-"silver-dj","videos","Videos","La section YouTube est prete.","Cette section accepte maintenant des videos locales ou des embeds YouTube. Les futurs liens Silver DJ pourront etre ajoutes ici ou via Airtable.","","","","",""
-"silver-dj","contact","Contact","Booking et demandes.","La section contact est deja prete. Il suffira de remplacer les coordonnees placeholders par les bonnes.","","","","",""
-"silver-dj","gallery","Galerie","Galerie","Le dossier media Silver DJ est deja present. Ajoute ensuite les visuels dans /public/silver-dj/gallery pour activer la galerie.","","","","",""
+Dancehall
+House
+Soca
+Trap"
+"silver-dj","clubs","Expérience","Des grandes scènes,
+un impact international.","Silver DJ navigue entre résidences club, festivals, compétitions mondiales, événements institutionnels et tournées internationales avec une même exigence: transformer chaque prestation en expérience mémorable.","","","","",""
+"silver-dj","sound","Son","À l'écoute.","","","","","Silver DJ mélange avec fluidité les sonorités africaines et internationales: hip-hop, dancehall, house, funk, soca, trap, drill et afro house.
+Sa signature repose sur les scratches, mashups, toneplay et transitions complexes, mais aussi sur sa capacité à raconter une histoire et créer une connexion festive avec le public.
+Ses contenus regroupent performances live, remixes, mashups, mixtapes et séries audio comme Monkey's Piano Mix ou Home Session, avec plus de 20 mixes et remixes disponibles.",""
+"silver-dj","videos","Vidéos","Performances live,
+mixtapes et mashups.","Les extraits montrent toute l'énergie de Silver DJ: shows live, remixes, mashups et performances captées au plus près du public.","","","","",""
+"silver-dj","spotify","Spotify","Radio Silver","Une sélection intégrée pour prolonger l'univers musical de Silver DJ entre audio, mixtapes et inspirations club.","","","","",""
+"silver-dj","brands","Partenaires","Marques, institutions
+et lieux d'excellence.","Silver DJ est sollicité par des marques, institutions, hôtels, clubs et événements majeurs pour porter des moments à forte visibilité.","Desperados, Heineken, Martini, la BAD, l'Ambassade de France, Novotel, Pullman ou Movenpick font partie des environnements où son énergie scénique rencontre des exigences premium.","","","",""
+"silver-dj","contact","Contact","Booking & Demandes.","Pour vos soirées, festivals, événements privés ou institutionnels, Silver DJ est disponible au booking depuis Abidjan et pour toute prestation.","","","","",""
+"silver-dj","gallery","Galerie","Galerie","Une sélection d'images entre scène, compétition et moments de public pour donner un aperçu plus concret de l'univers Silver DJ.","","","","",""

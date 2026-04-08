@@ -1,11 +1,14 @@
 "use client";
 
-import { Pause, Play } from "lucide-react";
+import { ArrowUpRight, Pause, Play } from "lucide-react";
+import Link from "next/link";
 import { useRef, useState } from "react";
 import type { PressKitConfig } from "@/data/config";
 
 type VideoSectionProps = {
   videos: PressKitConfig["videos"];
+  limit?: number;
+  videosHref?: string;
 };
 
 const DEFAULT_VIDEO_POSTER_SRC = "/press-kit/live/live-crowd.jpg";
@@ -16,7 +19,8 @@ function getVideoAspectClass(
   return source === "youtube" ? "aspect-video" : "aspect-[9/16]";
 }
 
-export function VideoSection({ videos }: VideoSectionProps) {
+export function VideoSection({ videos, limit, videosHref }: VideoSectionProps) {
+  const displayedItems = limit ? videos.items.slice(0, limit) : videos.items;
   const videoRefs = useRef<Record<string, HTMLVideoElement | null>>({});
   const previewInitializedRefs = useRef<Record<string, boolean>>({});
   const [activeVideoId, setActiveVideoId] = useState<string | null>(null);
@@ -37,14 +41,11 @@ export function VideoSection({ videos }: VideoSectionProps) {
   };
 
   const handlePause = (videoId: string) => {
-    if (activeVideoId === videoId) {
-      setActiveVideoId(null);
-    }
+    if (activeVideoId === videoId) setActiveVideoId(null);
   };
 
   const toggleVideo = async (videoId: string) => {
     const video = videoRefs.current[videoId];
-
     if (!video) return;
 
     if (!video.paused) {
@@ -54,7 +55,6 @@ export function VideoSection({ videos }: VideoSectionProps) {
     }
 
     pauseOtherVideos(videoId);
-
     try {
       await video.play();
       setActiveVideoId(videoId);
@@ -65,17 +65,13 @@ export function VideoSection({ videos }: VideoSectionProps) {
 
   const initializePreviewFrame = (videoId: string, hasPoster: boolean) => {
     if (hasPoster || previewInitializedRefs.current[videoId]) return;
-
     const video = videoRefs.current[videoId];
     if (!video) return;
-
     previewInitializedRefs.current[videoId] = true;
-
     const targetTime =
       Number.isFinite(video.duration) && video.duration > 0
         ? Math.min(0.05, video.duration / 2)
         : 0.05;
-
     try {
       video.currentTime = targetTime;
     } catch {
@@ -86,43 +82,28 @@ export function VideoSection({ videos }: VideoSectionProps) {
   const formatTime = (value: number) => {
     if (!Number.isFinite(value) || value < 0) return "0:00";
     const minutes = Math.floor(value / 60);
-    const seconds = Math.floor(value % 60)
-      .toString()
-      .padStart(2, "0");
+    const seconds = Math.floor(value % 60).toString().padStart(2, "0");
     return `${minutes}:${seconds}`;
   };
 
   const handleTimeUpdate = (videoId: string) => {
     const video = videoRefs.current[videoId];
     if (!video) return;
-
-    setCurrentTimes((previous) => ({
-      ...previous,
-      [videoId]: video.currentTime,
-    }));
+    setCurrentTimes((prev) => ({ ...prev, [videoId]: video.currentTime }));
   };
 
   const handleLoadedMetadata = (videoId: string, hasPoster: boolean) => {
     const video = videoRefs.current[videoId];
     if (!video) return;
-
-    setDurations((previous) => ({
-      ...previous,
-      [videoId]: video.duration,
-    }));
-
+    setDurations((prev) => ({ ...prev, [videoId]: video.duration }));
     initializePreviewFrame(videoId, hasPoster);
   };
 
   const handleSeek = (videoId: string, value: number) => {
     const video = videoRefs.current[videoId];
     if (!video) return;
-
     video.currentTime = value;
-    setCurrentTimes((previous) => ({
-      ...previous,
-      [videoId]: value,
-    }));
+    setCurrentTimes((prev) => ({ ...prev, [videoId]: value }));
   };
 
   return (
@@ -133,20 +114,32 @@ export function VideoSection({ videos }: VideoSectionProps) {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgb(var(--pk-accent-rgb)/0.12),transparent_24%),radial-gradient(circle_at_80%_90%,rgba(255,255,255,0.04),transparent_22%)]" />
 
       <div className="relative mx-auto max-w-6xl">
-        <div className="mb-6 max-w-3xl md:mb-8">
+        <div className="mb-6 md:mb-8">
           <div className="mb-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--pk-accent)] md:mb-4 md:text-xs md:tracking-[0.35em]">
             {videos.eyebrow}
           </div>
-          <h2 className="text-3xl font-black uppercase leading-[0.95] md:text-6xl">
-            {videos.title}
-          </h2>
-          <p className="mt-4 max-w-2xl text-sm leading-6 text-white/62 md:mt-5 md:text-lg md:leading-8">
-            {videos.description}
-          </p>
+          <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-end md:gap-5">
+            <div>
+              <h2 className="text-3xl font-black uppercase leading-[0.95] md:text-6xl">
+                {videos.title}
+              </h2>
+              <p className="mt-4 max-w-2xl text-sm leading-6 text-white/62 md:mt-5 md:text-lg md:leading-8">
+                {videos.description}
+              </p>
+            </div>
+            {videosHref && limit && videos.items.length > limit && (
+              <Link
+                href={videosHref}
+                className="inline-flex shrink-0 items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/80 transition hover:text-white md:text-sm md:tracking-[0.28em]"
+              >
+                Voir toutes les vidéos <ArrowUpRight className="h-4 w-4" />
+              </Link>
+            )}
+          </div>
         </div>
 
         <div className="grid items-stretch gap-4 md:grid-cols-3 md:gap-5">
-          {videos.items.map((video) => {
+          {displayedItems.map((video) => {
             const effectivePoster = video.poster || DEFAULT_VIDEO_POSTER_SRC;
             const aspectClass = getVideoAspectClass(video.source);
 

@@ -49,18 +49,18 @@ function LargeContactCard({ method }: { method: ContactMethod }) {
       href={method.href}
       target={method.external ? "_blank" : undefined}
       rel={method.external ? "noreferrer" : undefined}
-      className="group rounded-[1.3rem] border border-white/10 bg-white/[0.02] px-4 py-4 transition hover:border-white/20 hover:bg-white/[0.05] md:rounded-[2rem] md:px-6 md:py-6"
+      className="group rounded-lg border border-white/10 bg-white/[0.02] p-3 transition hover:border-white/20 hover:bg-white/[0.05] md:rounded-[2rem] md:px-6 md:py-6"
     >
-      <div className="flex items-center gap-3 md:gap-5">
-        <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[rgb(var(--pk-accent-rgb)/0.18)] text-[var(--pk-accent-soft)] md:h-16 md:w-16 md:rounded-2xl">
+      <div className="flex min-w-0 items-center gap-3 md:gap-5">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[rgb(var(--pk-accent-rgb)/0.18)] text-[var(--pk-accent-soft)] md:h-16 md:w-16 md:rounded-2xl">
           <Icon className="h-5 w-5 md:h-7 md:w-7" />
         </div>
 
         <div className="min-w-0">
-          <div className="text-[10px] uppercase tracking-[0.24em] text-white/35 md:text-xs md:tracking-[0.35em]">
+          <div className="text-[8px] uppercase tracking-[0.16em] text-white/35 md:text-xs md:tracking-[0.35em]">
             {method.label}
           </div>
-          <div className="mt-1 break-all text-sm font-black uppercase leading-5 md:mt-2 md:text-2xl">
+          <div className="mt-1 break-words text-[0.78rem] font-black uppercase leading-4 md:mt-2 md:break-all md:text-2xl md:leading-7">
             {method.value}
           </div>
         </div>
@@ -77,14 +77,14 @@ function SmallContactCard({ method }: { method: ContactMethod }) {
       href={method.href}
       target={method.external ? "_blank" : undefined}
       rel={method.external ? "noreferrer" : undefined}
-      className="group rounded-[1.3rem] border border-white/10 bg-white/[0.02] px-4 py-4 transition hover:border-white/20 hover:bg-white/[0.05] md:rounded-[2rem] md:px-6 md:py-6"
+      className="group rounded-lg border border-white/10 bg-white/[0.02] p-3 transition hover:border-white/20 hover:bg-white/[0.05] md:rounded-[2rem] md:px-6 md:py-6"
     >
-      <div className="flex items-center gap-3 md:gap-4">
-        <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[rgb(var(--pk-accent-rgb)/0.18)] text-[var(--pk-accent-soft)] md:h-14 md:w-14 md:rounded-2xl">
+      <div className="flex min-w-0 items-center gap-2.5 md:gap-4">
+        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[rgb(var(--pk-accent-rgb)/0.18)] text-[var(--pk-accent-soft)] md:h-14 md:w-14 md:rounded-2xl">
           <Icon className="h-5 w-5 md:h-6 md:w-6" />
         </div>
 
-        <div className="text-sm font-semibold uppercase tracking-[0.18em] text-white md:text-base md:tracking-[0.28em]">
+        <div className="min-w-0 text-[0.68rem] font-semibold uppercase leading-4 tracking-[0.1em] text-white md:text-base md:tracking-[0.28em]">
           {method.label}
         </div>
       </div>
@@ -98,30 +98,30 @@ export function ContactSection({ contact }: ContactSectionProps) {
   return (
     <section
       id="contact"
-      className="scroll-mt-24 bg-black px-4 pb-12 pt-8 md:px-6 md:pb-20 md:pt-14"
+      className="scroll-mt-24 bg-black px-4 pb-10 pt-8 md:px-6 md:pb-20 md:pt-14"
     >
       <div className="mx-auto max-w-7xl">
-        <div className="mb-4 text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--pk-accent)] md:mb-6 md:text-xs md:tracking-[0.35em]">
+        <div className="mb-3 text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--pk-accent)] md:mb-6 md:text-xs md:tracking-[0.35em]">
           {contact.eyebrow}
         </div>
 
-        <div className="grid gap-8 md:gap-10 lg:grid-cols-[1fr_0.95fr] lg:items-start">
+        <div className="grid gap-5 md:gap-10 lg:grid-cols-[1fr_0.95fr] lg:items-start">
           <div>
             <h2 className="max-w-3xl text-3xl font-black uppercase leading-[0.95] sm:text-4xl md:text-7xl">
               {contact.title}
             </h2>
 
-            <p className="mt-5 max-w-2xl text-sm leading-6 text-white/60 md:mt-8 md:text-xl md:leading-9">
+            <p className="mt-4 max-w-2xl text-sm leading-6 text-white/60 md:mt-8 md:text-xl md:leading-9">
               {contact.description}
             </p>
           </div>
 
-          <div className="grid gap-3 md:gap-5">
+          <div className="grid grid-cols-2 gap-2.5 md:grid-cols-1 md:gap-5">
             {primaryMethod && <LargeContactCard method={primaryMethod} />}
             {secondaryMethod && <LargeContactCard method={secondaryMethod} />}
 
             {otherMethods.length > 0 && (
-              <div className="grid gap-3 sm:grid-cols-2 md:gap-5">
+              <div className="col-span-2 grid grid-cols-2 gap-2.5 sm:grid-cols-3 md:col-span-1 md:grid-cols-2 md:gap-5">
                 {otherMethods.map((method) => (
                   <SmallContactCard key={method.href} method={method} />
                 ))}

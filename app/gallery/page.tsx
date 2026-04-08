@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { GalleryClient } from "@/components/gallery/GalleryClient";
 import { DevControlPanel } from "@/components/press-kit/DevControlPanel";
+import { Footer } from "@/components/press-kit/Footer";
 import { Header } from "@/components/press-kit/Header";
 import { getFontPreset, getFontStyle } from "@/data/font-presets";
 import {
   createPressKitEntry,
+  getArtistGalleryHref,
   getArtistHomeHref,
   getResolvedNavigation,
   hasGalleryContent,
@@ -39,7 +41,8 @@ export async function generateMetadata({
     description: client.pressKit.gallery.description,
     image: client.gallery[0]?.src ?? client.seo.ogImage,
     keywords: [
-      `${client.slug} galerie`,
+      `${client.name} galerie`,
+      `${client.name} photos`,
       "photos presse DJ",
       "kit média artiste",
       "visuels presse",
@@ -64,12 +67,13 @@ export default async function GalleryPage({ searchParams }: GalleryPageProps) {
   const hasGallery = hasGalleryContent(pressKitConfig);
   const navigation = getResolvedNavigation(pressKitConfig);
   const homeHref = getArtistHomeHref(pressKitEntry.id);
+  const galleryHref = getArtistGalleryHref(pressKitEntry.id);
   const galleryJsonLd = buildGalleryJsonLd(client);
 
   return (
     <main
       style={{ ...getTemplateStyle(theme), ...getFontStyle(fontPreset) }}
-      className="bg-[var(--pk-bg)] px-6 py-24 text-[var(--pk-text)]"
+      className="bg-[var(--pk-bg)] text-[var(--pk-text)]"
     >
       <Header
         artist={pressKitConfig.artist}
@@ -84,37 +88,45 @@ export default async function GalleryPage({ searchParams }: GalleryPageProps) {
           activeFontPresetId={fontPreset.id}
         />
       )}
-      <div className="mx-auto max-w-7xl">
-        <div className="mb-14">
-          <div className="text-xs uppercase tracking-[0.35em] text-[var(--pk-accent)]">
-            {pressKitConfig.gallery.eyebrow}
+      <section className="px-4 pb-14 pt-24 md:px-6 md:pb-20">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-10 md:mb-14">
+            <div className="text-xs uppercase tracking-[0.35em] text-[var(--pk-accent)]">
+              {pressKitConfig.gallery.eyebrow}
+            </div>
+
+            <h1 className="mt-4 text-4xl font-black uppercase md:text-6xl">
+              {pressKitConfig.gallery.title}
+            </h1>
+
+            <p className="mt-4 max-w-2xl text-sm leading-6 text-white/60 md:text-base">
+              {hasGallery
+                ? pressKitConfig.gallery.description
+                : "Aucun visuel de galerie n'est encore disponible pour cet artiste."}
+            </p>
           </div>
 
-          <h1 className="mt-4 text-5xl font-black uppercase md:text-6xl">
-            {pressKitConfig.gallery.title}
-          </h1>
-
-          <p className="mt-4 max-w-2xl text-white/60">
-            {hasGallery
-              ? pressKitConfig.gallery.description
-              : "Aucun visuel de galerie n'est encore disponible pour cet artiste."}
-          </p>
+          {hasGallery ? (
+            <GalleryClient
+              images={pressKitConfig.gallery.images}
+              viewLabel={pressKitConfig.ui.galleryViewLabel}
+              downloadLabel={pressKitConfig.ui.galleryDownloadLabel}
+              closeLabel={pressKitConfig.ui.galleryCloseLabel}
+              previousLabel={pressKitConfig.ui.galleryPreviousLabel}
+              nextLabel={pressKitConfig.ui.galleryNextLabel}
+            />
+          ) : null}
         </div>
-
-        {hasGallery ? (
-          <GalleryClient
-            images={pressKitConfig.gallery.images}
-            viewLabel={pressKitConfig.ui.galleryViewLabel}
-            downloadLabel={pressKitConfig.ui.galleryDownloadLabel}
-            closeLabel={pressKitConfig.ui.galleryCloseLabel}
-            previousLabel={pressKitConfig.ui.galleryPreviousLabel}
-            nextLabel={pressKitConfig.ui.galleryNextLabel}
-          />
-        ) : null}
-      </div>
+      </section>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(galleryJsonLd) }}
+      />
+      <Footer
+        client={client}
+        navigation={navigation}
+        homeHref={homeHref}
+        galleryHref={galleryHref}
       />
     </main>
   );

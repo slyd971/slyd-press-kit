@@ -67,6 +67,10 @@ export function getArtistGalleryHref(artistId: ArtistId): string {
   return artistId === getClients()[0].slug ? "/gallery" : `/gallery?client=${artistId}`;
 }
 
+export function getArtistVideosHref(artistId: ArtistId): string {
+  return artistId === getClients()[0].slug ? "/videos" : `/videos?client=${artistId}`;
+}
+
 export function getArtistHomeHref(artistId: ArtistId): string {
   return artistId === getClients()[0].slug ? "/" : `/?client=${artistId}`;
 }
