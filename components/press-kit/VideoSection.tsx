@@ -149,13 +149,22 @@ export function VideoSection({ videos }: VideoSectionProps) {
                 className="group mx-auto flex h-full w-full max-w-[22rem] flex-col overflow-hidden rounded-[1.3rem] border border-white/10 bg-white/[0.03] shadow-xl shadow-black/20 backdrop-blur-sm transition hover:border-[rgb(var(--pk-accent-rgb)/0.4)] hover:shadow-[0_0_30px_rgb(var(--pk-accent-rgb)/0.14)] md:max-w-none md:rounded-[1.7rem]"
               >
               <div className="relative aspect-[9/16] bg-black">
+                {activeVideoId !== video.id && (
+                  <img
+                    src={effectivePoster}
+                    alt={video.title}
+                    className="absolute inset-0 z-0 h-full w-full scale-[1.16] object-cover"
+                  />
+                )}
+
                 <video
                   ref={(element) => {
                     videoRefs.current[video.id] = element;
                   }}
-                  className="h-full w-full object-cover pointer-events-none"
+                  className={`h-full w-full object-cover pointer-events-none ${
+                    activeVideoId === video.id ? "opacity-100" : "opacity-0"
+                  }`}
                   src={video.src}
-                  poster={effectivePoster}
                   controls={false}
                   preload="metadata"
                   playsInline
