@@ -196,9 +196,9 @@ const soundCloudEmbedUrl =
 
 export const pressKitConfig: PressKitConfig = {
   metadata: {
-    title: "SLY'D Press Kit",
+    title: "DJ SLY'D Press Kit | Open Format, Hip-Hop, Afro & Club Energy",
     description:
-      "Press kit template for DJ SLY'D with configurable content, branding and booking information.",
+      "Discover DJ SLY'D, Paris-based open format DJ and producer, blending Hip-Hop, Afro, RnB and club energy for nightlife, premium events and international bookings.",
   },
   ui: {
     openMenuLabel: "Open menu",
