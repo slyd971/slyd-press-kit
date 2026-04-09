@@ -196,9 +196,9 @@ const soundCloudEmbedUrl =
 
 export const pressKitConfig: PressKitConfig = {
   metadata: {
-    title: "DJ SLY'D Press Kit | Open Format, Hip-Hop, Afro & Club Energy",
+    title: "DJ SLY'D Press Kit | Hip-Hop, Afro & Club Energy",
     description:
-      "Discover DJ SLY'D, Paris-based open format DJ and producer, blending Hip-Hop, Afro, RnB and club energy for nightlife, premium events and international bookings.",
+      "Discover DJ SLY'D, Paris-based DJ and producer blending Hip-Hop, Afro, RnB and club energy for nightlife, premium events and international bookings.",
   },
   ui: {
     openMenuLabel: "Open menu",

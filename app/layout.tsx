@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/opengraph-image",
+        url: "/press-kit/og-share.jpg",
         width: 1200,
         height: 630,
         alt: "DJ SLY'D press kit preview",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: pressKitConfig.metadata.title,
     description: pressKitConfig.metadata.description,
-    images: ["/opengraph-image"],
+    images: ["/press-kit/og-share.jpg"],
   },
 };
 
