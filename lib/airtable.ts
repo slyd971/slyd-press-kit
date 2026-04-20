@@ -752,6 +752,35 @@ function toGalleryImages(records: AirtableRecord[]): GalleryImage[] {
   return images;
 }
 
+function mergeGalleryLayoutDefaults(
+  airtableImages: GalleryImage[],
+  fallbackImages: GalleryImage[]
+) {
+  const fallbackImagesBySrc = new Map(
+    fallbackImages.map((image) => [image.src, image])
+  );
+  const fallbackImagesByAlt = new Map(
+    fallbackImages.map((image) => [image.alt, image])
+  );
+
+  return airtableImages.map((image) => {
+    const fallbackImage =
+      fallbackImagesBySrc.get(image.src) ?? fallbackImagesByAlt.get(image.alt);
+
+    if (!fallbackImage) {
+      return image;
+    }
+
+    return {
+      ...image,
+      size: image.size ?? fallbackImage.size,
+      position: image.position ?? fallbackImage.position,
+      previewScale: image.previewScale ?? fallbackImage.previewScale,
+      previewOffsetY: image.previewOffsetY ?? fallbackImage.previewOffsetY,
+    } satisfies GalleryImage;
+  });
+}
+
 function toVideos(records: AirtableRecord[]): VideoItem[] {
   return records
     .map((record) => {
@@ -959,8 +988,13 @@ async function getAirtableClientBySlugUncached(
   const testimonials = toTestimonials(childRecords.testimonialRecords);
 
   if (galleryImages.length > 0) {
-    client.gallery = galleryImages;
-    client.pressKit.gallery.images = galleryImages;
+    const mergedGalleryImages = mergeGalleryLayoutDefaults(
+      galleryImages,
+      client.gallery
+    );
+
+    client.gallery = mergedGalleryImages;
+    client.pressKit.gallery.images = mergedGalleryImages;
   }
 
   if (videos.length > 0) {
