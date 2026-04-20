@@ -1,4 +1,3 @@
-import { cache } from "react";
 import type {
   ContactMethod,
   CtaLink,
@@ -327,7 +326,7 @@ export function isAirtableConfigured() {
   return Boolean(AIRTABLE_BASE_ID && AIRTABLE_TOKEN);
 }
 
-const getAirtableClientIndex = cache(async (): Promise<AirtableClientIndexEntry[]> => {
+async function getAirtableClientIndex(): Promise<AirtableClientIndexEntry[]> {
   const records = await listAirtableRecords(AIRTABLE_TABLES.clients, {
     fields: ["slug", "domain", "vercelSubdomain"],
   });
@@ -347,7 +346,7 @@ const getAirtableClientIndex = cache(async (): Promise<AirtableClientIndexEntry[
       };
     })
     .filter((entry) => entry !== null);
-});
+}
 
 async function getAirtableChildRecords(slug: string) {
   const clientFormula = formulaEquals("clientSlug", slug);
@@ -886,79 +885,79 @@ function createClientTemplate(slug: string): ClientConfig {
   return client;
 }
 
-const getAirtableClientBySlugCached = cache(
-  async (slug: string): Promise<ClientConfig | null> => {
-    if (!slug || !isAirtableConfigured()) {
-      return null;
-    }
-
-    const normalizedSlug = slug.toLowerCase();
-    const clientRecords = await listAirtableRecords(AIRTABLE_TABLES.clients, {
-      filterByFormula: formulaEquals("slug", normalizedSlug),
-      slug: normalizedSlug,
-    });
-
-    const clientRecord = sortRecords(clientRecords)[0];
-
-    if (!clientRecord) {
-      return null;
-    }
-
-    const client = createClientTemplate(normalizedSlug);
-    mergeClientScalars(client, clientRecord.fields);
-    mergePressKitDefaults(client.pressKit, clientRecord.fields, client);
-
-    const childRecords = await getAirtableChildRecords(normalizedSlug);
-
-    applySectionOverrides(client.pressKit, childRecords.sectionRecords);
-    applyHeroVariantOverrides(client.pressKit, childRecords.heroVariantRecords);
-    applyClubRegions(client.pressKit, childRecords.clubRegionRecords);
-    applyBrands(client.pressKit, childRecords.brandRecords);
-
-    const galleryImages = toGalleryImages(childRecords.galleryImageRecords);
-    const videos = toVideos(childRecords.videoRecords);
-    const spotifyPlaylists = toSpotifyPlaylists(
-      childRecords.spotifyPlaylistRecords
-    );
-    const contactMethods = toContactMethods(childRecords.contactMethodRecords);
-    const services = toServices(childRecords.serviceRecords);
-    const testimonials = toTestimonials(childRecords.testimonialRecords);
-
-    if (galleryImages.length > 0) {
-      client.gallery = galleryImages;
-      client.pressKit.gallery.images = galleryImages;
-    }
-
-    if (videos.length > 0) {
-      client.pressKit.videos.items = videos;
-    }
-
-    if (spotifyPlaylists.length > 0) {
-      client.pressKit.spotify.playlists = spotifyPlaylists;
-    }
-
-    if (contactMethods.length > 0) {
-      client.pressKit.contact.methods = contactMethods;
-    }
-
-    if (services.length > 0) {
-      client.services = services;
-    }
-
-    if (testimonials.length > 0) {
-      client.testimonials = testimonials;
-    }
-
-    client.longBio = client.pressKit.about.paragraphs.join(" ");
-    client.description = client.pressKit.metadata.description;
-    client.seo.title = client.pressKit.metadata.title;
-    client.seo.description = client.pressKit.metadata.description;
-    client.name = client.pressKit.artist.name;
-    client.tagline = client.pressKit.artist.stageLabel;
-
-    return client;
+async function getAirtableClientBySlugUncached(
+  slug: string
+): Promise<ClientConfig | null> {
+  if (!slug || !isAirtableConfigured()) {
+    return null;
   }
-);
+
+  const normalizedSlug = slug.toLowerCase();
+  const clientRecords = await listAirtableRecords(AIRTABLE_TABLES.clients, {
+    filterByFormula: formulaEquals("slug", normalizedSlug),
+    slug: normalizedSlug,
+  });
+
+  const clientRecord = sortRecords(clientRecords)[0];
+
+  if (!clientRecord) {
+    return null;
+  }
+
+  const client = createClientTemplate(normalizedSlug);
+  mergeClientScalars(client, clientRecord.fields);
+  mergePressKitDefaults(client.pressKit, clientRecord.fields, client);
+
+  const childRecords = await getAirtableChildRecords(normalizedSlug);
+
+  applySectionOverrides(client.pressKit, childRecords.sectionRecords);
+  applyHeroVariantOverrides(client.pressKit, childRecords.heroVariantRecords);
+  applyClubRegions(client.pressKit, childRecords.clubRegionRecords);
+  applyBrands(client.pressKit, childRecords.brandRecords);
+
+  const galleryImages = toGalleryImages(childRecords.galleryImageRecords);
+  const videos = toVideos(childRecords.videoRecords);
+  const spotifyPlaylists = toSpotifyPlaylists(
+    childRecords.spotifyPlaylistRecords
+  );
+  const contactMethods = toContactMethods(childRecords.contactMethodRecords);
+  const services = toServices(childRecords.serviceRecords);
+  const testimonials = toTestimonials(childRecords.testimonialRecords);
+
+  if (galleryImages.length > 0) {
+    client.gallery = galleryImages;
+    client.pressKit.gallery.images = galleryImages;
+  }
+
+  if (videos.length > 0) {
+    client.pressKit.videos.items = videos;
+  }
+
+  if (spotifyPlaylists.length > 0) {
+    client.pressKit.spotify.playlists = spotifyPlaylists;
+  }
+
+  if (contactMethods.length > 0) {
+    client.pressKit.contact.methods = contactMethods;
+  }
+
+  if (services.length > 0) {
+    client.services = services;
+  }
+
+  if (testimonials.length > 0) {
+    client.testimonials = testimonials;
+  }
+
+  client.longBio = client.pressKit.about.paragraphs.join(" ");
+  client.description = client.pressKit.metadata.description;
+  client.seo.title = client.pressKit.metadata.title;
+  client.seo.description = client.pressKit.metadata.description;
+  client.name = client.pressKit.artist.name;
+  client.tagline = client.pressKit.artist.stageLabel;
+
+  return client;
+}
 
 export async function getAirtableClientBySlug(slug?: string | null) {
   if (!slug) {
@@ -966,7 +965,7 @@ export async function getAirtableClientBySlug(slug?: string | null) {
   }
 
   try {
-    return await getAirtableClientBySlugCached(slug.toLowerCase());
+    return await getAirtableClientBySlugUncached(slug.toLowerCase());
   } catch (error) {
     console.error(`Failed to load Airtable client "${slug}"`, error);
     return null;
