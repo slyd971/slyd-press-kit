@@ -322,6 +322,40 @@ async function listAirtableRecords(
   return records;
 }
 
+function isIgnorableAirtableTableError(error: unknown) {
+  if (!(error instanceof Error)) {
+    return false;
+  }
+
+  return (
+    error.message.includes("INVALID_PERMISSIONS_OR_MODEL_NOT_FOUND") ||
+    error.message.includes("(403)") ||
+    error.message.includes("(404)")
+  );
+}
+
+async function listOptionalAirtableRecords(
+  tableName: string,
+  options?: {
+    filterByFormula?: string;
+    fields?: string[];
+    slug?: string;
+  }
+) {
+  try {
+    return await listAirtableRecords(tableName, options);
+  } catch (error) {
+    if (isIgnorableAirtableTableError(error)) {
+      console.warn(
+        `Optional Airtable table "${tableName}" is unavailable, continuing with fallback empty data.`
+      );
+      return [];
+    }
+
+    throw error;
+  }
+}
+
 export function isAirtableConfigured() {
   return Boolean(AIRTABLE_BASE_ID && AIRTABLE_TOKEN);
 }
@@ -363,43 +397,43 @@ async function getAirtableChildRecords(slug: string) {
     testimonialRecords,
     brandRecords,
   ] = await Promise.all([
-    listAirtableRecords(AIRTABLE_TABLES.sections, {
+    listOptionalAirtableRecords(AIRTABLE_TABLES.sections, {
       filterByFormula: clientFormula,
       slug,
     }),
-    listAirtableRecords(AIRTABLE_TABLES.heroVariants, {
+    listOptionalAirtableRecords(AIRTABLE_TABLES.heroVariants, {
       filterByFormula: clientFormula,
       slug,
     }),
-    listAirtableRecords(AIRTABLE_TABLES.clubRegions, {
+    listOptionalAirtableRecords(AIRTABLE_TABLES.clubRegions, {
       filterByFormula: clientFormula,
       slug,
     }),
-    listAirtableRecords(AIRTABLE_TABLES.galleryImages, {
+    listOptionalAirtableRecords(AIRTABLE_TABLES.galleryImages, {
       filterByFormula: clientFormula,
       slug,
     }),
-    listAirtableRecords(AIRTABLE_TABLES.videos, {
+    listOptionalAirtableRecords(AIRTABLE_TABLES.videos, {
       filterByFormula: clientFormula,
       slug,
     }),
-    listAirtableRecords(AIRTABLE_TABLES.spotifyPlaylists, {
+    listOptionalAirtableRecords(AIRTABLE_TABLES.spotifyPlaylists, {
       filterByFormula: clientFormula,
       slug,
     }),
-    listAirtableRecords(AIRTABLE_TABLES.contactMethods, {
+    listOptionalAirtableRecords(AIRTABLE_TABLES.contactMethods, {
       filterByFormula: clientFormula,
       slug,
     }),
-    listAirtableRecords(AIRTABLE_TABLES.services, {
+    listOptionalAirtableRecords(AIRTABLE_TABLES.services, {
       filterByFormula: clientFormula,
       slug,
     }),
-    listAirtableRecords(AIRTABLE_TABLES.testimonials, {
+    listOptionalAirtableRecords(AIRTABLE_TABLES.testimonials, {
       filterByFormula: clientFormula,
       slug,
     }),
-    listAirtableRecords(AIRTABLE_TABLES.brands, {
+    listOptionalAirtableRecords(AIRTABLE_TABLES.brands, {
       filterByFormula: clientFormula,
       slug,
     }),
