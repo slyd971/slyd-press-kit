@@ -4,7 +4,7 @@ import type { ClientConfig } from "@/data/clients/types";
 const soundCloudUrl =
   "https://soundcloud.com/silver-dj-305204022?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing";
 const soundCloudEmbedUrl =
-  "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/silver-dj-305204022&color=%23ffffff&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true";
+  "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/silver-dj-305204022&color=%2319b46b&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true";
 const instagramUrl = "https://www.instagram.com/slvr_dj/";
 const tikTokUrl = "https://www.tiktok.com/@slvr_dj";
 const youtubeChannelUrl =
@@ -433,7 +433,7 @@ export const silverDjClient: ClientConfig = {
     ],
     ogImage: "/opengraph-image",
   },
-  defaultTheme: "monochrome",
+  defaultTheme: "green",
   defaultVariant: "impact",
   pressKit: silverDjPressKit,
 };
