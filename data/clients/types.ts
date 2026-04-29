@@ -38,6 +38,7 @@ export type ClientConfig = {
   slug: string;
   domain?: string;
   vercelSubdomain: string;
+  domainAliases?: string[];
   name: string;
   tagline: string;
   city: string;

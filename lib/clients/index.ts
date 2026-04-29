@@ -23,10 +23,13 @@ export function getClientByHost(hostname?: string | null) {
   if (!normalizedHost) return null;
 
   for (const client of getClients()) {
-    const domainHost = client.domain ? normalizeHostname(client.domain) : "";
-    const vercelHost = normalizeHostname(client.vercelSubdomain);
+    const configuredHosts = [
+      client.domain,
+      client.vercelSubdomain,
+      ...(client.domainAliases ?? []),
+    ];
 
-    if (matchesHostname(normalizedHost, domainHost) || matchesHostname(normalizedHost, vercelHost)) {
+    if (configuredHosts.some((host) => matchesHostname(normalizedHost, host))) {
       return client;
     }
   }
