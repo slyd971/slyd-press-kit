@@ -258,13 +258,6 @@ const silverDjPressKit: PressKitConfig = {
       "Les extraits montrent toute l'énergie de Silver DJ: shows live, remixes, mashups et performances captées au plus près du public.",
     items: [
       {
-        id: "silver-dj-video-1",
-        title: "Extrait live 01",
-        description: "",
-        src: "/silver-dj/videos/video-sliverdj-1.mp4",
-        poster: "/silver-dj/videos/video-sliverdj-1-poster.jpg",
-      },
-      {
         id: "silver-dj-video-2",
         title: "Extrait live 02",
         description: "",
@@ -277,13 +270,6 @@ const silverDjPressKit: PressKitConfig = {
         description: "",
         src: "/silver-dj/videos/videos-silverdj-3.mp4",
         poster: "/silver-dj/videos/videos-silverdj-3-poster.jpg",
-      },
-      {
-        id: "silver-dj-video-4",
-        title: "Extrait live 04",
-        description: "",
-        src: "/silver-dj/videos/videos-silverdj-4.mp4",
-        poster: "/silver-dj/videos/videos-silverdj-4-poster.jpg",
       },
       {
         id: "silver-dj-video-5",
@@ -300,11 +286,25 @@ const silverDjPressKit: PressKitConfig = {
         poster: "/silver-dj/videos/videos-silverdj-6-poster.jpg",
       },
       {
-        id: "silver-dj-video-7",
-        title: "Extrait live 07",
+        id: "silver-dj-video-8",
+        title: "Extrait live 08",
         description: "",
-        src: "/silver-dj/videos/videos-silverdj-7.mp4",
-        poster: "/silver-dj/videos/videos-silverdj-7-poster.jpg",
+        src: "/silver-dj/videos/videos-silverdj-8.mp4",
+        poster: "/silver-dj/videos/videos-silverdj-8-poster.jpg",
+      },
+      {
+        id: "silver-dj-video-9",
+        title: "Extrait live 09",
+        description: "",
+        src: "/silver-dj/videos/videos-silverdj-9.mp4",
+        poster: "/silver-dj/videos/videos-silverdj-9-poster.jpg",
+      },
+      {
+        id: "silver-dj-video-10",
+        title: "Extrait live 10",
+        description: "",
+        src: "/silver-dj/videos/videos-silverdj-10.mp4",
+        poster: "/silver-dj/videos/videos-silverdj-10-poster.jpg",
       },
     ],
   },
@@ -416,11 +416,6 @@ const silverDjPressKit: PressKitConfig = {
         position: "center 20%",
       },
       {
-        src: "/silver-dj/gallery/silverdj-dmc-selection-1.jpg",
-        alt: "Sélection DMC de Silver DJ",
-        position: "center 24%",
-      },
-      {
         src: "/silver-dj/gallery/optimized/gallery-silver13.jpg",
         alt: "Silver DJ en live grand format",
         position: "center 35%",
@@ -438,6 +433,11 @@ const silverDjPressKit: PressKitConfig = {
       {
         src: "/silver-dj/gallery/optimized/gallery-silver3.jpg",
         alt: "Silver DJ derrière les platines",
+        position: "center 20%",
+      },
+      {
+        src: "/silver-dj/gallery/optimized/gallery-silver3-1.jpeg",
+        alt: "Silver DJ en performance",
         position: "center 20%",
       },
       {
@@ -482,19 +482,14 @@ const silverDjPressKit: PressKitConfig = {
         position: "center 20%",
       },
       {
-        src: "/silver-dj/gallery/optimized/gallery-silver12.jpg",
-        alt: "Silver DJ face au public",
-        position: "center 20%",
-      },
-      {
         src: "/silver-dj/gallery/optimized/gallery-silver14.jpg",
         alt: "Silver DJ sur une scène internationale",
         size: "md:col-span-2",
         position: "center 35%",
       },
       {
-        src: "/silver-dj/gallery/silverdj-champion-1.jpg",
-        alt: "Portrait champion de Silver DJ",
+        src: "/silver-dj/gallery/optimized/gallery-silver15.jpg",
+        alt: "Silver DJ face au public",
         size: "md:col-span-2",
         position: "center 22%",
       },
@@ -512,32 +507,8 @@ const silverDjPressKit: PressKitConfig = {
         alt: "Public du Bloom avec Silver DJ",
       },
       {
-        src: "/silver-dj/gallery/silverdj-BSFS-2.jpg",
-        alt: "Silver DJ en performance",
-      },
-      {
-        src: "/silver-dj/gallery/silverdj-BSFS-3.jpg",
-        alt: "Silver DJ scène club",
-      },
-      {
         src: "/silver-dj/gallery/silverdj-champion-3.jpg",
         alt: "Silver DJ en coulisses",
-      },
-      {
-        src: "/silver-dj/gallery/silverdj-champion-4.jpg",
-        alt: "Performance de compétition de Silver DJ",
-      },
-      {
-        src: "/silver-dj/gallery/silverdj-dmc-selection-2.jpg",
-        alt: "Silver DJ platines",
-      },
-      {
-        src: "/silver-dj/gallery/silverj-babiland-1.jpg",
-        alt: "Silver DJ en live à Babiland",
-      },
-      {
-        src: "/silver-dj/gallery/silverj-babiland-2.jpg",
-        alt: "Public de Babiland avec Silver DJ",
       },
     ],
   },

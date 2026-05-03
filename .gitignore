@@ -8,4 +8,5 @@ node_modules
 .pycache
 *.pyc
 tsconfig.tsbuildinfo
-public/**/*.mov
+public/**/*.[mM][oO][vV]
+public/**/video-sliverdj-*.[mM][pP]4
