@@ -10,3 +10,6 @@ public/press-kit
 public/slyd
 public/logos
 public/slyd/*.mov
+public/**/*.[mM][oO][vV]
+public/**/video-sliverdj-*.[mM][pP]4
+.claude/
