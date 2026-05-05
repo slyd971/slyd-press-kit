@@ -296,12 +296,12 @@ const arthurChapsPressKit: PressKitConfig = {
   },
   rider: {
     eyebrow: "Rider",
-    title: "Setup\ntechnique.",
+    title: "Configuration\ntechnique.",
     groups: [
       {
-        title: "Setup DJ",
+        title: "Configuration DJ",
         items: [
-          "3 × Pioneer CDJ-3000 (linked)",
+          "3 × Pioneer CDJ-3000 (en réseau)",
           "1 × Pioneer DJM-900NXS2",
           "Équipement professionnel équivalent accepté (CDJ-2000NXS2 / DJM-900NXS)",
         ],
