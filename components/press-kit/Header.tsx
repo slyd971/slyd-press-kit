@@ -26,6 +26,9 @@ export function Header({ artist, navigation, ui, homeHref = "/" }: HeaderProps) 
     stageLabelParts.slice(2).join(" • "),
   ].filter(Boolean);
   const hasLogoImage = artist.logo.src.trim().length > 0;
+  const [artistNameFirstPart, ...artistNameRestParts] = artist.name.split(/\s+/);
+  const artistNameFirstLine = artistNameFirstPart ?? artist.name;
+  const artistNameSecondLine = artistNameRestParts.join(" ");
 
   useEffect(() => {
     lastScrollY.current = window.scrollY;
@@ -114,17 +117,19 @@ export function Header({ artist, navigation, ui, homeHref = "/" }: HeaderProps) 
                     }`}
                     style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
                   >
-                    Silver
+                    {artistNameFirstLine}
                   </span>
-                  <span
-                    className={`-mt-0.5 font-black uppercase tracking-[0.42em] text-[var(--pk-accent)] ${
-                      isHeaderCompact
-                        ? "text-[0.58rem] md:text-[0.62rem]"
-                        : "text-[0.62rem] md:text-[0.68rem]"
-                    }`}
-                  >
-                    DJ
-                  </span>
+                  {artistNameSecondLine ? (
+                    <span
+                      className={`-mt-0.5 font-black uppercase tracking-[0.32em] text-[var(--pk-accent)] ${
+                        isHeaderCompact
+                          ? "text-[0.58rem] md:text-[0.62rem]"
+                          : "text-[0.62rem] md:text-[0.68rem]"
+                      }`}
+                    >
+                      {artistNameSecondLine}
+                    </span>
+                  ) : null}
                 </div>
               )}
             </div>

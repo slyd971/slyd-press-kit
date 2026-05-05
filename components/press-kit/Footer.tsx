@@ -22,6 +22,7 @@ function getSocialLinks(client: ClientConfig) {
 
 export function Footer({ client, navigation, homeHref, galleryHref, videosHref }: FooterProps) {
   const socialLinks = getSocialLinks(client);
+  const hasBookingEmail = Boolean(client.bookingEmail);
 
   return (
     <footer className="border-t border-white/10 bg-black px-4 py-7 text-white md:px-6 md:py-12">
@@ -87,12 +88,24 @@ export function Footer({ client, navigation, homeHref, galleryHref, videosHref }
             Booking
           </div>
           <div className="mt-3 grid gap-2 text-sm text-white/68">
-            <a href={`mailto:${client.bookingEmail}`} className="break-all transition hover:text-white">
-              {client.bookingEmail}
-            </a>
+            {hasBookingEmail ? (
+              <a href={`mailto:${client.bookingEmail}`} className="break-all transition hover:text-white">
+                {client.bookingEmail}
+              </a>
+            ) : null}
             {client.contact.phone ? (
               <a href={`tel:${client.contact.phone.replace(/[^\d+]/g, "")}`} className="transition hover:text-white">
                 {client.contact.phone}
+              </a>
+            ) : null}
+            {!hasBookingEmail && !client.contact.phone && client.socials.instagram ? (
+              <a
+                href={client.socials.instagram}
+                target="_blank"
+                rel="noreferrer"
+                className="transition hover:text-white"
+              >
+                Instagram
               </a>
             ) : null}
           </div>

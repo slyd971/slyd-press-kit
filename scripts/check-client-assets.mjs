@@ -15,6 +15,10 @@ const clients = {
     files: ["data/clients/silver-dj.ts", "docs/airtable-seed/silver-dj"],
     publicDirs: ["silver-dj"],
   },
+  "arthur-chaps": {
+    files: ["data/clients/arthur-chaps.ts"],
+    publicDirs: ["arthur-chaps"],
+  },
   "yoruboy-dj": {
     files: ["data/clients/yoruboy-dj.ts", "docs/airtable-seed/yoruboy-dj"],
     publicDirs: ["yoruboy"],
@@ -49,7 +53,7 @@ function walk(target) {
 function publicRefsFromFile(file) {
   const text = fs.readFileSync(file, "utf8");
   const refs = new Set();
-  const pattern = /["'`](\/(?:press-kit|slyd|logos|silver-dj|yoruboy)\/[^"'`]+)["'`]/g;
+  const pattern = /["'`](\/(?:press-kit|slyd|logos|silver-dj|yoruboy|arthur-chaps)\/[^"'`]+)["'`]/g;
   for (const match of text.matchAll(pattern)) {
     refs.add(match[1]);
   }
@@ -61,6 +65,7 @@ function isIgnoredPublicFile(file) {
     file.endsWith(".DS_Store") ||
     file.endsWith(".gitkeep") ||
     file.endsWith("README.md") ||
+    file.endsWith(".pdf") ||
     /\.(mov|MOV)$/.test(file) ||
     /\/video-sliverdj-.*\.[mM][pP]4$/.test(file)
   );

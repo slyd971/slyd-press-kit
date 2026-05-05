@@ -10,11 +10,14 @@ case "$client" in
   silver-dj)
     project="silver-dj"
     ;;
+  arthur-chaps)
+    project="arthur-chaps-presskit"
+    ;;
   yoruboy-dj)
     project="yoruboy-dj-presskit"
     ;;
   *)
-    echo "Usage: $0 <djslyd|silver-dj|yoruboy-dj>" >&2
+    echo "Usage: $0 <djslyd|silver-dj|arthur-chaps|yoruboy-dj>" >&2
     exit 2
     ;;
 esac
