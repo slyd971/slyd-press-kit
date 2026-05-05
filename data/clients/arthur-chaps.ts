@@ -329,20 +329,6 @@ const arthurChapsPressKit: PressKitConfig = {
       "Pour bookings, formats club, directions artistiques ou collaborations autour de CHAPS MUSIC et GLOBAL WARMING.",
     methods: [
       {
-        label: "Instagram",
-        value: "@arthur_chaps",
-        href: instagramUrl,
-        icon: "instagram",
-        external: true,
-      },
-      {
-        label: "Linktree",
-        value: "linktr.ee/Arthur_Chaps",
-        href: linktreeUrl,
-        icon: "music",
-        external: true,
-      },
-      {
         label: "Email",
         value: "arthur.chaps@gmail.com",
         href: "mailto:arthur.chaps@gmail.com",
@@ -356,10 +342,10 @@ const arthurChapsPressKit: PressKitConfig = {
         external: true,
       },
       {
-        label: "SoundCloud",
-        value: "Arthur Chaps",
-        href: soundCloudUrl,
-        icon: "music",
+        label: "Instagram",
+        value: "@arthur_chaps",
+        href: instagramUrl,
+        icon: "instagram",
         external: true,
       },
     ],
