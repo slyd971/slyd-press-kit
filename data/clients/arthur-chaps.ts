@@ -275,7 +275,7 @@ const arthurChapsPressKit: PressKitConfig = {
   },
   brands: {
     eyebrow: "Formats",
-    title: "Direction artistique\net plateformes club.",
+    title: "La vision\nd'Arthur.",
     intro:
       "Arthur Chaps conçoit des formats qui dépassent le simple DJ set: plateformes musicales, soirées internationales et expériences collectives pensées pour le club.",
     supportingText:
@@ -299,25 +299,25 @@ const arthurChapsPressKit: PressKitConfig = {
     title: "Setup\ntechnique.",
     groups: [
       {
-        title: "DJ Setup",
+        title: "Setup DJ",
         items: [
           "3 × Pioneer CDJ-3000 (linked)",
           "1 × Pioneer DJM-900NXS2",
-          "Equivalent professional DJ equipment accepted (CDJ-2000NXS2 / DJM-900NXS)",
+          "Équipement professionnel équivalent accepté (CDJ-2000NXS2 / DJM-900NXS)",
         ],
       },
       {
-        title: "Additional Requirements",
+        title: "Exigences techniques",
         items: [
-          "1 wired microphone connected to the DJM (for occasional MC use)",
-          "1 power outlet available",
-          "1 booth monitor (stage left), connected to the DJM",
+          "1 microphone filaire connecté au DJM (usage MC occasionnel)",
+          "1 prise de courant disponible",
+          "1 monitor de cabine (côté jardin), connecté au DJM",
         ],
       },
       {
-        title: "Hospitality",
+        title: "Hospitalité",
         items: [
-          "1 pack of still water",
+          "1 pack d'eau plate",
         ],
       },
     ],
@@ -341,6 +341,12 @@ const arthurChapsPressKit: PressKitConfig = {
         href: linktreeUrl,
         icon: "music",
         external: true,
+      },
+      {
+        label: "Email",
+        value: "arthur.chaps@gmail.com",
+        href: "mailto:arthur.chaps@gmail.com",
+        icon: "mail",
       },
       {
         label: "WhatsApp",
