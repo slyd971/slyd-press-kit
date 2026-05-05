@@ -138,7 +138,7 @@ export function VideoSection({ videos, limit, videosHref }: VideoSectionProps) {
           </div>
         </div>
 
-        <div className="grid items-stretch gap-4 md:grid-cols-3 md:gap-5">
+        <div className="grid items-start gap-4 md:grid-cols-3 md:gap-5">
           {displayedItems.map((video) => {
             const effectivePoster = video.poster || DEFAULT_VIDEO_POSTER_SRC;
             const aspectClass = getVideoAspectClass(video.source);
@@ -146,7 +146,7 @@ export function VideoSection({ videos, limit, videosHref }: VideoSectionProps) {
             return (
               <article
                 key={video.id}
-                className="group mx-auto flex h-full w-full max-w-[22rem] flex-col overflow-hidden rounded-[1.3rem] border border-white/10 bg-white/[0.03] shadow-xl shadow-black/20 backdrop-blur-sm transition hover:border-[rgb(var(--pk-accent-rgb)/0.4)] hover:shadow-[0_0_30px_rgb(var(--pk-accent-rgb)/0.14)] md:max-w-none md:rounded-[1.7rem]"
+                className="group mx-auto flex w-full max-w-[22rem] flex-col overflow-hidden rounded-[1.3rem] border border-white/10 bg-white/[0.03] shadow-xl shadow-black/20 backdrop-blur-sm transition hover:border-[rgb(var(--pk-accent-rgb)/0.4)] hover:shadow-[0_0_30px_rgb(var(--pk-accent-rgb)/0.14)] md:max-w-none md:rounded-[1.7rem]"
               >
                 <div className={`relative ${aspectClass} bg-black`}>
                   {video.source === "youtube" ? (
@@ -260,10 +260,10 @@ export function VideoSection({ videos, limit, videosHref }: VideoSectionProps) {
                   )}
                 </div>
 
-                {(video.description || video.source === "youtube") && (
+                {video.source === "youtube" && (
                   <div className="space-y-2 px-4 py-4">
                     <div className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[var(--pk-accent)]">
-                      {video.source === "youtube" ? "Intégration YouTube" : "Vidéo"}
+                      Intégration YouTube
                     </div>
                     {video.description ? (
                       <p className="text-sm leading-6 text-white/70">

@@ -235,10 +235,11 @@ export function HeroSection({
             <img
               src={hero.image.src}
               alt={hero.image.alt}
-              className="h-full w-full object-cover object-center"
+              className="h-full w-full object-cover"
+              style={{ objectPosition: hero.image.position ?? "center" }}
             />
           ) : (
-            <div className="h-full w-full bg-[linear-gradient(180deg,#120805_0%,#050505_100%)]" />
+            <div className="h-full w-full bg-[var(--pk-bg)]" />
           )}
           <div className="absolute inset-0 bg-black/70" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgb(var(--pk-accent-rgb)/0.22),transparent_28%),radial-gradient(circle_at_80%_0%,rgba(255,255,255,0.06),transparent_24%),radial-gradient(circle_at_50%_100%,rgb(var(--pk-accent-rgb)/0.12),transparent_32%)]" />
@@ -335,10 +336,11 @@ export function HeroSection({
             <img
               src={hero.image.src}
               alt={hero.image.alt}
-              className="h-full w-full object-cover object-center"
+              className="h-full w-full object-cover"
+              style={{ objectPosition: hero.image.position ?? "center" }}
             />
           ) : (
-            <div className="h-full w-full bg-[linear-gradient(180deg,#120805_0%,#050505_100%)]" />
+            <div className="h-full w-full bg-[var(--pk-bg)]" />
           )}
           <div className="absolute inset-0 bg-black/60" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgb(var(--pk-accent-rgb)/0.22),transparent_28%),radial-gradient(circle_at_80%_0%,rgba(255,255,255,0.08),transparent_24%),radial-gradient(circle_at_50%_100%,rgb(var(--pk-accent-rgb)/0.12),transparent_32%)]" />
@@ -412,9 +414,9 @@ export function HeroSection({
 
   return (
     <section id="home" className="relative scroll-mt-24 overflow-hidden pt-20 md:pt-24">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_12%,rgba(181,31,36,0.22),transparent_24%),radial-gradient(circle_at_82%_8%,rgba(217,37,42,0.08),transparent_20%),radial-gradient(circle_at_50%_100%,rgba(255,255,255,0.035),transparent_30%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_12%,rgb(var(--pk-accent-rgb)/0.22),transparent_24%),radial-gradient(circle_at_82%_8%,rgb(var(--pk-accent-rgb)/0.08),transparent_20%),radial-gradient(circle_at_50%_100%,rgba(255,255,255,0.035),transparent_30%)]" />
       <div className="absolute inset-0 opacity-15 [background-image:linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] [background-size:34px_34px]" />
-      <div className="absolute inset-0 bg-gradient-to-b from-[#160304]/15 via-transparent to-[#050505]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[var(--pk-bg)]/15 via-transparent to-[var(--pk-bg)]" />
 
       <motion.div
         className="relative mx-auto max-w-7xl px-4 pb-8 md:px-6 md:pb-12"
@@ -461,7 +463,7 @@ export function HeroSection({
                     href={cta.href}
                     className={
                       cta.variant === "primary"
-                        ? "inline-flex items-center rounded-full bg-[var(--pk-accent)] px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-white shadow-[0_18px_45px_rgba(181,31,36,0.22)] transition hover:-translate-y-0.5 hover:bg-[var(--pk-accent-strong)] md:px-7"
+                        ? "inline-flex items-center rounded-full bg-[var(--pk-accent)] px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-white shadow-[0_18px_45px_rgb(var(--pk-accent-rgb)/0.22)] transition hover:-translate-y-0.5 hover:bg-[var(--pk-accent-strong)] md:px-7"
                         : "inline-flex items-center rounded-full border border-white/14 bg-white/[0.04] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/82 transition hover:-translate-y-0.5 hover:border-white/22 hover:bg-white/[0.08] hover:text-white"
                     }
                   >
@@ -475,7 +477,7 @@ export function HeroSection({
                     rel={cta.external ? "noreferrer" : undefined}
                     className={
                       cta.variant === "primary"
-                        ? "inline-flex items-center rounded-full bg-[var(--pk-accent)] px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-white shadow-[0_18px_45px_rgba(181,31,36,0.22)] transition hover:-translate-y-0.5 hover:bg-[var(--pk-accent-strong)] md:px-7"
+                        ? "inline-flex items-center rounded-full bg-[var(--pk-accent)] px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-white shadow-[0_18px_45px_rgb(var(--pk-accent-rgb)/0.22)] transition hover:-translate-y-0.5 hover:bg-[var(--pk-accent-strong)] md:px-7"
                         : "inline-flex items-center rounded-full border border-white/14 bg-white/[0.04] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/82 transition hover:-translate-y-0.5 hover:border-white/22 hover:bg-white/[0.08] hover:text-white"
                     }
                   >
@@ -498,13 +500,14 @@ export function HeroSection({
                 <img
                   src={hero.image.src}
                   alt={hero.image.alt}
-                  className="h-[42svh] w-full rounded-[1.2rem] object-cover object-[center_22%] md:h-[66svh] md:rounded-[1.5rem]"
+                  className="h-[42svh] w-full rounded-[1.2rem] object-cover md:h-[66svh] md:rounded-[1.5rem]"
+                  style={{ objectPosition: hero.image.position ?? "center 22%" }}
                 />
               ) : (
                 heroFallback
               )}
 
-              <div className="absolute inset-0 rounded-[1.45rem] bg-[linear-gradient(180deg,rgba(0,0,0,0.02)_10%,rgba(0,0,0,0.18)_54%,rgba(0,0,0,0.58)_100%)] md:rounded-[1.9rem]" />
+              <div className="absolute inset-0 rounded-[1.45rem] bg-[radial-gradient(ellipse_at_center,transparent_42%,rgba(0,0,0,0.52)_100%),linear-gradient(180deg,rgba(0,0,0,0.0)_20%,rgba(0,0,0,0.22)_55%,rgba(0,0,0,0.70)_100%)] md:rounded-[1.9rem]" />
               <div className="absolute inset-0 rounded-[1.45rem] ring-1 ring-[rgb(var(--pk-accent-rgb)/0.08)] md:rounded-[1.9rem]" />
 
               <div className="absolute inset-x-4 bottom-4 rounded-[1rem] border border-white/10 bg-black/38 p-4 backdrop-blur-md md:inset-x-6 md:bottom-6 md:rounded-[1.3rem] md:p-4.5">

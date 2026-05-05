@@ -118,8 +118,8 @@ export function buildSiteJsonLd(client: ClientConfig) {
       description: client.description,
       url: getCanonicalUrl(client),
       image: new URL(client.heroImage, getCanonicalUrl(client)).toString(),
-      email: client.bookingEmail,
-      telephone: client.contact.phone,
+      email: client.bookingEmail || undefined,
+      telephone: client.contact.phone || undefined,
       address: {
         "@type": "PostalAddress",
         addressLocality: client.city,

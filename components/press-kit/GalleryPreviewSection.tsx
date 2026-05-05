@@ -11,7 +11,7 @@ export function GalleryPreviewSection({
   gallery,
   galleryHref,
 }: GalleryPreviewSectionProps) {
-  const previewImages = gallery.images.slice(0, 4);
+  const previewImages = gallery.images.slice(0, 3);
 
   return (
     <section
@@ -36,7 +36,7 @@ export function GalleryPreviewSection({
         </Link>
       </div>
 
-      <div className="grid auto-rows-[220px] grid-cols-1 gap-3 md:grid-cols-4 md:auto-rows-[220px] md:gap-4">
+      <div className="grid auto-rows-[220px] grid-cols-1 gap-3 md:grid-cols-4 md:auto-rows-[260px] md:gap-4">
         {previewImages.map((image) => (
           <Link
             key={image.src}

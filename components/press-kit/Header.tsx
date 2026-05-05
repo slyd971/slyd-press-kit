@@ -92,13 +92,15 @@ export function Header({ artist, navigation, ui, homeHref = "/" }: HeaderProps) 
           isHeaderCompact ? "h-[58px] md:h-[68px]" : "h-[68px] md:h-[80px]"
         }`}
       >
-        <div className="flex min-w-0 items-center gap-3 md:gap-5">
+        <div className="flex min-w-0 items-center gap-5 md:gap-7">
           <Link href={homeHref} className="shrink-0">
             <div
-              className={`flex items-center overflow-hidden transition-all duration-300 ${
-                isHeaderCompact
-                  ? "h-8 w-[78px] md:h-9 md:w-[88px]"
-                  : "h-10 w-[88px] md:h-11 md:w-[98px]"
+              className={`flex items-center transition-all duration-300 ${
+                hasLogoImage
+                  ? `overflow-hidden ${isHeaderCompact ? "h-7 w-[64px] md:h-8 md:w-[72px]" : "h-8 w-[72px] md:h-9 md:w-[82px]"}`
+                  : isHeaderCompact
+                    ? "h-7 md:h-8"
+                    : "h-8 md:h-9"
               }`}
             >
               {hasLogoImage ? (
@@ -112,8 +114,8 @@ export function Header({ artist, navigation, ui, homeHref = "/" }: HeaderProps) 
                   <span
                     className={`font-black uppercase tracking-[0.18em] ${
                       isHeaderCompact
-                        ? "text-[1.2rem] md:text-[1.3rem]"
-                        : "text-[1.35rem] md:text-[1.5rem]"
+                        ? "text-[0.9rem] md:text-[1.0rem]"
+                        : "text-[1.0rem] md:text-[1.12rem]"
                     }`}
                     style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
                   >
@@ -123,8 +125,8 @@ export function Header({ artist, navigation, ui, homeHref = "/" }: HeaderProps) 
                     <span
                       className={`-mt-0.5 font-black uppercase tracking-[0.32em] text-[var(--pk-accent)] ${
                         isHeaderCompact
-                          ? "text-[0.58rem] md:text-[0.62rem]"
-                          : "text-[0.62rem] md:text-[0.68rem]"
+                          ? "text-[0.48rem] md:text-[0.52rem]"
+                          : "text-[0.52rem] md:text-[0.56rem]"
                       }`}
                     >
                       {artistNameSecondLine}
@@ -166,7 +168,7 @@ export function Header({ artist, navigation, ui, homeHref = "/" }: HeaderProps) 
 
           <a
             href={navigation.cta.href}
-            className={`hidden rounded-full border border-[rgb(var(--pk-accent-rgb)/0.28)] bg-[var(--pk-accent)] font-semibold uppercase text-white shadow-[0_14px_36px_rgba(181,31,36,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[var(--pk-accent-strong)] lg:inline-flex ${
+            className={`hidden rounded-full border border-[rgb(var(--pk-accent-rgb)/0.28)] bg-[var(--pk-accent)] font-semibold uppercase text-white shadow-[0_14px_36px_rgb(var(--pk-accent-rgb)/0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[var(--pk-accent-strong)] lg:inline-flex ${
               isHeaderCompact
                 ? "px-4.5 py-2 text-[10px] tracking-[0.18em]"
                 : "px-6 py-2.5 text-[11px] tracking-[0.22em]"

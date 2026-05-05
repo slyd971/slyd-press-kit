@@ -16,7 +16,7 @@ const arthurChapsPressKit: PressKitConfig = {
   metadata: {
     title: "Arthur Chaps | Press kit officiel",
     description:
-      "Press kit officiel d'Arthur Chaps, DJ et directeur artistique actif sur la scène internationale, entre culture club, musiques afro-diasporiques, house, hip-hop et formats contemporains.",
+      "Arthur Chaps — DJ et directeur artistique. Vingt ans de culture club, house et afro-diasporique entre Paris et l'international.",
   },
   ui: {
     openMenuLabel: "Ouvrir le menu",
@@ -29,7 +29,7 @@ const arthurChapsPressKit: PressKitConfig = {
   },
   artist: {
     name: "Arthur Chaps",
-    stageLabel: "DJ / PROD • Direction artistique • Paris & international",
+    stageLabel: "DJ / Producteur • Paris & international",
     logo: {
       src: "",
       alt: "Arthur Chaps",
@@ -68,6 +68,7 @@ const arthurChapsPressKit: PressKitConfig = {
         alt: "Portrait hero Arthur Chaps",
         badge: "Arthur Chaps",
         caption: "Club culture · Paris · international",
+        position: "center 8%",
       },
       ctas: [
         { label: "Voir vidéos", href: "#videos", variant: "primary" },
@@ -79,7 +80,7 @@ const arthurChapsPressKit: PressKitConfig = {
         { value: "CHAPS MUSIC", label: "Plateforme" },
         { value: "GLOBAL", label: "Club culture" },
       ],
-      proofline: "Paris · Marseille · Marrakech · Wanderlust · La Machine",
+      proofline: "Paris · Marseille · Marrakech · Abidjan",
     },
     interactive: {
       eyebrow: "Dancefloor • Son • Expérience collective",
@@ -93,6 +94,7 @@ const arthurChapsPressKit: PressKitConfig = {
         alt: "Arthur Chaps portrait",
         badge: "Arthur Chaps",
         caption: "DJ sets · production · formats club",
+        position: "center 8%",
       },
       ctas: [
         { label: "Galerie", href: "#gallery", variant: "primary" },
@@ -118,6 +120,7 @@ const arthurChapsPressKit: PressKitConfig = {
         alt: "Arthur Chaps visuel presse",
         badge: "Arthur Chaps",
         caption: "International club formats",
+        position: "center 8%",
       },
       ctas: [
         { label: "Contact", href: "#contact", variant: "primary" },
@@ -199,12 +202,11 @@ const arthurChapsPressKit: PressKitConfig = {
     ],
   },
   sound: {
-    eyebrow: "Son",
-    title: "Club music\npour le temps long.",
+    eyebrow: "SoundCloud",
+    title: "Écouter\nArthur Chaps.",
     paragraphs: [
-      "Arthur Chaps explore les zones de friction entre musiques afro-diasporiques, électroniques et cultures urbaines.",
-      "Sa pratique relie DJ set, production musicale et direction artistique, avec une attention constante portée à la physicalité du son et à l'énergie du public.",
-      "CHAPS MUSIC prolonge cette vision: une plateforme dédiée à la création et à la diffusion de musiques pensées pour le club.",
+      "Retrouvez sur SoundCloud les sets live, mixes club et productions d'Arthur Chaps : house, afro-diasporique, électronique.",
+      "Des enregistrements captés en club ou construits en studio, pensés pour durer et pour le dancefloor.",
     ],
     cta: {
       label: "Écouter sur SoundCloud",
@@ -258,10 +260,10 @@ const arthurChapsPressKit: PressKitConfig = {
     ],
   },
   spotify: {
-    eyebrow: "Spotify",
-    title: "Chaps Spotify",
+    eyebrow: "Streaming",
+    title: "Arthur Chaps\nsur Spotify.",
     description:
-      "Productions, sorties et univers musical d'Arthur Chaps disponibles en streaming.",
+      "Productions, sorties et univers sonore d'Arthur Chaps disponibles en streaming.",
     playlists: [
       {
         id: "arthur-chaps-spotify",
@@ -269,7 +271,7 @@ const arthurChapsPressKit: PressKitConfig = {
         embedUrl: spotifyEmbedUrl,
       },
     ],
-    badgeLabel: "Chaps Spotify",
+    badgeLabel: "Arthur Chaps",
   },
   brands: {
     eyebrow: "Formats",
@@ -287,22 +289,38 @@ const arthurChapsPressKit: PressKitConfig = {
     ],
     itemLabel: "Projets",
     items: [
-      "CHAPS MUSIC",
-      "GLOBAL WARMING",
-      "Funky French League",
-      "Paris club scene",
-      "Marseille projects",
-      "Europe / Africa circulation",
+      { name: "CHAPS MUSIC", logo: "/arthur-chaps/logos/CHAPS_MUSIC_LOGO-FULL_BLACK.png", logoInvert: true },
+      { name: "GLOBAL WARMING", logo: "/arthur-chaps/logos/03-GlobalWarming-logo-three-colors.png" },
+      { name: "Fon Fon", logo: "/arthur-chaps/logos/FON_FON_SOUNDSYSTEM_LOGO.png" },
     ],
-    fit: {
-      eyebrow: "Pourquoi Arthur Chaps",
-      title: "Culture, curation et énergie dancefloor.",
-      points: [
-        "Plus de vingt ans de pratique sur la scène club internationale",
-        "Une approche qui relie DJ set, production et direction artistique",
-        "Une vision globale de la culture DJ, physique et contemporaine",
-      ],
-    },
+  },
+  rider: {
+    eyebrow: "Rider",
+    title: "Setup\ntechnique.",
+    groups: [
+      {
+        title: "DJ Setup",
+        items: [
+          "3 × Pioneer CDJ-3000 (linked)",
+          "1 × Pioneer DJM-900NXS2",
+          "Equivalent professional DJ equipment accepted (CDJ-2000NXS2 / DJM-900NXS)",
+        ],
+      },
+      {
+        title: "Additional Requirements",
+        items: [
+          "1 wired microphone connected to the DJM (for occasional MC use)",
+          "1 power outlet available",
+          "1 booth monitor (stage left), connected to the DJM",
+        ],
+      },
+      {
+        title: "Hospitality",
+        items: [
+          "1 pack of still water",
+        ],
+      },
+    ],
   },
   contact: {
     eyebrow: "Contact",
@@ -322,6 +340,13 @@ const arthurChapsPressKit: PressKitConfig = {
         value: "linktr.ee/Arthur_Chaps",
         href: linktreeUrl,
         icon: "music",
+        external: true,
+      },
+      {
+        label: "WhatsApp",
+        value: "+33 6 78 04 25 02",
+        href: "https://wa.me/33678042502",
+        icon: "whatsapp",
         external: true,
       },
       {
@@ -404,7 +429,7 @@ export const arthurChapsClient: ClientConfig = {
   domain: "arthur-chaps.presskit.fr",
   vercelSubdomain: "arthur-chaps.vercel.app",
   name: "Arthur Chaps",
-  tagline: "DJ / PROD • Direction artistique • Paris & international",
+  tagline: "DJ / Producteur • Paris & international",
   city: "Paris",
   country: "France",
   category: "DJ / producteur / direction artistique / culture club",
