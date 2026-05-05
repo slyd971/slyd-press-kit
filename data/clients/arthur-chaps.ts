@@ -317,7 +317,7 @@ const arthurChapsPressKit: PressKitConfig = {
       {
         title: "Hospitalité",
         items: [
-          "1 pack d'eau plate",
+          "1 pack d'eau minérale plate",
         ],
       },
     ],
