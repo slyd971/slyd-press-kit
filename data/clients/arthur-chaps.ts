@@ -279,7 +279,7 @@ const arthurChapsPressKit: PressKitConfig = {
     intro:
       "Arthur Chaps conçoit des formats qui dépassent le simple DJ set: plateformes musicales, soirées internationales et expériences collectives pensées pour le club.",
     supportingText:
-      "CHAPS MUSIC et GLOBAL WARMING prolongent une démarche qui relie création, diffusion, dancefloor et circulation entre scènes.",
+      "CHAPS MUSIC comme espace de création et de diffusion. GLOBAL WARMING comme format de circulation entre scènes européennes et africaines.",
     categories: [
       "Direction artistique",
       "Formats club",
