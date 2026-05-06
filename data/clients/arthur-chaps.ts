@@ -217,9 +217,9 @@ const arthurChapsPressKit: PressKitConfig = {
   },
   videos: {
     eyebrow: "Vidéos",
-    title: "Extraits live\net énergie club.",
+    title: "Arthur Chaps\nen live.",
     description:
-      "Une sélection d'extraits live pour saisir la présence, la tension et la circulation d'énergie dans les sets d'Arthur Chaps.",
+      "Quelques moments filmés en club pour voir comment Arthur Chaps installe le rythme, tient le dancefloor et fait monter l'énergie.",
     items: [
       {
         id: "arthur-chaps-live-01",
