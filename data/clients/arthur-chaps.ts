@@ -261,9 +261,9 @@ const arthurChapsPressKit: PressKitConfig = {
   },
   spotify: {
     eyebrow: "Streaming",
-    title: "Arthur Chaps\nsur Spotify.",
+    title: "Sorties,\nprojets et archives.",
     description:
-      "House, afro-diasporique, électronique — les productions et sorties d'Arthur Chaps sur Spotify.",
+      "Un point d'entrée simple vers l'univers Chaps: productions, collaborations et morceaux pensés dans le prolongement du club, entre house, textures électroniques et culture afro-diasporique.",
     playlists: [
       {
         id: "arthur-chaps-spotify",
@@ -271,15 +271,15 @@ const arthurChapsPressKit: PressKitConfig = {
         embedUrl: spotifyEmbedUrl,
       },
     ],
-    badgeLabel: "Arthur Chaps",
+    badgeLabel: "Écouter Arthur Chaps",
   },
   brands: {
     eyebrow: "Formats",
-    title: "La vision\nd'Arthur.",
+    title: "Des formats\nqui font circuler la musique.",
     intro:
-      "Arthur Chaps conçoit des formats qui dépassent le simple DJ set: plateformes musicales, soirées internationales et expériences collectives pensées pour le club.",
+      "Arthur Chaps ne sépare pas le DJ set, la direction artistique et l'édition musicale. Ses formats existent pour connecter des scènes, des artistes et des publics autour d'une même culture du dancefloor.",
     supportingText:
-      "CHAPS MUSIC comme espace de création et de diffusion. GLOBAL WARMING comme format de circulation entre scènes européennes et africaines.",
+      "CHAPS MUSIC sert de maison de création et de diffusion. GLOBAL WARMING ouvre un espace de circulation entre l'Europe et l'Afrique. Fon Fon prolonge cette énergie dans une logique plus collective, directe et soundsystem.",
     categories: [
       "Direction artistique",
       "Formats club",
@@ -478,6 +478,6 @@ export const arthurChapsClient: ClientConfig = {
     ogImage: "/opengraph-image",
   },
   defaultTheme: "green",
-  defaultVariant: "impact",
+  defaultVariant: "interactive",
   pressKit: arthurChapsPressKit,
 };
