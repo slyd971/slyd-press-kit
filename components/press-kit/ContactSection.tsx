@@ -93,7 +93,7 @@ function SmallContactCard({ method }: { method: ContactMethod }) {
 }
 
 export function ContactSection({ contact }: ContactSectionProps) {
-  const [primaryMethod, secondaryMethod, ...otherMethods] = contact.methods;
+  const [primaryMethod, secondaryMethod, tertiaryMethod, ...otherMethods] = contact.methods;
 
   return (
     <section
@@ -119,6 +119,7 @@ export function ContactSection({ contact }: ContactSectionProps) {
           <div className="grid grid-cols-2 gap-2.5 md:grid-cols-1 md:gap-5">
             {primaryMethod && <LargeContactCard method={primaryMethod} />}
             {secondaryMethod && <LargeContactCard method={secondaryMethod} />}
+            {tertiaryMethod && <LargeContactCard method={tertiaryMethod} />}
 
             {otherMethods.length > 0 && (
               <div className="col-span-2 grid grid-cols-2 gap-2.5 sm:grid-cols-3 md:col-span-1 md:grid-cols-2 md:gap-5">
