@@ -311,7 +311,7 @@ const arthurChapsPressKit: PressKitConfig = {
         items: [
           "1 microphone filaire connecté au DJM (usage MC occasionnel)",
           "1 prise de courant disponible",
-          "1 monitor de cabine (côté jardin), connecté au DJM",
+          "1 monitor de cabine connecté au DJM",
         ],
       },
       {
