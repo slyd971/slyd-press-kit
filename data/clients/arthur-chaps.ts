@@ -263,7 +263,7 @@ const arthurChapsPressKit: PressKitConfig = {
     eyebrow: "Streaming",
     title: "Arthur Chaps\nsur Spotify.",
     description:
-      "House, afro-diasporique, électronique — les productions et sorties d'Arthur Chaps, pensées pour le club et le temps long.",
+      "House, afro-diasporique, électronique — les productions et sorties d'Arthur Chaps sur Spotify.",
     playlists: [
       {
         id: "arthur-chaps-spotify",
