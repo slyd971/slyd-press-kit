@@ -51,10 +51,14 @@ export function BrandsSection({ brands }: BrandsSectionProps) {
           <div className="grid grid-cols-3 gap-2.5 md:gap-4">
             {brands.items.map((brand) => {
               const item = typeof brand === "string" ? { name: brand } : brand;
+              const CardTag = item.href ? "a" : "div";
 
               return (
-                <div
+                <CardTag
                   key={item.name}
+                  href={item.href}
+                  target={item.href ? "_blank" : undefined}
+                  rel={item.href ? "noreferrer" : undefined}
                   className="group flex min-h-[5.9rem] flex-col justify-between rounded-lg border border-white/10 bg-white/[0.015] p-2.5 backdrop-blur-sm transition hover:border-[rgb(var(--pk-accent-rgb)/0.4)] hover:bg-white/[0.03] hover:shadow-[0_0_30px_rgb(var(--pk-accent-rgb)/0.12)] sm:min-h-[6.6rem] md:rounded-[1.4rem] md:p-5"
                 >
                   <div>
@@ -73,7 +77,7 @@ export function BrandsSection({ brands }: BrandsSectionProps) {
                     )}
                   </div>
                   <div className="mt-3 h-px w-[60%] bg-[rgb(var(--pk-accent-rgb)/0.6)] transition group-hover:w-[80%] md:mt-4 md:w-[65%]" />
-                </div>
+                </CardTag>
               );
             })}
           </div>

@@ -179,7 +179,7 @@ export type PressKitConfig = {
     supportingText: string;
     categories: string[];
     itemLabel: string;
-    items: Array<{ name: string; logo?: string; logoInvert?: boolean } | string>;
+    items: Array<{ name: string; logo?: string; logoInvert?: boolean; href?: string } | string>;
     fit?: {
       eyebrow: string;
       title: string;

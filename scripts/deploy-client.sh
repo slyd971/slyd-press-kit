@@ -11,7 +11,7 @@ case "$client" in
     project="silver-dj"
     ;;
   arthur-chaps)
-    project="arthur-chaps-presskit"
+    project="arthur-chaps"
     ;;
   yoruboy-dj)
     project="yoruboy-dj-presskit"

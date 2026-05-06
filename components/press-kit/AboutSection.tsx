@@ -38,9 +38,11 @@ export function AboutSection({ about }: AboutSectionProps) {
                 <div className="mt-3 h-px w-16 bg-[var(--pk-accent)] md:mt-4 md:w-20" />
               </div>
 
-              <p className="mt-6 max-w-md text-sm leading-6 text-white/58 md:mt-8 md:text-lg md:leading-8">
-                {about.supportingText}
-              </p>
+              {about.supportingText ? (
+                <p className="mt-6 max-w-md text-sm leading-6 text-white/58 md:mt-8 md:text-lg md:leading-8">
+                  {about.supportingText}
+                </p>
+              ) : null}
 
               <div className="mt-6 flex flex-wrap gap-2.5 md:mt-8 md:gap-3">
                 {about.tags.map((tag) => (

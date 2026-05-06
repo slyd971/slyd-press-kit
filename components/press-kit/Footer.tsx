@@ -36,7 +36,7 @@ export function Footer({ client, navigation, homeHref, galleryHref, videosHref }
           </Link>
           <p className="mt-3 max-w-md text-sm leading-6 text-white/58 sm:max-w-none">
             {client.tagline}. Disponible pour clubs, festivals, événements privés
-            et formats institutionnels.
+            et projets institutionnels.
           </p>
           <div className="mt-4 text-[10px] font-semibold uppercase tracking-[0.22em] text-white/35">
             {client.city} · {client.country}

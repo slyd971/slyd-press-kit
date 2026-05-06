@@ -25,13 +25,18 @@ export async function resolveRequestClient(slug?: string | null) {
   const hostname = await getRequestHostname();
   const normalizedSlug = slug?.toLowerCase() ?? null;
   const isLocal = isLocalHostname(hostname);
+  const localClientByHost = getLocalClientByHost(hostname);
+  const localClientBySlug = getLocalClientBySlug(normalizedSlug);
+
+  if (isLocal) {
+    return localClientBySlug ?? getDefaultClient();
+  }
 
   return (
-    (isLocal ? getLocalClientBySlug(normalizedSlug) : null) ??
+    localClientByHost ??
+    localClientBySlug ??
     (await getAirtableClientByHost(hostname)) ??
     (await getAirtableClientBySlug(normalizedSlug)) ??
-    getLocalClientByHost(hostname) ??
-    getLocalClientBySlug(normalizedSlug) ??
     (isLocal ? getDefaultClient() : null)
   );
 }

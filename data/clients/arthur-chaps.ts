@@ -93,7 +93,7 @@ const arthurChapsPressKit: PressKitConfig = {
         src: heroImage,
         alt: "Arthur Chaps portrait",
         badge: "Arthur Chaps",
-        caption: "DJ sets · production · formats club",
+        caption: "DJ sets · production · projets club",
         position: "center 8%",
       },
       ctas: [
@@ -119,7 +119,7 @@ const arthurChapsPressKit: PressKitConfig = {
         src: heroImage,
         alt: "Arthur Chaps visuel presse",
         badge: "Arthur Chaps",
-        caption: "International club formats",
+        caption: "Projets club internationaux",
         position: "center 8%",
       },
       ctas: [
@@ -129,7 +129,7 @@ const arthurChapsPressKit: PressKitConfig = {
       stats: [
         { value: "CHAPS", label: "Music" },
         { value: "GLOBAL", label: "Warming" },
-        { value: "CLUB", label: "Formats" },
+        { value: "CLUB", label: "Projets" },
         { value: "LIVE", label: "Energy" },
       ],
       proofline: "Une culture DJ globale, physique et contemporaine.",
@@ -140,9 +140,8 @@ const arthurChapsPressKit: PressKitConfig = {
     title: "Culture club,\nson et direction artistique.",
     signatureLabel: "Signature",
     signatureQuote:
-      "Une vision exigeante de la culture club, centrée sur le dancefloor, le son et l'expérience collective.",
-    supportingText:
-      "Arthur Chaps construit des passerelles entre Paris, Marseille, l'Europe et l'Afrique, avec une pratique qui relie DJ set, production et conception de formats club.",
+      "Une approche du mix pensée pour le mouvement, la précision du son et l'énergie du public.",
+    supportingText: "",
     tags: [
       "DJ / PROD",
       "Direction artistique",
@@ -155,16 +154,16 @@ const arthurChapsPressKit: PressKitConfig = {
     ],
     paragraphs: [
       "Arthur Chaps est DJ et directeur artistique, actif sur la scène internationale depuis plus de vingt ans. Son travail s'inscrit dans une vision exigeante de la culture club, centrée sur le dancefloor, le son et l'expérience collective, loin des logiques de genre ou de tendance.",
-      "Après un parcours construit entre hip-hop, house et cultures afro-diasporiques, il s'impose comme l'un des acteurs structurants de la scène club parisienne. Cofondateur du collectif Funky French League, il a contribué, au début des années 2010, à l'émergence de formats et d'esthétiques ayant durablement marqué le paysage musical français.",
-      "Au fil des années, Arthur Chaps développe une approche curatoriale et artistique tournée vers l'international, mêlant pratique DJ, production musicale et conception de formats club. Son travail explore les zones de friction entre musiques afro-diasporiques, électroniques et cultures urbaines.",
+      "Après un parcours construit entre hip-hop, house et cultures afro-diasporiques, il s'impose comme l'un des acteurs structurants de la scène club parisienne. Cofondateur du collectif Funky French League, il a contribué, au début des années 2010, à l'émergence de projets et d'esthétiques ayant durablement marqué le paysage musical français.",
+      "Au fil des années, Arthur Chaps développe une approche curatoriale et artistique tournée vers l'international, mêlant pratique DJ, production musicale et conception de projets club. Son travail explore les zones de friction entre musiques afro-diasporiques, électroniques et cultures urbaines.",
       "Aujourd'hui, il développe ses projets artistiques et éditoriaux au sein de CHAPS MUSIC, plateforme dédiée à la création et à la diffusion de musiques pensées pour le club et le temps long. Il est également à l'initiative de GLOBAL WARMING, série de soirées internationales conçue comme un espace de circulation entre l'Europe et l'Afrique.",
     ],
   },
   clubs: {
     eyebrow: "Expérience",
-    title: "Un parcours club\nentre Paris et l'international.",
+    title: "Un parcours\nentre Paris et l'international.",
     description:
-      "Arthur Chaps articule résidences, formats club, projets éditoriaux et scènes internationales avec une même idée: faire circuler les sons, les publics et les énergies.",
+      "Arthur Chaps articule résidences, projets club, projets éditoriaux et scènes internationales avec une même idée: faire circuler les sons, les publics et les énergies.",
     regions: [
       {
         title: "Scène & clubs",
@@ -178,18 +177,18 @@ const arthurChapsPressKit: PressKitConfig = {
         ],
       },
       {
-        title: "Collectifs & formats",
+        title: "Collectifs & projets",
         icon: "globe",
         items: [
           "Cofondateur Funky French League",
           "CHAPS MUSIC",
           "GLOBAL WARMING",
-          "Formats club internationaux",
+          "Projets club internationaux",
           "Direction artistique musicale",
         ],
       },
       {
-        title: "Territoires sonores",
+        title: "Univers musical",
         icon: "globe",
         items: [
           "Hip-hop",
@@ -260,10 +259,10 @@ const arthurChapsPressKit: PressKitConfig = {
     ],
   },
   spotify: {
-    eyebrow: "Streaming",
-    title: "Sorties,\nprojets et archives.",
+    eyebrow: "Spotify",
+    title: "Sorties &\nprojets.",
     description:
-      "Un point d'entrée simple vers l'univers Chaps: productions, collaborations et morceaux pensés dans le prolongement du club, entre house, textures électroniques et culture afro-diasporique.",
+      "Sur Spotify, les sorties d'Arthur Chaps prolongent son rapport au club: des morceaux directs, des collaborations choisies et une écriture musicale nourrie par la house, les musiques électroniques et les cultures afro-diasporiques.",
     playlists: [
       {
         id: "arthur-chaps-spotify",
@@ -274,15 +273,15 @@ const arthurChapsPressKit: PressKitConfig = {
     badgeLabel: "Écouter Arthur Chaps",
   },
   brands: {
-    eyebrow: "Formats",
-    title: "Des formats\nqui font circuler la musique.",
+    eyebrow: "Projets",
+    title: "La vision\nd'Arthur",
     intro:
-      "Arthur Chaps ne sépare pas le DJ set, la direction artistique et l'édition musicale. Ses formats existent pour connecter des scènes, des artistes et des publics autour d'une même culture du dancefloor.",
+      "Arthur Chaps ne sépare pas le DJ set, la direction artistique et l'édition musicale. Ses projets existent pour connecter des scènes, des artistes et des publics autour d'une même culture du dancefloor.",
     supportingText:
       "CHAPS MUSIC sert de maison de création et de diffusion. GLOBAL WARMING ouvre un espace de circulation entre l'Europe et l'Afrique. Fon Fon prolonge cette énergie dans une logique plus collective, directe et soundsystem.",
     categories: [
       "Direction artistique",
-      "Formats club",
+      "Projets club",
       "Production musicale",
       "Plateformes éditoriales",
       "Scènes internationales",
@@ -290,8 +289,16 @@ const arthurChapsPressKit: PressKitConfig = {
     itemLabel: "Projets",
     items: [
       { name: "CHAPS MUSIC", logo: "/arthur-chaps/logos/CHAPS_MUSIC_LOGO-FULL_BLACK.png", logoInvert: true },
-      { name: "GLOBAL WARMING", logo: "/arthur-chaps/logos/03-GlobalWarming-logo-three-colors.png" },
-      { name: "Fon Fon", logo: "/arthur-chaps/logos/FON_FON_SOUNDSYSTEM_LOGO.png" },
+      {
+        name: "GLOBAL WARMING",
+        logo: "/arthur-chaps/logos/03-GlobalWarming-logo-three-colors.png",
+        href: "https://www.instagram.com/globalwarming.music/",
+      },
+      {
+        name: "Fon Fon",
+        logo: "/arthur-chaps/logos/FON_FON_SOUNDSYSTEM_LOGO.png",
+        href: "https://www.instagram.com/fonfon_soundsystem/",
+      },
     ],
   },
   rider: {
@@ -326,7 +333,7 @@ const arthurChapsPressKit: PressKitConfig = {
     eyebrow: "Contact",
     title: "Booking & projets.",
     description:
-      "Pour bookings, formats club, directions artistiques ou collaborations autour de CHAPS MUSIC et GLOBAL WARMING.",
+      "Pour bookings, projets club, directions artistiques ou collaborations autour de CHAPS MUSIC et GLOBAL WARMING.",
     methods: [
       {
         label: "Email",
@@ -354,7 +361,7 @@ const arthurChapsPressKit: PressKitConfig = {
     eyebrow: "Galerie",
     title: "Portraits & moments live.",
     description:
-      "Une sélection de portraits, visuels éditoriaux et images live entre scènes, clubs et formats internationaux.",
+      "Une sélection de portraits, visuels éditoriaux et images live entre scènes, clubs et projets internationaux.",
     homepageTitle: "Univers visuel",
     homepageCtaLabel: "Ouvrir la galerie",
     images: [
@@ -449,12 +456,12 @@ export const arthurChapsClient: ClientConfig = {
     {
       title: "Direction artistique",
       description:
-        "Conception de formats club, programmation, identité musicale et dispositifs éditoriaux.",
+        "Conception de projets club, programmation, identité musicale et dispositifs éditoriaux.",
     },
     {
       title: "Projets internationaux",
       description:
-        "Formats connectant scènes européennes et africaines autour d'une culture DJ contemporaine.",
+        "Projets connectant scènes européennes et africaines autour d'une culture DJ contemporaine.",
     },
   ],
   testimonials: [],
@@ -477,7 +484,7 @@ export const arthurChapsClient: ClientConfig = {
     ],
     ogImage: "/opengraph-image",
   },
-  defaultTheme: "green",
-  defaultVariant: "interactive",
+  defaultTheme: "blue",
+  defaultVariant: "impact",
   pressKit: arthurChapsPressKit,
 };
