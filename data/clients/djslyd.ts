@@ -215,7 +215,7 @@ const djslydPressKitFr: PressKitConfig = {
     intro:
       "SLY'D a déjà joué pour Dior, Airness, Foot Locker et Mouv' Radio, ainsi que sur des lancements, événements mode et événements média.",
     supportingText:
-      "Ces formats demandent des sets plus courts, des morceaux identifiables rapidement et une présence adaptée aux photos, vidéos et prises de parole.",
+      "Il intervient aussi bien sur des soirées privées que sur des lancements, événements retail, formats média et rendez-vous mode.",
     categories: ["Mode", "Sportswear", "Médias", "Événements de marque"],
     itemLabel: "Marque / Média",
     fit: {
