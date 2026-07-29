@@ -17,7 +17,7 @@ export function SpotifySection({ spotify }: SpotifySectionProps) {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgb(var(--pk-accent-rgb)/0.09),transparent_28%),radial-gradient(circle_at_80%_20%,rgba(255,255,255,0.03),transparent_22%),radial-gradient(circle_at_50%_100%,rgb(var(--pk-accent-rgb)/0.05),transparent_30%)]" />
 
       <div className="relative mx-auto max-w-7xl">
-        <div className="grid gap-5 md:gap-8 lg:grid-cols-[1fr_0.85fr] lg:items-start">
+        <div className="max-w-3xl">
           <div>
             <div className="mb-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--pk-accent)] md:mb-4 md:text-xs md:tracking-[0.4em]">
               {spotify.eyebrow}
@@ -28,7 +28,7 @@ export function SpotifySection({ spotify }: SpotifySectionProps) {
             </h2>
           </div>
 
-          <div className="max-w-xl lg:pt-2">
+          <div className="mt-4 max-w-xl md:mt-5">
             <p className="text-sm leading-6 text-white/60 md:text-lg md:leading-8">
               {spotify.description}
             </p>

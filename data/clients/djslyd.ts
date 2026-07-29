@@ -51,7 +51,7 @@ const djslydPressKitFr: PressKitConfig = {
       { label: "Contact", href: "#contact" },
     ],
     cta: {
-      label: "Réserver SLY'D",
+      label: "Book Sly'D",
       href: "#contact",
       variant: "primary",
     },
@@ -68,7 +68,7 @@ const djslydPressKitFr: PressKitConfig = {
         caption: "De Paris aux scènes internationales",
       },
       ctas: [
-        { label: "Réserver SLY'D", href: "#contact", variant: "primary" },
+        { label: "Book Sly'D", href: "#contact", variant: "primary" },
         { label: "Voir la galerie", href: "/gallery", variant: "secondary" },
       ],
       stats: [
@@ -90,7 +90,7 @@ const djslydPressKitFr: PressKitConfig = {
         caption: "De Paris aux scènes internationales",
       },
       ctas: [
-        { label: "Réserver SLY'D", href: "#contact", variant: "primary" },
+        { label: "Book Sly'D", href: "#contact", variant: "primary" },
         { label: "Voir la galerie", href: "/gallery", variant: "secondary" },
       ],
       stats: [
