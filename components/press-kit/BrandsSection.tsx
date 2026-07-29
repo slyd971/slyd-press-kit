@@ -1,52 +1,8 @@
-import Image from "next/image";
 import type { PressKitConfig } from "@/data/config";
-
-type BrandItem = PressKitConfig["brands"]["items"][number];
 
 type BrandsSectionProps = {
   brands: PressKitConfig["brands"];
 };
-
-function BrandCard({ item, itemLabel }: { item: BrandItem; itemLabel: string }) {
-  const name = typeof item === "string" ? item : item.name;
-  const logo = typeof item === "string" ? undefined : item.logo;
-  const logoInvert = typeof item === "string" ? false : item.logoInvert;
-  const href = typeof item === "string" ? undefined : item.href;
-
-  const inner = (
-    <div className="group flex h-full flex-col justify-between rounded-[1.2rem] border border-white/10 bg-white/[0.015] p-5 backdrop-blur-sm transition hover:border-[rgb(var(--pk-accent-rgb)/0.4)] hover:bg-white/[0.03] hover:shadow-[0_0_30px_rgb(var(--pk-accent-rgb)/0.12)] md:rounded-[1.4rem] md:p-6">
-      <div>
-        <div className="text-[8px] uppercase tracking-[0.22em] text-white/35 md:text-[9px] md:tracking-[0.28em]">
-          {itemLabel}
-        </div>
-        <div className="mt-2 text-sm font-black uppercase leading-tight md:text-base">
-          {name}
-        </div>
-      </div>
-      {logo && (
-        <div className="flex flex-1 items-center justify-center py-6 md:py-8">
-          <Image
-            src={logo}
-            alt={name}
-            width={240}
-            height={160}
-            className={`max-h-48 w-full object-contain md:max-h-64${logoInvert ? " invert" : ""}`}
-          />
-        </div>
-      )}
-      <div className="h-px w-[65%] bg-[rgb(var(--pk-accent-rgb)/0.6)] transition group-hover:w-[80%]" />
-    </div>
-  );
-
-  if (href) {
-    return (
-      <a href={href} target="_blank" rel="noopener noreferrer" key={name}>
-        {inner}
-      </a>
-    );
-  }
-  return <div key={name}>{inner}</div>;
-}
 
 export function BrandsSection({ brands }: BrandsSectionProps) {
   return (
@@ -92,34 +48,23 @@ export function BrandsSection({ brands }: BrandsSectionProps) {
           ))}
         </div>
 
-        <div className={`mt-6 grid items-stretch gap-4 md:mt-8 ${brands.fit ? "xl:grid-cols-[1.15fr_0.85fr]" : ""}`}>
-          <div className="grid grid-cols-3 gap-3 md:gap-4">
-            {brands.items.map((item) => {
-              const key = typeof item === "string" ? item : item.name;
-              return <BrandCard key={key} item={item} itemLabel={brands.itemLabel} />;
-            })}
-          </div>
-
-          {brands.fit && (
-            <div className="flex h-full flex-col justify-between rounded-[1.2rem] border border-white/10 bg-[linear-gradient(180deg,rgb(var(--pk-accent-rgb)/0.12)_0%,rgba(255,255,255,0.02)_100%)] p-5 backdrop-blur-sm md:rounded-[1.4rem] md:p-6">
-              <div>
-                <div className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[var(--pk-accent-soft)] md:text-xs md:tracking-[0.34em]">
-                  {brands.fit.eyebrow}
-                </div>
-
-                <h3 className="mt-4 text-lg font-black uppercase leading-[1.2] md:mt-5 md:text-2xl">
-                  {brands.fit.title}
-                </h3>
-
-                <div className="mt-4 space-y-3 text-sm leading-6 text-white/60 md:mt-5 md:space-y-4">
-                  {brands.fit.points.map((point) => (
-                    <p key={point}>{point}</p>
-                  ))}
-                </div>
-              </div>
+        {brands.fit && (
+          <div className="mt-6 max-w-2xl md:mt-8">
+            <div className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[var(--pk-accent-soft)] md:text-xs md:tracking-[0.34em]">
+              {brands.fit.eyebrow}
             </div>
-          )}
-        </div>
+
+            <h3 className="mt-4 text-lg font-black uppercase leading-[1.2] md:mt-5 md:text-2xl">
+              {brands.fit.title}
+            </h3>
+
+            <div className="mt-4 space-y-3 text-sm leading-6 text-white/60 md:mt-5 md:space-y-4">
+              {brands.fit.points.map((point) => (
+                <p key={point}>{point}</p>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
