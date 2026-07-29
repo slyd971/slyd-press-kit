@@ -55,7 +55,6 @@ export function BrandsSection({ brands }: BrandsSectionProps) {
       className="relative scroll-mt-24 overflow-hidden bg-black px-4 py-10 md:px-8 md:py-20"
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_10%,rgb(var(--pk-accent-rgb)/0.14),transparent_30%),radial-gradient(circle_at_70%_80%,rgb(var(--pk-accent-rgb)/0.06),transparent_22%)]" />
-      <div className="absolute inset-0 opacity-[0.12] [background-image:linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] [background-size:34px_34px]" />
 
       <div className="relative mx-auto max-w-[1200px]">
         <div className="grid gap-6 md:gap-8 xl:grid-cols-[0.95fr_1.05fr] xl:items-start">
