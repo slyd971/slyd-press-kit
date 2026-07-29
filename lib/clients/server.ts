@@ -51,6 +51,7 @@ export async function resolveRequestClient(slug?: string | null) {
   const client =
     (isLocal ? requestedLocalClient : null) ??
     requestedClientForHost ??
+    (isLocal && !normalizedSlug ? getDefaultClient() : null) ??
     (await getAirtableClientByHost(hostname)) ??
     (isLocal ? await getAirtableClientBySlug(normalizedSlug) : null) ??
     localHostClient ??

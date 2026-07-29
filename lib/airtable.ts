@@ -46,6 +46,7 @@ const AIRTABLE_API_URL = process.env.AIRTABLE_API_URL ?? "https://api.airtable.c
 const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID;
 const AIRTABLE_TOKEN =
   process.env.AIRTABLE_TOKEN ?? process.env.AIRTABLE_PAT ?? null;
+const AIRTABLE_DISABLED = process.env.AIRTABLE_DISABLED === "true";
 const AIRTABLE_REVALIDATE_SECONDS = Number(
   process.env.AIRTABLE_REVALIDATE_SECONDS ?? "60"
 );
@@ -352,7 +353,7 @@ async function listOptionalAirtableRecords(
 }
 
 export function isAirtableConfigured() {
-  return Boolean(AIRTABLE_BASE_ID && AIRTABLE_TOKEN);
+  return Boolean(!AIRTABLE_DISABLED && AIRTABLE_BASE_ID && AIRTABLE_TOKEN);
 }
 
 async function getAirtableClientIndex(): Promise<AirtableClientIndexEntry[]> {
