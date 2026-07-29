@@ -1,8 +1,46 @@
+import Image from "next/image";
 import type { PressKitConfig } from "@/data/config";
+
+type BrandItem = PressKitConfig["brands"]["items"][number];
 
 type BrandsSectionProps = {
   brands: PressKitConfig["brands"];
 };
+
+function BrandLogo({ item }: { item: BrandItem }) {
+  const name = typeof item === "string" ? item : item.name;
+  const logo = typeof item === "string" ? undefined : item.logo;
+  const logoInvert = typeof item === "string" ? false : item.logoInvert;
+  const href = typeof item === "string" ? undefined : item.href;
+
+  const inner = (
+    <div className="flex min-h-14 items-center rounded-full border border-white/10 bg-white/[0.025] px-5 py-3 transition hover:border-[rgb(var(--pk-accent-rgb)/0.4)] hover:bg-white/[0.045] md:min-h-16 md:px-6">
+      {logo ? (
+        <Image
+          src={logo}
+          alt={name}
+          width={180}
+          height={72}
+          className={`max-h-8 w-auto max-w-36 object-contain md:max-h-10 md:max-w-44${logoInvert ? " invert" : ""}`}
+        />
+      ) : (
+        <span className="text-sm font-black uppercase tracking-[0.12em] text-white/82 md:text-base">
+          {name}
+        </span>
+      )}
+    </div>
+  );
+
+  if (href) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer">
+        {inner}
+      </a>
+    );
+  }
+
+  return inner;
+}
 
 export function BrandsSection({ brands }: BrandsSectionProps) {
   return (
@@ -46,6 +84,13 @@ export function BrandsSection({ brands }: BrandsSectionProps) {
               {item}
             </div>
           ))}
+        </div>
+
+        <div className="mt-6 flex flex-wrap items-center gap-3 md:mt-8 md:gap-4">
+          {brands.items.map((item) => {
+            const key = typeof item === "string" ? item : item.name;
+            return <BrandLogo key={key} item={item} />;
+          })}
         </div>
 
         {brands.fit && (
