@@ -31,12 +31,17 @@ export async function resolveRequestClient(slug?: string | null) {
   const normalizedSlug = slug?.toLowerCase() ?? null;
   const isLocal = isLocalHostname(hostname);
   const deploymentSlug = getDeploymentClientSlug();
+  const localHostClient = getLocalClientByHost(hostname);
+  const shouldPreferLocalHostClient =
+    localHostClient?.slug === "djslyd" || localHostClient?.slug === "djslyd-en";
 
   return (
     (isLocal ? getLocalClientBySlug(normalizedSlug) : null) ??
+    (isLocal && !normalizedSlug ? getDefaultClient() : null) ??
+    (!isLocal && shouldPreferLocalHostClient ? localHostClient : null) ??
     (await getAirtableClientByHost(hostname)) ??
     (isLocal ? await getAirtableClientBySlug(normalizedSlug) : null) ??
-    getLocalClientByHost(hostname) ??
+    localHostClient ??
     (isLocal ? getLocalClientBySlug(normalizedSlug) : null) ??
     (!isLocal && deploymentSlug
       ? (await getAirtableClientBySlug(deploymentSlug)) ?? getDeploymentClient()

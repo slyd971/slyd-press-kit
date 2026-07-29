@@ -34,11 +34,20 @@ export type ClientSeoConfig = {
   ogImage: string;
 };
 
+export type ClientLanguageSwitchItem = {
+  label: string;
+  href: string;
+  clientSlug?: string;
+  active?: boolean;
+};
+
 export type ClientConfig = {
   slug: string;
   domain?: string;
   vercelSubdomain: string;
   domainAliases?: string[];
+  hideFromSwitcher?: boolean;
+  languageSwitch?: ClientLanguageSwitchItem[];
   name: string;
   tagline: string;
   city: string;

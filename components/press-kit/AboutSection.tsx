@@ -5,6 +5,22 @@ type AboutSectionProps = {
 };
 
 export function AboutSection({ about }: AboutSectionProps) {
+  const hasSignature = Boolean(about.signatureQuote);
+  const hasSupportingText = Boolean(about.supportingText);
+  const showTagsBeforeCopy = !hasSignature && !hasSupportingText;
+  const tags = (
+    <div className="mt-6 flex flex-wrap gap-2.5 md:mt-8 md:gap-3">
+      {about.tags.map((tag) => (
+        <div
+          key={tag}
+          className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[9px] uppercase tracking-[0.18em] text-white/60 md:px-4 md:py-2 md:text-[11px] md:tracking-[0.28em]"
+        >
+          {tag}
+        </div>
+      ))}
+    </div>
+  );
+
   return (
     <section
       id="about"
@@ -26,32 +42,31 @@ export function AboutSection({ about }: AboutSectionProps) {
                 {about.title}
               </h2>
 
-              <div className="mt-7 md:mt-10">
-                <div className="mb-2 text-[9px] uppercase tracking-[0.26em] text-white/30 md:mb-3 md:text-[10px] md:tracking-[0.35em]">
-                  {about.signatureLabel}
+              {showTagsBeforeCopy ? tags : null}
+
+              {hasSignature ? (
+                <div className="mt-7 md:mt-10">
+                  {about.signatureLabel ? (
+                    <div className="mb-2 text-[9px] uppercase tracking-[0.26em] text-white/30 md:mb-3 md:text-[10px] md:tracking-[0.35em]">
+                      {about.signatureLabel}
+                    </div>
+                  ) : null}
+
+                  <p className="text-lg font-semibold leading-[1.35] text-white sm:text-xl md:text-3xl md:leading-[1.4]">
+                    "{about.signatureQuote}"
+                  </p>
+
+                  <div className="mt-3 h-px w-16 bg-[var(--pk-accent)] md:mt-4 md:w-20" />
                 </div>
+              ) : null}
 
-                <p className="text-lg font-semibold leading-[1.35] text-white sm:text-xl md:text-3xl md:leading-[1.4]">
-                  "{about.signatureQuote}"
+              {hasSupportingText ? (
+                <p className="mt-6 max-w-md text-sm leading-6 text-white/58 md:mt-8 md:text-lg md:leading-8">
+                  {about.supportingText}
                 </p>
+              ) : null}
 
-                <div className="mt-3 h-px w-16 bg-[var(--pk-accent)] md:mt-4 md:w-20" />
-              </div>
-
-              <p className="mt-6 max-w-md text-sm leading-6 text-white/58 md:mt-8 md:text-lg md:leading-8">
-                {about.supportingText}
-              </p>
-
-              <div className="mt-6 flex flex-wrap gap-2.5 md:mt-8 md:gap-3">
-                {about.tags.map((tag) => (
-                  <div
-                    key={tag}
-                    className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[9px] uppercase tracking-[0.18em] text-white/60 md:px-4 md:py-2 md:text-[11px] md:tracking-[0.28em]"
-                  >
-                    {tag}
-                  </div>
-                ))}
-              </div>
+              {!showTagsBeforeCopy ? tags : null}
             </div>
           </div>
 
