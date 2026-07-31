@@ -20,6 +20,15 @@ function getSocialLinks(client: ClientConfig) {
   ].filter((item): item is { label: string; href: string } => Boolean(item.href));
 }
 
+function getLanguageFlag(label: string) {
+  const normalizedLabel = label.trim().toUpperCase();
+
+  if (normalizedLabel === "FR") return "🇫🇷";
+  if (normalizedLabel === "EN") return "🇬🇧";
+
+  return "🌐";
+}
+
 export function Footer({
   client,
   navigation,
@@ -30,6 +39,7 @@ export function Footer({
   const socialLinks = getSocialLinks(client);
   const hasBookingEmail = Boolean(client.bookingEmail);
   const footerLabels = client.pressKit.footer;
+  const languageSwitch = client.languageSwitch?.filter((item) => item.href);
   const availabilityText =
     footerLabels?.availabilityText ??
     "Disponible pour clubs, festivals, événements privés et formats institutionnels.";
@@ -128,6 +138,33 @@ export function Footer({
               </a>
             ) : null}
           </div>
+          {languageSwitch?.length ? (
+            <div className="mt-5">
+              <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--pk-accent)] md:tracking-[0.24em]">
+                {footerLabels?.languageLabel ?? "Langue"}
+              </div>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {languageSwitch.map((item) => (
+                  <Link
+                    key={`${item.label}-${item.href}`}
+                    href={item.href}
+                    aria-current={item.active ? "page" : undefined}
+                    className={[
+                      "inline-flex h-9 items-center gap-2 rounded-full border px-3 text-xs font-semibold uppercase tracking-[0.16em] transition",
+                      item.active
+                        ? "border-[rgb(var(--pk-accent-rgb)/0.6)] bg-[rgb(var(--pk-accent-rgb)/0.16)] text-white"
+                        : "border-white/10 bg-white/[0.03] text-white/62 hover:border-white/20 hover:bg-white/[0.07] hover:text-white",
+                    ].join(" ")}
+                  >
+                    <span aria-hidden="true" className="text-base leading-none">
+                      {getLanguageFlag(item.label)}
+                    </span>
+                    <span>{item.label}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ) : null}
           <div className="mt-5 text-[10px] uppercase tracking-[0.18em] text-white/30">
             © {new Date().getFullYear()} {client.name} Press Kit
           </div>

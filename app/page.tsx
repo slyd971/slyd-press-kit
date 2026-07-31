@@ -30,6 +30,7 @@ import {
   hasVideoContent,
   hasYoutubeContent,
 } from "@/data/press-kits";
+import { getClientBySlug } from "@/data/clients";
 import { getTemplateStyle, getTemplateTheme, getTemplateVariant } from "@/data/templates";
 import {
   getRequestedClientSlug,
@@ -39,6 +40,9 @@ import { isLocalRequest } from "@/lib/is-local-request";
 import { buildClientMetadata } from "@/lib/seo";
 
 type HomeProps = {
+  params?: Promise<{
+    locale?: string;
+  }>;
   searchParams?: Promise<{
     client?: string;
     artist?: string;
@@ -48,21 +52,53 @@ type HomeProps = {
   }>;
 };
 
-export async function generateMetadata({
-  searchParams,
-}: HomeProps): Promise<Metadata> {
-  const resolvedSearchParams = searchParams ? await searchParams : undefined;
-  const client = await getRequiredRequestClient(
-    getRequestedClientSlug(resolvedSearchParams)
-  );
+type ResolvedClient = Awaited<ReturnType<typeof getRequiredRequestClient>>;
 
-  return buildClientMetadata(client);
+function getLocalizedClient(client: ResolvedClient, locale?: string) {
+  const normalizedLocale = locale?.toUpperCase();
+
+  if (
+    !normalizedLocale ||
+    client.languageSwitch?.some((item) => {
+      return item.active && item.label.toUpperCase() === normalizedLocale;
+    })
+  ) {
+    return client;
+  }
+
+  const localizedSwitch = client.languageSwitch?.find((item) => {
+    return item.label.toUpperCase() === normalizedLocale;
+  });
+  const localizedSlug =
+    localizedSwitch?.clientSlug ??
+    (localizedSwitch?.href
+      ? new URL(localizedSwitch.href, "https://presskit.local").searchParams.get("client")
+      : null);
+
+  return getClientBySlug(localizedSlug) ?? client;
 }
 
-export default async function Home({ searchParams }: HomeProps) {
+export async function generateMetadata({
+  params,
+  searchParams,
+}: HomeProps): Promise<Metadata> {
+  const resolvedParams = params ? await params : undefined;
   const resolvedSearchParams = searchParams ? await searchParams : undefined;
-  const client = await getRequiredRequestClient(
-    getRequestedClientSlug(resolvedSearchParams)
+  const client = getLocalizedClient(
+    await getRequiredRequestClient(getRequestedClientSlug(resolvedSearchParams)),
+    resolvedParams?.locale
+  );
+  const metadataPath = resolvedParams?.locale?.toLowerCase() === "en" ? "/en" : "/";
+
+  return buildClientMetadata(client, metadataPath);
+}
+
+export default async function Home({ params, searchParams }: HomeProps) {
+  const resolvedParams = params ? await params : undefined;
+  const resolvedSearchParams = searchParams ? await searchParams : undefined;
+  const client = getLocalizedClient(
+    await getRequiredRequestClient(getRequestedClientSlug(resolvedSearchParams)),
+    resolvedParams?.locale
   );
   const pressKitEntry = createPressKitEntry(client);
   const pressKitConfig = pressKitEntry.config;
@@ -77,7 +113,9 @@ export default async function Home({ searchParams }: HomeProps) {
   const navigation = getResolvedNavigation(pressKitConfig);
   const galleryHref = getArtistGalleryHref(pressKitEntry.id);
   const videosHref = getArtistVideosHref(pressKitEntry.id);
-  const homeHref = getArtistHomeHref(pressKitEntry.id);
+  const homeHref =
+    client.languageSwitch?.find((item) => item.active)?.href ??
+    getArtistHomeHref(pressKitEntry.id);
 
   return (
     <main
