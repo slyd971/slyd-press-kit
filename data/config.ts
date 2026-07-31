@@ -274,6 +274,7 @@ export type PressKitConfig = {
     navigationLabel?: string;
     socialLabel?: string;
     bookingLabel?: string;
+    languageLabel?: string;
     fullGalleryLabel?: string;
     allVideosLabel?: string;
   };
@@ -325,6 +326,7 @@ export const pressKitConfig: PressKitConfig = {
     logo: {
       src: "/press-kit/logo-slyd.png",
       alt: "Sly'D logo",
+      showInHero: false,
     },
   },
   navigation: {

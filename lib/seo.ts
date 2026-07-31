@@ -30,7 +30,8 @@ function getLanguageAlternates(client: ClientConfig) {
   );
 
   const defaultSwitch =
-    switches.find((item) => item.active) ?? switches.find((item) => item.label.toLowerCase() === "fr");
+    switches.find((item) => item.label.toLowerCase() === "fr") ??
+    switches.find((item) => item.active);
   const defaultClient = getClientBySlug(defaultSwitch?.clientSlug) ?? client;
 
   return {

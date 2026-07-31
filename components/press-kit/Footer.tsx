@@ -141,7 +141,7 @@ export function Footer({
           {languageSwitch?.length ? (
             <div className="mt-5">
               <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--pk-accent)] md:tracking-[0.24em]">
-                Langue
+                {footerLabels?.languageLabel ?? "Langue"}
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {languageSwitch.map((item) => (
