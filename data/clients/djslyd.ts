@@ -4,6 +4,12 @@ import type { ClientConfig } from "@/data/clients/types";
 
 const djslydPressKitEn: PressKitConfig = {
   ...pressKitConfig,
+  contact: {
+    ...pressKitConfig.contact,
+    methods: pressKitConfig.contact.methods.filter((method) =>
+      ["Mail", "Bookings", "Instagram"].includes(method.label)
+    ),
+  },
   footer: {
     availabilityText:
       "Available for clubs, festivals, private events and institutional formats.",
