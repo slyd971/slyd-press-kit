@@ -17,6 +17,8 @@ function getSocialLinks(client: ClientConfig) {
     { label: "SoundCloud", href: client.socials.soundCloud },
     { label: "YouTube", href: client.socials.website },
     { label: "Spotify", href: client.socials.spotify },
+    { label: "Facebook", href: client.socials.facebook },
+    { label: "Twitch", href: client.socials.twitch },
   ].filter((item): item is { label: string; href: string } => Boolean(item.href));
 }
 

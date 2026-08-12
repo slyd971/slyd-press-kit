@@ -77,6 +77,19 @@ function AppleMusicIcon({ className }: { className?: string }) {
   return <Music2 className={className} aria-hidden="true" />;
 }
 
+function FacebookIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+      className={className}
+    >
+      <path d="M14.2 8.3V6.8c0-.72.48-.89.82-.89h2.08V2.18L14.24 2.17c-3.18 0-3.9 2.38-3.9 3.9V8.3H7.9v3.84h2.44V22h3.86v-9.86h3.26l.43-3.84H14.2Z" />
+    </svg>
+  );
+}
+
 const socialIconMap = {
   instagram: Instagram,
   tiktok: TikTokIcon,
@@ -84,6 +97,7 @@ const socialIconMap = {
   spotify: SpotifyIcon,
   soundcloud: SoundCloudIcon,
   "apple-music": AppleMusicIcon,
+  facebook: FacebookIcon,
 };
 
 const socialColorClassMap = {
@@ -95,6 +109,7 @@ const socialColorClassMap = {
     "border-[rgb(var(--pk-accent-rgb)/0.4)] bg-[var(--pk-accent)] text-white",
   soundcloud: "border-[#FF5500]/40 bg-[#FF5500] text-white",
   "apple-music": "border-[#FA243C]/40 bg-[#FA243C] text-white",
+  facebook: "border-[#1877F2]/40 bg-[#1877F2] text-white",
 } as const;
 
 const heroReveal = {
@@ -186,6 +201,7 @@ export function HeroSection({
   const hero = heroVariants[variant];
   const hasHeroImage = Boolean(hero.image.src);
   const hasEyebrow = Boolean(hero.eyebrow.trim());
+  const hasStats = hero.stats.length > 0;
   const statGridClass = getHeroStatGridClass(variant, hero.stats.length);
 
   const heroFallback = (
@@ -274,6 +290,7 @@ export function HeroSection({
             </p>
           </div>
 
+          {(hero.mediaCard || hasStats) && (
           <div className="mt-6 grid gap-5 lg:mt-8 lg:grid-cols-[1fr_0.9fr] lg:items-end">
             {hero.mediaCard && (
               <a
@@ -311,22 +328,25 @@ export function HeroSection({
               </a>
             )}
 
-            <div className={`grid gap-3 md:gap-4 ${statGridClass}`}>
-              {hero.stats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className={`${getHeroStatCardClass(stat.value)} flex flex-col items-center text-center`}
-                >
-                  <div className={getHeroStatValueClass(stat.value)}>
-                    {stat.value}
+            {hasStats && (
+              <div className={`grid gap-3 md:gap-4 ${statGridClass}`}>
+                {hero.stats.map((stat) => (
+                  <div
+                    key={stat.label}
+                    className={`${getHeroStatCardClass(stat.value)} flex flex-col items-center text-center`}
+                  >
+                    <div className={getHeroStatValueClass(stat.value)}>
+                      {stat.value}
+                    </div>
+                    <div className={getHeroStatLabelClass(stat.label)}>
+                      {stat.label}
+                    </div>
                   </div>
-                  <div className={getHeroStatLabelClass(stat.label)}>
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </div>
+          )}
 
           {socialLinks}
         </div>
@@ -399,21 +419,23 @@ export function HeroSection({
             )}
           </div>
 
-          <div className={`mt-8 grid gap-3 md:mt-10 md:gap-4 ${statGridClass}`}>
-            {hero.stats.map((stat) => (
-              <div
-                key={stat.label}
-                className={`${getHeroStatCardClass(stat.value)} flex flex-col items-center text-center`}
-              >
-                <div className={getHeroStatValueClass(stat.value)}>
-                  {stat.value}
+          {hasStats && (
+            <div className={`mt-8 grid gap-3 md:mt-10 md:gap-4 ${statGridClass}`}>
+              {hero.stats.map((stat) => (
+                <div
+                  key={stat.label}
+                  className={`${getHeroStatCardClass(stat.value)} flex flex-col items-center text-center`}
+                >
+                  <div className={getHeroStatValueClass(stat.value)}>
+                    {stat.value}
+                  </div>
+                  <div className={getHeroStatLabelClass(stat.label)}>
+                    {stat.label}
+                  </div>
                 </div>
-                <div className={getHeroStatLabelClass(stat.label)}>
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
 
           {socialLinks}
         </div>
@@ -547,21 +569,23 @@ export function HeroSection({
           </motion.div>
         </div>
 
-        <motion.div
-          variants={heroReveal}
-          className={`mt-5 grid gap-2.5 md:mt-7 md:gap-3 ${statGridClass}`}
-        >
-          {hero.stats.map((stat, index) => (
-            <div
-              key={stat.label}
-              className={`${getHeroStatCardClass(stat.value)} pk-hero-stat-card flex flex-col items-center justify-center text-center`}
-              style={{ animationDelay: `${120 + index * 90}ms` }}
-            >
-              <div className={getHeroStatValueClass(stat.value)}>{stat.value}</div>
-              <div className={getHeroStatLabelClass(stat.label)}>{stat.label}</div>
-            </div>
-          ))}
-        </motion.div>
+        {hasStats && (
+          <motion.div
+            variants={heroReveal}
+            className={`mt-5 grid gap-2.5 md:mt-7 md:gap-3 ${statGridClass}`}
+          >
+            {hero.stats.map((stat, index) => (
+              <div
+                key={stat.label}
+                className={`${getHeroStatCardClass(stat.value)} pk-hero-stat-card flex flex-col items-center justify-center text-center`}
+                style={{ animationDelay: `${120 + index * 90}ms` }}
+              >
+                <div className={getHeroStatValueClass(stat.value)}>{stat.value}</div>
+                <div className={getHeroStatLabelClass(stat.label)}>{stat.label}</div>
+              </div>
+            ))}
+          </motion.div>
+        )}
 
         {proofline ? <motion.div variants={heroReveal}>{proofline}</motion.div> : null}
         {socialLinks ? <motion.div variants={heroReveal}>{socialLinks}</motion.div> : null}

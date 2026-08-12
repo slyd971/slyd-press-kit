@@ -26,13 +26,6 @@ export function Header({ artist, navigation, ui, homeHref = "/" }: HeaderProps) 
     stageLabelParts.slice(2).join(" • "),
   ].filter(Boolean);
   const hasLogoImage = artist.logo.src.trim().length > 0;
-  const fallbackLogoParts = artist.name
-    .replace(/-/g, " ")
-    .split(/\s+/)
-    .map((part) => part.trim())
-    .filter(Boolean);
-  const fallbackLogoPrimary = fallbackLogoParts[0] ?? artist.name;
-  const fallbackLogoSecondary = fallbackLogoParts.slice(1).join(" ");
 
   useEffect(() => {
     lastScrollY.current = window.scrollY;
@@ -116,28 +109,16 @@ export function Header({ artist, navigation, ui, homeHref = "/" }: HeaderProps) 
                   }}
                 />
               ) : (
-                <div className="flex flex-col leading-none text-white">
+                <div className="flex min-w-0 items-center leading-none text-white">
                   <span
-                    className={`font-black uppercase tracking-[0.18em] ${
+                    className={`truncate font-black uppercase tracking-[0.08em] ${
                       isHeaderCompact
-                        ? "text-[1.2rem] md:text-[1.3rem]"
-                        : "text-[1.35rem] md:text-[1.5rem]"
+                        ? "text-[0.94rem] md:text-[1.05rem]"
+                        : "text-[1rem] md:text-[1.12rem]"
                     }`}
-                    style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
                   >
-                    {fallbackLogoPrimary}
+                    {artist.name}
                   </span>
-                  {fallbackLogoSecondary ? (
-                    <span
-                      className={`-mt-0.5 font-black uppercase tracking-[0.32em] text-[var(--pk-accent)] ${
-                        isHeaderCompact
-                          ? "text-[0.58rem] md:text-[0.62rem]"
-                          : "text-[0.62rem] md:text-[0.68rem]"
-                      }`}
-                    >
-                      {fallbackLogoSecondary}
-                    </span>
-                  ) : null}
                 </div>
               )}
             </div>

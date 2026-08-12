@@ -24,7 +24,8 @@ export type SocialLink = {
     | "youtube"
     | "spotify"
     | "soundcloud"
-    | "apple-music";
+    | "apple-music"
+    | "facebook";
 };
 
 export type ContactMethod = {
@@ -198,8 +199,8 @@ export type PressKitConfig = {
     title: string;
     intro: string;
     paragraphs: string[];
-    stats: StatItem[];
-    video: {
+    stats?: StatItem[];
+    video?: {
       src: string;
       title: string;
       poster?: string;
@@ -209,6 +210,11 @@ export type PressKitConfig = {
       alt: string;
       label?: string;
     }>;
+    embed?: {
+      title: string;
+      src: string;
+      height?: number;
+    };
     cta?: CtaLink;
   };
   spotify: {

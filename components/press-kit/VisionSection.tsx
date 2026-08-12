@@ -35,21 +35,23 @@ export function VisionSection({ vision }: VisionSectionProps) {
             </div>
           </div>
 
-          <div className="mt-5 grid grid-cols-3 gap-2.5 md:mt-6 md:gap-3">
-            {vision.stats.map((stat) => (
-              <div
-                key={`${stat.value}-${stat.label}`}
-                className="border border-white/10 bg-white/[0.025] px-3 py-4 md:px-4 md:py-5"
-              >
-                <div className="text-xl font-black uppercase leading-none text-white md:text-3xl">
-                  {stat.value}
+          {vision.stats?.length ? (
+            <div className="mt-5 grid grid-cols-3 gap-2.5 md:mt-6 md:gap-3">
+              {vision.stats.map((stat) => (
+                <div
+                  key={`${stat.value}-${stat.label}`}
+                  className="border border-white/10 bg-white/[0.025] px-3 py-4 md:px-4 md:py-5"
+                >
+                  <div className="text-xl font-black uppercase leading-none text-white md:text-3xl">
+                    {stat.value}
+                  </div>
+                  <div className="mt-2 text-[8px] font-semibold uppercase tracking-[0.2em] text-white/45 md:text-[9px] md:tracking-[0.26em]">
+                    {stat.label}
+                  </div>
                 </div>
-                <div className="mt-2 text-[8px] font-semibold uppercase tracking-[0.2em] text-white/45 md:text-[9px] md:tracking-[0.26em]">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          ) : null}
           {vision.cta ? (
             <a
               href={vision.cta.href}
@@ -64,21 +66,23 @@ export function VisionSection({ vision }: VisionSectionProps) {
         </div>
 
         <div className="relative min-h-full overflow-hidden rounded-[1.2rem] border border-white/10 bg-white/[0.025] p-3 shadow-2xl shadow-black/30 md:rounded-[1.6rem] md:p-5">
-          <div className="relative flex items-center justify-center">
-            <video
-              className="aspect-[9/16] max-h-[76vh] min-h-[420px] w-full max-w-[360px] rounded-[1rem] bg-black object-cover md:min-h-[560px] md:rounded-[1.25rem]"
-              src={vision.video.src}
-              poster={vision.video.poster}
-              controls
-              preload="metadata"
-              playsInline
-            />
-            <div className="pointer-events-none absolute inset-x-0 top-0 bg-gradient-to-b from-black/70 to-transparent px-4 pb-12 pt-4 md:px-5 md:pt-5">
-              <div className="inline-flex rounded-full border border-white/10 bg-black/55 px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.2em] text-white/82 backdrop-blur-md md:text-[10px]">
-                {vision.video.title}
+          {vision.video ? (
+            <div className="relative flex items-center justify-center">
+              <video
+                className="aspect-[9/16] max-h-[76vh] min-h-[420px] w-full max-w-[360px] rounded-[1rem] bg-black object-cover md:min-h-[560px] md:rounded-[1.25rem]"
+                src={vision.video.src}
+                poster={vision.video.poster}
+                controls
+                preload="metadata"
+                playsInline
+              />
+              <div className="pointer-events-none absolute inset-x-0 top-0 bg-gradient-to-b from-black/70 to-transparent px-4 pb-12 pt-4 md:px-5 md:pt-5">
+                <div className="inline-flex rounded-full border border-white/10 bg-black/55 px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.2em] text-white/82 backdrop-blur-md md:text-[10px]">
+                  {vision.video.title}
+                </div>
               </div>
             </div>
-          </div>
+          ) : null}
 
           {vision.media?.length ? (
             <div className="mt-3 grid grid-cols-3 gap-2 md:mt-4 md:gap-3">
@@ -100,6 +104,21 @@ export function VisionSection({ vision }: VisionSectionProps) {
                   ) : null}
                 </div>
               ))}
+            </div>
+          ) : null}
+
+          {vision.embed ? (
+            <div className="mt-3 overflow-hidden rounded-xl border border-[rgb(var(--pk-accent-rgb)/0.24)] bg-[linear-gradient(135deg,rgb(var(--pk-accent-rgb)/0.2),rgba(255,255,255,0.055))] p-2 shadow-[0_18px_48px_rgb(var(--pk-accent-rgb)/0.12)] md:mt-4 md:p-3">
+              <iframe
+                title={vision.embed.title}
+                width="100%"
+                height={vision.embed.height ?? 300}
+                scrolling="no"
+                frameBorder="no"
+                allow="autoplay; encrypted-media"
+                src={vision.embed.src}
+                className="block rounded-lg bg-[rgb(var(--pk-accent-rgb)/0.12)]"
+              />
             </div>
           ) : null}
         </div>

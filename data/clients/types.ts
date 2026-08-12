@@ -7,6 +7,8 @@ export type ClientSocials = {
   tikTok?: string;
   spotify?: string;
   website?: string;
+  facebook?: string;
+  twitch?: string;
 };
 
 export type ClientContact = {

@@ -8,6 +8,13 @@ type YoutubeSectionProps = {
 };
 
 export function YoutubeSection({ youtube }: YoutubeSectionProps) {
+  const gridClass =
+    youtube.items.length === 1
+      ? "mx-auto grid max-w-5xl gap-4"
+      : youtube.items.length === 2
+        ? "grid gap-5 lg:grid-cols-2 lg:gap-6"
+        : "grid gap-4 md:grid-cols-3 md:gap-5";
+
   return (
     <section
       id="youtube"
@@ -15,7 +22,7 @@ export function YoutubeSection({ youtube }: YoutubeSectionProps) {
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,0,0,0.12),transparent_28%),radial-gradient(circle_at_80%_90%,rgb(var(--pk-accent-rgb)/0.08),transparent_24%)]" />
 
-      <div className="relative mx-auto max-w-6xl">
+      <div className="relative mx-auto max-w-7xl">
         <div className="mb-6 flex flex-col items-start justify-between gap-4 md:mb-8 md:flex-row md:items-end md:gap-5">
           <div className="max-w-3xl">
             <div className="mb-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--pk-accent)] md:mb-4 md:text-xs md:tracking-[0.35em]">
@@ -40,13 +47,7 @@ export function YoutubeSection({ youtube }: YoutubeSectionProps) {
           </a>
         </div>
 
-        <div
-          className={
-            youtube.items.length === 1
-              ? "mx-auto grid max-w-4xl gap-4"
-              : "grid gap-4 md:grid-cols-3 md:gap-5"
-          }
-        >
+        <div className={gridClass}>
           {youtube.items.map((video) => (
             <article
               key={video.id}
