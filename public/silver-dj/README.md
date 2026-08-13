@@ -13,5 +13,4 @@ Suggested usage:
 - youtube/: notes, thumbnails, or source exports if needed
 
 The Silver DJ client is already registered in the app.
-You can now drop media here and wire paths into `data/clients/silver-dj.ts`
-or import them through `docs/airtable-seed/silver-dj/`.
+You can now drop media here and wire paths into `data/clients/silver-dj.ts`.
