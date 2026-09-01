@@ -335,6 +335,7 @@ export const djslydEnClient: ClientConfig = {
       "event DJ France",
     ],
     ogImage: "/press-kit/og-share.jpg",
+    favicon: "/press-kit/favicon.ico",
   },
   defaultTheme: "red",
   defaultVariant: "impact",

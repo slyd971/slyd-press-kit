@@ -32,6 +32,7 @@ export type ClientSeoConfig = {
   description: string;
   keywords: string[];
   ogImage: string;
+  favicon?: string;
 };
 
 export type ClientLanguageSwitchItem = {
