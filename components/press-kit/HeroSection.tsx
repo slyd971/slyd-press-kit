@@ -10,6 +10,7 @@ type HeroSectionProps = {
   heroVariants: PressKitConfig["heroVariants"];
   heroSocials?: PressKitConfig["heroSocials"];
   variant: TemplateVariantId;
+  socialsPosition?: PressKitConfig["heroSocialsPosition"];
   logo?: PressKitConfig["artist"]["logo"];
 };
 
@@ -195,6 +196,7 @@ function getHeroStatLabelClass(label: string) {
 export function HeroSection({
   heroVariants,
   heroSocials = [],
+  socialsPosition = "after-stats",
   variant,
   logo,
 }: HeroSectionProps) {
@@ -232,11 +234,12 @@ export function HeroSection({
             rel="noreferrer"
             aria-label={social.label}
             title={social.label}
-            className={`group flex h-9 w-9 items-center justify-center rounded-full border transition hover:-translate-y-0.5 hover:brightness-110 md:h-10 md:w-10 ${socialColorClassMap[social.icon]}`}
+            className={`group flex ${socialsPosition === "before-stats" && !social.iconOnly ? "gap-2 px-4" : "w-9 md:w-10"} h-9 items-center justify-center rounded-full border transition hover:-translate-y-0.5 hover:brightness-110 md:h-10 ${socialColorClassMap[social.icon]}`}
           >
             <Icon
               className="h-4 w-4 transition group-hover:scale-105 md:h-[18px] md:w-[18px]"
             />
+            {socialsPosition === "before-stats" && !social.iconOnly && <span className="text-xs font-semibold">{social.label}</span>}
           </a>
         );
       })}
@@ -289,6 +292,8 @@ export function HeroSection({
               {hero.description}
             </p>
           </div>
+
+          {socialsPosition === "before-stats" && socialLinks}
 
           {(hero.mediaCard || hasStats) && (
           <div className="mt-6 grid gap-5 lg:mt-8 lg:grid-cols-[1fr_0.9fr] lg:items-end">
@@ -348,7 +353,7 @@ export function HeroSection({
           </div>
           )}
 
-          {socialLinks}
+          {socialsPosition !== "before-stats" && socialLinks}
         </div>
       </section>
     );
@@ -419,6 +424,7 @@ export function HeroSection({
             )}
           </div>
 
+          {socialsPosition === "before-stats" && socialLinks}
           {hasStats && (
             <div className={`mt-8 grid gap-3 md:mt-10 md:gap-4 ${statGridClass}`}>
               {hero.stats.map((stat) => (
@@ -437,7 +443,7 @@ export function HeroSection({
             </div>
           )}
 
-          {socialLinks}
+          {socialsPosition !== "before-stats" && socialLinks}
         </div>
       </section>
     );
@@ -569,6 +575,7 @@ export function HeroSection({
           </motion.div>
         </div>
 
+        {socialsPosition === "before-stats" && socialLinks}
         {hasStats && (
           <motion.div
             variants={heroReveal}
@@ -588,7 +595,7 @@ export function HeroSection({
         )}
 
         {proofline ? <motion.div variants={heroReveal}>{proofline}</motion.div> : null}
-        {socialLinks ? <motion.div variants={heroReveal}>{socialLinks}</motion.div> : null}
+        {socialsPosition !== "before-stats" && socialLinks ? <motion.div variants={heroReveal}>{socialLinks}</motion.div> : null}
       </motion.div>
     </section>
   );

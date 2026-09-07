@@ -124,6 +124,7 @@ export default async function Home({ params, searchParams }: HomeProps) {
 
   return (
     <main
+      data-client={client.slug}
       style={{ ...getTemplateStyle(theme), ...getFontStyle(fontPreset) }}
       className="relative overflow-x-hidden bg-[var(--pk-bg)] text-[var(--pk-text)] selection:bg-[var(--pk-accent)] selection:text-white"
     >
@@ -144,6 +145,7 @@ export default async function Home({ params, searchParams }: HomeProps) {
       <HeroSection
         heroVariants={pressKitConfig.heroVariants}
         heroSocials={pressKitConfig.heroSocials}
+        socialsPosition={pressKitConfig.heroSocialsPosition}
         variant={variant.id}
         logo={pressKitConfig.artist.logo.showInHero !== false ? pressKitConfig.artist.logo : undefined}
       />

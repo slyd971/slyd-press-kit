@@ -18,6 +18,7 @@ export type StatItem = {
 export type SocialLink = {
   label: string;
   href: string;
+  iconOnly?: boolean;
   icon:
     | "instagram"
     | "tiktok"
@@ -110,6 +111,7 @@ export type PressKitConfig = {
     cta: CtaLink;
   };
   heroSocials?: SocialLink[];
+  heroSocialsPosition?: "after-stats" | "before-stats";
   heroVariants: Record<
     "impact" | "interactive" | "showcase",
     {

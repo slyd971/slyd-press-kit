@@ -1,3 +1,4 @@
+import { djPirateClient } from "@/data/clients/dj-pirate";
 import { arthurChapsClient } from "@/data/clients/arthur-chaps";
 import {
   djMackClient,
@@ -14,6 +15,7 @@ import { yoruboyDjClient } from "@/data/clients/yoruboy-dj";
 import type { ClientConfig } from "@/data/clients/types";
 
 export const clientRegistry = [
+  djPirateClient,
   djslydClient,
   djslydEnClient,
   silverDjClient,
