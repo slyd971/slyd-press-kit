@@ -117,11 +117,11 @@ const soyumiPressKit: PressKitConfig = {
         "Soyumi delivers Afro-Caribbean and open-format sets with global influences, driven by an instinctive energy that turns every dancefloor into a powerful, unforgettable moment.",
       layout: "showcase",
       image: {
-        src: "/soyumi/hero/hero-soyumi.jpeg",
+        src: "/soyumi/hero/hero-soyumi-mobile.jpg",
         alt: "Main Soyumi visual",
         badge: "Soyumi",
         caption: "From lounge to peak-time club",
-        position: "center 34%",
+        position: "center 30%",
       },
       ctas: [
         { label: "Book Soyumi", href: "#contact", variant: "primary" },
