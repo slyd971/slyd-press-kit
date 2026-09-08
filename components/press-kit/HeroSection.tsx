@@ -11,6 +11,8 @@ type HeroSectionProps = {
   heroSocials?: PressKitConfig["heroSocials"];
   variant: TemplateVariantId;
   mobileVariant?: TemplateVariantId;
+  socialsPosition?: PressKitConfig["heroSocialsPosition"];
+  logo?: PressKitConfig["artist"]["logo"];
 };
 
 function TikTokIcon({ className }: { className?: string }) {
@@ -77,6 +79,19 @@ function AppleMusicIcon({ className }: { className?: string }) {
   return <Music2 className={className} aria-hidden="true" />;
 }
 
+function FacebookIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+      className={className}
+    >
+      <path d="M14.2 8.3V6.8c0-.72.48-.89.82-.89h2.08V2.18L14.24 2.17c-3.18 0-3.9 2.38-3.9 3.9V8.3H7.9v3.84h2.44V22h3.86v-9.86h3.26l.43-3.84H14.2Z" />
+    </svg>
+  );
+}
+
 const socialIconMap = {
   instagram: Instagram,
   tiktok: TikTokIcon,
@@ -84,6 +99,7 @@ const socialIconMap = {
   spotify: SpotifyIcon,
   soundcloud: SoundCloudIcon,
   "apple-music": AppleMusicIcon,
+  facebook: FacebookIcon,
 };
 
 const socialColorClassMap = {
@@ -95,6 +111,7 @@ const socialColorClassMap = {
     "border-[rgb(var(--pk-accent-rgb)/0.4)] bg-[var(--pk-accent)] text-white",
   soundcloud: "border-[#FF5500]/40 bg-[#FF5500] text-white",
   "apple-music": "border-[#FA243C]/40 bg-[#FA243C] text-white",
+  facebook: "border-[#1877F2]/40 bg-[#1877F2] text-white",
 } as const;
 
 const heroReveal = {
@@ -165,7 +182,7 @@ function getHeroStatCardClass(value: string) {
 
 function getHeroAccentSizeClass(accent: string) {
   const len = accent.trim().length;
-  if (len >= 16) return "text-[1.4rem] sm:text-[1.8rem] md:text-[2.6rem] xl:text-[3.4rem]";
+  if (len >= 16) return "text-[1.05rem] sm:text-[1.35rem] md:text-[1.95rem] xl:text-[2.45rem]";
   return "";
 }
 
@@ -173,20 +190,23 @@ function getHeroStatLabelClass(label: string) {
   const isLongLabel = label.trim().length >= 16;
 
   return isLongLabel
-    ? "mt-2 text-[8px] uppercase leading-[1.18] tracking-[0.08em] text-white/48 md:mt-2.5 md:min-h-[2.1rem] md:text-[9px] md:leading-[1.12] md:tracking-[0.12em]"
-    : "mt-2 text-[8px] uppercase leading-[1.2] tracking-[0.12em] text-white/48 md:mt-2.5 md:min-h-[2.1rem] md:text-[10px] md:leading-[1.12] md:tracking-[0.14em]";
+    ? "mt-2 text-[9px] uppercase leading-[1.18] tracking-[0.08em] text-white/48 md:mt-2.5 md:min-h-[2.1rem] md:text-[10px] md:leading-[1.12] md:tracking-[0.12em]"
+    : "mt-2 text-[9px] uppercase leading-[1.2] tracking-[0.12em] text-white/48 md:mt-2.5 md:min-h-[2.1rem] md:text-[11px] md:leading-[1.12] md:tracking-[0.14em]";
 }
 
 function HeroVariantBody({
   heroVariants,
   heroSocials = [],
+  socialsPosition = "after-stats",
   variant,
+  logo,
   idOverride,
   compactMobile = false,
 }: HeroSectionProps & { idOverride?: string; compactMobile?: boolean }) {
   const hero = heroVariants[variant];
   const hasHeroImage = Boolean(hero.image.src);
   const hasEyebrow = Boolean(hero.eyebrow.trim());
+  const hasStats = hero.stats.length > 0;
   const statGridClass = getHeroStatGridClass(variant, hero.stats.length);
 
   const heroFallback = (
@@ -217,11 +237,12 @@ function HeroVariantBody({
             rel="noreferrer"
             aria-label={social.label}
             title={social.label}
-            className={`group flex h-9 w-9 items-center justify-center rounded-full border transition hover:-translate-y-0.5 hover:brightness-110 md:h-10 md:w-10 ${socialColorClassMap[social.icon]}`}
+            className={`group flex ${socialsPosition === "before-stats" && !social.iconOnly ? "gap-2 px-4" : "w-9 md:w-10"} h-9 items-center justify-center rounded-full border transition hover:-translate-y-0.5 hover:brightness-110 md:h-10 ${socialColorClassMap[social.icon]}`}
           >
             <Icon
               className="h-4 w-4 transition group-hover:scale-105 md:h-[18px] md:w-[18px]"
             />
+            {socialsPosition === "before-stats" && !social.iconOnly && <span className="text-xs font-semibold">{social.label}</span>}
           </a>
         );
       })}
@@ -267,14 +288,17 @@ function HeroVariantBody({
 
             <h1 className="mt-5 text-[2.8rem] font-black uppercase leading-[0.88] tracking-tight text-white sm:text-6xl md:mt-7 md:text-7xl xl:text-[7.2rem]">
               {hero.title}
-              <span className="block text-[var(--pk-accent)]">{hero.accent}</span>
+              <span className="mt-2 block text-[var(--pk-accent)] md:mt-3">{hero.accent}</span>
             </h1>
 
-            <p className="mt-7 max-w-2xl text-sm leading-6 text-white/78 md:mt-10 md:text-xl md:leading-8">
+            <p className="mt-5 max-w-2xl text-sm leading-6 text-white/78 md:mt-7 md:text-xl md:leading-8">
               {hero.description}
             </p>
           </div>
 
+          {socialsPosition === "before-stats" && socialLinks}
+
+          {(hero.mediaCard || hasStats) && (
           <div className="mt-6 grid gap-5 lg:mt-8 lg:grid-cols-[1fr_0.9fr] lg:items-end">
             {hero.mediaCard && (
               <a
@@ -312,24 +336,27 @@ function HeroVariantBody({
               </a>
             )}
 
-            <div className={`grid gap-3 md:gap-4 ${statGridClass}`}>
-              {hero.stats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className={`${getHeroStatCardClass(stat.value)} flex flex-col items-center text-center`}
-                >
-                  <div className={getHeroStatValueClass(stat.value)}>
-                    {stat.value}
+            {hasStats && (
+              <div className={`grid gap-3 md:gap-4 ${statGridClass}`}>
+                {hero.stats.map((stat) => (
+                  <div
+                    key={stat.label}
+                    className={`${getHeroStatCardClass(stat.value)} flex flex-col items-center text-center`}
+                  >
+                    <div className={getHeroStatValueClass(stat.value)}>
+                      {stat.value}
+                    </div>
+                    <div className={getHeroStatLabelClass(stat.label)}>
+                      {stat.label}
+                    </div>
                   </div>
-                  <div className={getHeroStatLabelClass(stat.label)}>
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </div>
+          )}
 
-          {socialLinks}
+          {socialsPosition !== "before-stats" && socialLinks}
         </div>
       </section>
     );
@@ -352,18 +379,19 @@ function HeroVariantBody({
           ) : (
             <div className="h-full w-full bg-[var(--pk-bg)]" />
           )}
-          <div className="absolute inset-0 bg-black/60" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgb(var(--pk-accent-rgb)/0.22),transparent_28%),radial-gradient(circle_at_80%_0%,rgba(255,255,255,0.08),transparent_24%),radial-gradient(circle_at_50%_100%,rgb(var(--pk-accent-rgb)/0.12),transparent_32%)]" />
-          <div className="absolute inset-0 opacity-15 [background-image:linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] [background-size:34px_34px]" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--pk-bg)] via-black/30 to-black/20" />
+          <div className="absolute inset-0 bg-black/25" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgb(var(--pk-accent-rgb)/0.16),transparent_30%),radial-gradient(circle_at_80%_0%,rgba(255,255,255,0.05),transparent_24%)]" />
+          <div className="absolute inset-0 opacity-10 [background-image:linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] [background-size:34px_34px]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--pk-bg)] via-transparent to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-black/70 via-black/35 to-transparent" />
         </div>
 
         <div
           className={`relative mx-auto flex min-h-[90svh] max-w-7xl flex-col justify-center px-4 py-10 md:min-h-[84svh] md:px-6 md:py-12 lg:min-h-[82svh] lg:justify-start lg:pt-20 lg:pb-10 ${
-            compactMobile ? "items-center justify-end pb-14 text-center md:items-stretch md:justify-start md:pb-10 md:text-left" : ""
+            compactMobile ? "items-center justify-end pb-12 text-center md:items-stretch md:justify-start md:pb-10 md:text-left" : ""
           }`}
         >
-          <div className={`w-full max-w-3xl ${compactMobile ? "flex flex-col items-center md:block" : ""}`}>
+          <div className={`w-full max-w-3xl ${compactMobile ? "flex flex-1 flex-col items-center pt-[30vh] md:block md:flex-none md:pt-0" : ""}`}>
             {hasEyebrow && !compactMobile && (
               <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/35 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-white/75 backdrop-blur-md md:px-4 md:py-2 md:text-[11px] md:tracking-[0.28em]">
                 <Disc3 className="h-3 w-3 text-[var(--pk-accent)] md:h-3.5 md:w-3.5" />
@@ -373,16 +401,24 @@ function HeroVariantBody({
 
             <h1 className="mt-5 text-[2.9rem] font-black uppercase leading-[0.88] tracking-tight text-white sm:text-6xl md:mt-7 md:text-7xl xl:text-[7.4rem]">
               {hero.title}
-              <span className="block text-[var(--pk-accent)]">{hero.accent}</span>
+              {hero.accent && (
+                <span className="mt-2 block text-[var(--pk-accent)] md:mt-3">{hero.accent}</span>
+              )}
             </h1>
 
+            {hero.genreLine && (
+              <div className="mt-2 text-base font-black uppercase leading-[1.05] tracking-[0.01em] text-white/92 sm:text-xl md:mt-3 md:text-3xl xl:text-4xl">
+                {hero.genreLine}
+              </div>
+            )}
+
             {!compactMobile && (
-              <p className="mt-7 max-w-2xl text-sm leading-6 text-white/78 md:mt-10 md:text-xl md:leading-8">
+              <p className="mt-5 max-w-2xl text-sm leading-6 text-white/78 md:mt-7 md:text-xl md:leading-8">
                 {hero.description}
               </p>
             )}
 
-            <div className={`mt-7 flex flex-wrap gap-2.5 md:mt-9 md:gap-3 ${compactMobile ? "justify-center md:justify-start" : ""}`}>
+            <div className={`mt-7 flex flex-wrap gap-2.5 md:mt-9 md:gap-3 ${compactMobile ? "mt-auto justify-center pt-8 md:mt-9 md:justify-start md:pt-0" : ""}`}>
               {hero.ctas.map((cta) => (
                 <a
                   key={cta.href}
@@ -406,23 +442,26 @@ function HeroVariantBody({
             )}
           </div>
 
-          <div className={`mt-8 grid gap-3 md:mt-10 md:gap-4 ${statGridClass}`}>
-            {hero.stats.map((stat) => (
-              <div
-                key={stat.label}
-                className={`${getHeroStatCardClass(stat.value)} flex flex-col items-center text-center`}
-              >
-                <div className={getHeroStatValueClass(stat.value)}>
-                  {stat.value}
+          {socialsPosition === "before-stats" && socialLinks}
+          {hasStats && (
+            <div className={`mt-8 grid gap-3 md:mt-10 md:gap-4 ${statGridClass}`}>
+              {hero.stats.map((stat) => (
+                <div
+                  key={stat.label}
+                  className={`${getHeroStatCardClass(stat.value)} flex flex-col items-center text-center`}
+                >
+                  <div className={getHeroStatValueClass(stat.value)}>
+                    {stat.value}
+                  </div>
+                  <div className={getHeroStatLabelClass(stat.label)}>
+                    {stat.label}
+                  </div>
                 </div>
-                <div className={getHeroStatLabelClass(stat.label)}>
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
 
-          {socialLinks}
+          {socialsPosition !== "before-stats" && socialLinks}
         </div>
       </section>
     );
@@ -452,17 +491,37 @@ function HeroVariantBody({
               </motion.div>
             )}
 
+            {logo?.src ? (
+              <motion.div variants={heroReveal} className="mb-4 md:mb-6">
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  className="h-20 w-auto object-contain object-left md:h-28 xl:h-36"
+                  style={logo.invert ? { filter: "invert(1)" } : undefined}
+                />
+              </motion.div>
+            ) : null}
+
             <motion.h1
               variants={heroReveal}
               className="max-w-4xl text-[2.55rem] font-black uppercase leading-[0.9] tracking-[-0.03em] sm:text-5xl md:text-7xl xl:text-[6.9rem]"
             >
-              {hero.title}
-              <span className={`block text-[var(--pk-accent)] ${getHeroAccentSizeClass(hero.accent)}`}>{hero.accent}</span>
+              {logo?.src ? null : hero.title}
+              <span className={`mt-2 block text-[var(--pk-accent)] md:mt-3 ${getHeroAccentSizeClass(hero.accent)}`}>{hero.accent}</span>
             </motion.h1>
+
+            {hero.genreLine && (
+              <motion.div
+                variants={heroReveal}
+                className="mt-2 text-lg font-black uppercase leading-[1.05] tracking-[0.01em] text-white/92 sm:text-xl md:mt-3 md:text-3xl xl:text-4xl"
+              >
+                {hero.genreLine}
+              </motion.div>
+            )}
 
             <motion.p
               variants={heroReveal}
-              className="mt-5 max-w-[40rem] text-[0.96rem] leading-6 text-white/76 md:mt-7 md:text-[1.12rem] md:leading-8"
+              className="mt-5 max-w-[40rem] text-[0.96rem] leading-6 text-white/76 md:mt-6 md:text-[1.12rem] md:leading-8"
             >
               {hero.description}
             </motion.p>
@@ -504,7 +563,7 @@ function HeroVariantBody({
           </motion.div>
 
           <motion.div
-            className="order-2 relative lg:justify-self-end"
+            className="pk-hero-visual order-2 relative lg:justify-self-end"
             variants={heroImageReveal}
           >
             <div className="absolute -left-4 top-8 h-28 w-28 rounded-full bg-[rgb(var(--pk-accent-rgb)/0.15)] blur-3xl md:-left-6 md:h-36 md:w-36" />
@@ -515,7 +574,7 @@ function HeroVariantBody({
                 <img
                   src={hero.image.src}
                   alt={hero.image.alt}
-                  className="h-[42svh] w-full rounded-[1.2rem] object-cover md:h-[66svh] md:rounded-[1.5rem]"
+                  className="pk-hero-portrait h-[42svh] w-full rounded-[1.2rem] object-cover md:h-[66svh] md:rounded-[1.5rem]"
                   style={{ objectPosition: hero.image.position ?? "center 22%" }}
                 />
               ) : (
@@ -543,24 +602,27 @@ function HeroVariantBody({
           </motion.div>
         </div>
 
-        <motion.div
-          variants={heroReveal}
-          className={`mt-5 grid gap-2.5 md:mt-7 md:gap-3 ${statGridClass}`}
-        >
-          {hero.stats.map((stat, index) => (
-            <div
-              key={stat.label}
-              className={`${getHeroStatCardClass(stat.value)} pk-hero-stat-card flex flex-col items-center justify-center text-center`}
-              style={{ animationDelay: `${120 + index * 90}ms` }}
-            >
-              <div className={getHeroStatValueClass(stat.value)}>{stat.value}</div>
-              <div className={getHeroStatLabelClass(stat.label)}>{stat.label}</div>
-            </div>
-          ))}
-        </motion.div>
+        {socialsPosition === "before-stats" && socialLinks}
+        {hasStats && (
+          <motion.div
+            variants={heroReveal}
+            className={`mt-5 grid gap-2.5 md:mt-7 md:gap-3 ${statGridClass}`}
+          >
+            {hero.stats.map((stat, index) => (
+              <div
+                key={stat.label}
+                className={`${getHeroStatCardClass(stat.value)} pk-hero-stat-card flex flex-col items-center justify-center text-center`}
+                style={{ animationDelay: `${120 + index * 90}ms` }}
+              >
+                <div className={getHeroStatValueClass(stat.value)}>{stat.value}</div>
+                <div className={getHeroStatLabelClass(stat.label)}>{stat.label}</div>
+              </div>
+            ))}
+          </motion.div>
+        )}
 
         {proofline ? <motion.div variants={heroReveal}>{proofline}</motion.div> : null}
-        {socialLinks ? <motion.div variants={heroReveal}>{socialLinks}</motion.div> : null}
+        {socialsPosition !== "before-stats" && socialLinks ? <motion.div variants={heroReveal}>{socialLinks}</motion.div> : null}
       </motion.div>
     </section>
   );
