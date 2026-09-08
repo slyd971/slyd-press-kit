@@ -240,7 +240,7 @@ const soyumiPressKit: PressKitConfig = {
         title: "Live clip 01",
         description: "A live clip focused on crowd movement and stage presence.",
         src: "/soyumi/videos/video-soyumi-1.mp4",
-        poster: "/soyumi/videos/video-soyumi-1-poster.png",
+        poster: "/soyumi/videos/video-soyumi-1-poster.jpg",
       },
       {
         id: "soyumi-video-2",
