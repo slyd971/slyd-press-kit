@@ -109,7 +109,11 @@ export function Header({ artist, navigation, ui, homeHref = "/" }: HeaderProps) 
                 <img
                   src={artist.logo.src}
                   alt={artist.logo.alt}
-                  className="h-[175%] w-auto max-w-none shrink-0 object-contain object-left md:h-[185%]"
+                  className="w-auto max-w-none shrink-0 object-contain object-left"
+                  style={{
+                    height: `${artist.logo.scale ?? 175}%`,
+                    filter: artist.logo.invert ? "invert(1)" : undefined,
+                  }}
                 />
               ) : (
                 <div className="flex flex-col leading-none text-white">
