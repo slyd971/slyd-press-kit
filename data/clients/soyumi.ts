@@ -110,11 +110,11 @@ const soyumiPressKit: PressKitConfig = {
       proofline: "Crowd connection · Energy control · Reliable performer",
     },
     showcase: {
-      eyebrow: "Global open format",
+      eyebrow: "Afro-Caribbean • Open format",
       title: "SOYUMI",
-      accent: "ENERGY",
+      accent: "DJ",
       description:
-        "Originally from Paris and shaped by Australia, the Caribbean, Europe and Asia, Soyumi brings a multicultural identity to every performance.",
+        "Soyumi delivers Afro-Caribbean and open-format sets with global influences, driven by an instinctive energy that turns every dancefloor into a powerful, unforgettable moment.",
       layout: "showcase",
       image: {
         src: "/soyumi/hero/hero-soyumi.jpeg",
@@ -125,15 +125,15 @@ const soyumiPressKit: PressKitConfig = {
       },
       ctas: [
         { label: "Book Soyumi", href: "#contact", variant: "primary" },
-        { label: "Gallery", href: "#gallery", variant: "secondary" },
+        { label: "Watch videos", href: "#videos", variant: "secondary" },
       ],
       stats: [
-        { value: "PIONEER", label: "DDJ-SR2 / Serato" },
-        { value: "8K", label: "Instagram followers" },
+        { value: "PARIS", label: "Based in" },
         { value: "+100", label: "Bookings 2025" },
-        { value: "OPEN FORMAT", label: "Club & lounge" },
+        { value: "8K", label: "Instagram followers" },
+        { value: "AFRO + OPEN", label: "Format" },
       ],
-      proofline: "Paris · Sydney · Perth · Bali · Guadeloupe",
+      proofline: "Clubs · Hotels · Festivals · Private events",
       footerNote: "A natural stage presence built around connection.",
     },
   },
