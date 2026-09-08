@@ -360,6 +360,7 @@ export const pressKitConfig: PressKitConfig = {
     logo: {
       src: "/press-kit/logo-slyd.png",
       alt: "Sly'D logo",
+      scale: 135,
       showInHero: false,
     },
   },
