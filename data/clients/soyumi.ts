@@ -195,6 +195,7 @@ const soyumiPressKit: PressKitConfig = {
         title: "International",
         icon: "globe",
         items: [
+          "🇬🇧 Notting Hill Carnival, London",
           "🇦🇺 Hilton, Sydney",
           "🇦🇺 Argyle, Sydney",
           "🇦🇺 ZeTa Bar, Sydney",
