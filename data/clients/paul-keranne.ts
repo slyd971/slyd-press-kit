@@ -459,6 +459,7 @@ export const paulKeranneClient: ClientConfig = {
     ],
     ogImage: "/opengraph-image",
     canonical: "https://paul-keranne.presskit.fr/",
+    favicon: "/paul-keranne/favicon/favicon.ico",
   },
   defaultTheme: "orange",
   defaultVariant: "impact",

@@ -432,6 +432,7 @@ export const silverDjClient: ClientConfig = {
       "dossier de presse DJ YouTube",
     ],
     ogImage: "/opengraph-image",
+    favicon: "/silver-dj/favicon/favicon.ico",
   },
   defaultTheme: "green",
   defaultVariant: "impact",

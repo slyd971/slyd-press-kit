@@ -26,6 +26,7 @@ const yoruboyPressKit: PressKitConfig = {
     logo: {
       src: "/yoruboy/logo/yoruboy.png",
       alt: "Yoruboy Dj logo",
+      showInHero: false,
     },
   },
   navigation: {
@@ -434,6 +435,7 @@ export const yoruboyDjClient: ClientConfig = {
     ],
     ogImage: "/opengraph-image",
     canonical: "https://yoruboy-dj.presskit.fr/",
+    favicon: "/yoruboy/favicon/favicon.ico",
   },
   defaultTheme: "orange",
   defaultVariant: "impact",

@@ -430,6 +430,7 @@ export const gdcClient: ClientConfig = {
     ],
     ogImage: "/GDC/gallerie/gallerie-1.jpeg",
     canonical: "https://gdc.presskit.fr/",
+    favicon: "/GDC/favicon/favicon.ico",
   },
   defaultTheme: "violet",
   defaultVariant: "impact",

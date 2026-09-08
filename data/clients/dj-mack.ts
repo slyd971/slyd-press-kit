@@ -680,6 +680,7 @@ export const djMackEnClient: ClientConfig = {
       "DJ Paris",
     ],
     ogImage: heroImage,
+    favicon: "/mack/favicon/favicon.ico",
     canonical: "https://dj-mack.presskit.fr/",
   },
   defaultTheme: "violet",

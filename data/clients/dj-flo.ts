@@ -847,6 +847,7 @@ export const djFloEnClient: ClientConfig = {
     ],
     canonical: "https://dj-flo.vercel.app/",
     ogImage: heroImage,
+    favicon: "/dj-flo/favicon/favicon.ico",
   },
   defaultTheme: "dj-flo",
   defaultVariant: "impact",
