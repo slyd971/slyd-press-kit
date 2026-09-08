@@ -112,7 +112,7 @@ const soyumiPressKit: PressKitConfig = {
     showcase: {
       eyebrow: "Afro-Caribbean • Open format",
       title: "SOYUMI",
-      accent: "DJ",
+      accent: "",
       description:
         "Soyumi delivers Afro-Caribbean and open-format sets with global influences, driven by an instinctive energy that turns every dancefloor into a powerful, unforgettable moment.",
       layout: "showcase",
