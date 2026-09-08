@@ -359,12 +359,24 @@ const soyumiPressKit: PressKitConfig = {
         alt: "Soyumi press portrait",
       },
       {
-        src: "/soyumi/gallery/gallery-soyumi-8.jpeg",
-        alt: "Soyumi live atmosphere",
-      },
-      {
         src: "/soyumi/gallery/gallery-soyumi-9.jpeg",
         alt: "Soyumi club energy",
+      },
+      {
+        src: "/soyumi/gallery/gallery-soyumi-12.jpeg",
+        alt: "Soyumi portrait against a colourful mural",
+        position: "center 28%",
+      },
+      {
+        src: "/soyumi/gallery/gallery-soyumi-13.jpeg",
+        alt: "Soyumi mixing in an open-air set",
+        size: "md:col-span-2",
+        position: "center 30%",
+      },
+      {
+        src: "/soyumi/gallery/gallery-soyumi-14.jpeg",
+        alt: "Soyumi in London",
+        position: "center 22%",
       },
     ],
   },
