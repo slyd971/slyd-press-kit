@@ -14,8 +14,17 @@ const djslydPressKitEn: PressKitConfig = {
       { label: "Sound", href: "#sound" },
       { label: "Spotify", href: "#spotify" },
       { label: "Setup", href: "#rider" },
-      { label: "Contact", href: "#contact" },
     ],
+  },
+  heroVariants: {
+    ...pressKitConfig.heroVariants,
+    showcase: {
+      ...pressKitConfig.heroVariants.showcase,
+      ctas: [
+        { label: "Book SLY'D", href: "#contact", variant: "primary" },
+        { label: "See the gallery", href: "/gallery", variant: "secondary" },
+      ],
+    },
   },
   rider: {
     eyebrow: "Technical setup",
@@ -84,10 +93,9 @@ const djslydPressKitFr: PressKitConfig = {
       { label: "Musique", href: "#sound" },
       { label: "Spotify", href: "#spotify" },
       { label: "Setup", href: "#rider" },
-      { label: "Contact", href: "#contact" },
     ],
     cta: {
-      label: "Réserver SLY'D",
+      label: "Booker SLY'D",
       href: "#contact",
       variant: "primary",
     },
@@ -104,7 +112,7 @@ const djslydPressKitFr: PressKitConfig = {
         caption: "De Paris aux scènes internationales",
       },
       ctas: [
-        { label: "Réserver SLY'D", href: "#contact", variant: "primary" },
+        { label: "Booker SLY'D", href: "#contact", variant: "primary" },
         { label: "Voir la galerie", href: "/gallery", variant: "secondary" },
       ],
       stats: [
@@ -126,7 +134,7 @@ const djslydPressKitFr: PressKitConfig = {
         caption: "De Paris aux scènes internationales",
       },
       ctas: [
-        { label: "Réserver SLY'D", href: "#contact", variant: "primary" },
+        { label: "Booker SLY'D", href: "#contact", variant: "primary" },
         { label: "Voir la galerie", href: "/gallery", variant: "secondary" },
       ],
       stats: [
@@ -154,8 +162,8 @@ const djslydPressKitFr: PressKitConfig = {
         caption: "De Paris aux scènes internationales",
       },
       ctas: [
-        { label: "Voir SLY'D en live", href: "#gallery", variant: "primary" },
-        { label: "Écouter les mixes", href: "#sound", variant: "secondary" },
+        { label: "Booker SLY'D", href: "#contact", variant: "primary" },
+        { label: "Voir la galerie", href: "/gallery", variant: "secondary" },
       ],
       stats: [
         { value: "20+", label: "Ans de carrière" },
