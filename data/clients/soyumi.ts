@@ -32,6 +32,7 @@ const soyumiPressKit: PressKitConfig = {
     logo: {
       src: "/soyumi/logo/logo-soyumi-header.jpeg",
       alt: "Soyumi logo",
+      scale: 110,
       showInHero: false,
     },
   },
