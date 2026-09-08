@@ -111,13 +111,14 @@ export default async function Home({ params, searchParams }: HomeProps) {
   const variant = getTemplateVariant(
     resolvedSearchParams?.variant ?? pressKitEntry.defaultVariant
   );
-  // On mobile, DJ SLY'D and DJ Pirate use the showcase hero (full-bleed
-  // background photo, text overlaid) instead of the desktop layout's
-  // side-by-side portrait card.
+  // On mobile, DJ SLY'D, DJ Pirate and Soyumi use the showcase hero
+  // (full-bleed background photo, text overlaid) instead of the desktop
+  // layout's side-by-side portrait card.
   const mobileHeroVariant =
     client.slug === "djslyd" ||
     client.slug === "djslyd-en" ||
-    client.slug === "dj-pirate"
+    client.slug === "dj-pirate" ||
+    client.slug === "soyumi"
       ? "showcase"
       : undefined;
   const fontPreset = getFontPreset(resolvedSearchParams?.font);
