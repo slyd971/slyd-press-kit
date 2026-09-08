@@ -4,8 +4,8 @@ import type { ClientConfig } from "@/data/clients/types";
 // Source : public/pirate/bio/PRESS KIT DJ PIRATE .pdf (2026).
 const piratePressKit: PressKitConfig = {
   "metadata": {
-    "title": "DJ PIRATE | Press kit · DJ & voix off",
-    "description": "DJ Pirate, DJ et voix off basé à Paris. Hip-Hop, R&B, Trap, House et musiques caribéennes. Bio, références, galerie, live et booking."
+    "title": "DJ Pirate | DJ & Beatmaker · Urban & House à Paris · Booking & press kit",
+    "description": "DJ Pirate, DJ & Beatmaker basé à Paris. Univers Urban & House. Bio, références, galerie, live et booking."
   },
   "ui": {
     "openMenuLabel": "Ouvrir le menu",
@@ -18,7 +18,7 @@ const piratePressKit: PressKitConfig = {
   },
   "artist": {
     "name": "DJ PIRATE",
-    "stageLabel": "DJ & voix off · Paris · International",
+    "stageLabel": "DJ & Beatmaker · Paris · International",
     "logo": {
       "src": "/pirate/logo/pirate-logo.webp",
       "alt": "DJ Pirate",
@@ -46,6 +46,10 @@ const piratePressKit: PressKitConfig = {
       {
         "label": "Setup",
         "href": "#rider"
+      },
+      {
+        "label": "Presse",
+        "href": "#press"
       }
     ],
     "cta": {
@@ -83,10 +87,11 @@ const piratePressKit: PressKitConfig = {
   "heroSocialsPosition": "before-stats",
   "heroVariants": {
     "impact": {
-      "eyebrow": "",
-      "title": "DJ PIRATE",
-      "accent": "DJ & VOIX OFF",
-      "description": "La culture urbaine. L’énergie caribéenne. Neuf ans derrière les platines, une signature entre Hip-Hop, R&B, Trap, House et musiques caribéennes.",
+      "eyebrow": "Deux univers. Une même énergie.",
+      "title": "PIRATE",
+      "accent": "DJ & BEATMAKER",
+      "genreLine": "URBAN & HOUSE MUSIC",
+      "description": "Du Hip-Hop, R&B et Trap aux sonorités House, Pirate navigue entre culture urbaine et musique électronique avec une signature pensée pour le dancefloor.",
       "layout": "impact",
       "image": {
         "src": "/pirate/hero/pirate-hero-yellow.png",
@@ -127,10 +132,11 @@ const piratePressKit: PressKitConfig = {
       ]
     },
     "interactive": {
-      "eyebrow": "",
-      "title": "DJ PIRATE",
-      "accent": "DJ & VOIX OFF",
-      "description": "La culture urbaine. L’énergie caribéenne. Neuf ans derrière les platines, une signature entre Hip-Hop, R&B, Trap, House et musiques caribéennes.",
+      "eyebrow": "Deux univers. Une même énergie.",
+      "title": "PIRATE",
+      "accent": "DJ & BEATMAKER",
+      "genreLine": "URBAN & HOUSE MUSIC",
+      "description": "Du Hip-Hop, R&B et Trap aux sonorités House, Pirate navigue entre culture urbaine et musique électronique avec une signature pensée pour le dancefloor.",
       "layout": "interactive",
       "image": {
         "src": "/pirate/hero/pirate-hero-yellow.png",
@@ -171,10 +177,11 @@ const piratePressKit: PressKitConfig = {
       ]
     },
     "showcase": {
-      "eyebrow": "",
-      "title": "DJ PIRATE",
-      "accent": "DJ & VOIX OFF",
-      "description": "La culture urbaine. L’énergie caribéenne. Neuf ans derrière les platines, une signature entre Hip-Hop, R&B, Trap, House et musiques caribéennes.",
+      "eyebrow": "Deux univers. Une même énergie.",
+      "title": "PIRATE",
+      "accent": "DJ & BEATMAKER",
+      "genreLine": "URBAN & HOUSE MUSIC",
+      "description": "Du Hip-Hop, R&B et Trap aux sonorités House, Pirate navigue entre culture urbaine et musique électronique avec une signature pensée pour le dancefloor.",
       "layout": "showcase",
       "image": {
         "src": "/pirate/hero/pirate-hero-yellow.png",
@@ -217,36 +224,45 @@ const piratePressKit: PressKitConfig = {
   },
   "about": {
     "eyebrow": "01 / Biographie",
-    "title": "Racines caribéennes.\nCulture urbaine.",
+    "title": "DJ & Beatmaker,\nentre deux mondes.",
     "signatureLabel": "La signature Pirate",
-    "signatureQuote": "Hip-Hop, R&B, Trap et énergie caribéenne.",
-    "supportingText": "DJ, speaker et voix off. De la Martinique à Paris.",
+    "signatureQuote": "Le groove avant le genre.",
+    "supportingText": "DJ & Beatmaker. De la Martinique à Paris.",
     "tags": [
+      "Urban",
       "Hip-Hop",
-      "Old School",
+      "Trap",
       "R&B",
-      "Trap US & FR",
+      "Old School",
+      "Afro",
+      "Shatta",
+      "Bouyon",
+      "Socca",
       "House",
-      "Caribbean music"
+      "Deep House",
+      "Afro House",
+      "Latin House",
+      "Electro House"
     ],
     "paragraphs": [
       "Originaire de la Martinique, DJ Pirate grandit avec la musique. Du piano à la batterie, il développe son sens du rythme avant de se tourner vers le mixage. Son parcours prend son essor en Guadeloupe à partir de 2016.",
-      "Dès 2017, il se produit en club dans un univers caribéen. En 2019, il rejoint la scène du festival All Day In. Son originalité, sa technique et ses qualités de speaker lui permettent de s’imposer auprès du public, notamment à Lyon où il joue régulièrement dans les soirées afro-caribéennes dès 2020.",
-      "Basé à Paris, il compte neuf ans d’expérience dans le press kit 2026. Il s’est produit dans de nombreuses villes françaises, en Belgique et en Suisse, avec une identité qui relie musiques urbaines et influences caribéennes.",
-      "Spécialiste du Hip-Hop, du Old School, du R&B et de la Trap US et française, il crée en 2025 l’émission Urban Session. Disponible sur SoundCloud et YouTube, elle met en lumière la culture et les talents de la scène urbaine."
+      "Dès 2017, il se produit en club dans un univers caribéen. En 2019, il rejoint la scène du festival All Day In. Son originalité et sa technique lui permettent de s’imposer auprès du public, notamment à Lyon où il joue régulièrement dans les soirées afro-caribéennes dès 2020.",
+      "Basé à Paris, il s’est produit dans de nombreuses villes françaises, en Belgique et en Suisse, développant des sets qui oscillent entre Urban et House selon les lieux et les publics. Ses influences caribéennes (Shatta, Bouyon, Socca) viennent enrichir cette palette sans l’enfermer dans un genre.",
+      "DJ & Beatmaker, il construit ses sets autour du groove et de la lecture du dancefloor. Il crée en 2025 l’émission Urban Session, disponible sur SoundCloud et YouTube, où il partage ses sets et ses productions aux côtés des talents qui l’inspirent."
     ]
   },
   "clubs": {
     "eyebrow": "02 / Références",
-    "title": "Des îles aux\nscènes européennes.",
-    "description": "Un parcours entre festivals, clubs et soirées afro-caribéennes. Références issues du press kit 2026.",
+    "title": "De la Martinique aux\nscènes européennes.",
+    "description": "Un parcours entre festivals, clubs et soirées afro-caribéennes, avec 10 ans d'expérience derrière les platines.",
     "regions": [
       {
         "title": "Festival & Caraïbes",
         "icon": "map-pin",
         "items": [
-          "All Day In — 2019",
-          "Guadeloupe",
+          "All Day In — Guadeloupe, 2019",
+          "Tropical Toulouse Beach",
+          "Yardland",
           "Martinique"
         ]
       },
@@ -278,9 +294,9 @@ const piratePressKit: PressKitConfig = {
   },
   "sound": {
     "eyebrow": "05 / Urban Session",
-    "title": "La culture urbaine\nprend la parole.",
+    "title": "Urban Session,\nsets et productions.",
     "paragraphs": [
-      "Créée en 2025 par DJ Pirate, Urban Session met en lumière la culture et les talents de la scène urbaine. Retrouvez ses sélections et son univers sur SoundCloud."
+      "Créée en 2025 par DJ Pirate, Urban Session est l’espace où il partage ses sets et ses productions, entre Urban et House. Retrouvez-le sur SoundCloud."
     ],
     "cta": {
       "label": "Écouter sur SoundCloud",
@@ -293,7 +309,7 @@ const piratePressKit: PressKitConfig = {
   "videos": {
     "eyebrow": "04 / Live",
     "title": "Pirate en action.",
-    "description": "Un aperçu de son énergie et de sa présence sur scène.",
+    "description": "Découvrez DJ Pirate en live : Urban et House aux platines. Extrait vidéo et contact booking pour vos clubs, festivals et événements.",
     "items": [
       {
         "id": "pirate-live",
@@ -319,10 +335,20 @@ const piratePressKit: PressKitConfig = {
     "supportingText": "",
     "categories": [],
     "itemLabel": "",
-    "items": []
+    "inlineBelowClubs": true,
+    "items": [
+      {
+        "name": "Intersport",
+        "logo": "/pirate/brands/intersport-logo.svg"
+      },
+      {
+        "name": "Adidas",
+        "logo": "/pirate/brands/adidas-logo.svg"
+      }
+    ]
   },
   "rider": {
-    "eyebrow": "06 / Rider technique",
+    "eyebrow": "06 / Setup technique",
     "title": "Le setup\nde DJ Pirate.",
     "groups": [
       {
@@ -344,26 +370,37 @@ const piratePressKit: PressKitConfig = {
           "Micro HF",
           "Support ordinateur"
         ]
-      },
-      {
-        "title": "Transport",
-        "items": [
-          "1 ou 2 billets aller-retour SNCF en 1re classe depuis Paris, modifiables et remboursables.",
-          "Réservation électronique, bagage cabine inclus et Fast Track si disponible.",
-          "Horaires et e-billets transmis 5 jours avant le show ; transport et modifications nécessaires pris en charge par le promoteur."
-        ]
-      },
-      {
-        "title": "Hébergement",
-        "items": [
-          "1 chambre double dans un hôtel à proximité directe du lieu du show.",
-          "Petit-déjeuner inclus et accès à une salle de sport."
-        ]
       }
     ]
   },
+  "press": {
+    "eyebrow": "07 / Ressources presse",
+    "title": "Le kit presse\nde DJ Pirate.",
+    "description": "Dossier de presse, visuels haute définition et logo, prêts à l'emploi pour les médias, festivals et organisateurs.",
+    "downloads": [
+      {
+        "label": "Pack vidéos",
+        "format": "Drive",
+        "href": "#"
+      },
+      {
+        "label": "Pack photos HD",
+        "format": "Drive",
+        "href": "#"
+      },
+      {
+        "label": "Pack logo",
+        "format": "Drive",
+        "href": "#"
+      }
+    ],
+    "bios": {
+      "short": "DJ & Beatmaker originaire de la Martinique, Pirate développe depuis 2016 une identité entre Urban et House. Basé à Paris, il s’est produit dans de nombreuses villes françaises, en Belgique et en Suisse. Il anime aussi Urban Session, où il partage ses sets et productions.",
+      "long": "Originaire de la Martinique, DJ Pirate grandit avec la musique. Du piano à la batterie, il développe son sens du rythme avant de se tourner vers le mixage. Son parcours prend son essor en Guadeloupe à partir de 2016. Dès 2017, il se produit en club dans un univers caribéen. En 2019, il rejoint la scène du festival All Day In. Son originalité et sa technique lui permettent de s’imposer auprès du public, notamment à Lyon où il joue régulièrement dans les soirées afro-caribéennes dès 2020. Basé à Paris, il s’est produit dans de nombreuses villes françaises, en Belgique et en Suisse, développant des sets qui oscillent entre Urban et House selon les lieux et les publics. Ses influences caribéennes (Shatta, Bouyon, Socca) viennent enrichir cette palette sans l’enfermer dans un genre. DJ & Beatmaker, il construit ses sets autour du groove et de la lecture du dancefloor. Il crée en 2025 l’émission Urban Session, disponible sur SoundCloud et YouTube, où il partage ses sets et ses productions aux côtés des talents qui l’inspirent."
+    }
+  },
   "contact": {
-    "eyebrow": "07 / Booking",
+    "eyebrow": "08 / Booking",
     "title": "La prochaine date\ncommence ici.",
     "description": "Clubs, festivals et événements : contactez DJ Pirate pour les disponibilités et les conditions de booking.",
     "methods": [
@@ -391,8 +428,8 @@ const piratePressKit: PressKitConfig = {
   "gallery": {
     "eyebrow": "03 / Galerie",
     "title": "DJ Pirate en images",
-    "description": "Portraits, moments live et photos presse de DJ Pirate.",
-    "homepageTitle": "L’univers Pirate.",
+    "description": "Découvrez les 17 photos de DJ Pirate, DJ & Beatmaker basé à Paris : portraits, moments live et visuels presse pour les médias et organisateurs.",
+    "homepageTitle": "L’univers de DJ Pirate.",
     "homepageCtaLabel": "Voir les 17 photos",
     "images": [
       {
@@ -403,37 +440,44 @@ const piratePressKit: PressKitConfig = {
       },
       {
         "src": "/pirate/gallery/optimized/pirate-gallery-2.webp",
+        "hideFromPreview": true,
         "alt": "DJ Pirate — photo presse 02",
         "position": "center 35%"
       },
       {
         "src": "/pirate/gallery/optimized/pirate-gallery-3.webp",
+        "hideFromPreview": true,
         "alt": "DJ Pirate — photo presse 03",
         "position": "center 35%"
       },
       {
         "src": "/pirate/gallery/optimized/pirate-gallery-4.webp",
+        "hideFromPreview": true,
         "alt": "DJ Pirate — photo presse 04",
         "position": "center 35%"
       },
       {
         "src": "/pirate/gallery/optimized/pirate-gallery-5.webp",
+        "hideFromPreview": true,
         "alt": "DJ Pirate — photo presse 05",
         "position": "center 35%"
       },
       {
         "src": "/pirate/gallery/optimized/pirate-gallery-6.webp",
+        "hideFromPreview": true,
         "alt": "DJ Pirate — photo presse 06",
         "position": "center 35%",
         "size": "md:col-span-2"
       },
       {
         "src": "/pirate/gallery/optimized/pirate-gallery-7.webp",
+        "hideFromPreview": true,
         "alt": "DJ Pirate — photo presse 07",
         "position": "center 35%"
       },
       {
         "src": "/pirate/gallery/optimized/pirate-gallery-8.webp",
+        "hideFromPreview": true,
         "alt": "DJ Pirate — photo presse 08",
         "position": "center 35%"
       },
@@ -486,7 +530,7 @@ const piratePressKit: PressKitConfig = {
     ]
   },
   "footer": {
-    "availabilityText": "DJ & voix off · Paris · France & international",
+    "availabilityText": "Paris · France & international",
     "navigationLabel": "Navigation",
     "socialLabel": "Réseaux",
     "bookingLabel": "Booking",
@@ -503,12 +547,12 @@ export const djPirateClient: ClientConfig = {
   ],
   "vercelSubdomain": "dj-pirate-press-kit.vercel.app",
   "name": "DJ PIRATE",
-  "tagline": "DJ & voix off · Culture urbaine, énergie caribéenne",
+  "tagline": "DJ & Beatmaker · Urban & House music",
   "city": "Paris",
   "country": "France",
-  "category": "DJ & voix off",
-  "description": "DJ Pirate, DJ et voix off basé à Paris. Hip-Hop, R&B, Trap, House et musiques caribéennes. Bio, références, galerie, live et booking.",
-  "longBio": "Originaire de la Martinique, DJ Pirate grandit avec la musique. Du piano à la batterie, il développe son sens du rythme avant de se tourner vers le mixage. Son parcours prend son essor en Guadeloupe à partir de 2016. Dès 2017, il se produit en club dans un univers caribéen. En 2019, il rejoint la scène du festival All Day In. Son originalité, sa technique et ses qualités de speaker lui permettent de s’imposer auprès du public, notamment à Lyon où il joue régulièrement dans les soirées afro-caribéennes dès 2020. Basé à Paris, il compte neuf ans d’expérience dans le press kit 2026. Il s’est produit dans de nombreuses villes françaises, en Belgique et en Suisse, avec une identité qui relie musiques urbaines et influences caribéennes. Spécialiste du Hip-Hop, du Old School, du R&B et de la Trap US et française, il crée en 2025 l’émission Urban Session. Disponible sur SoundCloud et YouTube, elle met en lumière la culture et les talents de la scène urbaine.",
+  "category": "DJ & Beatmaker",
+  "description": "DJ Pirate, DJ & Beatmaker basé à Paris. Univers Urban & House. Bio, références, galerie, live et booking.",
+  "longBio": "Originaire de la Martinique, DJ Pirate grandit avec la musique. Du piano à la batterie, il développe son sens du rythme avant de se tourner vers le mixage. Son parcours prend son essor en Guadeloupe à partir de 2016. Dès 2017, il se produit en club dans un univers caribéen. En 2019, il rejoint la scène du festival All Day In. Son originalité et sa technique lui permettent de s’imposer auprès du public, notamment à Lyon où il joue régulièrement dans les soirées afro-caribéennes dès 2020. Basé à Paris, il s’est produit dans de nombreuses villes françaises, en Belgique et en Suisse, développant des sets qui oscillent entre Urban et House selon les lieux et les publics. Ses influences caribéennes (Shatta, Bouyon, Socca) viennent enrichir cette palette sans l’enfermer dans un genre. DJ & Beatmaker, il construit ses sets autour du groove et de la lecture du dancefloor. Il crée en 2025 l’émission Urban Session, disponible sur SoundCloud et YouTube, où il partage ses sets et ses productions aux côtés des talents qui l’inspirent.",
   "heroImage": "/pirate/hero/pirate-hero-yellow.png",
   "gallery": [
     {
@@ -615,17 +659,9 @@ export const djPirateClient: ClientConfig = {
   "testimonials": [],
   "bookingEmail": "dj.pirate.wolidey@gmail.com",
   "seo": {
-    "title": "DJ PIRATE | Press kit · DJ & voix off",
-    "description": "DJ Pirate, DJ et voix off basé à Paris. Hip-Hop, R&B, Trap, House et musiques caribéennes. Bio, références, galerie, live et booking.",
-    "keywords": [
-      "DJ Pirate",
-      "DJ Paris",
-      "DJ Martinique",
-      "Urban Session",
-      "DJ voix off",
-      "booking DJ Pirate"
-    ],
-    "ogImage": "/pirate/hero/pirate-hero-yellow.png"
+    "title": "DJ Pirate | DJ & Beatmaker · Urban & House à Paris · Booking & press kit",
+    "description": "DJ Pirate, DJ & Beatmaker basé à Paris. Univers Urban & House. Bio, références, galerie, live et booking.",
+    "ogImage": "/pirate/logo/pirate-logo-og.png"
   },
   "defaultTheme": "yellow",
   "defaultVariant": "impact"

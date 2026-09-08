@@ -492,6 +492,15 @@ export function HeroSection({
               <span className={`mt-2 block text-[var(--pk-accent)] md:mt-3 ${getHeroAccentSizeClass(hero.accent)}`}>{hero.accent}</span>
             </motion.h1>
 
+            {hero.genreLine && (
+              <motion.div
+                variants={heroReveal}
+                className="mt-2 text-lg font-black uppercase leading-[1.05] tracking-[0.01em] text-white/92 sm:text-xl md:mt-3 md:text-3xl xl:text-4xl"
+              >
+                {hero.genreLine}
+              </motion.div>
+            )}
+
             <motion.p
               variants={heroReveal}
               className="mt-5 max-w-[40rem] text-[0.96rem] leading-6 text-white/76 md:mt-6 md:text-[1.12rem] md:leading-8"
@@ -536,7 +545,7 @@ export function HeroSection({
           </motion.div>
 
           <motion.div
-            className="order-2 relative lg:justify-self-end"
+            className="pk-hero-visual order-2 relative lg:justify-self-end"
             variants={heroImageReveal}
           >
             <div className="absolute -left-4 top-8 h-28 w-28 rounded-full bg-[rgb(var(--pk-accent-rgb)/0.15)] blur-3xl md:-left-6 md:h-36 md:w-36" />
@@ -547,7 +556,7 @@ export function HeroSection({
                 <img
                   src={hero.image.src}
                   alt={hero.image.alt}
-                  className="h-[42svh] w-full rounded-[1.2rem] object-cover md:h-[66svh] md:rounded-[1.5rem]"
+                  className="pk-hero-portrait h-[42svh] w-full rounded-[1.2rem] object-cover md:h-[66svh] md:rounded-[1.5rem]"
                   style={{ objectPosition: hero.image.position ?? "center 22%" }}
                 />
               ) : (

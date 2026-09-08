@@ -32,7 +32,7 @@ export type ClientTestimonial = {
 export type ClientSeoConfig = {
   title: string;
   description: string;
-  keywords: string[];
+  keywords?: string[];
   ogImage: string;
   canonical?: string;
   favicon?: string;

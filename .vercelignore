@@ -23,3 +23,10 @@ public/logos
 public/dj-flo/*
 !public/dj-flo/optimized
 !public/dj-flo/optimized/**
+
+# DJ Pirate: publish web assets; retain high-resolution sources locally.
+public/pirate/gallery/*.jpg
+public/pirate/gallery/*.JPG
+!public/pirate/gallery/pirate-gallery-12.jpg
+public/pirate/videos/*.MOV
+public/pirate/logo/*.PNG

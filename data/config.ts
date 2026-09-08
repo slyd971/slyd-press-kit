@@ -118,6 +118,7 @@ export type PressKitConfig = {
       eyebrow: string;
       title: string;
       accent: string;
+      genreLine?: string;
       description: string;
       layout: "impact" | "interactive" | "showcase";
       image: {
@@ -157,7 +158,7 @@ export type PressKitConfig = {
     itemIconOverrides?: Record<string, { src: string; alt: string }>;
     regions: Array<{
       title: string;
-      icon: "map-pin" | "globe";
+      icon: "map-pin" | "globe" | "handshake";
       items: string[];
     }>;
   };
@@ -263,6 +264,20 @@ export type PressKitConfig = {
       title: string;
       items: string[];
     }>;
+  };
+  press?: {
+    eyebrow: string;
+    title: string;
+    description?: string;
+    downloads: Array<{
+      label: string;
+      format: string;
+      href: string;
+    }>;
+    bios: {
+      short: string;
+      long: string;
+    };
   };
   contact: {
     eyebrow: string;
