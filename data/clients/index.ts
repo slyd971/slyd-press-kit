@@ -3,7 +3,7 @@ import {
   djMackClient,
   djMackEnClient,
 } from "@/data/clients/dj-mack";
-import { djslydClient } from "@/data/clients/djslyd";
+import { djslydClient, djslydEnClient } from "@/data/clients/djslyd";
 import { paulKeranneClient } from "@/data/clients/paul-keranne";
 import { silverDjClient } from "@/data/clients/silver-dj";
 import { soyumiClient } from "@/data/clients/soyumi";
@@ -12,6 +12,7 @@ import type { ClientConfig } from "@/data/clients/types";
 
 export const clientRegistry = [
   djslydClient,
+  djslydEnClient,
   silverDjClient,
   soyumiClient,
   yoruboyDjClient,

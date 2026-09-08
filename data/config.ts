@@ -96,6 +96,7 @@ export type PressKitConfig = {
     logo: {
       src: string;
       alt: string;
+      showInHero?: boolean;
     };
   };
   navigation: {
@@ -238,6 +239,7 @@ export type PressKitConfig = {
     navigationLabel?: string;
     socialLabel?: string;
     bookingLabel?: string;
+    languageLabel?: string;
     fullGalleryLabel?: string;
     allVideosLabel?: string;
   };
