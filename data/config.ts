@@ -18,13 +18,15 @@ export type StatItem = {
 export type SocialLink = {
   label: string;
   href: string;
+  iconOnly?: boolean;
   icon:
     | "instagram"
     | "tiktok"
     | "youtube"
     | "spotify"
     | "soundcloud"
-    | "apple-music";
+    | "apple-music"
+    | "facebook";
 };
 
 export type ContactMethod = {
@@ -106,12 +108,14 @@ export type PressKitConfig = {
     cta: CtaLink;
   };
   heroSocials?: SocialLink[];
+  heroSocialsPosition?: "after-stats" | "before-stats";
   heroVariants: Record<
     "impact" | "interactive" | "showcase",
     {
       eyebrow: string;
       title: string;
       accent: string;
+      genreLine?: string;
       description: string;
       layout: "impact" | "interactive" | "showcase";
       image: {
