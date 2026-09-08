@@ -406,23 +406,21 @@ function HeroVariantBody({
             )}
           </div>
 
-          {!compactMobile && (
-            <div className={`mt-8 grid gap-3 md:mt-10 md:gap-4 ${statGridClass}`}>
-              {hero.stats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className={`${getHeroStatCardClass(stat.value)} flex flex-col items-center text-center`}
-                >
-                  <div className={getHeroStatValueClass(stat.value)}>
-                    {stat.value}
-                  </div>
-                  <div className={getHeroStatLabelClass(stat.label)}>
-                    {stat.label}
-                  </div>
+          <div className={`mt-8 grid gap-3 md:mt-10 md:gap-4 ${statGridClass}`}>
+            {hero.stats.map((stat) => (
+              <div
+                key={stat.label}
+                className={`${getHeroStatCardClass(stat.value)} flex flex-col items-center text-center`}
+              >
+                <div className={getHeroStatValueClass(stat.value)}>
+                  {stat.value}
                 </div>
-              ))}
-            </div>
-          )}
+                <div className={getHeroStatLabelClass(stat.label)}>
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div>
 
           {socialLinks}
         </div>
