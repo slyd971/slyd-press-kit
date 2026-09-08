@@ -4,6 +4,41 @@ import type { ClientConfig } from "@/data/clients/types";
 
 const djslydPressKitEn: PressKitConfig = {
   ...pressKitConfig,
+  navigation: {
+    ...pressKitConfig.navigation,
+    items: [
+      { label: "About", href: "#about" },
+      { label: "Clubs", href: "#clubs" },
+      { label: "Gallery", href: "#gallery" },
+      { label: "Videos", href: "#videos" },
+      { label: "Sound", href: "#sound" },
+      { label: "Spotify", href: "#spotify" },
+      { label: "Setup", href: "#rider" },
+      { label: "Contact", href: "#contact" },
+    ],
+  },
+  rider: {
+    eyebrow: "Technical setup",
+    title: "DJ SLY'D's\nsetup.",
+    hideHospitalityNote: true,
+    groups: [
+      {
+        title: "Table / mixer",
+        items: [
+          "Pioneer DDJ-REV5",
+          "OR Pioneer DJM-S11, DJM-S7 or DJM-S9 mixer",
+        ],
+      },
+      {
+        title: "Turntables",
+        items: ["Pioneer CDJ-2000 or CDJ-3000"],
+      },
+      {
+        title: "Accessories",
+        items: ["Wireless microphone", "Laptop stand"],
+      },
+    ],
+  },
   footer: {
     availabilityText:
       "Available for clubs, festivals, private events and institutional formats.",
@@ -48,6 +83,7 @@ const djslydPressKitFr: PressKitConfig = {
       { label: "Vidéos", href: "#videos" },
       { label: "Musique", href: "#sound" },
       { label: "Spotify", href: "#spotify" },
+      { label: "Setup", href: "#rider" },
       { label: "Contact", href: "#contact" },
     ],
     cta: {
@@ -245,6 +281,28 @@ const djslydPressKitFr: PressKitConfig = {
       "Visuels haute résolution disponibles pour promoteurs, marques et médias. Cliquez sur une image pour l'afficher en grand et la télécharger.",
     homepageTitle: "L'UNIVERS AUTOUR DE SLY'D",
     homepageCtaLabel: "Voir toute la galerie",
+  },
+  rider: {
+    eyebrow: "Setup technique",
+    title: "Le setup\nde DJ SLY'D.",
+    hideHospitalityNote: true,
+    groups: [
+      {
+        title: "Table / contrôleur",
+        items: [
+          "Pioneer DDJ-REV5",
+          "OU table de mixage Pioneer DJM-S11, DJM-S7 ou DJM-S9",
+        ],
+      },
+      {
+        title: "Platines",
+        items: ["Pioneer CDJ-2000 ou CDJ-3000"],
+      },
+      {
+        title: "Accessoires",
+        items: ["Micro HF", "Support ordinateur"],
+      },
+    ],
   },
   footer: {
     availabilityText:
