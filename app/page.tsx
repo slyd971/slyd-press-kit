@@ -107,6 +107,13 @@ export default async function Home({ params, searchParams }: HomeProps) {
   const variant = getTemplateVariant(
     resolvedSearchParams?.variant ?? pressKitEntry.defaultVariant
   );
+  // On mobile, DJ SLY'D uses the showcase hero (full-bleed background
+  // photo, text overlaid) instead of the desktop layout's side-by-side
+  // portrait card.
+  const mobileHeroVariant =
+    client.slug === "djslyd" || client.slug === "djslyd-en"
+      ? "showcase"
+      : undefined;
   const fontPreset = getFontPreset(resolvedSearchParams?.font);
   const showLocalSwitchers = await isLocalRequest();
   const navigation = getResolvedNavigation(pressKitConfig);
@@ -139,6 +146,7 @@ export default async function Home({ params, searchParams }: HomeProps) {
         heroVariants={pressKitConfig.heroVariants}
         heroSocials={pressKitConfig.heroSocials}
         variant={variant.id}
+        mobileVariant={mobileHeroVariant}
       />
       <AboutSection about={pressKitConfig.about} />
       <ClubsSection clubs={pressKitConfig.clubs} />

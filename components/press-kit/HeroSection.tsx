@@ -10,6 +10,7 @@ type HeroSectionProps = {
   heroVariants: PressKitConfig["heroVariants"];
   heroSocials?: PressKitConfig["heroSocials"];
   variant: TemplateVariantId;
+  mobileVariant?: TemplateVariantId;
 };
 
 function TikTokIcon({ className }: { className?: string }) {
@@ -176,11 +177,12 @@ function getHeroStatLabelClass(label: string) {
     : "mt-2 text-[8px] uppercase leading-[1.2] tracking-[0.12em] text-white/48 md:mt-2.5 md:min-h-[2.1rem] md:text-[10px] md:leading-[1.12] md:tracking-[0.14em]";
 }
 
-export function HeroSection({
+function HeroVariantBody({
   heroVariants,
   heroSocials = [],
   variant,
-}: HeroSectionProps) {
+  idOverride,
+}: HeroSectionProps & { idOverride?: string }) {
   const hero = heroVariants[variant];
   const hasHeroImage = Boolean(hero.image.src);
   const hasEyebrow = Boolean(hero.eyebrow.trim());
@@ -234,7 +236,7 @@ export function HeroSection({
   if (hero.layout === "interactive") {
     return (
       <section
-        id="home"
+        id={idOverride}
         className="relative scroll-mt-24 overflow-hidden pt-16 md:pt-20"
       >
         <div className="absolute inset-0">
@@ -335,7 +337,7 @@ export function HeroSection({
   if (hero.layout === "showcase") {
     return (
       <section
-        id="home"
+        id={idOverride}
         className="relative scroll-mt-24 overflow-hidden pt-16 md:pt-20"
       >
         <div className="absolute inset-0">
@@ -420,7 +422,7 @@ export function HeroSection({
   }
 
   return (
-    <section id="home" className="relative scroll-mt-24 overflow-hidden pt-20 md:pt-24">
+    <section id={idOverride} className="relative scroll-mt-24 overflow-hidden pt-20 md:pt-24">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_12%,rgb(var(--pk-accent-rgb)/0.22),transparent_24%),radial-gradient(circle_at_82%_8%,rgb(var(--pk-accent-rgb)/0.08),transparent_20%),radial-gradient(circle_at_50%_100%,rgba(255,255,255,0.035),transparent_30%)]" />
       <div className="absolute inset-0 opacity-15 [background-image:linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] [background-size:34px_34px]" />
       <div className="absolute inset-0 bg-gradient-to-b from-[var(--pk-bg)]/15 via-transparent to-[var(--pk-bg)]" />
@@ -555,4 +557,21 @@ export function HeroSection({
       </motion.div>
     </section>
   );
+}
+
+export function HeroSection({ mobileVariant, variant, ...rest }: HeroSectionProps) {
+  if (mobileVariant && mobileVariant !== variant) {
+    return (
+      <div id="home">
+        <div className="md:hidden">
+          <HeroVariantBody {...rest} variant={mobileVariant} />
+        </div>
+        <div className="hidden md:block">
+          <HeroVariantBody {...rest} variant={variant} />
+        </div>
+      </div>
+    );
+  }
+
+  return <HeroVariantBody {...rest} variant={variant} idOverride="home" />;
 }
