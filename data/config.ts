@@ -114,6 +114,8 @@ export type PressKitConfig = {
     {
       eyebrow: string;
       title: string;
+      /** Optionnel : surcharge les classes Tailwind du titre du hero "impact" (taille, tracking). */
+      titleClassName?: string;
       accent: string;
       genreLine?: string;
       description: string;

@@ -18,6 +18,11 @@ const djslydPressKitEn: PressKitConfig = {
   },
   heroVariants: {
     ...pressKitConfig.heroVariants,
+    impact: {
+      ...pressKitConfig.heroVariants.impact,
+      titleClassName:
+        "max-w-5xl text-[3.4rem] font-black uppercase leading-[0.88] tracking-[-0.01em] sm:text-6xl md:text-[5.5rem] xl:text-[8.6rem]",
+    },
     showcase: {
       ...pressKitConfig.heroVariants.showcase,
       ctas: [
@@ -102,6 +107,8 @@ const djslydPressKitFr: PressKitConfig = {
   heroVariants: {
     impact: {
       ...pressKitConfig.heroVariants.impact,
+      titleClassName:
+        "max-w-5xl text-[3.4rem] font-black uppercase leading-[0.88] tracking-[-0.01em] sm:text-6xl md:text-[5.5rem] xl:text-[8.6rem]",
       accent: "THE ECLECTIC",
       description:
         "Hip-hop, RnB, afro, baile funk et future beats font partie de son terrain de jeu de prédilection. Avec plus de 20 années d'expérience, SLY'D se distingue par sa capacité à surprendre le public avec des transitions toujours originales.",

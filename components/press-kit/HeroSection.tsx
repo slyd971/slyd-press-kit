@@ -504,7 +504,10 @@ function HeroVariantBody({
 
             <motion.h1
               variants={heroReveal}
-              className="max-w-4xl text-[2.55rem] font-black uppercase leading-[0.9] tracking-[-0.03em] sm:text-5xl md:text-7xl xl:text-[6.9rem]"
+              className={
+                hero.titleClassName ??
+                "max-w-4xl text-[2.55rem] font-black uppercase leading-[0.9] tracking-[-0.03em] sm:text-5xl md:text-7xl xl:text-[6.9rem]"
+              }
             >
               {logo?.src ? null : hero.title}
               <span className={`mt-2 block text-[var(--pk-accent)] md:mt-3 ${getHeroAccentSizeClass(hero.accent)}`}>{hero.accent}</span>
