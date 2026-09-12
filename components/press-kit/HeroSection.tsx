@@ -400,7 +400,11 @@ function HeroVariantBody({
             )}
 
             <h1 className="mt-5 text-[2.9rem] font-black uppercase leading-[0.88] tracking-tight text-white sm:text-6xl md:mt-7 md:text-7xl xl:text-[7.4rem]">
-              {hero.title}
+              {hero.titleClassName ? (
+                <span className={hero.titleClassName}>{hero.title}</span>
+              ) : (
+                hero.title
+              )}
               {hero.accent && (
                 <span className="mt-2 block text-[var(--pk-accent)] md:mt-3">{hero.accent}</span>
               )}
@@ -504,13 +508,14 @@ function HeroVariantBody({
 
             <motion.h1
               variants={heroReveal}
-              className={
-                hero.titleClassName ??
-                "max-w-4xl text-[2.55rem] font-black uppercase leading-[0.9] tracking-[-0.03em] sm:text-5xl md:text-7xl xl:text-[6.9rem]"
-              }
+              className="max-w-4xl text-[2.55rem] font-black uppercase leading-[0.9] tracking-[-0.03em] sm:text-5xl md:text-7xl xl:text-[6.9rem]"
             >
-              {logo?.src ? null : hero.title}
-              <span className={`mt-2 block text-[var(--pk-accent)] md:mt-3 ${hero.accentClassName ?? getHeroAccentSizeClass(hero.accent)}`}>{hero.accent}</span>
+              {logo?.src
+                ? null
+                : hero.titleClassName
+                  ? <span className={hero.titleClassName}>{hero.title}</span>
+                  : hero.title}
+              <span className={`mt-2 block text-[var(--pk-accent)] md:mt-3 ${getHeroAccentSizeClass(hero.accent)}`}>{hero.accent}</span>
             </motion.h1>
 
             {hero.genreLine && (

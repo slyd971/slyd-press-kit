@@ -114,11 +114,9 @@ export type PressKitConfig = {
     {
       eyebrow: string;
       title: string;
-      /** Optionnel : surcharge les classes Tailwind du titre du hero "impact" (taille, tracking). */
+      /** Optionnel : surcharge les classes Tailwind (taille, tracking) appliquées au texte du titre uniquement, sans affecter l'accent. */
       titleClassName?: string;
       accent: string;
-      /** Optionnel : surcharge les classes Tailwind de taille du texte d'accent du hero "impact". */
-      accentClassName?: string;
       genreLine?: string;
       description: string;
       layout: "impact" | "interactive" | "showcase";

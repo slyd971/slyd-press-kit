@@ -21,11 +21,12 @@ const djslydPressKitEn: PressKitConfig = {
     impact: {
       ...pressKitConfig.heroVariants.impact,
       titleClassName:
-        "max-w-5xl text-[3.4rem] font-black uppercase leading-[0.88] tracking-[-0.01em] sm:text-6xl md:text-[5.5rem] xl:text-[8.6rem]",
-      accentClassName: "text-2xl sm:text-3xl md:text-5xl xl:text-[4.4rem]",
+        "text-[3.6rem] font-black uppercase leading-[0.85] tracking-[-0.01em] sm:text-6xl md:text-[6.2rem] xl:text-[9.2rem]",
     },
     showcase: {
       ...pressKitConfig.heroVariants.showcase,
+      titleClassName:
+        "text-[4rem] font-black uppercase leading-[0.82] tracking-[-0.01em] sm:text-[5.2rem]",
       ctas: [
         { label: "Book SLY'D", href: "#contact", variant: "primary" },
         { label: "See the gallery", href: "/gallery", variant: "secondary" },
@@ -109,8 +110,7 @@ const djslydPressKitFr: PressKitConfig = {
     impact: {
       ...pressKitConfig.heroVariants.impact,
       titleClassName:
-        "max-w-5xl text-[3.4rem] font-black uppercase leading-[0.88] tracking-[-0.01em] sm:text-6xl md:text-[5.5rem] xl:text-[8.6rem]",
-      accentClassName: "text-2xl sm:text-3xl md:text-5xl xl:text-[4.4rem]",
+        "text-[3.6rem] font-black uppercase leading-[0.85] tracking-[-0.01em] sm:text-6xl md:text-[6.2rem] xl:text-[9.2rem]",
       accent: "THE ECLECTIC",
       description:
         "Hip-hop, RnB, afro, baile funk et future beats font partie de son terrain de jeu de prédilection. Avec plus de 20 années d'expérience, SLY'D se distingue par sa capacité à surprendre le public avec des transitions toujours originales.",
@@ -160,6 +160,8 @@ const djslydPressKitFr: PressKitConfig = {
     },
     showcase: {
       ...pressKitConfig.heroVariants.showcase,
+      titleClassName:
+        "text-[4rem] font-black uppercase leading-[0.82] tracking-[-0.01em] sm:text-[5.2rem]",
       eyebrow: "DJ Open Format • Paris • International",
       accent: "THE ECLECTIC",
       description:
