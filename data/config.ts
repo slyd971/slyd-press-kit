@@ -129,6 +129,8 @@ export type PressKitConfig = {
       };
       ctas: CtaLink[];
       stats: StatItem[];
+      /** Optionnel : "band" remplace les tuiles translucides par un bandeau plein éditorial. Défaut : "cards" (inchangé). */
+      statsStyle?: "cards" | "band";
       proofline?: string;
       mediaCard?: {
         label: string;

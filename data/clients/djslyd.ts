@@ -22,11 +22,13 @@ const djslydPressKitEn: PressKitConfig = {
       ...pressKitConfig.heroVariants.impact,
       titleClassName:
         "text-[3.6rem] font-black uppercase leading-[0.85] tracking-[-0.01em] sm:text-6xl md:text-[6.2rem] xl:text-[9.2rem]",
+      statsStyle: "band",
     },
     showcase: {
       ...pressKitConfig.heroVariants.showcase,
       titleClassName:
         "text-[4rem] font-black uppercase leading-[0.82] tracking-[-0.01em] sm:text-[5.2rem]",
+      statsStyle: "band",
       ctas: [
         { label: "Book SLY'D", href: "#contact", variant: "primary" },
         { label: "See the gallery", href: "/gallery", variant: "secondary" },
@@ -111,6 +113,7 @@ const djslydPressKitFr: PressKitConfig = {
       ...pressKitConfig.heroVariants.impact,
       titleClassName:
         "text-[3.6rem] font-black uppercase leading-[0.85] tracking-[-0.01em] sm:text-6xl md:text-[6.2rem] xl:text-[9.2rem]",
+      statsStyle: "band",
       accent: "THE ECLECTIC",
       description:
         "Hip-hop, RnB, afro, baile funk et future beats font partie de son terrain de jeu de prédilection. Avec plus de 20 années d'expérience, SLY'D se distingue par sa capacité à surprendre le public avec des transitions toujours originales.",
@@ -162,6 +165,7 @@ const djslydPressKitFr: PressKitConfig = {
       ...pressKitConfig.heroVariants.showcase,
       titleClassName:
         "text-[4rem] font-black uppercase leading-[0.82] tracking-[-0.01em] sm:text-[5.2rem]",
+      statsStyle: "band",
       eyebrow: "DJ Open Format • Paris • International",
       accent: "THE ECLECTIC",
       description:

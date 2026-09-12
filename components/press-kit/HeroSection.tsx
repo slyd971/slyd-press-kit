@@ -444,21 +444,39 @@ function HeroVariantBody({
 
           {socialsPosition === "before-stats" && socialLinks}
           {hasStats && (
-            <div className={`mt-8 grid gap-3 md:mt-10 md:gap-4 ${statGridClass}`}>
-              {hero.stats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className={`${getHeroStatCardClass()} flex flex-col items-center text-center`}
-                >
-                  <div className={getHeroStatValueClass(stat.value)}>
-                    {stat.value}
+            hero.statsStyle === "band" ? (
+              <div className="mt-8 flex flex-wrap divide-x divide-white/12 overflow-hidden rounded-[0.9rem] border border-white/10 bg-black/75 backdrop-blur-sm sm:mt-10">
+                {hero.stats.map((stat) => (
+                  <div
+                    key={stat.label}
+                    className="flex min-w-[45%] flex-1 flex-col items-center justify-center px-3 py-4 text-center sm:min-w-0 sm:px-5"
+                  >
+                    <div className={getHeroStatValueClass(stat.value)}>
+                      {stat.value}
+                    </div>
+                    <div className={getHeroStatLabelClass(stat.label)}>
+                      {stat.label}
+                    </div>
                   </div>
-                  <div className={getHeroStatLabelClass(stat.label)}>
-                    {stat.label}
+                ))}
+              </div>
+            ) : (
+              <div className={`mt-8 grid gap-3 md:mt-10 md:gap-4 ${statGridClass}`}>
+                {hero.stats.map((stat) => (
+                  <div
+                    key={stat.label}
+                    className={`${getHeroStatCardClass()} flex flex-col items-center text-center`}
+                  >
+                    <div className={getHeroStatValueClass(stat.value)}>
+                      {stat.value}
+                    </div>
+                    <div className={getHeroStatLabelClass(stat.label)}>
+                      {stat.label}
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )
           )}
 
           {socialsPosition !== "before-stats" && socialLinks}
@@ -608,6 +626,22 @@ function HeroVariantBody({
 
         {socialsPosition === "before-stats" && socialLinks}
         {hasStats && (
+          hero.statsStyle === "band" ? (
+            <motion.div
+              variants={heroReveal}
+              className="mt-5 flex flex-wrap divide-x divide-white/12 overflow-hidden rounded-[0.9rem] border border-white/10 bg-black/75 backdrop-blur-sm md:mt-7"
+            >
+              {hero.stats.map((stat) => (
+                <div
+                  key={stat.label}
+                  className="flex min-w-[45%] flex-1 flex-col items-center justify-center px-3 py-4 text-center md:min-w-0 md:px-5 md:py-5"
+                >
+                  <div className={getHeroStatValueClass(stat.value)}>{stat.value}</div>
+                  <div className={getHeroStatLabelClass(stat.label)}>{stat.label}</div>
+                </div>
+              ))}
+            </motion.div>
+          ) : (
           <motion.div
             variants={heroReveal}
             className={`mt-5 grid gap-2.5 md:mt-7 md:gap-3 ${statGridClass}`}
@@ -623,6 +657,7 @@ function HeroVariantBody({
               </div>
             ))}
           </motion.div>
+          )
         )}
 
         {proofline ? <motion.div variants={heroReveal}>{proofline}</motion.div> : null}
