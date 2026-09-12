@@ -510,7 +510,7 @@ function HeroVariantBody({
               }
             >
               {logo?.src ? null : hero.title}
-              <span className={`mt-2 block text-[var(--pk-accent)] md:mt-3 ${getHeroAccentSizeClass(hero.accent)}`}>{hero.accent}</span>
+              <span className={`mt-2 block text-[var(--pk-accent)] md:mt-3 ${hero.accentClassName ?? getHeroAccentSizeClass(hero.accent)}`}>{hero.accent}</span>
             </motion.h1>
 
             {hero.genreLine && (
