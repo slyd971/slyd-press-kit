@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Languages } from "lucide-react";
 import type { PressKitConfig } from "@/data/config";
 import type { ClientConfig } from "@/data/clients/types";
 
@@ -18,15 +19,6 @@ function getSocialLinks(client: ClientConfig) {
     { label: "YouTube", href: client.socials.website },
     { label: "Spotify", href: client.socials.spotify },
   ].filter((item): item is { label: string; href: string } => Boolean(item.href));
-}
-
-function getLanguageFlag(label: string) {
-  const normalizedLabel = label.trim().toUpperCase();
-
-  if (normalizedLabel === "FR") return "🇫🇷";
-  if (normalizedLabel === "EN") return "🇬🇧";
-
-  return "🌐";
 }
 
 export function Footer({
@@ -156,9 +148,7 @@ export function Footer({
                         : "border-white/10 bg-white/[0.03] text-white/62 hover:border-white/20 hover:bg-white/[0.07] hover:text-white",
                     ].join(" ")}
                   >
-                    <span aria-hidden="true" className="text-base leading-none">
-                      {getLanguageFlag(item.label)}
-                    </span>
+                    <Languages aria-hidden="true" className="h-3.5 w-3.5" />
                     <span>{item.label}</span>
                   </Link>
                 ))}
