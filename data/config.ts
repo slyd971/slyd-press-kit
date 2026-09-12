@@ -215,6 +215,8 @@ export type PressKitConfig = {
     categories: string[];
     itemLabel: string;
     hideItemText?: boolean;
+    /** Masque uniquement le label répété (ex: "Marque / Média") au-dessus de chaque nom, sans cacher le nom lui-même. */
+    hideItemLabel?: boolean;
     hideItemFrame?: boolean;
     items: Array<{ name: string; logo?: string; logoInvert?: boolean; href?: string } | string>;
     fit?: {

@@ -35,6 +35,10 @@ const djslydPressKitEn: PressKitConfig = {
       ],
     },
   },
+  brands: {
+    ...pressKitConfig.brands,
+    hideItemLabel: true,
+  },
   rider: {
     eyebrow: "Technical setup",
     title: "DJ SLY'D's\nsetup.",
@@ -276,6 +280,7 @@ const djslydPressKitFr: PressKitConfig = {
       "Ces formats demandent des sets plus courts, des morceaux identifiables rapidement et une présence adaptée aux photos, vidéos et prises de parole.",
     categories: ["Mode", "Sportswear", "Médias", "Événements de marque"],
     itemLabel: "Marque / Média",
+    hideItemLabel: true,
     fit: {
       eyebrow: "Pourquoi ça fonctionne",
       title: "Un profil habitué aux clubs comme aux événements de marque.",

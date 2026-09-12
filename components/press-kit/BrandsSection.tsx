@@ -11,11 +11,13 @@ function BrandCard({
   item,
   itemLabel,
   hideItemText,
+  hideItemLabel,
   hideItemFrame,
 }: {
   item: BrandItem;
   itemLabel: string;
   hideItemText?: boolean;
+  hideItemLabel?: boolean;
   hideItemFrame?: boolean;
 }) {
   const name = typeof item === "string" ? item : item.name;
@@ -30,10 +32,14 @@ function BrandCard({
     <div className={cardClassName}>
       {!hideItemText && (
         <div>
-          <div className="text-[8px] uppercase tracking-[0.22em] text-white/35 md:text-[9px] md:tracking-[0.28em]">
-            {itemLabel}
-          </div>
-          <div className="mt-2 text-sm font-black uppercase leading-tight md:text-base">
+          {!hideItemLabel && (
+            <div className="text-[8px] uppercase tracking-[0.22em] text-white/35 md:text-[9px] md:tracking-[0.28em]">
+              {itemLabel}
+            </div>
+          )}
+          <div
+            className={`text-sm font-black uppercase leading-tight md:text-base ${hideItemLabel ? "" : "mt-2"}`}
+          >
             {name}
           </div>
         </div>
@@ -124,6 +130,7 @@ export function BrandsSection({ brands }: BrandsSectionProps) {
                   item={item}
                   itemLabel={brands.itemLabel}
                   hideItemText={brands.hideItemText}
+                  hideItemLabel={brands.hideItemLabel}
                   hideItemFrame={brands.hideItemFrame}
                 />
               );
