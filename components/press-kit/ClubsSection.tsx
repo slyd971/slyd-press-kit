@@ -34,6 +34,16 @@ type ClubsSectionProps = {
   clubs: PressKitConfig["clubs"];
 };
 
+type RegionItem = PressKitConfig["clubs"]["regions"][number]["items"][number];
+
+function getItemName(item: RegionItem): string {
+  return typeof item === "string" ? item : item.name;
+}
+
+function isFeaturedItem(item: RegionItem): boolean {
+  return typeof item !== "string" && Boolean(item.featured);
+}
+
 const iconMap = {
   globe: Globe2,
   "map-pin": MapPin,
@@ -61,6 +71,10 @@ export function ClubsSection({ clubs }: ClubsSectionProps) {
         <div className="grid gap-8 md:grid-cols-2 md:gap-16">
           {clubs.regions.map((region) => {
             const Icon = iconMap[region.icon];
+            const featuredItems = region.items.filter(isFeaturedItem);
+            const regularItems = region.items.filter(
+              (item) => !isFeaturedItem(item)
+            );
 
             return (
               <div key={region.title}>
@@ -69,14 +83,30 @@ export function ClubsSection({ clubs }: ClubsSectionProps) {
                   {region.title}
                 </h3>
 
+                {featuredItems.length > 0 && (
+                  <div className="mb-3 grid grid-cols-1 gap-3 sm:grid-cols-2 md:mb-4">
+                    {featuredItems.map((item) => (
+                      <div
+                        key={getItemName(item)}
+                        className="rounded-xl border border-[rgb(var(--pk-accent-rgb)/0.4)] bg-[rgb(var(--pk-accent-rgb)/0.08)] p-3.5 text-base font-bold text-white md:p-4 md:text-lg"
+                      >
+                        <ClubItem
+                          item={getItemName(item)}
+                          iconOverrides={clubs.itemIconOverrides}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                )}
+
                 <div className="grid grid-cols-2 gap-3 text-sm text-gray-300 md:gap-4 md:text-base">
-                  {region.items.map((item) => (
+                  {regularItems.map((item) => (
                     <div
-                      key={item}
+                      key={getItemName(item)}
                       className="rounded-lg border border-white/10 p-2.5 md:p-3"
                     >
                       <ClubItem
-                        item={item}
+                        item={getItemName(item)}
                         iconOverrides={clubs.itemIconOverrides}
                       />
                     </div>

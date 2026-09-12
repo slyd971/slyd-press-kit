@@ -160,7 +160,8 @@ export type PressKitConfig = {
     regions: Array<{
       title: string;
       icon: "map-pin" | "globe";
-      items: string[];
+      /** Un item peut rester une simple string, ou être mis en avant via { name, featured: true }. */
+      items: Array<string | { name: string; featured?: boolean }>;
     }>;
   };
   sound: {
@@ -439,11 +440,11 @@ export const pressKitConfig: PressKitConfig = {
         icon: "map-pin",
         items: [
           "Wanderlust",
-          "Palais de Tokyo",
+          { name: "Palais de Tokyo", featured: true },
           "Palais Maillot",
           "Deflower",
           "Mix Club",
-          "Nouveau Casino",
+          { name: "Nouveau Casino", featured: true },
           "Redlight",
           "Bounce Club (Marseille)",
           "Chez Papillon",
@@ -451,21 +452,21 @@ export const pressKitConfig: PressKitConfig = {
           "Beefcut",
           "Libertalia",
           "Gypsy Twister",
-          "Barba Negra",
         ],
       },
       {
         title: "International",
         icon: "globe",
         items: [
-          "Singapore",
+          { name: "Singapore", featured: true },
           "Manchester",
           "Zagreb",
           "Sion",
           "Berlin",
-          "Miami",
+          { name: "Miami", featured: true },
           "Stuttgart",
           "Abidjan",
+          "Barba Negra",
         ],
       },
     ],
