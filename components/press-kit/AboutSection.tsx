@@ -26,21 +26,27 @@ export function AboutSection({ about }: AboutSectionProps) {
                 {about.title}
               </h2>
 
-              <div className="mt-7 md:mt-10">
-                <div className="mb-2 text-[9px] uppercase tracking-[0.26em] text-white/30 md:mb-3 md:text-[10px] md:tracking-[0.35em]">
-                  {about.signatureLabel}
+              {about.signatureQuote && (
+                <div className="mt-7 md:mt-10">
+                  {about.signatureLabel && (
+                    <div className="mb-2 text-[9px] uppercase tracking-[0.26em] text-white/30 md:mb-3 md:text-[10px] md:tracking-[0.35em]">
+                      {about.signatureLabel}
+                    </div>
+                  )}
+
+                  <p className="text-lg font-semibold leading-[1.35] text-white sm:text-xl md:text-3xl md:leading-[1.4]">
+                    "{about.signatureQuote}"
+                  </p>
+
+                  <div className="mt-3 h-px w-16 bg-[var(--pk-accent)] md:mt-4 md:w-20" />
                 </div>
+              )}
 
-                <p className="text-lg font-semibold leading-[1.35] text-white sm:text-xl md:text-3xl md:leading-[1.4]">
-                  "{about.signatureQuote}"
+              {about.supportingText && (
+                <p className="mt-6 max-w-md text-sm leading-6 text-white/58 md:mt-8 md:text-lg md:leading-8">
+                  {about.supportingText}
                 </p>
-
-                <div className="mt-3 h-px w-16 bg-[var(--pk-accent)] md:mt-4 md:w-20" />
-              </div>
-
-              <p className="mt-6 max-w-md text-sm leading-6 text-white/58 md:mt-8 md:text-lg md:leading-8">
-                {about.supportingText}
-              </p>
+              )}
 
               <div className="mt-6 flex flex-wrap gap-2.5 md:mt-8 md:gap-3">
                 {about.tags.map((tag) => (
