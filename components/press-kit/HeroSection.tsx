@@ -172,12 +172,8 @@ function getHeroStatValueClass(value: string) {
     : "max-w-[11ch] text-[1.45rem] font-black uppercase leading-[0.92] text-[var(--pk-accent)] md:text-[1.72rem] md:leading-[0.92] xl:text-[1.92rem]";
 }
 
-function getHeroStatCardClass(value: string) {
-  const isLongValue = value.trim().length >= 12;
-
-  return isLongValue
-    ? "rounded-[1.15rem] border border-white/8 bg-white/[0.035] p-3 shadow-[0_12px_28px_rgba(0,0,0,0.22)] backdrop-blur-sm transition duration-300 hover:border-white/16 hover:bg-white/[0.05] md:min-h-[7.2rem] md:rounded-[1.45rem] md:px-4 md:py-3.5"
-    : "rounded-[1.15rem] border border-white/8 bg-white/[0.035] p-3 shadow-[0_12px_28px_rgba(0,0,0,0.22)] backdrop-blur-sm transition duration-300 hover:border-white/16 hover:bg-white/[0.05] md:min-h-[7.2rem] md:rounded-[1.45rem] md:px-4 md:py-3.5";
+function getHeroStatCardClass() {
+  return "rounded-[1.15rem] border border-white/8 bg-white/[0.035] p-3 shadow-[0_12px_28px_rgba(0,0,0,0.22)] backdrop-blur-sm transition duration-300 hover:border-white/16 hover:bg-white/[0.05] md:min-h-[7.2rem] md:rounded-[1.45rem] md:px-4 md:py-3.5";
 }
 
 function getHeroAccentSizeClass(accent: string) {
@@ -341,7 +337,7 @@ function HeroVariantBody({
                 {hero.stats.map((stat) => (
                   <div
                     key={stat.label}
-                    className={`${getHeroStatCardClass(stat.value)} flex flex-col items-center text-center`}
+                    className={`${getHeroStatCardClass()} flex flex-col items-center text-center`}
                   >
                     <div className={getHeroStatValueClass(stat.value)}>
                       {stat.value}
@@ -452,7 +448,7 @@ function HeroVariantBody({
               {hero.stats.map((stat) => (
                 <div
                   key={stat.label}
-                  className={`${getHeroStatCardClass(stat.value)} flex flex-col items-center text-center`}
+                  className={`${getHeroStatCardClass()} flex flex-col items-center text-center`}
                 >
                   <div className={getHeroStatValueClass(stat.value)}>
                     {stat.value}
@@ -619,7 +615,7 @@ function HeroVariantBody({
             {hero.stats.map((stat, index) => (
               <div
                 key={stat.label}
-                className={`${getHeroStatCardClass(stat.value)} pk-hero-stat-card flex flex-col items-center justify-center text-center`}
+                className={`${getHeroStatCardClass()} pk-hero-stat-card flex flex-col items-center justify-center text-center`}
                 style={{ animationDelay: `${120 + index * 90}ms` }}
               >
                 <div className={getHeroStatValueClass(stat.value)}>{stat.value}</div>
