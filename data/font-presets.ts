@@ -1,4 +1,17 @@
 import type { CSSProperties } from "react";
+import { Anton, Manrope } from "next/font/google";
+
+const clubDisplayFont = Anton({
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+});
+
+const clubBodyFont = Manrope({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
 
 export type FontPresetId = "studio" | "editorial" | "club";
 
@@ -27,10 +40,8 @@ export const fontPresets: Record<FontPresetId, FontPreset> = {
   club: {
     id: "club",
     label: "Club",
-    bodyFamily:
-      '"Trebuchet MS", "Avenir Next", "Segoe UI", sans-serif',
-    displayFamily:
-      'Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif',
+    bodyFamily: `${clubBodyFont.style.fontFamily}, "Segoe UI", sans-serif`,
+    displayFamily: `${clubDisplayFont.style.fontFamily}, Impact, sans-serif`,
   },
 };
 

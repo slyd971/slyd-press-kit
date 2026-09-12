@@ -1,5 +1,6 @@
 import type { GalleryImage, PressKitConfig } from "@/data/config";
 import type { TemplateId, TemplateVariantId } from "@/data/templates";
+import type { FontPresetId } from "@/data/font-presets";
 
 export type ClientSocials = {
   instagram?: string;
@@ -58,6 +59,8 @@ export type ClientConfig = {
   seo: ClientSeoConfig;
   defaultTheme: TemplateId;
   defaultVariant: TemplateVariantId;
+  /** Optionnel : surcharge le défaut "studio" (police système) pour ce client uniquement. */
+  defaultFontPreset?: FontPresetId;
   pressKit: PressKitConfig;
   hideFromSwitcher?: boolean;
   languageSwitch?: {

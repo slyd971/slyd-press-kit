@@ -398,6 +398,7 @@ export const djslydEnClient: ClientConfig = {
   },
   defaultTheme: "red",
   defaultVariant: "impact",
+  defaultFontPreset: "club",
   pressKit: djslydPressKitEn,
   hideFromSwitcher: true,
   languageSwitch: [

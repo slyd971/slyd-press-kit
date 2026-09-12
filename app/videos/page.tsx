@@ -59,7 +59,9 @@ export default async function VideosPage({ searchParams }: VideosPageProps) {
   const theme = getTemplateTheme(
     resolvedSearchParams?.template ?? pressKitEntry.defaultTheme
   );
-  const fontPreset = getFontPreset(resolvedSearchParams?.font);
+  const fontPreset = getFontPreset(
+    resolvedSearchParams?.font ?? client.defaultFontPreset
+  );
   const showLocalSwitchers = await isLocalRequest();
   const navigation = getResolvedNavigation(pressKitConfig);
   const homeHref = getArtistHomeHref(pressKitEntry.id);

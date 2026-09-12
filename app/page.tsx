@@ -114,7 +114,9 @@ export default async function Home({ params, searchParams }: HomeProps) {
     client.slug === "djslyd" || client.slug === "djslyd-en"
       ? "showcase"
       : undefined;
-  const fontPreset = getFontPreset(resolvedSearchParams?.font);
+  const fontPreset = getFontPreset(
+    resolvedSearchParams?.font ?? client.defaultFontPreset
+  );
   const showLocalSwitchers = await isLocalRequest();
   const navigation = getResolvedNavigation(pressKitConfig);
   const galleryHref = getArtistGalleryHref(pressKitEntry.id);
