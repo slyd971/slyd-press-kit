@@ -1,6 +1,7 @@
 import type { GalleryImage, PressKitConfig } from "@/data/config";
 import type { TemplateId, TemplateVariantId } from "@/data/templates";
 import type { FontPresetId } from "@/data/font-presets";
+import type { ShapePresetId } from "@/data/shape-presets";
 
 export type ClientSocials = {
   instagram?: string;
@@ -61,6 +62,8 @@ export type ClientConfig = {
   defaultVariant: TemplateVariantId;
   /** Optionnel : surcharge le défaut "studio" (police système) pour ce client uniquement. */
   defaultFontPreset?: FontPresetId;
+  /** Optionnel : surcharge le défaut "pill" (coins en pilule) pour ce client uniquement. */
+  defaultShapePreset?: ShapePresetId;
   pressKit: PressKitConfig;
   hideFromSwitcher?: boolean;
   languageSwitch?: {

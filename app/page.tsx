@@ -15,6 +15,7 @@ import { VideoSection } from "@/components/press-kit/VideoSection";
 import { VisionSection } from "@/components/press-kit/VisionSection";
 import { YoutubeSection } from "@/components/press-kit/YoutubeSection";
 import { getFontPreset, getFontStyle } from "@/data/font-presets";
+import { getShapePreset, getShapeStyle } from "@/data/shape-presets";
 import {
   createPressKitEntry,
   getArtistGalleryHref,
@@ -117,6 +118,7 @@ export default async function Home({ params, searchParams }: HomeProps) {
   const fontPreset = getFontPreset(
     resolvedSearchParams?.font ?? client.defaultFontPreset
   );
+  const shapePreset = getShapePreset(client.defaultShapePreset);
   const showLocalSwitchers = await isLocalRequest();
   const navigation = getResolvedNavigation(pressKitConfig);
   const galleryHref = getArtistGalleryHref(pressKitEntry.id);
@@ -127,7 +129,11 @@ export default async function Home({ params, searchParams }: HomeProps) {
 
   return (
     <main
-      style={{ ...getTemplateStyle(theme), ...getFontStyle(fontPreset) }}
+      style={{
+        ...getTemplateStyle(theme),
+        ...getFontStyle(fontPreset),
+        ...getShapeStyle(shapePreset),
+      }}
       className="relative overflow-x-hidden bg-[var(--pk-bg)] text-[var(--pk-text)] selection:bg-[var(--pk-accent)] selection:text-white"
     >
       {showLocalSwitchers && (

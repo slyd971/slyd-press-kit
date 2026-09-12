@@ -280,7 +280,7 @@ function HeroVariantBody({
         <div className="relative mx-auto flex min-h-[88svh] max-w-7xl flex-col justify-center px-4 py-10 md:min-h-[82svh] md:px-6 md:py-12 lg:min-h-[78svh] lg:justify-start lg:pt-16 lg:pb-8">
           <div className="w-full max-w-3xl">
             {hasEyebrow && (
-              <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/35 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-white/75 backdrop-blur-md md:px-4 md:py-2 md:text-[11px] md:tracking-[0.28em]">
+              <div className="inline-flex items-center gap-2 rounded-[var(--pk-radius-badge,9999px)] border border-white/10 bg-black/35 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-white/75 backdrop-blur-md md:px-4 md:py-2 md:text-[11px] md:tracking-[0.28em]">
                 <Disc3 className="h-3 w-3 text-[var(--pk-accent)] md:h-3.5 md:w-3.5" />
                 {hero.eyebrow}
               </div>
@@ -393,7 +393,7 @@ function HeroVariantBody({
         >
           <div className={`w-full max-w-3xl ${compactMobile ? "flex flex-1 flex-col items-center pt-[30vh] md:block md:flex-none md:pt-0" : ""}`}>
             {hasEyebrow && !compactMobile && (
-              <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/35 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-white/75 backdrop-blur-md md:px-4 md:py-2 md:text-[11px] md:tracking-[0.28em]">
+              <div className="inline-flex items-center gap-2 rounded-[var(--pk-radius-badge,9999px)] border border-white/10 bg-black/35 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-white/75 backdrop-blur-md md:px-4 md:py-2 md:text-[11px] md:tracking-[0.28em]">
                 <Disc3 className="h-3 w-3 text-[var(--pk-accent)] md:h-3.5 md:w-3.5" />
                 {hero.eyebrow}
               </div>
@@ -429,8 +429,8 @@ function HeroVariantBody({
                   href={cta.href}
                   className={
                     cta.variant === "primary"
-                      ? "rounded-full bg-[var(--pk-accent)] px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-white transition hover:-translate-y-0.5 hover:bg-[var(--pk-accent-strong)] md:px-7 md:py-3 md:text-sm md:tracking-[0.22em]"
-                      : "rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-white transition hover:border-white/30 hover:bg-white/10 md:px-7 md:py-3 md:text-sm md:tracking-[0.22em]"
+                      ? "rounded-[var(--pk-radius-cta,9999px)] bg-[var(--pk-accent)] px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-white transition hover:-translate-y-0.5 hover:bg-[var(--pk-accent-strong)] md:px-7 md:py-3 md:text-sm md:tracking-[0.22em]"
+                      : "rounded-[var(--pk-radius-cta,9999px)] border border-white/15 bg-white/5 px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-white transition hover:border-white/30 hover:bg-white/10 md:px-7 md:py-3 md:text-sm md:tracking-[0.22em]"
                   }
                 >
                   {cta.label}
@@ -488,7 +488,7 @@ function HeroVariantBody({
             {hasEyebrow && (
               <motion.div
                 variants={heroReveal}
-                className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-white/68 backdrop-blur-sm md:mb-5 md:px-4 md:py-2 md:text-[11px] md:tracking-[0.28em]"
+                className="mb-4 inline-flex items-center gap-2 rounded-[var(--pk-radius-badge,9999px)] border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-white/68 backdrop-blur-sm md:mb-5 md:px-4 md:py-2 md:text-[11px] md:tracking-[0.28em]"
               >
                 <Disc3 className="h-3 w-3 text-[var(--pk-accent)] md:h-3.5 md:w-3.5" />
                 {hero.eyebrow}
@@ -545,8 +545,8 @@ function HeroVariantBody({
                     href={cta.href}
                     className={
                       cta.variant === "primary"
-                        ? "inline-flex min-w-0 items-center justify-center rounded-full bg-[var(--pk-accent)] px-4 py-3 text-center text-[10px] font-semibold uppercase tracking-[0.14em] text-white shadow-[0_18px_45px_rgb(var(--pk-accent-rgb)/0.22)] transition hover:-translate-y-0.5 hover:bg-[var(--pk-accent-strong)] md:px-7 md:text-[11px] md:tracking-[0.22em]"
-                        : "inline-flex min-w-0 items-center justify-center rounded-full border border-white/14 bg-white/[0.04] px-3 py-3 text-center text-[10px] font-semibold uppercase tracking-[0.12em] text-white/82 transition hover:-translate-y-0.5 hover:border-white/22 hover:bg-white/[0.08] hover:text-white md:px-5 md:text-[11px] md:tracking-[0.18em]"
+                        ? "inline-flex min-w-0 items-center justify-center rounded-[var(--pk-radius-cta,9999px)] bg-[var(--pk-accent)] px-4 py-3 text-center text-[10px] font-semibold uppercase tracking-[0.14em] text-white shadow-[0_18px_45px_rgb(var(--pk-accent-rgb)/0.22)] transition hover:-translate-y-0.5 hover:bg-[var(--pk-accent-strong)] md:px-7 md:text-[11px] md:tracking-[0.22em]"
+                        : "inline-flex min-w-0 items-center justify-center rounded-[var(--pk-radius-cta,9999px)] border border-white/14 bg-white/[0.04] px-3 py-3 text-center text-[10px] font-semibold uppercase tracking-[0.12em] text-white/82 transition hover:-translate-y-0.5 hover:border-white/22 hover:bg-white/[0.08] hover:text-white md:px-5 md:text-[11px] md:tracking-[0.18em]"
                     }
                   >
                     {cta.label}
@@ -559,8 +559,8 @@ function HeroVariantBody({
                     rel={cta.external ? "noreferrer" : undefined}
                     className={
                       cta.variant === "primary"
-                        ? "inline-flex min-w-0 items-center justify-center rounded-full bg-[var(--pk-accent)] px-4 py-3 text-center text-[10px] font-semibold uppercase tracking-[0.14em] text-white shadow-[0_18px_45px_rgb(var(--pk-accent-rgb)/0.22)] transition hover:-translate-y-0.5 hover:bg-[var(--pk-accent-strong)] md:px-7 md:text-[11px] md:tracking-[0.22em]"
-                        : "inline-flex min-w-0 items-center justify-center rounded-full border border-white/14 bg-white/[0.04] px-3 py-3 text-center text-[10px] font-semibold uppercase tracking-[0.12em] text-white/82 transition hover:-translate-y-0.5 hover:border-white/22 hover:bg-white/[0.08] hover:text-white md:px-5 md:text-[11px] md:tracking-[0.18em]"
+                        ? "inline-flex min-w-0 items-center justify-center rounded-[var(--pk-radius-cta,9999px)] bg-[var(--pk-accent)] px-4 py-3 text-center text-[10px] font-semibold uppercase tracking-[0.14em] text-white shadow-[0_18px_45px_rgb(var(--pk-accent-rgb)/0.22)] transition hover:-translate-y-0.5 hover:bg-[var(--pk-accent-strong)] md:px-7 md:text-[11px] md:tracking-[0.22em]"
+                        : "inline-flex min-w-0 items-center justify-center rounded-[var(--pk-radius-cta,9999px)] border border-white/14 bg-white/[0.04] px-3 py-3 text-center text-[10px] font-semibold uppercase tracking-[0.12em] text-white/82 transition hover:-translate-y-0.5 hover:border-white/22 hover:bg-white/[0.08] hover:text-white md:px-5 md:text-[11px] md:tracking-[0.18em]"
                     }
                   >
                     {cta.label}

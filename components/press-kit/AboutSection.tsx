@@ -52,7 +52,7 @@ export function AboutSection({ about }: AboutSectionProps) {
                 {about.tags.map((tag) => (
                   <div
                     key={tag}
-                    className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[9px] uppercase tracking-[0.18em] text-white/60 md:px-4 md:py-2 md:text-[11px] md:tracking-[0.28em]"
+                    className="rounded-[var(--pk-radius-badge,9999px)] border border-white/10 bg-white/5 px-3 py-1.5 text-[9px] uppercase tracking-[0.18em] text-white/60 md:px-4 md:py-2 md:text-[11px] md:tracking-[0.28em]"
                   >
                     {tag}
                   </div>
