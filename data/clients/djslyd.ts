@@ -392,7 +392,7 @@ export const djslydEnClient: ClientConfig = {
       "DJ booking Paris",
       "event DJ France",
     ],
-    ogImage: "/press-kit/og-share.jpg",
+    ogImage: "/press-kit/og-presskit-slyd.jpg",
     favicon: "/press-kit/favicon.ico",
     canonical: "https://djslyd.presskit.fr/",
   },
