@@ -39,7 +39,7 @@ import {
 } from "@/lib/clients/server";
 import { isLocalRequest } from "@/lib/is-local-request";
 import { buildClientMetadata } from "@/lib/seo";
-import { getSlydPresentationClass, isSlydPoster } from "@/components/press-kit/slyd/presentation";
+import { getSlydClubsTitle, getSlydPresentationClass, isSlydPoster } from "@/components/press-kit/slyd/presentation";
 import kitStyles from "@/components/press-kit/kit.module.css";
 
 type HomeProps = {
@@ -153,7 +153,7 @@ export default async function Home({ params, searchParams }: HomeProps) {
       />
       <AboutSection about={pressKitConfig.about} slydPoster={slydPoster} />
       <ClubsSection
-        clubs={pressKitConfig.clubs}
+        clubs={slydPoster ? { ...pressKitConfig.clubs, title: getSlydClubsTitle(client) } : pressKitConfig.clubs}
         slydPoster={slydPoster}
         language={client.slug === "djslyd-en" ? "en" : "fr"}
         brandReferences={slydPoster ? pressKitConfig.brands.items : undefined}
