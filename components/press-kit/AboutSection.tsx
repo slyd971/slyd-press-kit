@@ -2,9 +2,10 @@ import type { PressKitConfig } from "@/data/config";
 
 type AboutSectionProps = {
   about: PressKitConfig["about"];
+  slydPoster?: boolean;
 };
 
-export function AboutSection({ about }: AboutSectionProps) {
+export function AboutSection({ about, slydPoster = false }: AboutSectionProps) {
   return (
     <section
       id="about"
@@ -26,7 +27,7 @@ export function AboutSection({ about }: AboutSectionProps) {
                 {about.title}
               </h2>
 
-              <div className="mt-7 md:mt-10">
+              {(!slydPoster || about.signatureLabel || about.signatureQuote) && <div className="mt-7 md:mt-10">
                 <div className="mb-2 text-[9px] uppercase tracking-[0.26em] text-white/30 md:mb-3 md:text-[10px] md:tracking-[0.35em]">
                   {about.signatureLabel}
                 </div>
@@ -36,26 +37,19 @@ export function AboutSection({ about }: AboutSectionProps) {
                 </p>
 
                 <div className="mt-3 h-px w-16 bg-[var(--pk-accent)] md:mt-4 md:w-20" />
-              </div>
+              </div>}
 
-              <p className="mt-6 max-w-md text-sm leading-6 text-white/58 md:mt-8 md:text-lg md:leading-8">
+              {(!slydPoster || about.supportingText) && <p className="mt-6 max-w-md text-sm leading-6 text-white/58 md:mt-8 md:text-lg md:leading-8">
                 {about.supportingText}
-              </p>
+              </p>}
 
-              <div className="mt-6 flex flex-wrap gap-2.5 md:mt-8 md:gap-3">
-                {about.tags.map((tag) => (
-                  <div
-                    key={tag}
-                    className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[9px] uppercase tracking-[0.18em] text-white/60 md:px-4 md:py-2 md:text-[11px] md:tracking-[0.28em]"
-                  >
-                    {tag}
-                  </div>
-                ))}
-              </div>
+              <ul data-pk-list className="mt-6 text-sm uppercase text-white/60 md:mt-8">
+                {about.tags.map((tag) => <li key={tag}>{tag}</li>)}
+              </ul>
             </div>
           </div>
 
-          <div className="rounded-[1.4rem] border border-white/10 bg-white/[0.03] p-5 backdrop-blur-sm md:rounded-[2rem] md:p-10">
+          <div className={slydPoster ? "max-w-[65ch] pl-4 md:pl-6 lg:pl-0" : "rounded-[1.4rem] border border-white/10 bg-white/[0.03] p-5 backdrop-blur-sm md:rounded-[2rem] md:p-10"}>
             <div className="space-y-4 text-sm leading-6 text-white/72 md:space-y-6 md:text-lg md:leading-8">
               {about.paragraphs.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>

@@ -39,6 +39,8 @@ import {
 } from "@/lib/clients/server";
 import { isLocalRequest } from "@/lib/is-local-request";
 import { buildClientMetadata } from "@/lib/seo";
+import { getSlydPresentationClass, isSlydPoster } from "@/components/press-kit/slyd/presentation";
+import kitStyles from "@/components/press-kit/kit.module.css";
 
 type HomeProps = {
   params?: Promise<{
@@ -100,6 +102,7 @@ export default async function Home({ params, searchParams }: HomeProps) {
     resolvedParams?.locale
   );
   const pressKitEntry = createPressKitEntry(client);
+  const slydPoster = isSlydPoster(client);
   const pressKitConfig = pressKitEntry.config;
   const theme = getTemplateTheme(
     resolvedSearchParams?.template ?? pressKitEntry.defaultTheme
@@ -126,7 +129,7 @@ export default async function Home({ params, searchParams }: HomeProps) {
   return (
     <main
       style={{ ...getTemplateStyle(theme), ...getFontStyle(fontPreset) }}
-      className="relative overflow-x-hidden bg-[var(--pk-bg)] text-[var(--pk-text)] selection:bg-[var(--pk-accent)] selection:text-white"
+      className={`${kitStyles.kit} relative overflow-x-hidden bg-[var(--pk-bg)] text-[var(--pk-text)] selection:bg-[var(--pk-accent)] selection:text-white${slydPoster ? ` ${getSlydPresentationClass(client)}` : ""}`}
     >
       {showLocalSwitchers && (
         <DevControlPanel
@@ -148,8 +151,13 @@ export default async function Home({ params, searchParams }: HomeProps) {
         variant={variant.id}
         mobileVariant={mobileHeroVariant}
       />
-      <AboutSection about={pressKitConfig.about} />
-      <ClubsSection clubs={pressKitConfig.clubs} />
+      <AboutSection about={pressKitConfig.about} slydPoster={slydPoster} />
+      <ClubsSection
+        clubs={pressKitConfig.clubs}
+        slydPoster={slydPoster}
+        language={client.slug === "djslyd-en" ? "en" : "fr"}
+        brandReferences={slydPoster ? pressKitConfig.brands.items : undefined}
+      />
       {hasGalleryContent(pressKitConfig) && (
         <GalleryPreviewSection
           gallery={pressKitConfig.gallery}
@@ -171,7 +179,7 @@ export default async function Home({ params, searchParams }: HomeProps) {
       {hasSpotifyContent(pressKitConfig) && (
         <SpotifySection spotify={pressKitConfig.spotify} />
       )}
-      {hasBrandsContent(pressKitConfig) && (
+      {!slydPoster && hasBrandsContent(pressKitConfig) && (
         <BrandsSection brands={pressKitConfig.brands} />
       )}
       {hasRiderContent(pressKitConfig) && pressKitConfig.rider && (

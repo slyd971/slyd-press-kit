@@ -37,6 +37,7 @@ export type ClientSeoConfig = {
 };
 
 export type ClientConfig = {
+  presentation?: "slyd-poster";
   slug: string;
   domain?: string;
   vercelSubdomain: string;

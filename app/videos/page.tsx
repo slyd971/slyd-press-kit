@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import kitStyles from "@/components/press-kit/kit.module.css";
+import { getSlydPresentationClass, isSlydPoster } from "@/components/press-kit/slyd/presentation";
 import { DevControlPanel } from "@/components/press-kit/DevControlPanel";
 import { Header } from "@/components/press-kit/Header";
 import { VideoSection } from "@/components/press-kit/VideoSection";
@@ -72,7 +74,7 @@ export default async function VideosPage({ searchParams }: VideosPageProps) {
   return (
     <main
       style={{ ...getTemplateStyle(theme), ...getFontStyle(fontPreset) }}
-      className="min-h-screen bg-[var(--pk-bg)] text-[var(--pk-text)]"
+      className={`${kitStyles.kit} min-h-screen bg-[var(--pk-bg)] text-[var(--pk-text)]${isSlydPoster(client) ? ` ${getSlydPresentationClass(client)}` : ""}`}
     >
       <Header
         artist={pressKitConfig.artist}

@@ -43,6 +43,7 @@ export function GalleryPreviewSection({
           <Link
             key={image.src}
             href={galleryHref}
+            aria-label={image.alt}
             className={`${image.size ?? ""} group relative block overflow-hidden rounded-[1.4rem] border border-white/10 bg-white/5 md:rounded-[2rem]`}
           >
             <div
@@ -58,13 +59,9 @@ export function GalleryPreviewSection({
               }}
             />
 
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
 
-            <div className="absolute inset-x-4 bottom-4 flex items-end justify-between gap-3 md:inset-x-5 md:bottom-5 md:gap-4">
-              <div className="text-[11px] font-medium uppercase tracking-[0.18em] text-white/90 md:text-sm md:tracking-[0.24em]">
-                {image.alt}
-              </div>
-
+            <div className="absolute bottom-4 right-4 md:bottom-5 md:right-5">
               <div className="rounded-full border border-white/15 bg-black/35 p-2.5 backdrop-blur-sm md:p-3">
                 <ArrowUpRight className="h-3.5 w-3.5 text-white/85 md:h-4 md:w-4" />
               </div>

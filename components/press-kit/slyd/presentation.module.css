@@ -1,0 +1,56 @@
+/* Every rule is scoped to the explicit Sly'd main class. No palette overrides. */
+.poster {
+  font-family: var(--slyd-font-body), sans-serif;
+}
+
+.poster :is(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--slyd-font-display), sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  line-height: 1;
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
+}
+
+.poster h1 { font-size: clamp(3.5rem, 7vw, 7.5rem); }
+.poster h2 { font-size: clamp(2.5rem, 4.5vw, 4.5rem); }
+.poster :global(#about) h2 { font-size: clamp(2.5rem, 4vw, 4rem); line-height: 1.04; }
+.poster p { font-size: max(1rem, 1em); line-height: 1.6; }
+.poster :is(nav, button, a, [class*="tracking-"]) { letter-spacing: 0.04em; }
+.poster :is(h1, h2, h3) { letter-spacing: 0; }
+.poster h1 span { font-size: inherit; }
+
+.poster :is(button, a)[class*="rounded"],
+.poster button > span[class*="rounded"],
+.poster [class*="rounded"][class*="overflow-hidden"]:has(img, video, iframe),
+.poster :global(.pk-hero-portrait),
+.poster :global(.pk-hero-portrait) ~ [class*="rounded"] {
+  border-radius: 4px;
+}
+
+/* KPI strip and tag-list layout come from ../kit.module.css; Sly'd only swaps the font. */
+.poster [data-pk-stats] > div > :first-child {
+  font-family: var(--slyd-font-display), sans-serif;
+  font-weight: 700;
+}
+
+.poster [data-slyd-references] {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem 1.5rem;
+  font-family: var(--slyd-font-display), sans-serif;
+  font-size: clamp(1.3rem, 2.3vw, 1.9rem);
+  font-weight: 700;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+.poster [data-slyd-references] [hidden] { display: none; }
+.poster [data-slyd-brand] { display: flex; min-height: 6rem; align-items: center; justify-content: center; }
+.poster [data-slyd-brand] img { width: 100%; max-width: 10rem; height: 5rem; object-fit: contain; }
+.poster [data-slyd-brand] span { font-size: 1.25rem; font-weight: 700; text-align: center; }
+
+@media (min-width: 768px) {
+  .poster [data-slyd-references] { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
