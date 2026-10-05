@@ -116,6 +116,10 @@ export type PressKitConfig = {
       title: string;
       /** Optionnel : surcharge les classes Tailwind (taille, tracking) appliquées au texte du titre uniquement, sans affecter l'accent. */
       titleClassName?: string;
+      /** Optionnel : classes Tailwind ajoutées au texte d'accent (police, taille). */
+      accentClassName?: string;
+      /** Optionnel : classes Tailwind ajoutées au bloc texte du hero (ex. padding-top pour descendre titre et sous-titre). */
+      contentClassName?: string;
       accent: string;
       genreLine?: string;
       description: string;

@@ -21,13 +21,13 @@ const djslydPressKitEn: PressKitConfig = {
     impact: {
       ...pressKitConfig.heroVariants.impact,
       titleClassName:
-        "text-[3.6rem] font-black uppercase leading-[0.85] tracking-[-0.01em] sm:text-6xl md:text-[6.2rem] xl:text-[9.2rem]",
+        "font-[family-name:system-ui] text-[2.9rem] font-black uppercase leading-[0.88] tracking-tight sm:text-6xl md:text-7xl xl:text-[7.4rem]",
       statsStyle: "band",
     },
     showcase: {
       ...pressKitConfig.heroVariants.showcase,
       titleClassName:
-        "text-[4rem] font-black uppercase leading-[0.82] tracking-[-0.01em] sm:text-[5.2rem]",
+        "font-[family-name:system-ui] text-[3.2rem] font-black uppercase leading-[0.88] tracking-tight sm:text-[4.6rem]",
       statsStyle: "band",
       ctas: [
         { label: "Book SLY'D", href: "#contact", variant: "primary" },
@@ -116,9 +116,12 @@ const djslydPressKitFr: PressKitConfig = {
     impact: {
       ...pressKitConfig.heroVariants.impact,
       titleClassName:
-        "text-[3.6rem] font-black uppercase leading-[0.85] tracking-[-0.01em] sm:text-6xl md:text-[6.2rem] xl:text-[9.2rem]",
+        "font-[family-name:system-ui] text-[2.9rem] font-black uppercase leading-[0.88] tracking-tight sm:text-6xl md:text-7xl xl:text-[7.4rem]",
       statsStyle: "band",
       accent: "THE ECLECTIC",
+      contentClassName: "pt-8 md:pt-16 lg:pt-32",
+      accentClassName:
+        "font-[family-name:system-ui] text-[1.9rem] sm:text-[2.6rem] md:text-[3.2rem] xl:text-[4.4rem]",
       description:
         "Hip-hop, RnB, afro, baile funk et future beats font partie de son terrain de jeu de prédilection. Avec plus de 20 années d'expérience, SLY'D se distingue par sa capacité à surprendre le public avec des transitions toujours originales.",
       image: {
@@ -141,6 +144,7 @@ const djslydPressKitFr: PressKitConfig = {
       ...pressKitConfig.heroVariants.interactive,
       eyebrow: "Expérience live • Open Format • Paris",
       accent: "THE ECLECTIC",
+      contentClassName: "pt-8 md:pt-16 lg:pt-32",
       description:
         "Appuyez sur play : hip-hop, afro, RnB et performance Open Format, avec des transitions rapides, des classiques bien placés et des changements de tempo au bon moment.",
       image: {
@@ -168,10 +172,13 @@ const djslydPressKitFr: PressKitConfig = {
     showcase: {
       ...pressKitConfig.heroVariants.showcase,
       titleClassName:
-        "text-[4rem] font-black uppercase leading-[0.82] tracking-[-0.01em] sm:text-[5.2rem]",
+        "font-[family-name:system-ui] text-[3.2rem] font-black uppercase leading-[0.88] tracking-tight sm:text-[4.6rem]",
       statsStyle: "band",
       eyebrow: "DJ Open Format • Paris • International",
       accent: "THE ECLECTIC",
+      contentClassName: "pt-[42vh]! md:pt-16! lg:pt-32!",
+      accentClassName:
+        "font-[family-name:system-ui] text-[1.9rem] sm:text-[2.8rem]",
       description:
         "Hip-hop, RnB, afro, baile funk et future beats, sélectionnés pour faire passer une soirée du warm-up aux morceaux qui font chanter toute la salle.",
       image: {

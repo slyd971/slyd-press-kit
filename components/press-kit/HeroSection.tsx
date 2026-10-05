@@ -274,7 +274,7 @@ function HeroVariantBody({
         </div>
 
         <div className="relative mx-auto flex min-h-[88svh] max-w-7xl flex-col justify-center px-4 py-10 md:min-h-[82svh] md:px-6 md:py-12 lg:min-h-[78svh] lg:justify-start lg:pt-16 lg:pb-8">
-          <div className="w-full max-w-3xl">
+          <div className={`w-full max-w-3xl ${hero.contentClassName ?? ""}`}>
             {hasEyebrow && (
               <div className="inline-flex items-center gap-2 rounded-[var(--pk-radius-badge,9999px)] border border-white/10 bg-black/35 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-white/75 backdrop-blur-md md:px-4 md:py-2 md:text-[11px] md:tracking-[0.28em]">
                 <Disc3 className="h-3 w-3 text-[var(--pk-accent)] md:h-3.5 md:w-3.5" />
@@ -284,7 +284,7 @@ function HeroVariantBody({
 
             <h1 className="mt-5 text-[2.8rem] font-black uppercase leading-[0.88] tracking-tight text-white sm:text-6xl md:mt-7 md:text-7xl xl:text-[7.2rem]">
               {hero.title}
-              <span className="mt-2 block text-[var(--pk-accent)] md:mt-3">{hero.accent}</span>
+              <span className={`mt-2 block text-[var(--pk-accent)] md:mt-3 ${hero.accentClassName ?? ""}`}>{hero.accent}</span>
             </h1>
 
             <p className="mt-5 max-w-2xl text-sm leading-6 text-white/78 md:mt-7 md:text-xl md:leading-8">
@@ -387,7 +387,7 @@ function HeroVariantBody({
             compactMobile ? "items-center justify-end pb-12 text-center md:items-stretch md:justify-start md:pb-10 md:text-left" : ""
           }`}
         >
-          <div className={`w-full max-w-3xl ${compactMobile ? "flex flex-1 flex-col items-center pt-[30vh] md:block md:flex-none md:pt-0" : ""}`}>
+          <div className={`w-full max-w-3xl ${hero.contentClassName ?? ""} ${compactMobile ? "flex flex-1 flex-col items-center pt-[30vh] md:block md:flex-none md:pt-0" : ""}`}>
             {hasEyebrow && !compactMobile && (
               <div className="inline-flex items-center gap-2 rounded-[var(--pk-radius-badge,9999px)] border border-white/10 bg-black/35 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-white/75 backdrop-blur-md md:px-4 md:py-2 md:text-[11px] md:tracking-[0.28em]">
                 <Disc3 className="h-3 w-3 text-[var(--pk-accent)] md:h-3.5 md:w-3.5" />
@@ -402,7 +402,7 @@ function HeroVariantBody({
                 hero.title
               )}
               {hero.accent && (
-                <span className="mt-2 block text-[var(--pk-accent)] md:mt-3">{hero.accent}</span>
+                <span className={`mt-2 block text-[var(--pk-accent)] md:mt-3 ${hero.accentClassName ?? ""}`}>{hero.accent}</span>
               )}
             </h1>
 
@@ -498,7 +498,7 @@ function HeroVariantBody({
         animate="visible"
       >
         <div className="grid items-center gap-6 md:gap-8 lg:grid-cols-[minmax(0,0.96fr)_minmax(360px,0.86fr)] lg:gap-10">
-          <motion.div className="order-1 relative z-10" variants={heroContainerReveal}>
+          <motion.div className={`order-1 relative z-10 ${hero.contentClassName ?? ""}`} variants={heroContainerReveal}>
             {hasEyebrow && (
               <motion.div
                 variants={heroReveal}
@@ -529,7 +529,7 @@ function HeroVariantBody({
                 : hero.titleClassName
                   ? <span className={hero.titleClassName}>{hero.title}</span>
                   : hero.title}
-              <span className={`mt-2 block text-[var(--pk-accent)] md:mt-3 ${getHeroAccentSizeClass(hero.accent)}`}>{hero.accent}</span>
+              <span className={`mt-2 block text-[var(--pk-accent)] md:mt-3 ${hero.accentClassName ?? getHeroAccentSizeClass(hero.accent)}`}>{hero.accent}</span>
             </motion.h1>
 
             {hero.genreLine && (
