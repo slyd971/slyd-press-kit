@@ -103,10 +103,13 @@ const djslydPressKitFr: PressKitConfig = {
     impact: {
       ...pressKitConfig.heroVariants.impact,
       accent: "THE ECLECTIC",
+      layout: "showcase",
+      fullScreen: true,
       description:
         "Hip-hop, RnB, afro, baile funk et future beats font partie de son terrain de jeu de prédilection. Avec plus de 20 années d'expérience, SLY'D se distingue par sa capacité à surprendre le public avec des transitions toujours originales.",
       image: {
         ...pressKitConfig.heroVariants.impact.image,
+        position: "center 14%",
         badge: "DJ SLY'D • Open Format • Paris",
         caption: "De Paris aux scènes internationales",
       },
@@ -125,6 +128,7 @@ const djslydPressKitFr: PressKitConfig = {
       ...pressKitConfig.heroVariants.interactive,
       eyebrow: "Expérience live • Open Format • Paris",
       accent: "THE ECLECTIC",
+      contentClassName: "pt-8 md:pt-16 lg:self-start lg:pt-14",
       description:
         "Appuyez sur play : hip-hop, afro, RnB et performance Open Format, avec des transitions rapides, des classiques bien placés et des changements de tempo au bon moment.",
       image: {
@@ -153,6 +157,8 @@ const djslydPressKitFr: PressKitConfig = {
       ...pressKitConfig.heroVariants.showcase,
       eyebrow: "DJ Open Format • Paris • International",
       accent: "THE ECLECTIC",
+      mobileRightFade: true,
+      contentClassName: "pt-[42vh]! md:pt-16! lg:pt-32!",
       description:
         "Hip-hop, RnB, afro, baile funk et future beats, sélectionnés pour faire passer une soirée du warm-up aux morceaux qui font chanter toute la salle.",
       image: {

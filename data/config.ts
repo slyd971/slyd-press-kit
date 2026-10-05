@@ -114,6 +114,11 @@ export type PressKitConfig = {
     {
       eyebrow: string;
       title: string;
+      /** Optionnel : classes Tailwind ajoutées au bloc texte du hero (ex. padding-top pour descendre titre et sous-titre). */
+      contentClassName?: string;
+      fullScreen?: boolean;
+      /** Optionnel : fondu sur le bord droit de la photo en mobile (masque un élément gênant à droite). */
+      mobileRightFade?: boolean;
       accent: string;
       genreLine?: string;
       description: string;

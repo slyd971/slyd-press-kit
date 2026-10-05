@@ -54,3 +54,28 @@
 @media (min-width: 768px) {
   .poster [data-slyd-references] { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
+
+/* Titre hero : system-ui extra bold (comme Yoruboy/Soyumi), accent plus petit. */
+.poster h1[class] {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  line-height: 0.88;
+  font-size: clamp(2.9rem, 9vw, 9.5rem);
+}
+.poster h1[class] span { font-size: 0.6em; letter-spacing: -0.015em; }
+
+/* Desktop : le portrait du hero ne dépasse pas la ligne de flottaison. */
+@media (min-width: 1024px) {
+  .poster :global(.pk-hero-portrait) {
+    height: calc(100svh - 9rem);
+  }
+}
+@media (min-width: 1024px) {
+  .poster :global(.pk-hero-visual) { width: 100%; max-width: 34rem; }
+}
+
+/* Mobile : titre plus gros (reste sur une ligne jusqu'à ~340px de large). */
+@media (max-width: 767px) {
+  .poster h1[class] { font-size: 19vw; }
+}

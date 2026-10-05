@@ -278,7 +278,7 @@ function HeroVariantBody({
         </div>
 
         <div className="relative mx-auto flex min-h-[88svh] max-w-7xl flex-col justify-center px-4 py-10 md:min-h-[82svh] md:px-6 md:py-12 lg:min-h-[78svh] lg:justify-start lg:pt-16 lg:pb-8">
-          <div className="w-full max-w-3xl">
+          <div className={`w-full max-w-3xl ${hero.contentClassName ?? ""}`}>
             {hasEyebrow && (
               <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/35 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-white/75 backdrop-blur-md md:px-4 md:py-2 md:text-[11px] md:tracking-[0.28em]">
                 <Disc3 className="h-3 w-3 text-[var(--pk-accent)] md:h-3.5 md:w-3.5" />
@@ -366,9 +366,9 @@ function HeroVariantBody({
     return (
       <section
         id={idOverride}
-        className="relative scroll-mt-24 overflow-hidden pt-16 md:pt-20"
+        className={`relative scroll-mt-24 overflow-hidden ${hero.fullScreen ? "flex min-h-svh flex-col" : "pt-16 md:pt-20"}`}
       >
-        <div className="absolute inset-0">
+        <div className={`absolute inset-x-0 ${hero.fullScreen ? "top-[69px] h-[80svh] md:inset-y-0 md:left-[38%] md:h-auto" : "inset-y-0"}`}>
           {hasHeroImage ? (
             <img
               src={hero.image.src}
@@ -379,7 +379,16 @@ function HeroVariantBody({
           ) : (
             <div className="h-full w-full bg-[var(--pk-bg)]" />
           )}
-          <div className="absolute inset-0 bg-black/12" />
+          <div className={`absolute inset-0 ${hero.fullScreen ? "bg-black/20 md:bg-black/15" : "bg-black/12"}`} />
+          {hero.mobileRightFade && (
+            <div className="absolute inset-y-0 right-0 w-[30%] bg-[linear-gradient(to_left,var(--pk-bg)_0%,var(--pk-bg)_60%,transparent_100%)] md:hidden" />
+          )}
+          {hero.fullScreen && (
+            <>
+            <div className="absolute inset-y-0 left-0 hidden w-2/5 bg-gradient-to-r from-[var(--pk-bg)] via-[var(--pk-bg)]/45 to-transparent md:block" />
+            <div className="absolute inset-y-0 right-0 hidden w-[42%] bg-[linear-gradient(to_left,var(--pk-bg)_0%,var(--pk-bg)_72%,transparent_100%)] md:block" />
+            </>
+          )}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgb(var(--pk-accent-rgb)/0.14),transparent_30%)]" />
           <div className="absolute inset-0 opacity-[0.07] [background-image:linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] [background-size:34px_34px]" />
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--pk-bg)] via-transparent to-transparent" />
@@ -387,11 +396,11 @@ function HeroVariantBody({
         </div>
 
         <div
-          className={`relative mx-auto flex min-h-[90svh] max-w-7xl flex-col justify-center px-4 py-10 md:min-h-[84svh] md:px-6 md:py-12 lg:min-h-[82svh] lg:justify-start lg:pt-20 lg:pb-10 ${
+          className={`relative mx-auto flex max-w-7xl flex-col px-4 md:px-6 ${hero.fullScreen ? "w-full flex-1 justify-end pb-10 pt-[max(22rem,48svh)] md:justify-center md:pb-10 md:pt-28" : "min-h-[90svh] justify-center py-10 md:min-h-[84svh] md:py-12 lg:min-h-[82svh] lg:justify-start lg:pt-20 lg:pb-10"} ${
             compactMobile ? "items-center justify-end pb-12 text-center md:items-stretch md:justify-start md:pb-10 md:text-left" : ""
           }`}
         >
-          <div className={`w-full max-w-3xl ${compactMobile ? "flex flex-1 flex-col items-center pt-[30vh] md:block md:flex-none md:pt-0" : ""}`}>
+          <div className={`w-full max-w-3xl ${hero.contentClassName ?? ""} ${compactMobile ? "flex flex-1 flex-col items-center pt-[30vh] md:block md:flex-none md:pt-0" : ""}`}>
             {hasEyebrow && !compactMobile && (
               <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/35 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-white/75 backdrop-blur-md md:px-4 md:py-2 md:text-[11px] md:tracking-[0.28em]">
                 <Disc3 className="h-3 w-3 text-[var(--pk-accent)] md:h-3.5 md:w-3.5" />
@@ -480,7 +489,7 @@ function HeroVariantBody({
         animate="visible"
       >
         <div className="grid items-center gap-6 md:gap-8 lg:grid-cols-[minmax(0,0.96fr)_minmax(360px,0.86fr)] lg:gap-10">
-          <motion.div className="order-1 relative z-10" variants={heroContainerReveal}>
+          <motion.div className={`order-1 relative z-10 ${hero.contentClassName ?? ""}`} variants={heroContainerReveal}>
             {hasEyebrow && (
               <motion.div
                 variants={heroReveal}
