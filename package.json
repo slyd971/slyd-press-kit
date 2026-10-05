@@ -7,7 +7,8 @@
     "create:press-kit": "./scripts/create-press-kit.sh",
     "import:client-form": "python3 ./scripts/import-client-form.py",
     "dev": "next dev -p 3002",
-    "build": "next build",
+    "check:prod": "node scripts/check-prod.mjs",
+    "build": "node scripts/check-prod.mjs && next build",
     "start": "next start -p 3002"
   },
   "dependencies": {
