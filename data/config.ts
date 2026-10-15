@@ -119,6 +119,8 @@ export type PressKitConfig = {
       fullScreen?: boolean;
       /** Optionnel : fondu sur le bord droit de la photo en mobile (masque un élément gênant à droite). */
       mobileRightFade?: boolean;
+      /** Optionnel : désactive le fondu sombre sur le bord droit du hero plein écran (desktop), pour un sujet placé à droite de la photo. */
+      hideDesktopRightFade?: boolean;
       accent: string;
       genreLine?: string;
       description: string;

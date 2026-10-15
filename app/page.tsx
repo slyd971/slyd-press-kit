@@ -113,10 +113,7 @@ export default async function Home({ params, searchParams }: HomeProps) {
   // On mobile, DJ SLY'D uses the showcase hero (full-bleed background
   // photo, text overlaid) instead of the desktop layout's side-by-side
   // portrait card.
-  const mobileHeroVariant =
-    client.slug === "djslyd" || client.slug === "djslyd-en"
-      ? "showcase"
-      : undefined;
+  const mobileHeroVariant = slydPoster ? "showcase" : undefined;
   const fontPreset = getFontPreset(resolvedSearchParams?.font);
   const showLocalSwitchers = await isLocalRequest();
   const navigation = getResolvedNavigation(pressKitConfig);
@@ -129,6 +126,8 @@ export default async function Home({ params, searchParams }: HomeProps) {
   return (
     <main
       style={{ ...getTemplateStyle(theme), ...getFontStyle(fontPreset) }}
+      data-pk-font={resolvedSearchParams?.font ? "custom" : undefined}
+      data-pk-theme={theme.id}
       className={`${kitStyles.kit} relative overflow-x-hidden bg-[var(--pk-bg)] text-[var(--pk-text)] selection:bg-[var(--pk-accent)] selection:text-white${slydPoster ? ` ${getSlydPresentationClass(client)}` : ""}`}
     >
       {showLocalSwitchers && (
@@ -155,7 +154,7 @@ export default async function Home({ params, searchParams }: HomeProps) {
       <ClubsSection
         clubs={slydPoster ? { ...pressKitConfig.clubs, title: getSlydClubsTitle(client) } : pressKitConfig.clubs}
         slydPoster={slydPoster}
-        language={client.slug === "djslyd-en" ? "en" : "fr"}
+        language={client.slug.endsWith("-en") ? "en" : "fr"}
         brandReferences={slydPoster ? pressKitConfig.brands.items : undefined}
       />
       {hasGalleryContent(pressKitConfig) && (

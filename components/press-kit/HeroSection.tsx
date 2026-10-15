@@ -386,7 +386,9 @@ function HeroVariantBody({
           {hero.fullScreen && (
             <>
             <div className="absolute inset-y-0 left-0 hidden w-2/5 bg-gradient-to-r from-[var(--pk-bg)] via-[var(--pk-bg)]/45 to-transparent md:block" />
-            <div className="absolute inset-y-0 right-0 hidden w-[42%] bg-[linear-gradient(to_left,var(--pk-bg)_0%,var(--pk-bg)_72%,transparent_100%)] md:block" />
+            {!hero.hideDesktopRightFade && (
+              <div className="absolute inset-y-0 right-0 hidden w-[42%] bg-[linear-gradient(to_left,var(--pk-bg)_0%,var(--pk-bg)_72%,transparent_100%)] md:block" />
+            )}
             </>
           )}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgb(var(--pk-accent-rgb)/0.14),transparent_30%)]" />

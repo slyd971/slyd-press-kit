@@ -1,10 +1,13 @@
 /* Every rule is scoped to the explicit Sly'd main class. No palette overrides. */
-.poster {
+.poster:not([data-pk-font]) {
   font-family: var(--slyd-font-body), sans-serif;
 }
 
-.poster :is(h1, h2, h3, h4, h5, h6) {
+.poster:not([data-pk-font]) :is(h1, h2, h3, h4, h5, h6) {
   font-family: var(--slyd-font-display), sans-serif;
+}
+
+.poster :is(h1, h2, h3, h4, h5, h6) {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0;
@@ -31,8 +34,10 @@
 }
 
 /* KPI strip and tag-list layout come from ../kit.module.css; Sly'd only swaps the font. */
-.poster [data-pk-stats] > div > :first-child {
+.poster:not([data-pk-font]) [data-pk-stats] > div > :first-child {
   font-family: var(--slyd-font-display), sans-serif;
+}
+.poster [data-pk-stats] > div > :first-child {
   font-weight: 700;
 }
 
@@ -40,11 +45,13 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.25rem 1.5rem;
-  font-family: var(--slyd-font-display), sans-serif;
   font-size: clamp(1.3rem, 2.3vw, 1.9rem);
   font-weight: 700;
   line-height: 1.15;
   text-transform: uppercase;
+}
+.poster:not([data-pk-font]) [data-slyd-references] {
+  font-family: var(--slyd-font-display), sans-serif;
 }
 .poster [data-slyd-references] [hidden] { display: none; }
 .poster [data-slyd-brand] { display: flex; min-height: 6rem; align-items: center; justify-content: center; }
@@ -56,8 +63,10 @@
 }
 
 /* Titre hero : system-ui extra bold (comme Yoruboy/Soyumi), accent plus petit. */
-.poster h1[class] {
+.poster:not([data-pk-font]) h1[class] {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+.poster h1[class] {
   font-weight: 900;
   letter-spacing: -0.025em;
   line-height: 0.88;
@@ -78,4 +87,84 @@
 /* Mobile : titre plus gros (reste sur une ligne jusqu'à ~340px de large). */
 @media (max-width: 767px) {
   .poster h1[class] { font-size: 19vw; }
+}
+
+/* Thème or : l'or est clair, le texte des boutons pleins passe en noir pour rester lisible. */
+.poster[data-pk-theme="gold"] [class*="bg-[var(--pk-accent)]"] { color: #0d0d0d; }
+
+/* ---- Thème or : pas de halos, texture de grain, bloc contact clair ---- */
+
+/* Halos : lueurs radiales, orbes floutés et ombres colorées retirés. */
+.poster[data-pk-theme="gold"] [class*="radial-gradient"],
+.poster[data-pk-theme="gold"] [class*="blur-3xl"] {
+  display: none;
+}
+.poster[data-pk-theme="gold"] [class*="shadow-[0_"] {
+  box-shadow: none;
+}
+
+/* Texture : grain fin sur toute la page, sous le header. */
+.poster[data-pk-theme="gold"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  opacity: 0.1;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 3 0 0 0 -1.55'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-size: 220px 220px;
+}
+
+/* Bloc booking en or : fond or, textes noirs ; les cartes de contact restent noires. */
+.poster[data-pk-theme="gold"] :global(#contact) {
+  background-color: #c8a448;
+  color: #0d0d0d;
+}
+.poster[data-pk-theme="gold"] :global(#contact) h2 {
+  color: #0d0d0d;
+}
+.poster[data-pk-theme="gold"] :global(#contact) p {
+  color: rgb(13 13 13 / 0.8);
+}
+.poster[data-pk-theme="gold"] :global(#contact) :global(.mb-4),
+.poster[data-pk-theme="gold"] :global(#contact) [class*="tracking-[0.35em]"][class*="text-[var(--pk-accent)]"] {
+  color: rgb(13 13 13 / 0.75);
+}
+.poster[data-pk-theme="gold"] :global(#contact) a {
+  background-color: #0d0d0d;
+  border-color: rgb(255 255 255 / 0.12);
+  color: #ffffff;
+}
+.poster[data-pk-theme="gold"] :global(#contact) a [class*="text-white/35"] {
+  color: rgb(255 255 255 / 0.55);
+}
+
+/* Ligne d'accent du hero plus longue : taille réduite pour tenir sur une ligne. */
+.poster[data-pk-theme="gold"] h1[class] span {
+  font-size: 0.45em;
+  letter-spacing: 0;
+  white-space: pre-line;
+  line-height: 1;
+}
+@media (max-width: 767px) {
+  .poster[data-pk-theme="gold"] h1[class] span { font-size: 0.36em; }
+}
+/* Paragraphe vide (ex. hero sans description) : pas de marge résiduelle. */
+.poster[data-pk-theme="gold"] p:empty { display: none; }
+
+/* Titre du hero : reste lisible quand il passe sur le bonnet blanc de la photo. */
+.poster[data-pk-theme="gold"] h1[class] {
+  text-shadow: 0 2px 6px rgb(0 0 0 / 0.55), 0 4px 22px rgb(0 0 0 / 0.5);
+}
+
+/* Grain sombre : rend la texture visible sur les zones claires (photo du hero, bloc booking). */
+.poster[data-pk-theme="gold"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  opacity: 0.16;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='d'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='7' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -3 0 0 0 1.45'/></filter><rect width='100%' height='100%' filter='url(%23d)'/></svg>");
+  background-size: 240px 240px;
 }

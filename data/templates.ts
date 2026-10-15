@@ -8,6 +8,7 @@ export type TemplateId =
   | "yellow"
   | "orange"
   | "violet"
+  | "gold"
   | "monochrome";
 
 export type TemplateTheme = {
@@ -99,6 +100,16 @@ export const templateThemes: Record<TemplateId, TemplateTheme> = {
     background: "#090511",
     text: "#FBF8FF",
   },
+  gold: {
+    id: "gold",
+    label: "Or",
+    accent: "#C8A448",
+    accentStrong: "#D8B85C",
+    accentSoft: "#E6CF8E",
+    accentRgb: "200 164 72",
+    background: "#0D0D0D",
+    text: "#FFFFFF",
+  },
   monochrome: {
     id: "monochrome",
     label: "Noir et blanc",
@@ -120,6 +131,7 @@ export const templateThemeOrder: TemplateId[] = [
   "yellow",
   "orange",
   "violet",
+  "gold",
   "monochrome",
 ];
 export const templateVariants: Record<TemplateVariantId, TemplateVariant> = {
@@ -143,7 +155,6 @@ const templateAliases: Record<string, TemplateId> = {
   "black-and-white": "monochrome",
   noirblanc: "monochrome",
   jaune: "yellow",
-  gold: "yellow",
   bringue: "labringue",
   afro: "labringue",
 };
