@@ -61,7 +61,8 @@ export default async function GalleryPage({ searchParams }: GalleryPageProps) {
   const theme = getTemplateTheme(
     resolvedSearchParams?.template ?? pressKitEntry.defaultTheme
   );
-  const fontPreset = getFontPreset(resolvedSearchParams?.font);
+  const requestedFont = resolvedSearchParams?.font ?? client.defaultFont;
+  const fontPreset = getFontPreset(requestedFont);
   const showLocalSwitchers = await isLocalRequest();
   const hasGallery = hasGalleryContent(pressKitConfig);
   const navigation = getResolvedNavigation(pressKitConfig);
@@ -71,7 +72,7 @@ export default async function GalleryPage({ searchParams }: GalleryPageProps) {
   return (
     <main
       style={{ ...getTemplateStyle(theme), ...getFontStyle(fontPreset) }}
-      data-pk-font={resolvedSearchParams?.font ? "custom" : undefined}
+      data-pk-font={requestedFont ? "custom" : undefined}
       className={`${kitStyles.kit} bg-[var(--pk-bg)] px-6 py-24 text-[var(--pk-text)]${isSlydPoster(client) ? ` ${getSlydPresentationClass(client)}` : ""}`}
     >
       <Header

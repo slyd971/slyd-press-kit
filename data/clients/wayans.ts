@@ -110,7 +110,9 @@ const wayansPressKitFr: PressKitConfig = {
       title: "WAYANS",
       accent: "AFROBEAT, URBAN FR\n& RNB",
       layout: "showcase",
-      contentClassName: "pt-[42vh]! md:pt-16! lg:pt-32!",
+      fullScreen: true,
+      hideDesktopRightFade: true,
+      contentClassName: "pt-[6vh]! md:pt-16! lg:pt-32!",
       description: "",
       image: {
         src: heroImage,
@@ -598,7 +600,8 @@ const wayansBaseClient = {
   testimonials: [],
   bookingEmail,
   defaultTheme: "gold",
-  defaultVariant: "impact",
+  defaultVariant: "showcase",
+  defaultFont: "editorial",
 } satisfies Partial<ClientConfig>;
 
 const wayansKeywords = [
