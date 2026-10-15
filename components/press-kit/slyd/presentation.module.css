@@ -1,10 +1,13 @@
 /* Every rule is scoped to the explicit Sly'd main class. No palette overrides. */
-.poster {
+.poster:not([data-pk-font]) {
   font-family: var(--slyd-font-body), sans-serif;
 }
 
-.poster :is(h1, h2, h3, h4, h5, h6) {
+.poster:not([data-pk-font]) :is(h1, h2, h3, h4, h5, h6) {
   font-family: var(--slyd-font-display), sans-serif;
+}
+
+.poster :is(h1, h2, h3, h4, h5, h6) {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0;
@@ -31,8 +34,10 @@
 }
 
 /* KPI strip and tag-list layout come from ../kit.module.css; Sly'd only swaps the font. */
-.poster [data-pk-stats] > div > :first-child {
+.poster:not([data-pk-font]) [data-pk-stats] > div > :first-child {
   font-family: var(--slyd-font-display), sans-serif;
+}
+.poster [data-pk-stats] > div > :first-child {
   font-weight: 700;
 }
 
@@ -40,11 +45,13 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.25rem 1.5rem;
-  font-family: var(--slyd-font-display), sans-serif;
   font-size: clamp(1.3rem, 2.3vw, 1.9rem);
   font-weight: 700;
   line-height: 1.15;
   text-transform: uppercase;
+}
+.poster:not([data-pk-font]) [data-slyd-references] {
+  font-family: var(--slyd-font-display), sans-serif;
 }
 .poster [data-slyd-references] [hidden] { display: none; }
 .poster [data-slyd-brand] { display: flex; min-height: 6rem; align-items: center; justify-content: center; }
@@ -56,8 +63,10 @@
 }
 
 /* Titre hero : system-ui extra bold (comme Yoruboy/Soyumi), accent plus petit. */
-.poster h1[class] {
+.poster:not([data-pk-font]) h1[class] {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+.poster h1[class] {
   font-weight: 900;
   letter-spacing: -0.025em;
   line-height: 0.88;

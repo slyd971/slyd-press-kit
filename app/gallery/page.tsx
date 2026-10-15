@@ -71,6 +71,7 @@ export default async function GalleryPage({ searchParams }: GalleryPageProps) {
   return (
     <main
       style={{ ...getTemplateStyle(theme), ...getFontStyle(fontPreset) }}
+      data-pk-font={resolvedSearchParams?.font ? "custom" : undefined}
       className={`${kitStyles.kit} bg-[var(--pk-bg)] px-6 py-24 text-[var(--pk-text)]${isSlydPoster(client) ? ` ${getSlydPresentationClass(client)}` : ""}`}
     >
       <Header

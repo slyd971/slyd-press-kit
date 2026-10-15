@@ -74,6 +74,7 @@ export default async function VideosPage({ searchParams }: VideosPageProps) {
   return (
     <main
       style={{ ...getTemplateStyle(theme), ...getFontStyle(fontPreset) }}
+      data-pk-font={resolvedSearchParams?.font ? "custom" : undefined}
       className={`${kitStyles.kit} min-h-screen bg-[var(--pk-bg)] text-[var(--pk-text)]${isSlydPoster(client) ? ` ${getSlydPresentationClass(client)}` : ""}`}
     >
       <Header
