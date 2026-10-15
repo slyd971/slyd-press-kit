@@ -152,7 +152,11 @@ export default async function Home({ params, searchParams }: HomeProps) {
         variant={variant.id}
         mobileVariant={mobileHeroVariant}
       />
-      <AboutSection about={pressKitConfig.about} slydPoster={slydPoster} />
+      <AboutSection
+        about={pressKitConfig.about}
+        slydPoster={slydPoster}
+        language={client.slug.endsWith("-en") ? "en" : "fr"}
+      />
       <ClubsSection
         clubs={slydPoster ? { ...pressKitConfig.clubs, title: getSlydClubsTitle(client) } : pressKitConfig.clubs}
         slydPoster={slydPoster}

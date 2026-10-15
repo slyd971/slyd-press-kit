@@ -1,11 +1,22 @@
+"use client";
+
+import { useId, useState } from "react";
 import type { PressKitConfig } from "@/data/config";
 
 type AboutSectionProps = {
   about: PressKitConfig["about"];
   slydPoster?: boolean;
+  language?: "fr" | "en";
 };
 
-export function AboutSection({ about, slydPoster = false }: AboutSectionProps) {
+// Bio longue repliée par défaut (design Sly'd) : seul le premier paragraphe est visible.
+const COLLAPSED_PARAGRAPHS = 1;
+
+export function AboutSection({ about, slydPoster = false, language = "fr" }: AboutSectionProps) {
+  const [expanded, setExpanded] = useState(false);
+  const bioId = useId();
+  const collapsible = slydPoster && about.paragraphs.length > COLLAPSED_PARAGRAPHS;
+
   return (
     <section
       id="about"
@@ -50,11 +61,29 @@ export function AboutSection({ about, slydPoster = false }: AboutSectionProps) {
           </div>
 
           <div className={slydPoster ? "max-w-[65ch] pl-4 md:pl-6 lg:pl-0" : "rounded-[1.4rem] border border-white/10 bg-white/[0.03] p-5 backdrop-blur-sm md:rounded-[2rem] md:p-10"}>
-            <div className="space-y-4 text-sm leading-6 text-white/72 md:space-y-6 md:text-lg md:leading-8">
-              {about.paragraphs.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
+            <div
+              id={bioId}
+              className="space-y-4 text-sm leading-6 text-white/72 md:space-y-6 md:text-lg md:leading-8"
+            >
+              {about.paragraphs.map((paragraph, index) => (
+                <p key={paragraph} hidden={collapsible && !expanded && index >= COLLAPSED_PARAGRAPHS}>
+                  {paragraph}
+                </p>
               ))}
             </div>
+            {collapsible && (
+              <button
+                type="button"
+                aria-expanded={expanded}
+                aria-controls={bioId}
+                onClick={() => setExpanded((value) => !value)}
+                className="mt-6 rounded border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/10"
+              >
+                {language === "en"
+                  ? expanded ? "Show less" : "Read more"
+                  : expanded ? "Voir moins" : "Voir plus"}
+              </button>
+            )}
           </div>
         </div>
       </div>
