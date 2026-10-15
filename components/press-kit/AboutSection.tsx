@@ -9,7 +9,8 @@ type AboutSectionProps = {
   language?: "fr" | "en";
 };
 
-// Bio longue repliée par défaut (design Sly'd) : seul le premier paragraphe est visible.
+// Bio longue repliée par défaut sur mobile (design Sly'd) : seul le premier paragraphe est visible.
+// Sur desktop, la bio reste entièrement affichée (le bouton est masqué).
 const COLLAPSED_PARAGRAPHS = 1;
 
 export function AboutSection({ about, slydPoster = false, language = "fr" }: AboutSectionProps) {
@@ -66,7 +67,7 @@ export function AboutSection({ about, slydPoster = false, language = "fr" }: Abo
               className="space-y-4 text-sm leading-6 text-white/72 md:space-y-6 md:text-lg md:leading-8"
             >
               {about.paragraphs.map((paragraph, index) => (
-                <p key={paragraph} hidden={collapsible && !expanded && index >= COLLAPSED_PARAGRAPHS}>
+                <p key={paragraph} className={collapsible && !expanded && index >= COLLAPSED_PARAGRAPHS ? "max-md:hidden" : undefined}>
                   {paragraph}
                 </p>
               ))}
@@ -77,7 +78,7 @@ export function AboutSection({ about, slydPoster = false, language = "fr" }: Abo
                 aria-expanded={expanded}
                 aria-controls={bioId}
                 onClick={() => setExpanded((value) => !value)}
-                className="mt-6 rounded border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/10"
+                className="mt-6 rounded border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/10 md:hidden"
               >
                 {language === "en"
                   ? expanded ? "Show less" : "Read more"
