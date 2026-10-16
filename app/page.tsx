@@ -129,6 +129,7 @@ export default async function Home({ params, searchParams }: HomeProps) {
       style={{ ...getTemplateStyle(theme), ...getFontStyle(fontPreset) }}
       data-pk-font={requestedFont ? "custom" : undefined}
       data-pk-theme={theme.id}
+      data-pk-variant={variant.id}
       className={`${kitStyles.kit} relative overflow-x-hidden bg-[var(--pk-bg)] text-[var(--pk-text)] selection:bg-[var(--pk-accent)] selection:text-white${slydPoster ? ` ${getSlydPresentationClass(client)}` : ""}`}
     >
       {showLocalSwitchers && (
