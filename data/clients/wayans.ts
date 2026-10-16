@@ -74,7 +74,7 @@ const wayansPressKitFr: PressKitConfig = {
     impact: {
       eyebrow: "",
       title: "WAYANS",
-      accent: "AFROBEAT, URBAN FR\n& RNB",
+      accent: "AFROBEAT,\nURBAN FR & RNB",
       layout: "showcase",
       fullScreen: true,
       hideDesktopRightFade: true,
@@ -92,7 +92,7 @@ const wayansPressKitFr: PressKitConfig = {
     interactive: {
       eyebrow: "",
       title: "WAYANS",
-      accent: "AFROBEAT, URBAN FR\n& RNB",
+      accent: "AFROBEAT,\nURBAN FR & RNB",
       layout: "interactive",
       description: "",
       image: {
@@ -108,7 +108,7 @@ const wayansPressKitFr: PressKitConfig = {
     showcase: {
       eyebrow: "",
       title: "WAYANS",
-      accent: "AFROBEAT, URBAN FR\n& RNB",
+      accent: "AFROBEAT,\nURBAN FR & RNB",
       layout: "showcase",
       contentClassName: "pt-[42vh]! md:pt-16! lg:pt-32!",
       description: "",
