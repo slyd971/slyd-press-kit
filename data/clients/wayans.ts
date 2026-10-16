@@ -131,7 +131,7 @@ const wayansPressKitFr: PressKitConfig = {
     title: "Le DJ ne dirige pas,\nil échange",
     signatureLabel: "Philosophie",
     signatureQuote:
-      "Le mix est un échange d'énergie entre le public et le DJ. Le but est de la renvoyer, en l'appliquant.",
+      "Un set est un échange d'énergie entre le public et le DJ. Mon rôle : la renvoyer amplifiée.",
     supportingText:
       "Passion, travail, professionnalisme : polyvalence et envie de toujours proposer quelque chose de nouveau.",
     tags: [
@@ -187,6 +187,17 @@ const wayansPressKitFr: PressKitConfig = {
           "A.N.M",
           "Reemix Therapy",
           "Feelings",
+          "The Foreign",
+          "Paddock Lounge",
+          "Bénin Boyz",
+          "Le Pigalle",
+          "Le Duplex",
+          "ChaCha Club",
+          "Hôtel Generator",
+          "Titi Palacio",
+          "Hôtel Maison Montmartre",
+          "Tap Club",
+          "Yu Club",
         ],
       },
       {
@@ -323,6 +334,7 @@ const wayansPressKitFr: PressKitConfig = {
       { src: "/wayans/photos/IMG_9834.jpeg", alt: "DJ Wayans assis, portrait en pied" },
       { src: "/wayans/photos/gallery-14.jpeg", alt: "Portrait de DJ Wayans en chemise brune, lumière chaude" },
       { src: "/wayans/photos/gallery-15.jpeg", alt: "Portrait de DJ Wayans en pull rayé jaune dans un bar" },
+      { src: "/wayans/photos/gallery-17.jpeg", alt: "DJ Wayans aux platines, casque sur les oreilles, Soft Szn à Malte" },
     ],
   },
 };
@@ -364,6 +376,7 @@ const galleryAltEn: Record<string, string> = {
   IMG_9834: "DJ Wayans seated, full-length portrait",
   "gallery-14": "Portrait of DJ Wayans in a brown shirt, warm light",
   "gallery-15": "Portrait of DJ Wayans in a yellow striped sweater at a bar",
+  "gallery-17": "DJ Wayans at the decks, headphones on, Soft Szn in Malta",
 };
 
 const wayansPressKitEn: PressKitConfig = {
@@ -480,6 +493,17 @@ const wayansPressKitEn: PressKitConfig = {
           "A.N.M",
           "Reemix Therapy",
           "Feelings",
+          "The Foreign",
+          "Paddock Lounge",
+          "Bénin Boyz",
+          "Le Pigalle",
+          "Le Duplex",
+          "ChaCha Club",
+          "Hôtel Generator",
+          "Titi Palacio",
+          "Hôtel Maison Montmartre",
+          "Tap Club",
+          "Yu Club",
         ],
       },
       {
