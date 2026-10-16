@@ -16,3 +16,12 @@ public/Paul-Kéranne
 public/yoruboy
 public/arthur-chaps
 public/silver-dj
+
+# Déploiement Wayans : uniquement les assets de public/wayans
+public/slyd
+public/press-kit
+docs
+public/wayans/videos/video1.mov
+public/wayans/videos/video2.mp4
+public/wayans/videos/video3.mov
+public/wayans/photos/hero-pic.jpeg
