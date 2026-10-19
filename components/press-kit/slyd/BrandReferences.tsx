@@ -1,10 +1,12 @@
 import Image from "next/image";
 import type { PressKitConfig } from "@/data/config";
 
-const existingLogos: Record<string, string> = {
-  Dior: "/logos/dior.png",
-  "Foot Locker": "/logos/footlocker.png",
-  "Mouv' Radio": "/logos/mouv.png",
+// Versions blanches sur fond transparent (public/logos/white). La hauteur est
+// réglée par logo pour un poids visuel équivalent entre formats très différents.
+const existingLogos: Record<string, { src: string; height: string }> = {
+  Dior: { src: "/logos/white/dior.png", height: "2.25rem" },
+  "Foot Locker": { src: "/logos/white/footlocker.png", height: "4.5rem" },
+  "Mouv' Radio": { src: "/logos/white/mouv.png", height: "3.25rem" },
 };
 
 export function BrandReferences({ items, language }: {
@@ -19,10 +21,13 @@ export function BrandReferences({ items, language }: {
       <div className="grid grid-cols-2 items-center gap-6 md:grid-cols-4 md:gap-10">
         {items.map((item) => {
           const name = typeof item === "string" ? item : item.name;
-          const logo = (typeof item === "string" ? undefined : item.logo) ?? existingLogos[name];
+          const customLogo = typeof item === "string" ? undefined : item.logo;
+          const logo = customLogo
+            ? { src: customLogo, height: "3.5rem" }
+            : existingLogos[name];
           const href = typeof item === "string" ? undefined : item.href;
           const content = logo
-            ? <Image src={logo} alt={name} width={240} height={160} className="bg-white p-2" />
+            ? <Image src={logo.src} alt={name} width={360} height={160} style={{ height: logo.height }} />
             : <span>{name}</span>;
           return href
             ? <a key={name} data-slyd-brand href={href} target="_blank" rel="noopener noreferrer">{content}</a>

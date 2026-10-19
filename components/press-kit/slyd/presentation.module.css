@@ -55,8 +55,9 @@
 }
 .poster [data-slyd-references] [hidden] { display: none; }
 .poster [data-slyd-brand] { display: flex; min-height: 6rem; align-items: center; justify-content: center; }
-.poster [data-slyd-brand] img { width: 100%; max-width: 10rem; height: 5rem; object-fit: contain; }
-.poster [data-slyd-brand] span { font-size: 1.25rem; font-weight: 700; text-align: center; }
+.poster [data-slyd-brand] img { width: auto; max-width: 100%; object-fit: contain; opacity: 0.88; transition: opacity 0.2s ease; }
+.poster a[data-slyd-brand]:hover img { opacity: 1; }
+.poster [data-slyd-brand] span { font-size: 1.35rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; text-align: center; opacity: 0.88; }
 
 @media (min-width: 768px) {
   .poster [data-slyd-references] { grid-template-columns: repeat(4, minmax(0, 1fr)); }
