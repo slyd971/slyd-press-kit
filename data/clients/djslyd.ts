@@ -14,6 +14,7 @@ const djslydPressKitEn: PressKitConfig = {
       { label: "Sound", href: "#sound" },
       { label: "Spotify", href: "#spotify" },
       { label: "Setup", href: "#rider" },
+      { label: "Media Kit", href: "#mediakit" },
     ],
   },
   heroVariants: {
@@ -25,6 +26,24 @@ const djslydPressKitEn: PressKitConfig = {
         { label: "See the gallery", href: "/gallery", variant: "secondary" },
       ],
     },
+  },
+  mediaKit: {
+    eyebrow: "Press",
+    title: "Media Kit",
+    description:
+      "Everything you need to promote DJ SLY'D: logos, short and long bios, HD photos and promo videos, ready to download.",
+    cta: {
+      label: "Open the Media Kit",
+      href: "https://drive.google.com/drive/folders/1DHi8_LgEPRAB-llmG3yKoLY_4MX6zkKH?usp=drive_link",
+      external: true,
+    },
+    items: [
+      { icon: "logo", label: "Logos" },
+      { icon: "bio", label: "Short bio" },
+      { icon: "bio", label: "Long bio" },
+      { icon: "photo", label: "HD photos" },
+      { icon: "video", label: "Promo videos" },
+    ],
   },
   rider: {
     eyebrow: "Technical setup",
@@ -92,6 +111,7 @@ const djslydPressKitFr: PressKitConfig = {
       { label: "Musique", href: "#sound" },
       { label: "Spotify", href: "#spotify" },
       { label: "Setup", href: "#rider" },
+      { label: "Kit Médias", href: "#mediakit" },
     ],
     cta: {
       label: "Booker SLY'D",
@@ -294,6 +314,24 @@ const djslydPressKitFr: PressKitConfig = {
       "Visuels haute résolution disponibles pour promoteurs, marques et médias. Cliquez sur une image pour l'afficher en grand et la télécharger.",
     homepageTitle: "L'UNIVERS AUTOUR DE SLY'D",
     homepageCtaLabel: "Voir toute la galerie",
+  },
+  mediaKit: {
+    eyebrow: "Presse",
+    title: "Kit Médias",
+    description:
+      "Tout ce qu'il faut pour promouvoir DJ SLY'D : logos, bio courte et longue, photos HD et vidéos promo, à télécharger.",
+    cta: {
+      label: "Accéder au Kit Médias",
+      href: "https://drive.google.com/drive/folders/1DHi8_LgEPRAB-llmG3yKoLY_4MX6zkKH?usp=drive_link",
+      external: true,
+    },
+    items: [
+      { icon: "logo", label: "Logos" },
+      { icon: "bio", label: "Bio courte" },
+      { icon: "bio", label: "Bio longue" },
+      { icon: "photo", label: "Photos HD" },
+      { icon: "video", label: "Vidéos promo" },
+    ],
   },
   rider: {
     eyebrow: "Setup technique",

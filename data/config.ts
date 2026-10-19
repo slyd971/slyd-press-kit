@@ -223,6 +223,17 @@ export type PressKitConfig = {
       points: string[];
     };
   };
+  mediaKit?: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    cta: CtaLink;
+    items: Array<{
+      icon: "logo" | "bio" | "video" | "photo" | "document";
+      label: string;
+      detail?: string;
+    }>;
+  };
   rider?: {
     eyebrow: string;
     title: string;

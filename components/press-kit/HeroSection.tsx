@@ -381,7 +381,7 @@ function HeroVariantBody({
           )}
           <div className={`absolute inset-0 ${hero.fullScreen ? "bg-black/20 md:bg-black/15" : "bg-black/12"}`} />
           {hero.mobileRightFade && (
-            <div className="absolute inset-y-0 right-0 w-[30%] bg-[linear-gradient(to_left,var(--pk-bg)_0%,var(--pk-bg)_60%,transparent_100%)] md:hidden" />
+            <div className="absolute inset-y-0 right-0 w-[42%] bg-[linear-gradient(to_left,var(--pk-bg)_0%,var(--pk-bg)_72%,transparent_100%)] md:hidden" />
           )}
           {hero.fullScreen && (
             <>

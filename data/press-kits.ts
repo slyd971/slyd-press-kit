@@ -52,6 +52,7 @@ const sectionHrefMap = {
   spotify: "#spotify",
   brands: "#brands",
   rider: "#rider",
+  mediakit: "#mediakit",
   contact: "#contact",
 };
 
@@ -120,6 +121,10 @@ export function hasRiderContent(config: PressKitConfig): boolean {
   return Boolean(config.rider && config.rider.groups.length > 0);
 }
 
+export function hasMediaKitContent(config: PressKitConfig): boolean {
+  return Boolean(config.mediaKit && config.mediaKit.cta.href);
+}
+
 export function getResolvedNavigation(
   config: PressKitConfig
 ): PressKitConfig["navigation"] {
@@ -137,6 +142,7 @@ export function getResolvedNavigation(
   if (hasSpotifyContent(config)) visibleSections.add(sectionHrefMap.spotify);
   if (hasBrandsContent(config)) visibleSections.add(sectionHrefMap.brands);
   if (hasRiderContent(config)) visibleSections.add(sectionHrefMap.rider);
+  if (hasMediaKitContent(config)) visibleSections.add(sectionHrefMap.mediakit);
 
   return {
     ...config.navigation,
