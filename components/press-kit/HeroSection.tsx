@@ -211,7 +211,6 @@ function HeroVariantBody({
 
   const heroFallback = (
     <div className="relative flex h-[48svh] w-full items-end overflow-hidden rounded-[1.2rem] bg-[linear-gradient(180deg,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0.02)_100%)] md:h-[76svh] md:rounded-[1.4rem]">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgb(var(--pk-accent-rgb)/0.35),transparent_26%),radial-gradient(circle_at_78%_18%,rgba(255,255,255,0.08),transparent_18%),linear-gradient(180deg,rgba(0,0,0,0.0)_0%,rgba(0,0,0,0.52)_100%)]" />
       <div className="absolute inset-0 opacity-[0.12] [background-image:linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:28px_28px]" />
       <div className="relative z-10 p-6 md:p-8">
         <div className="text-[10px] uppercase tracking-[0.24em] text-[var(--pk-accent-soft)] md:text-xs md:tracking-[0.3em]">
@@ -273,7 +272,6 @@ function HeroVariantBody({
             <div className="h-full w-full bg-[var(--pk-bg)]" />
           )}
           <div className="absolute inset-0 bg-black/70" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgb(var(--pk-accent-rgb)/0.22),transparent_28%),radial-gradient(circle_at_80%_0%,rgba(255,255,255,0.06),transparent_24%),radial-gradient(circle_at_50%_100%,rgb(var(--pk-accent-rgb)/0.12),transparent_32%)]" />
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--pk-bg)] via-black/35 to-black/20" />
         </div>
 
@@ -303,7 +301,7 @@ function HeroVariantBody({
             {hero.mediaCard && (
               <a
                 href={hero.mediaCard.href}
-                className="group relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/5 text-left backdrop-blur-sm transition duration-300 hover:border-[rgb(var(--pk-accent-rgb)/0.4)] hover:shadow-[0_0_30px_rgb(var(--pk-accent-rgb)/0.14)] md:rounded-[2rem]"
+                className="group relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/5 text-left backdrop-blur-sm transition duration-300 hover:border-[rgb(var(--pk-accent-rgb)/0.4)] md:rounded-[2rem]"
               >
                 <img
                   src={hero.mediaCard.imageSrc}
@@ -383,16 +381,15 @@ function HeroVariantBody({
           {hero.mobileRightFade && (
             <div className="absolute inset-y-0 right-0 w-[42%] bg-[linear-gradient(to_left,var(--pk-bg)_0%,var(--pk-bg)_72%,transparent_100%)] md:hidden" />
           )}
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--pk-bg)] via-transparent to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-black/72 via-black/38 to-transparent" />
+          {/* Desktop edge fades sit on top so the photo melts into the page with no visible seam. */}
           {hero.fullScreen && (
             <>
-            <div className="absolute inset-y-0 left-0 hidden w-2/5 bg-gradient-to-r from-[var(--pk-bg)] via-[var(--pk-bg)]/45 to-transparent md:block" />
+            <div className="absolute inset-y-0 left-0 hidden w-1/2 bg-[linear-gradient(to_right,var(--pk-bg)_0%,rgb(5_5_5/0.6)_40%,transparent_100%)] md:block" />
             <div className="absolute inset-y-0 right-0 hidden w-[42%] bg-[linear-gradient(to_left,var(--pk-bg)_0%,var(--pk-bg)_72%,transparent_100%)] md:block" />
             </>
           )}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgb(var(--pk-accent-rgb)/0.14),transparent_30%)]" />
-          <div className="absolute inset-0 opacity-[0.07] [background-image:linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] [background-size:34px_34px]" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--pk-bg)] via-transparent to-transparent" />
-          <div className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-black/72 via-black/38 to-transparent" />
         </div>
 
         <div
@@ -478,7 +475,6 @@ function HeroVariantBody({
 
   return (
     <section id={idOverride} className="relative scroll-mt-24 overflow-hidden pt-20 md:pt-24">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_12%,rgb(var(--pk-accent-rgb)/0.22),transparent_24%),radial-gradient(circle_at_82%_8%,rgb(var(--pk-accent-rgb)/0.08),transparent_20%),radial-gradient(circle_at_50%_100%,rgba(255,255,255,0.035),transparent_30%)]" />
       <div className="absolute inset-0 opacity-15 [background-image:linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] [background-size:34px_34px]" />
       <div className="absolute inset-0 bg-gradient-to-b from-[var(--pk-bg)]/15 via-transparent to-[var(--pk-bg)]" />
 
@@ -546,7 +542,7 @@ function HeroVariantBody({
                     href={cta.href}
                     className={
                       cta.variant === "primary"
-                        ? "inline-flex min-w-0 items-center justify-center rounded-full bg-[var(--pk-accent)] px-4 py-3 text-center text-[10px] font-semibold uppercase tracking-[0.14em] text-white shadow-[0_18px_45px_rgb(var(--pk-accent-rgb)/0.22)] transition hover:-translate-y-0.5 hover:bg-[var(--pk-accent-strong)] md:px-7 md:text-[11px] md:tracking-[0.22em]"
+                        ? "inline-flex min-w-0 items-center justify-center rounded-full bg-[var(--pk-accent)] px-4 py-3 text-center text-[10px] font-semibold uppercase tracking-[0.14em] text-white transition hover:-translate-y-0.5 hover:bg-[var(--pk-accent-strong)] md:px-7 md:text-[11px] md:tracking-[0.22em]"
                         : "inline-flex min-w-0 items-center justify-center rounded-full border border-white/14 bg-white/[0.04] px-3 py-3 text-center text-[10px] font-semibold uppercase tracking-[0.12em] text-white/82 transition hover:-translate-y-0.5 hover:border-white/22 hover:bg-white/[0.08] hover:text-white md:px-5 md:text-[11px] md:tracking-[0.18em]"
                     }
                   >
@@ -560,7 +556,7 @@ function HeroVariantBody({
                     rel={cta.external ? "noreferrer" : undefined}
                     className={
                       cta.variant === "primary"
-                        ? "inline-flex min-w-0 items-center justify-center rounded-full bg-[var(--pk-accent)] px-4 py-3 text-center text-[10px] font-semibold uppercase tracking-[0.14em] text-white shadow-[0_18px_45px_rgb(var(--pk-accent-rgb)/0.22)] transition hover:-translate-y-0.5 hover:bg-[var(--pk-accent-strong)] md:px-7 md:text-[11px] md:tracking-[0.22em]"
+                        ? "inline-flex min-w-0 items-center justify-center rounded-full bg-[var(--pk-accent)] px-4 py-3 text-center text-[10px] font-semibold uppercase tracking-[0.14em] text-white transition hover:-translate-y-0.5 hover:bg-[var(--pk-accent-strong)] md:px-7 md:text-[11px] md:tracking-[0.22em]"
                         : "inline-flex min-w-0 items-center justify-center rounded-full border border-white/14 bg-white/[0.04] px-3 py-3 text-center text-[10px] font-semibold uppercase tracking-[0.12em] text-white/82 transition hover:-translate-y-0.5 hover:border-white/22 hover:bg-white/[0.08] hover:text-white md:px-5 md:text-[11px] md:tracking-[0.18em]"
                     }
                   >
@@ -575,8 +571,6 @@ function HeroVariantBody({
             className="pk-hero-visual order-2 relative lg:justify-self-end"
             variants={heroImageReveal}
           >
-            <div className="absolute -left-4 top-8 h-28 w-28 rounded-full bg-[rgb(var(--pk-accent-rgb)/0.15)] blur-3xl md:-left-6 md:h-36 md:w-36" />
-            <div className="absolute -right-4 bottom-6 h-28 w-28 rounded-full bg-[rgb(var(--pk-accent-rgb)/0.08)] blur-3xl md:h-36 md:w-36" />
 
             <div className="relative overflow-hidden rounded-[1.45rem] border border-white/8 bg-white/[0.03] p-2 shadow-[0_28px_70px_rgba(0,0,0,0.34)] backdrop-blur-sm md:max-w-[34rem] md:rounded-[1.9rem] md:p-2.5">
               {hasHeroImage ? (

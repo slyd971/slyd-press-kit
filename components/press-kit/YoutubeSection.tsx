@@ -13,7 +13,6 @@ export function YoutubeSection({ youtube }: YoutubeSectionProps) {
       id="youtube"
       className="relative scroll-mt-24 overflow-hidden bg-black px-4 py-10 md:px-6 md:py-16"
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,0,0,0.12),transparent_28%),radial-gradient(circle_at_80%_90%,rgb(var(--pk-accent-rgb)/0.08),transparent_24%)]" />
 
       <div className="relative mx-auto max-w-6xl">
         <div className="mb-6 flex flex-col items-start justify-between gap-4 md:mb-8 md:flex-row md:items-end md:gap-5">

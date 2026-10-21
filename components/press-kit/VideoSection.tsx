@@ -132,7 +132,6 @@ export function VideoSection({ videos, maxItems }: VideoSectionProps) {
       id="videos"
       className="relative scroll-mt-24 overflow-hidden bg-[#080808] px-4 py-8 md:px-6 md:py-14"
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgb(var(--pk-accent-rgb)/0.12),transparent_24%),radial-gradient(circle_at_80%_90%,rgba(255,255,255,0.04),transparent_22%)]" />
 
       <div className="relative mx-auto max-w-6xl">
         <div className="mb-6 flex flex-col items-start justify-between gap-4 md:mb-8 md:flex-row md:items-end md:gap-5">
@@ -174,7 +173,7 @@ export function VideoSection({ videos, maxItems }: VideoSectionProps) {
             return (
               <article
                 key={video.id}
-                className="group flex w-[78%] max-w-[22rem] shrink-0 snap-start flex-col only:mx-auto only:w-full md:mx-auto md:h-full md:w-full overflow-hidden rounded-[1.3rem] border border-white/10 bg-white/[0.03] shadow-xl shadow-black/20 backdrop-blur-sm transition hover:border-[rgb(var(--pk-accent-rgb)/0.4)] hover:shadow-[0_0_30px_rgb(var(--pk-accent-rgb)/0.14)] md:max-w-none md:rounded-[1.7rem]"
+                className="group flex w-[78%] max-w-[22rem] shrink-0 snap-start flex-col only:mx-auto only:w-full md:mx-auto md:h-full md:w-full overflow-hidden rounded-[1.3rem] border border-white/10 bg-white/[0.03] shadow-xl shadow-black/20 backdrop-blur-sm transition hover:border-[rgb(var(--pk-accent-rgb)/0.4)] md:max-w-none md:rounded-[1.7rem]"
               >
                 <div className={`relative ${aspectClass} bg-black`}>
                   {video.source === "youtube" ? (

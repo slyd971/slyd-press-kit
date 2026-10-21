@@ -13,7 +13,6 @@ export function VisionSection({ vision }: VisionSectionProps) {
       id="vision"
       className="relative scroll-mt-24 overflow-hidden bg-[#050505] px-4 py-10 md:px-8 md:py-20"
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgb(var(--pk-accent-rgb)/0.18),transparent_28%),radial-gradient(circle_at_82%_72%,rgba(255,255,255,0.06),transparent_24%)]" />
       <div className="absolute inset-0 opacity-[0.1] [background-image:linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] [background-size:36px_36px]" />
 
       <div className="relative mx-auto grid max-w-[1200px] gap-6 xl:grid-cols-[0.95fr_1.05fr] xl:items-stretch">

@@ -2,12 +2,15 @@ import type { Metadata } from "next";
 import kitStyles from "@/components/press-kit/kit.module.css";
 import { getSlydPresentationClass, isSlydPoster } from "@/components/press-kit/slyd/presentation";
 import { DevControlPanel } from "@/components/press-kit/DevControlPanel";
+import { Footer } from "@/components/press-kit/Footer";
 import { Header } from "@/components/press-kit/Header";
 import { VideoSection } from "@/components/press-kit/VideoSection";
 import { getFontPreset, getFontStyle } from "@/data/font-presets";
 import {
   createPressKitEntry,
+  getArtistGalleryHref,
   getArtistHomeHref,
+  getArtistVideosHref,
   getResolvedNavigation,
   hasVideoContent,
 } from "@/data/press-kits";
@@ -65,6 +68,8 @@ export default async function VideosPage({ searchParams }: VideosPageProps) {
   const showLocalSwitchers = await isLocalRequest();
   const navigation = getResolvedNavigation(pressKitConfig);
   const homeHref = getArtistHomeHref(pressKitEntry.id);
+  const galleryHref = getArtistGalleryHref(pressKitEntry.id);
+  const videosHref = getArtistVideosHref(pressKitEntry.id);
   const hasVideos = hasVideoContent(pressKitConfig);
   const videosWithoutCta = {
     ...pressKitConfig.videos,
@@ -110,6 +115,13 @@ export default async function VideosPage({ searchParams }: VideosPageProps) {
           </section>
         )}
       </div>
+      <Footer
+        client={client}
+        navigation={navigation}
+        homeHref={homeHref}
+        galleryHref={galleryHref}
+        videosHref={videosHref}
+      />
     </main>
   );
 }

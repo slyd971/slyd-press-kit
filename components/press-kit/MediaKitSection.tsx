@@ -57,7 +57,7 @@ export function MediaKitSection({ mediaKit }: MediaKitSectionProps) {
           href={mediaKit.cta.href}
           target={mediaKit.cta.external ? "_blank" : undefined}
           rel={mediaKit.cta.external ? "noopener noreferrer" : undefined}
-          className="mt-8 inline-flex items-center justify-center gap-2.5 rounded-full bg-[var(--pk-accent)] px-7 py-3.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-white shadow-[0_18px_45px_rgb(var(--pk-accent-rgb)/0.22)] transition hover:-translate-y-0.5 hover:bg-[var(--pk-accent-strong)] md:text-xs md:tracking-[0.22em]"
+          className="mt-8 inline-flex items-center justify-center gap-2.5 rounded-full bg-[var(--pk-accent)] px-7 py-3.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-white transition hover:-translate-y-0.5 hover:bg-[var(--pk-accent-strong)] md:text-xs md:tracking-[0.22em]"
         >
           <Download className="h-4 w-4" aria-hidden="true" />
           {mediaKit.cta.label}

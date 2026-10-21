@@ -22,7 +22,6 @@ export function AboutSection({ about, slydPoster = false, language = "fr" }: Abo
       id="about"
       className="relative scroll-mt-24 overflow-hidden px-4 pb-10 pt-8 md:px-6 md:pb-20 md:pt-12"
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgb(var(--pk-accent-rgb)/0.10),transparent_25%),radial-gradient(circle_at_80%_90%,rgba(255,255,255,0.03),transparent_20%)]" />
 
       <div className="relative mx-auto max-w-7xl">
         <div className="mb-4 text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--pk-accent)] md:mb-6 md:text-xs md:tracking-[0.35em]">
@@ -31,7 +30,7 @@ export function AboutSection({ about, slydPoster = false, language = "fr" }: Abo
 
         <div className="grid gap-8 md:gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start lg:gap-12">
           <div className="relative">
-            <div className="absolute left-0 top-2 h-full w-[2px] bg-[linear-gradient(to_bottom,var(--pk-accent),rgb(var(--pk-accent-rgb)/0.3),transparent)]" />
+            <div className="absolute left-0 top-2 h-full w-[2px] bg-[var(--pk-accent)]" />
 
             <div className="pl-4 md:pl-6">
               <h2 className="whitespace-pre-line text-3xl font-black uppercase leading-[0.95] sm:text-4xl md:text-6xl md:leading-[0.92]">

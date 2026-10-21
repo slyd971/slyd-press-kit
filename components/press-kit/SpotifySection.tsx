@@ -15,7 +15,6 @@ export function SpotifySection({ spotify }: SpotifySectionProps) {
       id="spotify"
       className="relative scroll-mt-24 overflow-hidden bg-black px-4 pb-8 pt-10 md:px-6 md:pb-16 md:pt-20"
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgb(var(--pk-accent-rgb)/0.09),transparent_28%),radial-gradient(circle_at_80%_20%,rgba(255,255,255,0.03),transparent_22%),radial-gradient(circle_at_50%_100%,rgb(var(--pk-accent-rgb)/0.05),transparent_30%)]" />
 
       <div className="relative mx-auto max-w-7xl">
         <div className="grid gap-5 md:gap-8 lg:grid-cols-[1fr_0.85fr] lg:items-start">
@@ -43,9 +42,8 @@ export function SpotifySection({ spotify }: SpotifySectionProps) {
           {spotify.playlists.map((playlist) => (
             <div
               key={playlist.id}
-              className="group relative w-[85%] shrink-0 snap-start overflow-hidden only:w-full md:w-full rounded-[1.35rem] border border-white/10 bg-[linear-gradient(180deg,#0b0b0d_0%,#050505_100%)] p-2.5 transition duration-300 hover:border-[rgb(var(--pk-accent-rgb)/0.3)] hover:shadow-[0_0_30px_rgb(var(--pk-accent-rgb)/0.08)] md:rounded-[1.7rem] md:p-4"
+              className="group relative w-[85%] shrink-0 snap-start overflow-hidden only:w-full md:w-full rounded-[1.35rem] border border-white/10 bg-[linear-gradient(180deg,#0b0b0d_0%,#050505_100%)] p-2.5 transition duration-300 hover:border-[rgb(var(--pk-accent-rgb)/0.3)] md:rounded-[1.7rem] md:p-4"
             >
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgb(var(--pk-accent-rgb)/0.08),transparent_38%)] opacity-0 transition duration-300 group-hover:opacity-100" />
 
               <div className="relative mb-2 flex items-center justify-between gap-2 md:mb-3 md:gap-3">
                 <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-white/62 md:text-[11px] md:tracking-[0.28em]">

@@ -175,7 +175,7 @@ export function Header({ artist, navigation, ui, homeHref = "/" }: HeaderProps) 
 
           <a
             href={navigation.cta.href}
-            className={`hidden rounded-full border border-[rgb(var(--pk-accent-rgb)/0.28)] bg-[var(--pk-accent)] font-semibold uppercase text-white shadow-[0_14px_36px_rgb(var(--pk-accent-rgb)/0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[var(--pk-accent-strong)] lg:inline-flex ${
+            className={`hidden rounded-full border border-[rgb(var(--pk-accent-rgb)/0.28)] bg-[var(--pk-accent)] font-semibold uppercase text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[var(--pk-accent-strong)] lg:inline-flex ${
               isHeaderCompact
                 ? "px-4.5 py-2 text-[10px] tracking-[0.18em]"
                 : "px-6 py-2.5 text-[11px] tracking-[0.22em]"

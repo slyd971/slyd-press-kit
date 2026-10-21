@@ -24,7 +24,7 @@ function BrandCard({
   const href = typeof item === "string" ? undefined : item.href;
   const cardClassName = hideItemFrame
     ? "group flex h-full flex-col justify-center"
-    : "group flex h-full flex-col justify-between rounded-[1.2rem] border border-white/10 bg-white/[0.015] p-5 backdrop-blur-sm transition hover:border-[rgb(var(--pk-accent-rgb)/0.4)] hover:bg-white/[0.03] hover:shadow-[0_0_30px_rgb(var(--pk-accent-rgb)/0.12)] md:rounded-[1.4rem] md:p-6";
+    : "group flex h-full flex-col justify-between rounded-[1.2rem] border border-white/10 bg-white/[0.015] p-5 backdrop-blur-sm transition hover:border-[rgb(var(--pk-accent-rgb)/0.4)] hover:bg-white/[0.03] md:rounded-[1.4rem] md:p-6";
 
   const inner = (
     <div className={cardClassName}>
@@ -71,7 +71,6 @@ export function BrandsSection({ brands }: BrandsSectionProps) {
       id="brands"
       className="relative scroll-mt-24 overflow-hidden bg-black px-4 py-10 md:px-8 md:py-20"
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_10%,rgb(var(--pk-accent-rgb)/0.14),transparent_30%),radial-gradient(circle_at_70%_80%,rgb(var(--pk-accent-rgb)/0.06),transparent_22%)]" />
       <div className="absolute inset-0 opacity-[0.12] [background-image:linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] [background-size:34px_34px]" />
 
       <div className="relative mx-auto max-w-[1200px]">
@@ -131,7 +130,7 @@ export function BrandsSection({ brands }: BrandsSectionProps) {
           </div>
 
           {brands.fit && (
-            <div className="flex h-full flex-col justify-between rounded-[1.2rem] border border-white/10 bg-[linear-gradient(180deg,rgb(var(--pk-accent-rgb)/0.12)_0%,rgba(255,255,255,0.02)_100%)] p-5 backdrop-blur-sm md:rounded-[1.4rem] md:p-6">
+            <div className="flex h-full flex-col justify-between rounded-[1.2rem] border border-white/10 bg-white/[0.03] p-5 backdrop-blur-sm md:rounded-[1.4rem] md:p-6">
               <div>
                 <div className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[var(--pk-accent-soft)] md:text-xs md:tracking-[0.34em]">
                   {brands.fit.eyebrow}
