@@ -23,7 +23,7 @@ const heroCtas: PressKitConfig["heroVariants"]["impact"]["ctas"] = [
 
 const heroStats: PressKitConfig["heroVariants"]["impact"]["stats"] = [
   { value: "30+", label: "Dates en 2026" },
-  { value: "60K+", label: "Vues Instagram / 3 mois" },
+  { value: "100K+", label: "Vues Instagram / 3 mois" },
   { value: "2022", label: "Début sur scène" },
   { value: "PARIS", label: "Base" },
 ];
@@ -175,6 +175,7 @@ const wayansPressKitFr: PressKitConfig = {
           "F.M.R",
           "Rimshot — Clermont-Ferrand",
           "Kalyhouse",
+          "NLF HOUSE",
           "Afrikashine",
           "RnbShine",
           "Don Party",
@@ -349,7 +350,7 @@ const heroCtasEn: PressKitConfig["heroVariants"]["impact"]["ctas"] = [
 
 const heroStatsEn: PressKitConfig["heroVariants"]["impact"]["stats"] = [
   { value: "30+", label: "Dates in 2026" },
-  { value: "60K+", label: "Instagram views / 3 months" },
+  { value: "100K+", label: "Instagram views / 3 months" },
   { value: "2022", label: "On stage since" },
   { value: "PARIS", label: "Base" },
 ];
@@ -481,6 +482,7 @@ const wayansPressKitEn: PressKitConfig = {
           "F.M.R",
           "Rimshot — Clermont-Ferrand",
           "Kalyhouse",
+          "NLF HOUSE",
           "Afrikashine",
           "RnbShine",
           "Don Party",
