@@ -327,9 +327,9 @@ const soundCloudEmbedUrl =
 
 export const pressKitConfig: PressKitConfig = {
   metadata: {
-    title: "DJ SLY'D Press Kit | Hip-Hop, Afro & Club Energy",
+    title: "DJ SLY'D Press Kit | Hip-Hop, Afro & Open Format",
     description:
-      "Discover DJ SLY'D, Paris-based DJ and producer blending Hip-Hop, Afro, RnB and club energy for nightlife, premium events and international bookings.",
+      "Discover DJ SLY'D, Paris-based DJ and producer blending Hip-Hop, Afro, RnB and open format for nightlife, premium events and international bookings.",
   },
   ui: {
     openMenuLabel: "Open menu",
@@ -342,7 +342,7 @@ export const pressKitConfig: PressKitConfig = {
   },
   artist: {
     name: "DJ SLY'D",
-    stageLabel: "DJ • Producer • International Energy",
+    stageLabel: "DJ • Producer • International",
     logo: {
       src: "/press-kit/logo-slyd.png",
       alt: "Sly'D logo",
@@ -371,7 +371,7 @@ export const pressKitConfig: PressKitConfig = {
       title: "DJ SLY'D",
       accent: "THE ECLECTIC",
       description:
-        "Hip-hop, RnB, afro, baile funk, future beats and club-ready transitions. A premium open-format identity designed for nightlife, lifestyle events and high-energy bookings.",
+        "Hip-hop, RnB, afro, baile funk, future beats and club-ready transitions. A premium open-format identity designed for nightlife, lifestyle events and large-scale bookings.",
       layout: "impact",
       image: {
         src: "/press-kit/2025-12-29-22-31-08-761.jpg",
@@ -395,7 +395,7 @@ export const pressKitConfig: PressKitConfig = {
       title: "DJ SLY'D",
       accent: "THE ECLECTIC",
       description:
-        "Press play and step into the energy — hip-hop, afro, RnB and open-format performance built for real crowd connection.",
+        "Press play and step into the set — hip-hop, afro, RnB and open-format performance built for real crowd connection.",
       layout: "interactive",
       image: {
         src: "/press-kit/2025-12-29-22-31-08-761.jpg",
@@ -427,7 +427,7 @@ export const pressKitConfig: PressKitConfig = {
       title: "DJ SLY'D",
       accent: "THE ECLECTIC",
       description:
-        "Hip-hop, RnB, afro, baile funk and club-ready energy — curated for nights that need more than just music.",
+        "Hip-hop, RnB, afro, baile funk and club-ready sets — curated for nights that need more than just music.",
       layout: "showcase",
       image: {
         src: "/press-kit/2025-12-29-22-31-08-761.jpg",
@@ -467,8 +467,8 @@ export const pressKitConfig: PressKitConfig = {
       "UKG",
     ],
     paragraphs: [
-      "DJ SLY'D is a Paris-based DJ with over 17 years of experience, known for delivering high-energy, crowd-driven performances built on a strong open-format identity.",
-      "His sound moves naturally between hip-hop, RnB, afrobeat, baile funk and future sounds, blending genres with precision and instinct to create seamless transitions and maintain constant energy on the dancefloor.",
+      "DJ SLY'D is a Paris-based DJ with over 17 years of experience, known for delivering crowd-driven performances built on a strong open-format identity.",
+      "His sound moves naturally between hip-hop, RnB, afrobeat, baile funk and future sounds, blending genres with precision and instinct to create seamless transitions and keep the dancefloor moving.",
       "From Paris nightlife to international stages, SLY'D has built a profile at the intersection of club culture, lifestyle events and premium brand experiences.",
       "Each set is designed as a journey: reading the room, building tension and delivering impact at the right moment.",
     ],
@@ -477,7 +477,7 @@ export const pressKitConfig: PressKitConfig = {
     eyebrow: "Where I've Played",
     title: "ROOMS THAT SHAPED MY STORY",
     description:
-      "From Paris nightlife staples to international bookings, SLY'D has built a route shaped by dancefloors, crowd connection and versatile open-format energy. His journey moves across club institutions, lifestyle venues and global stages where adaptability and musical identity matter just as much as performance.",
+      "From Paris nightlife staples to international bookings, SLY'D has built a route shaped by dancefloors, crowd connection and versatile open-format sets. His journey moves across club institutions, lifestyle venues and global stages where adaptability and musical identity matter just as much as performance.",
     regions: [
       {
         title: "France",
@@ -524,9 +524,9 @@ export const pressKitConfig: PressKitConfig = {
     eyebrow: "Sound",
     title: "SLY'D ON SOUNDCLOUD",
     paragraphs: [
-      "Beyond the club, SLY'D extends his musical identity through curated mixes, edits and live-driven selections built to capture energy, tension and release.",
+      "Beyond the club, SLY'D extends his musical identity through curated mixes, edits and live-driven selections built to capture tension and release.",
       "Each set blends hip-hop, RnB, afro, baile funk and future sounds into seamless transitions designed for real dancefloor impact.",
-      "From warm-up moods to peak-time energy, this is where the full range of the sound comes through.",
+      "From warm-up moods to peak time, this is where the full range of the sound comes through.",
     ],
     cta: {
       label: "Explore SoundCloud",
@@ -541,12 +541,12 @@ export const pressKitConfig: PressKitConfig = {
     eyebrow: "Live moments",
     title: "HOW I MOVE A ROOM",
     description:
-      "These videos show the way I build energy in real time, read the crowd and turn a set into a moment people actually feel.",
+      "These videos show the way I build a set in real time, read the crowd and turn a set into a moment people actually feel.",
     items: [
       {
         id: "crowd-ignition",
         title: "Immediate connection",
-        description: "A first look at the energy, presence and crowd response I build from the start.",
+        description: "A first look at the presence and crowd response I build from the start.",
         src: "/slyd/slyd-video-5.mp4",
         poster: "/press-kit/_DSC6062.jpg",
       },
@@ -597,7 +597,7 @@ export const pressKitConfig: PressKitConfig = {
     eyebrow: "Brands & Culture",
     title: "Brand-safe. Culture-led.\nPremium-ready.",
     intro:
-      "Positioned at the intersection of nightlife, culture and premium brand environments, SLY'D delivers experiences that translate seamlessly from club energy to high-end activations.",
+      "Positioned at the intersection of nightlife, culture and premium brand environments, SLY'D delivers experiences that translate seamlessly from the club to high-end activations.",
     supportingText:
       "His ability to read the room, adapt his sound and align with brand identity makes him a strong fit for fashion, sportswear, media and lifestyle collaborations.",
     categories: ["Fashion", "Sportswear", "Media", "Premium Events"],
