@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { AboutSection } from "@/components/press-kit/AboutSection";
 import { BrandsSection } from "@/components/press-kit/BrandsSection";
 import { ClubsSection } from "@/components/press-kit/ClubsSection";
@@ -104,10 +105,23 @@ export async function generateMetadata({
 export default async function Home({ params, searchParams }: HomeProps) {
   const resolvedParams = params ? await params : undefined;
   const resolvedSearchParams = searchParams ? await searchParams : undefined;
-  const client = getLocalizedClient(
-    await getRequiredRequestClient(getRequestedClientSlug(resolvedSearchParams)),
-    resolvedParams?.locale
+  const requestedClient = await getRequiredRequestClient(
+    getRequestedClientSlug(resolvedSearchParams)
   );
+  const requestedLocale = resolvedParams?.locale?.toLowerCase();
+
+  // /[locale] only exists for the languages a client really offers; any other
+  // single segment (/foo, /robots.txt...) must be a 404, not the home page.
+  if (
+    requestedLocale &&
+    !requestedClient.languageSwitch?.some(
+      (item) => item.label.toLowerCase() === requestedLocale
+    )
+  ) {
+    notFound();
+  }
+
+  const client = getLocalizedClient(requestedClient, resolvedParams?.locale);
   const pressKitEntry = createPressKitEntry(client);
   const slydPoster = isSlydPoster(client);
   const pressKitConfig = pressKitEntry.config;
