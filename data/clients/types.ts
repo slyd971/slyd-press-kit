@@ -1,4 +1,5 @@
 import type { GalleryImage, PressKitConfig } from "@/data/config";
+import type { FontPresetId } from "@/data/font-presets";
 import type { TemplateId, TemplateVariantId } from "@/data/templates";
 
 export type ClientSocials = {
@@ -59,6 +60,8 @@ export type ClientConfig = {
   seo: ClientSeoConfig;
   defaultTheme: TemplateId;
   defaultVariant: TemplateVariantId;
+  /** Optionnel : police par défaut (sinon preset « studio »). */
+  defaultFont?: FontPresetId;
   pressKit: PressKitConfig;
   hideFromSwitcher?: boolean;
   languageSwitch?: {

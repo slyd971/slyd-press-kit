@@ -66,7 +66,8 @@ export default async function GalleryPage({ searchParams }: GalleryPageProps) {
   const theme = getTemplateTheme(
     resolvedSearchParams?.template ?? pressKitEntry.defaultTheme
   );
-  const fontPreset = getFontPreset(resolvedSearchParams?.font);
+  const requestedFont = resolvedSearchParams?.font ?? client.defaultFont;
+  const fontPreset = getFontPreset(requestedFont);
   const showLocalSwitchers = await isLocalRequest();
   const hasGallery = hasGalleryContent(pressKitConfig);
   const navigation = getResolvedNavigation(
