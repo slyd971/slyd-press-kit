@@ -18,7 +18,7 @@ const djslydPressKitEn: PressKitConfig = {
       {
         id: "slyd-youtube-feature",
         source: "youtube",
-        title: "DJ SLY'D",
+        title: "DJ SLY'D pour RANDOM DJ PARIS",
         description: "",
         embedUrl: "https://www.youtube.com/embed/b4OZpI825h0",
       },
@@ -120,7 +120,7 @@ const djslydPressKitFr: PressKitConfig = {
       {
         id: "slyd-youtube-feature",
         source: "youtube",
-        title: "DJ SLY'D",
+        title: "DJ SLY'D pour RANDOM DJ PARIS",
         description: "",
         embedUrl: "https://www.youtube.com/embed/b4OZpI825h0",
       },
