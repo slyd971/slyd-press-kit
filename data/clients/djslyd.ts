@@ -43,6 +43,12 @@ const djslydPressKitEn: PressKitConfig = {
       { label: "Calendar", href: "#disponibilites" },
     ],
   },
+  contact: {
+    ...pressKitConfig.contact,
+    methods: pressKitConfig.contact.methods.filter((method) =>
+      ["Mail", "Bookings", "Instagram"].includes(method.label)
+    ),
+  },
   heroVariants: {
     ...pressKitConfig.heroVariants,
     showcase: {
