@@ -13,8 +13,8 @@ const djslydPressKitEn: PressKitConfig = {
       { label: "Videos", href: "#videos" },
       { label: "Sound", href: "#sound" },
       { label: "Setup", href: "#rider" },
-      { label: "Calendar", href: "#disponibilites" },
       { label: "Media Kit", href: "#mediakit" },
+      { label: "Calendar", href: "#disponibilites" },
     ],
   },
   heroVariants: {
@@ -110,8 +110,8 @@ const djslydPressKitFr: PressKitConfig = {
       { label: "Vidéos", href: "#videos" },
       { label: "Musique", href: "#sound" },
       { label: "Setup", href: "#rider" },
-      { label: "Calendrier", href: "#disponibilites" },
       { label: "Kit Médias", href: "#mediakit" },
+      { label: "Calendrier", href: "#disponibilites" },
     ],
     cta: {
       label: "Booker SLY'D",

@@ -8,7 +8,7 @@ type AvailabilitySectionProps = {
   busyDates: string[];
   /** YYYY-MM-DD for "today" (computed on the server to avoid hydration drift). */
   today: string;
-  /** mailto: / https: base the "request this date" button builds on. */
+  /** Contact link used by the fallback shown when the calendar feed is down. */
   bookingHref: string;
   language?: "fr" | "en";
   /** Shown instead of the calendar when the feed could not be read. */
@@ -22,19 +22,13 @@ const COPY = {
     eyebrow: "Agenda",
     title: "Disponibilités",
     description:
-      "Les dates grisées sont déjà prises. Choisis un jour libre pour envoyer ta demande, la confirmation se fait par échange direct.",
+      "Les dates en noir sont déjà prises. Pour toute autre date, contacte-moi directement.",
     free: "Libre",
     busy: "Indisponible",
-    selected: "Date choisie",
-    request: "Demander cette date",
-    pick: "Choisis un jour libre",
-    busyHint: "Déjà pris — contacte-moi pour une autre date",
     unavailable:
       "Le calendrier est momentanément indisponible. Écris-moi directement pour connaître mes disponibilités.",
     contact: "Me contacter",
     demo: "Aperçu de design — fausses dates",
-    subject: "Demande de booking",
-    bodyPrefix: "Bonjour, je souhaite savoir si tu es disponible le",
     weekdays: ["L", "M", "M", "J", "V", "S", "D"],
     locale: "fr-FR",
     prev: "Mois précédent",
@@ -44,19 +38,13 @@ const COPY = {
     eyebrow: "Calendar",
     title: "Availability",
     description:
-      "Greyed-out dates are already taken. Pick a free day to send your request — confirmation happens through direct contact.",
+      "Dates in black are already taken. For any other date, get in touch directly.",
     free: "Free",
     busy: "Unavailable",
-    selected: "Selected date",
-    request: "Request this date",
-    pick: "Pick a free day",
-    busyHint: "Already booked — get in touch for another date",
     unavailable:
       "The calendar is temporarily unavailable. Write to me directly to check availability.",
     contact: "Get in touch",
     demo: "Design preview — fake dates",
-    subject: "Booking request",
-    bodyPrefix: "Hello, I would like to know if you are available on",
     weekdays: ["M", "T", "W", "T", "F", "S", "S"],
     locale: "en-GB",
     prev: "Previous month",
@@ -107,18 +95,6 @@ function buildMonth(year: number, monthIndex: number) {
   return cells;
 }
 
-function buildRequestHref(base: string, dateLabel: string, copy: (typeof COPY)["fr"] | (typeof COPY)["en"]) {
-  if (!base.startsWith("mailto:")) {
-    return base;
-  }
-
-  const address = base.slice("mailto:".length).split("?")[0];
-  const subject = encodeURIComponent(`${copy.subject} — ${dateLabel}`);
-  const body = encodeURIComponent(`${copy.bodyPrefix} ${dateLabel} ?`);
-
-  return `mailto:${address}?subject=${subject}&body=${body}`;
-}
-
 export function AvailabilitySection({
   busyDates,
   today,
@@ -132,7 +108,6 @@ export function AvailabilitySection({
   const todayParts = parseKey(today);
   const startIndex = todayParts.year * 12 + todayParts.monthIndex;
   const [offset, setOffset] = useState(0);
-  const [selected, setSelected] = useState<string | null>(null);
 
   const viewIndex = startIndex + offset;
   const viewYear = Math.floor(viewIndex / 12);
@@ -143,7 +118,6 @@ export function AvailabilitySection({
     year: "numeric",
     timeZone: "UTC",
   }).format(new Date(Date.UTC(viewYear, viewMonth, 1)));
-  const selectedLabel = selected ? formatLongDate(selected, copy.locale) : null;
 
   return (
     <section
@@ -234,7 +208,6 @@ export function AvailabilitySection({
                   const key = toKey(viewYear, viewMonth, day);
                   const isPast = key < today;
                   const isBusy = busy.has(key);
-                  const isSelected = selected === key;
                   const isToday = key === today;
 
                   let tone = "border-black/25 text-black hover:border-black";
@@ -243,25 +216,20 @@ export function AvailabilitySection({
                     tone = "border-transparent text-black/25";
                   } else if (isBusy) {
                     tone = "border-black bg-black text-white/55 line-through";
-                  } else if (isSelected) {
-                    tone = "border-black bg-[var(--pk-accent)] text-white";
                   }
 
                   return (
-                    <button
+                    <div
                       key={key}
-                      type="button"
-                      disabled={isPast}
-                      aria-pressed={isSelected}
+                      role="img"
                       aria-label={`${formatLongDate(key, copy.locale)} — ${isBusy ? copy.busy : copy.free}`}
-                      onClick={() => setSelected(isSelected ? null : key)}
-                      className={`relative aspect-square border-2 text-sm font-bold transition disabled:cursor-default md:text-lg ${tone}`}
+                      className={`relative flex aspect-square items-center justify-center border-2 text-sm font-bold md:text-lg ${tone}`}
                     >
                       {day}
-                      {isToday && !isSelected && (
+                      {isToday && (
                         <span className="absolute bottom-1 left-1/2 h-[3px] w-3 -translate-x-1/2 bg-[var(--pk-accent)]" />
                       )}
-                    </button>
+                    </div>
                   );
                 })}
               </div>
@@ -275,35 +243,6 @@ export function AvailabilitySection({
                   <span className="h-3 w-3 border-2 border-black bg-black" />
                   {copy.busy}
                 </span>
-                <span className="flex items-center gap-2">
-                  <span className="h-3 w-3 border-2 border-black bg-[var(--pk-accent)]" />
-                  {copy.selected}
-                </span>
-              </div>
-
-              <div className="mt-5 flex flex-col gap-3 border-t-2 border-black pt-5 sm:flex-row sm:items-center sm:justify-between">
-                <div className="min-w-0 font-bold [font-family:var(--slyd-font-display,var(--pk-font-display)),sans-serif] text-xl uppercase leading-tight md:text-2xl">
-                  {selected && selectedLabel
-                    ? busy.has(selected)
-                      ? <span className="text-black/55">{selectedLabel}</span>
-                      : selectedLabel
-                    : <span className="text-black/45">{copy.pick}</span>}
-                  {selected && busy.has(selected) && (
-                    <div className="mt-1 font-sans text-xs font-medium normal-case tracking-normal text-black/60">
-                      {copy.busyHint}
-                    </div>
-                  )}
-                </div>
-
-                {selected && selectedLabel && !busy.has(selected) && (
-                  <a
-                    href={buildRequestHref(bookingHref, selectedLabel, copy)}
-                    className="inline-flex shrink-0 items-center justify-center gap-2 border-2 border-black bg-black px-5 py-3 text-sm font-bold uppercase tracking-[0.12em] text-white transition hover:-translate-y-0.5"
-                  >
-                    {copy.request}
-                    <ArrowUpRight className="h-4 w-4" />
-                  </a>
-                )}
               </div>
             </div>
           )}
