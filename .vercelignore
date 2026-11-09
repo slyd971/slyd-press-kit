@@ -7,9 +7,8 @@ node_modules
 .env.local
 .vercel
 
-# Autres clients — dj-flo a son propre repo, seul public/dj-flo est inclus ici
-public/press-kit
-public/slyd
+# Autres clients — chacun a son propre repo et projet Vercel
+# Ne PAS exclure public/press-kit (images djslyd) ni public/slyd (vidéos djslyd)
 public/mack
 public/soyumi
 public/paul-keranne
@@ -17,9 +16,3 @@ public/Paul-Kéranne
 public/yoruboy
 public/arthur-chaps
 public/silver-dj
-public/logos
-
-# dj-flo : exclure raw assets, garder seulement optimized/
-public/dj-flo/*
-!public/dj-flo/optimized
-!public/dj-flo/optimized/**
