@@ -4,6 +4,32 @@ import type { ClientConfig } from "@/data/clients/types";
 
 const djslydPressKitEn: PressKitConfig = {
   ...pressKitConfig,
+  heroSocials: [
+    { label: "Instagram", href: "https://instagram.com/djslyd", icon: "instagram" },
+    { label: "TikTok", href: "https://www.tiktok.com/@djslyd/", icon: "tiktok" },
+    { label: "Spotify", href: "https://open.spotify.com/artist/3fDBK7mHavPMCZxfwy1V3k", icon: "spotify" },
+    { label: "SoundCloud", href: "https://soundcloud.com/dj-slyd/", icon: "soundcloud" },
+  ],
+  youtube: {
+    eyebrow: "YouTube",
+    title: "SLY'D on video.",
+    description: "A video to discover the energy and world of DJ SLY'D.",
+    items: [
+      {
+        id: "slyd-youtube-feature",
+        source: "youtube",
+        title: "DJ SLY'D",
+        description: "",
+        embedUrl: "https://www.youtube.com/embed/b4OZpI825h0",
+      },
+    ],
+    cta: {
+      label: "Watch on YouTube",
+      href: "https://www.youtube.com/watch?v=b4OZpI825h0",
+      external: true,
+      variant: "secondary",
+    },
+  },
   navigation: {
     ...pressKitConfig.navigation,
     items: [
@@ -80,6 +106,32 @@ const djslydPressKitEn: PressKitConfig = {
 
 const djslydPressKitFr: PressKitConfig = {
   ...pressKitConfig,
+  heroSocials: [
+    { label: "Instagram", href: "https://instagram.com/djslyd", icon: "instagram" },
+    { label: "TikTok", href: "https://www.tiktok.com/@djslyd/", icon: "tiktok" },
+    { label: "Spotify", href: "https://open.spotify.com/artist/3fDBK7mHavPMCZxfwy1V3k", icon: "spotify" },
+    { label: "SoundCloud", href: "https://soundcloud.com/dj-slyd/", icon: "soundcloud" },
+  ],
+  youtube: {
+    eyebrow: "YouTube",
+    title: "SLY'D en vidéo.",
+    description: "Une vidéo pour découvrir l'énergie et l'univers de DJ SLY'D.",
+    items: [
+      {
+        id: "slyd-youtube-feature",
+        source: "youtube",
+        title: "DJ SLY'D",
+        description: "",
+        embedUrl: "https://www.youtube.com/embed/b4OZpI825h0",
+      },
+    ],
+    cta: {
+      label: "Voir sur YouTube",
+      href: "https://www.youtube.com/watch?v=b4OZpI825h0",
+      external: true,
+      variant: "secondary",
+    },
+  },
   metadata: {
     title: "DJ SLY'D Press Kit | Hip-Hop, Afro & Open Format",
     description:
