@@ -18,13 +18,15 @@ export type StatItem = {
 export type SocialLink = {
   label: string;
   href: string;
+  iconOnly?: boolean;
   icon:
     | "instagram"
     | "tiktok"
     | "youtube"
     | "spotify"
     | "soundcloud"
-    | "apple-music";
+    | "apple-music"
+    | "facebook";
 };
 
 export type ContactMethod = {
@@ -99,6 +101,8 @@ export type PressKitConfig = {
       src: string;
       alt: string;
       scale?: number;
+      invert?: boolean;
+      showInHero?: boolean;
     };
   };
   navigation: {
@@ -106,12 +110,19 @@ export type PressKitConfig = {
     cta: CtaLink;
   };
   heroSocials?: SocialLink[];
+  heroSocialsPosition?: "after-stats" | "before-stats";
   heroVariants: Record<
     "impact" | "interactive" | "showcase",
     {
       eyebrow: string;
       title: string;
+      /** Optionnel : classes Tailwind ajoutées au bloc texte du hero (ex. padding-top pour descendre titre et sous-titre). */
+      contentClassName?: string;
+      fullScreen?: boolean;
+      /** Optionnel : fondu sur le bord droit de la photo en mobile (masque un élément gênant à droite). */
+      mobileRightFade?: boolean;
       accent: string;
+      genreLine?: string;
       description: string;
       layout: "impact" | "interactive" | "showcase";
       image: {
@@ -245,6 +256,17 @@ export type PressKitConfig = {
       points: string[];
     };
   };
+  mediaKit?: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    cta: CtaLink;
+    items: Array<{
+      icon: "logo" | "bio" | "video" | "photo" | "document";
+      label: string;
+      detail?: string;
+    }>;
+  };
   rider?: {
     eyebrow: string;
     title: string;
@@ -272,6 +294,7 @@ export type PressKitConfig = {
     navigationLabel?: string;
     socialLabel?: string;
     bookingLabel?: string;
+    languageLabel?: string;
     fullGalleryLabel?: string;
     allVideosLabel?: string;
   };
@@ -323,6 +346,7 @@ export const pressKitConfig: PressKitConfig = {
     logo: {
       src: "/press-kit/logo-slyd.png",
       alt: "Sly'D logo",
+      scale: 105,
     },
   },
   navigation: {
@@ -649,16 +673,14 @@ export const pressKitConfig: PressKitConfig = {
       {
         src: "/press-kit/2025-12-29-22-28-27-905.jpg",
         alt: "DJ SLY'D night portrait in club lighting",
-        size: "md:col-span-1",
+        size: "md:col-span-1 md:row-span-2",
         position: "center 12%",
-        previewScale: 1.18,
       },
       {
         src: "/press-kit/1000019881.jpg",
         alt: "DJ SLY'D urban portrait",
-        size: "md:col-span-1",
+        size: "md:col-span-1 md:row-span-2",
         position: "center 10%",
-        previewScale: 1.2,
       },
       {
         src: "/press-kit/20250628_205905.jpg",

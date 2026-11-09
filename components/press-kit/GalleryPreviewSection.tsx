@@ -7,11 +7,13 @@ import type { PressKitConfig } from "@/data/config";
 type GalleryPreviewSectionProps = {
   gallery: PressKitConfig["gallery"];
   galleryHref: string;
+  arrowBadge?: boolean;
 };
 
 export function GalleryPreviewSection({
   gallery,
   galleryHref,
+  arrowBadge = false,
 }: GalleryPreviewSectionProps) {
   const regularImages = gallery.images.filter((img) => !img.previewOnly).slice(0, 3);
   const previewImages = [...regularImages, ...gallery.images.filter((img) => img.previewOnly)];
@@ -44,6 +46,7 @@ export function GalleryPreviewSection({
           <Link
             key={image.src}
             href={galleryHref}
+            aria-label={image.alt}
             className={`${image.size ?? ""} group relative block overflow-hidden rounded-[1.4rem] border border-white/10 bg-white/5 md:rounded-[2rem]`}
           >
             <div
@@ -59,7 +62,19 @@ export function GalleryPreviewSection({
               }}
             />
 
-            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+            <div
+              className={`absolute inset-0 bg-gradient-to-t ${
+                arrowBadge ? "from-black/40" : "from-black/30"
+              } via-transparent to-transparent`}
+            />
+
+            {arrowBadge && (
+              <div className="absolute bottom-4 right-4 md:bottom-5 md:right-5">
+                <div className="rounded-full border border-white/15 bg-black/35 p-2.5 backdrop-blur-sm md:p-3">
+                  <ArrowUpRight className="h-3.5 w-3.5 text-white/85 md:h-4 md:w-4" />
+                </div>
+              </div>
+            )}
           </Link>
         ))}
       </div>

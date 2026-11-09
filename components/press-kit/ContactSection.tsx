@@ -1,13 +1,13 @@
 "use client";
 
-import { Instagram, Mail, Music2, Phone, Youtube } from "lucide-react";
+import { ArrowUpRight, Instagram, Mail, Music2, Phone, Youtube } from "lucide-react";
 import type { ContactMethod, PressKitConfig } from "@/data/config";
 
 type ContactSectionProps = {
   contact: PressKitConfig["contact"];
 };
 
-function TikTokIcon({ className }: { className?: string }) {
+function TikTokIcon({ className }: { className?: string; strokeWidth?: number }) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -20,7 +20,7 @@ function TikTokIcon({ className }: { className?: string }) {
   );
 }
 
-function WhatsAppIcon({ className }: { className?: string }) {
+function WhatsAppIcon({ className }: { className?: string; strokeWidth?: number }) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -51,22 +51,23 @@ function LargeContactCard({ method }: { method: ContactMethod }) {
       href={method.href}
       target={method.external ? "_blank" : undefined}
       rel={method.external ? "noreferrer" : undefined}
-      className="group rounded-[1.3rem] border border-white/10 bg-white/[0.02] px-4 py-4 transition hover:border-white/20 hover:bg-white/[0.05] md:rounded-[2rem] md:px-6 md:py-6"
+      data-pk-grain-light
+      className="group flex items-center justify-between gap-4 border-2 border-black px-5 py-5 transition hover:-translate-y-0.5 md:px-8 md:py-7"
     >
-      <div className="flex items-center gap-3 md:gap-5">
-        <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[rgb(var(--pk-accent-rgb)/0.18)] text-[var(--pk-accent-soft)] md:h-16 md:w-16 md:rounded-2xl">
-          <Icon className="h-5 w-5 md:h-7 md:w-7" />
-        </div>
+      <div className="flex min-w-0 items-center gap-4 md:gap-6">
+        <Icon className="h-6 w-6 shrink-0 text-[var(--pk-accent)] md:h-8 md:w-8" strokeWidth={1.75} />
 
         <div className="min-w-0">
-          <div className="text-[10px] uppercase tracking-[0.24em] text-white/35 md:text-xs md:tracking-[0.35em]">
+          <div className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[var(--pk-accent)] md:text-xs">
             {method.label}
           </div>
-          <div className="mt-1 break-all text-sm font-black uppercase leading-5 md:mt-2 md:text-2xl">
+          <div className="mt-1.5 [overflow-wrap:anywhere] font-bold [font-family:var(--slyd-font-display,var(--pk-font-display)),sans-serif] text-2xl uppercase leading-none text-black md:mt-2 md:text-4xl">
             {method.value}
           </div>
         </div>
       </div>
+
+      <ArrowUpRight className="h-5 w-5 shrink-0 text-black/35 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-black md:h-7 md:w-7" />
     </a>
   );
 }
@@ -79,17 +80,17 @@ function SmallContactCard({ method }: { method: ContactMethod }) {
       href={method.href}
       target={method.external ? "_blank" : undefined}
       rel={method.external ? "noreferrer" : undefined}
-      className="group rounded-[1.3rem] border border-white/10 bg-white/[0.02] px-4 py-4 transition hover:border-white/20 hover:bg-white/[0.05] md:rounded-[2rem] md:px-6 md:py-6"
+      data-pk-grain-light
+      className="group flex items-center justify-between gap-3 border-2 border-black px-5 py-4 transition hover:-translate-y-0.5 md:px-6 md:py-5"
     >
       <div className="flex items-center gap-3 md:gap-4">
-        <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[rgb(var(--pk-accent-rgb)/0.18)] text-[var(--pk-accent-soft)] md:h-14 md:w-14 md:rounded-2xl">
-          <Icon className="h-5 w-5 md:h-6 md:w-6" />
-        </div>
-
-        <div className="text-sm font-semibold uppercase tracking-[0.18em] text-white md:text-base md:tracking-[0.28em]">
+        <Icon className="h-5 w-5 shrink-0 text-[var(--pk-accent)] md:h-6 md:w-6" strokeWidth={1.75} />
+        <div className="font-bold [font-family:var(--slyd-font-display,var(--pk-font-display)),sans-serif] text-lg uppercase leading-none text-black md:text-2xl">
           {method.label}
         </div>
       </div>
+
+      <ArrowUpRight className="h-5 w-5 shrink-0 text-black/35 transition group-hover:text-black" />
     </a>
   );
 }
@@ -101,10 +102,10 @@ export function ContactSection({ contact }: ContactSectionProps) {
   return (
     <section
       id="contact"
-      className="scroll-mt-24 bg-black px-4 pb-12 pt-8 md:px-6 md:pb-20 md:pt-14"
+      className="scroll-mt-24 bg-[var(--pk-accent)] px-4 pb-12 pt-8 md:px-6 md:pb-20 md:pt-14"
     >
       <div className="mx-auto max-w-7xl">
-        <div className="mb-4 text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--pk-accent)] md:mb-6 md:text-xs md:tracking-[0.35em]">
+        <div className="mb-4 text-[11px] font-semibold uppercase tracking-[0.28em] text-white/80 md:mb-6 md:text-xs md:tracking-[0.35em]">
           {contact.eyebrow}
         </div>
 
@@ -114,7 +115,7 @@ export function ContactSection({ contact }: ContactSectionProps) {
               {contact.title}
             </h2>
 
-            <p className="mt-5 max-w-2xl text-sm leading-6 text-white/60 md:mt-8 md:text-xl md:leading-9">
+            <p className="mt-5 max-w-2xl text-sm leading-6 text-white/85 md:mt-8 md:text-xl md:leading-9">
               {contact.description}
             </p>
           </div>

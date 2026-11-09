@@ -43,8 +43,6 @@ export function SoundSection({ sound }: SoundSectionProps) {
 
           {hasEmbed ? (
             <div className="relative">
-              <div className="absolute -left-6 -top-6 h-32 w-32 rounded-full bg-[rgb(var(--pk-accent-rgb)/0.2)] blur-3xl" />
-              <div className="absolute -bottom-6 -right-6 h-40 w-40 rounded-full bg-white/10 blur-3xl" />
 
               <div className="relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/5 p-3 backdrop-blur-sm md:rounded-[2rem] md:p-4">
                 <iframe
@@ -61,7 +59,6 @@ export function SoundSection({ sound }: SoundSectionProps) {
             </div>
           ) : (
             <div className="relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.05)_0%,rgba(255,255,255,0.02)_100%)] p-6 backdrop-blur-sm md:rounded-[2rem] md:p-8">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgb(var(--pk-accent-rgb)/0.22),transparent_26%),radial-gradient(circle_at_80%_18%,rgba(255,255,255,0.08),transparent_18%)]" />
               <div className="relative">
                 <div className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--pk-accent-soft)] md:text-[11px]">
                   SoundCloud

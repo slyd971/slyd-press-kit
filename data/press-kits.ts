@@ -53,6 +53,7 @@ const sectionHrefMap = {
   spotify: "#spotify",
   brands: "#brands",
   rider: "#rider",
+  mediakit: "#mediakit",
   contact: "#contact",
 };
 
@@ -125,13 +126,19 @@ export function hasHighlightsContent(config: PressKitConfig): boolean {
   return Boolean(config.highlights && config.highlights.items.length > 0);
 }
 
+export function hasMediaKitContent(config: PressKitConfig): boolean {
+  return Boolean(config.mediaKit && config.mediaKit.cta.href);
+}
+
 export function getResolvedNavigation(
-  config: PressKitConfig
+  config: PressKitConfig,
+  extraVisibleHrefs: string[] = []
 ): PressKitConfig["navigation"] {
   const visibleSections = new Set<string>([
     sectionHrefMap.about,
     sectionHrefMap.clubs,
     sectionHrefMap.contact,
+    ...extraVisibleHrefs,
   ]);
 
   if (hasGalleryContent(config)) visibleSections.add(sectionHrefMap.gallery);
@@ -143,9 +150,22 @@ export function getResolvedNavigation(
   if (hasSpotifyContent(config)) visibleSections.add(sectionHrefMap.spotify);
   if (hasBrandsContent(config)) visibleSections.add(sectionHrefMap.brands);
   if (hasRiderContent(config)) visibleSections.add(sectionHrefMap.rider);
+  if (hasMediaKitContent(config)) visibleSections.add(sectionHrefMap.mediakit);
 
   return {
     ...config.navigation,
     items: config.navigation.items.filter((item) => visibleSections.has(item.href)),
   };
+}
+
+/** Instagram + email shown at the bottom of the open mobile menu. */
+export function getMenuFooterLinks(config: PressKitConfig) {
+  return config.contact.methods
+    .filter((method) => method.icon === "instagram" || method.icon === "mail")
+    .map((method) => ({
+      label: method.icon === "mail" ? method.value : method.label,
+      href: method.href,
+      icon: method.icon as "instagram" | "mail",
+      external: Boolean(method.external),
+    }));
 }

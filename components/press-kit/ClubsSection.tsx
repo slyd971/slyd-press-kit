@@ -1,8 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import { useId, useState } from "react";
 import { Globe2, MapPin } from "lucide-react";
 import type { PressKitConfig } from "@/data/config";
+import { BrandReferences } from "./slyd/BrandReferences";
 
 function ClubItem({
   item,
@@ -33,6 +35,9 @@ function ClubItem({
 type ClubsSectionProps = {
   clubs: PressKitConfig["clubs"];
   brands?: PressKitConfig["brands"];
+  slydPoster?: boolean;
+  language?: "fr" | "en";
+  brandReferences?: PressKitConfig["brands"]["items"];
 };
 
 const iconMap = {
@@ -40,14 +45,15 @@ const iconMap = {
   "map-pin": MapPin,
 };
 
-export function ClubsSection({ clubs, brands }: ClubsSectionProps) {
+export function ClubsSection({ clubs, brands, slydPoster = false, language = "fr", brandReferences }: ClubsSectionProps) {
   const inlineBrandLogos =
     brands?.items
       .map((item) => (typeof item === "string" ? undefined : item))
       .filter((item): item is { name: string; logo: string; logoInvert?: boolean } =>
         Boolean(item?.logo)
       ) ?? [];
-
+  const [expanded, setExpanded] = useState(false);
+  const referencesId = useId();
   return (
     <section
       id="clubs"
@@ -66,18 +72,45 @@ export function ClubsSection({ clubs, brands }: ClubsSectionProps) {
           </p>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 md:gap-16">
+        <div className={slydPoster ? "grid gap-10 md:gap-12" : "grid gap-8 md:grid-cols-2 md:gap-16"}>
           {clubs.regions.map((region) => {
             const Icon = iconMap[region.icon];
 
             return (
               <div key={region.title}>
                 <h3 className="mb-4 flex items-center gap-3 text-2xl font-bold md:mb-6 md:text-3xl">
-                  <Icon className="h-5 w-5 text-[var(--pk-accent)] md:h-6 md:w-6" />
+                  {!slydPoster && <Icon className="h-5 w-5 text-[var(--pk-accent)] md:h-6 md:w-6" />}
                   {region.title}
                 </h3>
 
-                <div className="grid grid-cols-2 gap-3 text-sm text-gray-300 md:gap-4 md:text-base">
+                {slydPoster ? (
+                  region.icon === "globe" ? (
+                    <ul data-pk-list className="text-base leading-relaxed text-gray-300">
+                      {region.items.map((item) => <li key={item}>{item}</li>)}
+                    </ul>
+                  ) : (
+                    <>
+                      <ul id={`${referencesId}-${region.title}`} data-slyd-references className="text-gray-300">
+                        {region.items.map((item, index) => (
+                          <li key={item} hidden={index >= 8 && !expanded}>{item}</li>
+                        ))}
+                      </ul>
+                      {region.items.length > 8 && (
+                        <button
+                          type="button"
+                          aria-expanded={expanded}
+                          aria-controls={`${referencesId}-${region.title}`}
+                          onClick={() => setExpanded((value) => !value)}
+                          className="mt-7 rounded border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/10"
+                        >
+                          {language === "en"
+                            ? expanded ? "Show less" : "View all references"
+                            : expanded ? "Réduire" : "Voir toutes les références"}
+                        </button>
+                      )}
+                    </>
+                  )
+                ) : <div className="grid grid-cols-2 gap-3 text-sm text-gray-300 md:gap-4 md:text-base">
                   {region.items.map((item) => (
                     <div
                       key={item}
@@ -89,10 +122,13 @@ export function ClubsSection({ clubs, brands }: ClubsSectionProps) {
                       />
                     </div>
                   ))}
-                </div>
+                </div>}
               </div>
             );
           })}
+          {slydPoster && brandReferences?.length > 0 && (
+            <BrandReferences items={brandReferences} language={language} />
+          )}
         </div>
 
         {inlineBrandLogos.length > 0 ? (

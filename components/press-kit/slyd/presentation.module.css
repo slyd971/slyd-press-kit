@@ -1,0 +1,91 @@
+/* Every rule is scoped to the explicit Sly'd main class. No palette overrides. */
+.poster:not([data-pk-font]) {
+  font-family: var(--slyd-font-body), sans-serif;
+}
+
+.poster:not([data-pk-font]) :is(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--slyd-font-display), sans-serif;
+}
+
+.poster :is(h1, h2, h3, h4, h5, h6) {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  line-height: 1;
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
+}
+
+.poster h1 { font-size: clamp(3.5rem, 7vw, 7.5rem); }
+.poster h2 { font-size: clamp(2.5rem, 4.5vw, 4.5rem); }
+.poster :global(#about) h2 { font-size: clamp(2.5rem, 4vw, 4rem); line-height: 1.04; }
+.poster p { font-size: max(1rem, 1em); line-height: 1.6; }
+.poster :is(nav, button, a, [class*="tracking-"]) { letter-spacing: 0.04em; }
+.poster :is(h1, h2, h3) { letter-spacing: 0; }
+.poster h1 span { font-size: inherit; }
+
+.poster :is(button, a)[class*="rounded"],
+.poster button > span[class*="rounded"],
+.poster [class*="rounded"][class*="overflow-hidden"]:has(img, video, iframe),
+.poster :global(.pk-hero-portrait),
+.poster :global(.pk-hero-portrait) ~ [class*="rounded"] {
+  border-radius: 4px;
+}
+
+/* KPI strip and tag-list layout come from ../kit.module.css; Sly'd only swaps the font. */
+.poster:not([data-pk-font]) [data-pk-stats] > div > :first-child {
+  font-family: var(--slyd-font-display), sans-serif;
+}
+.poster [data-pk-stats] > div > :first-child {
+  font-weight: 700;
+}
+
+.poster [data-slyd-references] {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem 1.5rem;
+  font-size: clamp(1.3rem, 2.3vw, 1.9rem);
+  font-weight: 700;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+.poster:not([data-pk-font]) [data-slyd-references] {
+  font-family: var(--slyd-font-display), sans-serif;
+}
+.poster [data-slyd-references] [hidden] { display: none; }
+.poster [data-slyd-brand] { display: flex; min-height: 6rem; align-items: center; justify-content: center; }
+.poster [data-slyd-brand] img { width: auto; max-width: 100%; object-fit: contain; opacity: 0.88; transition: opacity 0.2s ease; }
+.poster a[data-slyd-brand]:hover img { opacity: 1; }
+.poster [data-slyd-brand] span { font-size: 1.35rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; text-align: center; opacity: 0.88; }
+
+@media (min-width: 768px) {
+  .poster [data-slyd-references] { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+/* Titre hero : system-ui extra bold (comme Yoruboy/Soyumi), accent plus petit. */
+.poster:not([data-pk-font]) h1[class] {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+.poster h1[class] {
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  line-height: 0.88;
+  font-size: clamp(2.9rem, 9vw, 9.5rem);
+}
+.poster h1[class] span { font-size: 0.6em; letter-spacing: -0.015em; }
+
+/* Desktop : le portrait du hero ne dépasse pas la ligne de flottaison. */
+@media (min-width: 1024px) {
+  .poster :global(.pk-hero-portrait) {
+    height: calc(100svh - 9rem);
+  }
+}
+@media (min-width: 1024px) {
+  .poster :global(.pk-hero-visual) { width: 100%; max-width: 34rem; }
+}
+
+/* Mobile : titre plus gros (reste sur une ligne jusqu'à ~340px de large). */
+@media (max-width: 767px) {
+  .poster h1[class] { font-size: 19vw; }
+}

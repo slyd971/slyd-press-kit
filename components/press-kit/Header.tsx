@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { Menu, X as CloseIcon } from "lucide-react";
+import { Instagram, Mail, Menu, X as CloseIcon } from "lucide-react";
 import type { PressKitConfig } from "@/data/config";
 
 type HeaderProps = {
@@ -10,9 +10,22 @@ type HeaderProps = {
   navigation: PressKitConfig["navigation"];
   ui: PressKitConfig["ui"];
   homeHref?: string;
+  /** Instagram / email shown at the bottom of the open mobile menu. */
+  menuLinks?: {
+    label: string;
+    href: string;
+    icon: "instagram" | "mail";
+    external?: boolean;
+  }[];
 };
 
-export function Header({ artist, navigation, ui, homeHref = "/" }: HeaderProps) {
+export function Header({
+  artist,
+  navigation,
+  ui,
+  homeHref = "/",
+  menuLinks = [],
+}: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
   const [isHeaderCompact, setIsHeaderCompact] = useState(false);
@@ -33,6 +46,28 @@ export function Header({ artist, navigation, ui, homeHref = "/" }: HeaderProps) 
     .filter(Boolean);
   const fallbackLogoPrimary = fallbackLogoParts[0] ?? artist.name;
   const fallbackLogoSecondary = fallbackLogoParts.slice(1).join(" ");
+
+  // Section anchors ("#about") only exist on the home page. From /gallery or
+  // /videos they must point back to it, otherwise they resolve to /gallery#about.
+  const resolveHref = (href: string) =>
+    href.startsWith("#") ? `${homeHref}${href}` : href;
+
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMenuOpen(false);
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [menuOpen]);
 
   useEffect(() => {
     lastScrollY.current = window.scrollY;
@@ -61,27 +96,55 @@ export function Header({ artist, navigation, ui, homeHref = "/" }: HeaderProps) 
     };
   }, [menuOpen]);
 
+  // Full-screen menu: numbered rows, large display type, hairline dividers.
+  // Absolute (not fixed) because the header's transform/backdrop-filter makes
+  // it the containing block for positioned descendants.
   const mobileMenu = menuOpen && (
-    <div className="absolute left-0 right-0 top-full z-[100] border-t border-white/10 bg-black lg:hidden">
-      <nav className="flex flex-col items-end gap-2.5 px-4 py-3 text-right">
-        {navigation.items.map((item) => (
+    <div
+      role="dialog"
+      aria-label={ui.openMenuLabel}
+      className="absolute left-0 right-0 top-full z-[100] flex h-[calc(100dvh-59px)] flex-col overflow-y-auto bg-black lg:hidden"
+    >
+      <nav className="px-4 pt-2 md:px-10">
+        {navigation.items.map((item, index) => (
           <a
             key={item.href}
-            href={item.href}
+            href={resolveHref(item.href)}
             onClick={() => setMenuOpen(false)}
-            className="text-sm font-bold uppercase tracking-[0.05em] text-white transition hover:text-[var(--pk-accent)]"
+            className="flex items-baseline gap-4 border-b border-white/10 py-3.5 text-white transition-colors hover:text-[var(--pk-accent)]"
           >
-            {item.label}
+            <span className="font-sans text-xs tabular-nums text-white/55 tracking-[0.2em]!">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <span className="block text-[2.6rem] font-bold uppercase leading-none tracking-normal! [font-family:var(--slyd-font-display,var(--pk-font-display)),sans-serif]">
+              {item.label}
+            </span>
           </a>
         ))}
-        <a
-          href={navigation.cta.href}
-          onClick={() => setMenuOpen(false)}
-          className="text-sm font-bold uppercase tracking-[0.05em] text-white transition hover:text-[var(--pk-accent)]"
-        >
-          {navigation.cta.label}
-        </a>
       </nav>
+
+      {menuLinks.length > 0 && (
+        <div className="mt-auto flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-white/10 px-4 py-4 text-xs uppercase text-white/60 md:px-10">
+          {menuLinks.map((link) => {
+            const Icon = link.icon === "mail" ? Mail : Instagram;
+
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                target={link.external ? "_blank" : undefined}
+                rel={link.external ? "noopener noreferrer" : undefined}
+                className={`flex items-center gap-2 py-1 transition-colors hover:text-white tracking-[0.2em]! ${
+                  link.icon === "mail" ? "lowercase" : ""
+                }`}
+              >
+                <Icon className="h-4 w-4 shrink-0" />
+                {link.label}
+              </a>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 
@@ -92,8 +155,8 @@ export function Header({ artist, navigation, ui, homeHref = "/" }: HeaderProps) 
       }`}
     >
       <div
-        className={`mx-auto flex max-w-[1720px] items-center justify-between px-4 transition-all duration-300 md:px-10 ${
-          isHeaderCompact ? "h-[58px] md:h-[68px]" : "h-[68px] md:h-[80px]"
+        className={`mx-auto flex max-w-[1720px] items-center justify-between px-3 transition-all duration-300 sm:px-4 md:px-10 ${
+          isHeaderCompact ? "h-[58px] md:h-[68px]" : "h-[58px] md:h-[80px]"
         }`}
       >
         <div className="flex min-w-0 items-center gap-2 md:gap-3">
@@ -102,7 +165,7 @@ export function Header({ artist, navigation, ui, homeHref = "/" }: HeaderProps) 
               className={`flex items-center overflow-hidden transition-all duration-300 ${
                 isHeaderCompact
                   ? "h-8 w-[128px] md:h-9 md:w-[152px]"
-                  : "h-10 w-[146px] md:h-11 md:w-[172px]"
+                  : "h-8 w-[128px] md:h-11 md:w-[172px]"
               }`}
             >
               {hasLogoImage ? (
@@ -110,7 +173,10 @@ export function Header({ artist, navigation, ui, homeHref = "/" }: HeaderProps) 
                   src={artist.logo.src}
                   alt={artist.logo.alt}
                   className="w-auto max-w-none shrink-0 object-contain object-left"
-                  style={{ height: `${artist.logo.scale ?? 175}%` }}
+                  style={{
+                    height: `${artist.logo.scale ?? 175}%`,
+                    filter: artist.logo.invert ? "invert(1)" : undefined,
+                  }}
                 />
               ) : (
                 <div className="flex flex-col leading-none text-white">
@@ -149,29 +215,30 @@ export function Header({ artist, navigation, ui, homeHref = "/" }: HeaderProps) 
           </div>
         </div>
 
-        <div className="flex items-center gap-3 md:gap-6 xl:gap-8">
+        <div className="flex items-center gap-2 md:gap-6 xl:gap-8">
           <nav className="hidden items-center gap-7 text-[10px] font-semibold uppercase tracking-[0.28em] text-white/76 lg:flex xl:gap-8">
             {navigation.items.map((item) => (
-              <a key={item.href} href={item.href} className="transition hover:text-white">
+              <a key={item.href} href={resolveHref(item.href)} className="transition hover:text-white">
                 {item.label}
               </a>
             ))}
           </nav>
 
           <a
-            href={navigation.cta.href}
+            href={resolveHref(navigation.cta.href)}
+            aria-label={`${navigation.cta.label} (menu compact)`}
             className={`inline-flex rounded-full bg-[var(--pk-accent)] font-semibold uppercase text-white transition-all duration-300 hover:bg-[var(--pk-accent-strong)] lg:hidden ${
               isHeaderCompact
-                ? "px-3 py-2 text-[9px] tracking-[0.16em]"
-                : "px-3 py-2.5 text-[10px] tracking-[0.2em] sm:px-4"
+                ? "px-2.5 py-2 text-[9px] tracking-[0.08em]"
+                : "px-2.5 py-2 text-[9px] tracking-[0.08em] sm:px-4 sm:py-2.5 sm:text-[10px] sm:tracking-[0.2em]"
             }`}
           >
             {navigation.cta.label}
           </a>
 
           <a
-            href={navigation.cta.href}
-            className={`hidden rounded-full border border-[rgb(var(--pk-accent-rgb)/0.28)] bg-[var(--pk-accent)] font-semibold uppercase text-white shadow-[0_14px_36px_rgb(var(--pk-accent-rgb)/0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[var(--pk-accent-strong)] lg:inline-flex ${
+            href={resolveHref(navigation.cta.href)}
+            className={`hidden rounded-full border border-[rgb(var(--pk-accent-rgb)/0.28)] bg-[var(--pk-accent)] font-semibold uppercase text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[var(--pk-accent-strong)] lg:inline-flex ${
               isHeaderCompact
                 ? "px-4.5 py-2 text-[10px] tracking-[0.18em]"
                 : "px-6 py-2.5 text-[11px] tracking-[0.22em]"
@@ -183,7 +250,7 @@ export function Header({ artist, navigation, ui, homeHref = "/" }: HeaderProps) 
           <button
             type="button"
             onClick={() => setMenuOpen((prev) => !prev)}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition hover:bg-white/10 lg:hidden"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition hover:bg-white/10 md:h-10 md:w-10 lg:hidden"
             aria-label={menuOpen ? ui.closeMenuLabel : ui.openMenuLabel}
           >
             {menuOpen ? (

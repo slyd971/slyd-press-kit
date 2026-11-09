@@ -33,9 +33,11 @@ export type ClientSeoConfig = {
   keywords: string[];
   ogImage: string;
   canonical?: string;
+  favicon?: string;
 };
 
 export type ClientConfig = {
+  presentation?: "slyd-poster";
   slug: string;
   domain?: string;
   vercelSubdomain: string;

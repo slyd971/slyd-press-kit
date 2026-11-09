@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
+import kitStyles from "@/components/press-kit/kit.module.css";
+import { getSlydPresentationClass, isSlydPoster } from "@/components/press-kit/slyd/presentation";
 import { DevControlPanel } from "@/components/press-kit/DevControlPanel";
+import { Footer } from "@/components/press-kit/Footer";
 import { Header } from "@/components/press-kit/Header";
 import { VideoSection } from "@/components/press-kit/VideoSection";
 import { getFontPreset, getFontStyle } from "@/data/font-presets";
 import {
   createPressKitEntry,
+  getArtistGalleryHref,
   getArtistHomeHref,
+  getArtistVideosHref,
+  getMenuFooterLinks,
   getResolvedNavigation,
   hasVideoContent,
 } from "@/data/press-kits";
@@ -14,6 +20,7 @@ import {
   getRequestedClientSlug,
   getRequiredRequestClient,
 } from "@/lib/clients/server";
+import { isAvailabilityEnabled } from "@/lib/availability";
 import { isLocalRequest } from "@/lib/is-local-request";
 import { buildClientMetadata } from "@/lib/seo";
 
@@ -61,8 +68,15 @@ export default async function VideosPage({ searchParams }: VideosPageProps) {
   );
   const fontPreset = getFontPreset(resolvedSearchParams?.font);
   const showLocalSwitchers = await isLocalRequest();
-  const navigation = getResolvedNavigation(pressKitConfig);
+  const navigation = getResolvedNavigation(
+    pressKitConfig,
+    isAvailabilityEnabled(client.slug, { allowDemo: showLocalSwitchers })
+      ? ["#disponibilites"]
+      : []
+  );
   const homeHref = getArtistHomeHref(pressKitEntry.id);
+  const galleryHref = getArtistGalleryHref(pressKitEntry.id);
+  const videosHref = getArtistVideosHref(pressKitEntry.id);
   const hasVideos = hasVideoContent(pressKitConfig);
   const videosWithoutCta = {
     ...pressKitConfig.videos,
@@ -72,13 +86,15 @@ export default async function VideosPage({ searchParams }: VideosPageProps) {
   return (
     <main
       style={{ ...getTemplateStyle(theme), ...getFontStyle(fontPreset) }}
-      className="min-h-screen bg-[var(--pk-bg)] text-[var(--pk-text)]"
+      data-pk-font={resolvedSearchParams?.font ? "custom" : undefined}
+      className={`${kitStyles.kit} min-h-screen bg-[var(--pk-bg)] text-[var(--pk-text)]${isSlydPoster(client) ? ` ${getSlydPresentationClass(client)}` : ""}`}
     >
       <Header
         artist={pressKitConfig.artist}
         navigation={navigation}
         ui={pressKitConfig.ui}
         homeHref={homeHref}
+        menuLinks={getMenuFooterLinks(pressKitConfig)}
       />
       {showLocalSwitchers && (
         <DevControlPanel
@@ -107,6 +123,13 @@ export default async function VideosPage({ searchParams }: VideosPageProps) {
           </section>
         )}
       </div>
+      <Footer
+        client={client}
+        navigation={navigation}
+        homeHref={homeHref}
+        galleryHref={galleryHref}
+        videosHref={videosHref}
+      />
     </main>
   );
 }
