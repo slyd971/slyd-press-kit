@@ -11,6 +11,7 @@ import {
   getArtistGalleryHref,
   getArtistHomeHref,
   getArtistVideosHref,
+  getMenuFooterLinks,
   getResolvedNavigation,
   hasGalleryContent,
 } from "@/data/press-kits";
@@ -19,6 +20,7 @@ import {
   getRequestedClientSlug,
   getRequiredRequestClient,
 } from "@/lib/clients/server";
+import { isAvailabilityEnabled } from "@/lib/availability";
 import { isLocalRequest } from "@/lib/is-local-request";
 import { buildClientMetadata, buildGalleryJsonLd } from "@/lib/seo";
 
@@ -67,7 +69,12 @@ export default async function GalleryPage({ searchParams }: GalleryPageProps) {
   const fontPreset = getFontPreset(resolvedSearchParams?.font);
   const showLocalSwitchers = await isLocalRequest();
   const hasGallery = hasGalleryContent(pressKitConfig);
-  const navigation = getResolvedNavigation(pressKitConfig);
+  const navigation = getResolvedNavigation(
+    pressKitConfig,
+    isAvailabilityEnabled(client.slug, { allowDemo: showLocalSwitchers })
+      ? ["#disponibilites"]
+      : []
+  );
   const homeHref = getArtistHomeHref(pressKitEntry.id);
   const galleryHref = getArtistGalleryHref(pressKitEntry.id);
   const videosHref = getArtistVideosHref(pressKitEntry.id);
@@ -84,6 +91,7 @@ export default async function GalleryPage({ searchParams }: GalleryPageProps) {
         navigation={navigation}
         ui={pressKitConfig.ui}
         homeHref={homeHref}
+        menuLinks={getMenuFooterLinks(pressKitConfig)}
       />
       {showLocalSwitchers && (
         <DevControlPanel

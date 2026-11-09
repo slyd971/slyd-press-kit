@@ -22,6 +22,7 @@ import {
   getArtistGalleryHref,
   getArtistHomeHref,
   getArtistVideosHref,
+  getMenuFooterLinks,
   getResolvedNavigation,
   hasBrandsContent,
   hasGalleryContent,
@@ -40,7 +41,7 @@ import {
   getRequestedClientSlug,
   getRequiredRequestClient,
 } from "@/lib/clients/server";
-import { getAvailability } from "@/lib/availability";
+import { getAvailability, isAvailabilityEnabled } from "@/lib/availability";
 import { isLocalRequest } from "@/lib/is-local-request";
 import { buildClientMetadata } from "@/lib/seo";
 import { getSlydClubsTitle, getSlydPresentationClass, isSlydPoster } from "@/components/press-kit/slyd/presentation";
@@ -123,7 +124,12 @@ export default async function Home({ params, searchParams }: HomeProps) {
       : undefined;
   const fontPreset = getFontPreset(resolvedSearchParams?.font);
   const showLocalSwitchers = await isLocalRequest();
-  const navigation = getResolvedNavigation(pressKitConfig);
+  const navigation = getResolvedNavigation(
+    pressKitConfig,
+    isAvailabilityEnabled(client.slug, { allowDemo: showLocalSwitchers })
+      ? ["#disponibilites"]
+      : []
+  );
   const galleryHref = getArtistGalleryHref(pressKitEntry.id);
   const videosHref = getArtistVideosHref(pressKitEntry.id);
   const homeHref =
@@ -155,6 +161,7 @@ export default async function Home({ params, searchParams }: HomeProps) {
         navigation={navigation}
         ui={pressKitConfig.ui}
         homeHref={homeHref}
+        menuLinks={getMenuFooterLinks(pressKitConfig)}
       />
       <HeroSection
         heroVariants={pressKitConfig.heroVariants}

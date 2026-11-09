@@ -126,12 +126,14 @@ export function hasMediaKitContent(config: PressKitConfig): boolean {
 }
 
 export function getResolvedNavigation(
-  config: PressKitConfig
+  config: PressKitConfig,
+  extraVisibleHrefs: string[] = []
 ): PressKitConfig["navigation"] {
   const visibleSections = new Set<string>([
     sectionHrefMap.about,
     sectionHrefMap.clubs,
     sectionHrefMap.contact,
+    ...extraVisibleHrefs,
   ]);
 
   if (hasGalleryContent(config)) visibleSections.add(sectionHrefMap.gallery);
@@ -148,4 +150,16 @@ export function getResolvedNavigation(
     ...config.navigation,
     items: config.navigation.items.filter((item) => visibleSections.has(item.href)),
   };
+}
+
+/** Instagram + email shown at the bottom of the open mobile menu. */
+export function getMenuFooterLinks(config: PressKitConfig) {
+  return config.contact.methods
+    .filter((method) => method.icon === "instagram" || method.icon === "mail")
+    .map((method) => ({
+      label: method.icon === "mail" ? method.value : method.label,
+      href: method.href,
+      icon: method.icon as "instagram" | "mail",
+      external: Boolean(method.external),
+    }));
 }

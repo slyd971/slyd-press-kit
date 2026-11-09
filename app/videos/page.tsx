@@ -11,6 +11,7 @@ import {
   getArtistGalleryHref,
   getArtistHomeHref,
   getArtistVideosHref,
+  getMenuFooterLinks,
   getResolvedNavigation,
   hasVideoContent,
 } from "@/data/press-kits";
@@ -19,6 +20,7 @@ import {
   getRequestedClientSlug,
   getRequiredRequestClient,
 } from "@/lib/clients/server";
+import { isAvailabilityEnabled } from "@/lib/availability";
 import { isLocalRequest } from "@/lib/is-local-request";
 import { buildClientMetadata } from "@/lib/seo";
 
@@ -66,7 +68,12 @@ export default async function VideosPage({ searchParams }: VideosPageProps) {
   );
   const fontPreset = getFontPreset(resolvedSearchParams?.font);
   const showLocalSwitchers = await isLocalRequest();
-  const navigation = getResolvedNavigation(pressKitConfig);
+  const navigation = getResolvedNavigation(
+    pressKitConfig,
+    isAvailabilityEnabled(client.slug, { allowDemo: showLocalSwitchers })
+      ? ["#disponibilites"]
+      : []
+  );
   const homeHref = getArtistHomeHref(pressKitEntry.id);
   const galleryHref = getArtistGalleryHref(pressKitEntry.id);
   const videosHref = getArtistVideosHref(pressKitEntry.id);
@@ -87,6 +94,7 @@ export default async function VideosPage({ searchParams }: VideosPageProps) {
         navigation={navigation}
         ui={pressKitConfig.ui}
         homeHref={homeHref}
+        menuLinks={getMenuFooterLinks(pressKitConfig)}
       />
       {showLocalSwitchers && (
         <DevControlPanel

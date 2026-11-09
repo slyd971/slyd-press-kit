@@ -172,3 +172,11 @@ export async function getAvailability(
 
   return { busyDates: [], source: "none" };
 }
+
+/** True when the Disponibilités block is rendered for this client. */
+export function isAvailabilityEnabled(
+  slug: string,
+  options: { allowDemo?: boolean } = {}
+) {
+  return Boolean(getCalendarUrl(slug)) || Boolean(options.allowDemo);
+}
