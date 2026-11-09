@@ -16,3 +16,6 @@ public/Paul-Kéranne
 public/yoruboy
 public/arthur-chaps
 public/silver-dj
+
+# Masters vidéo bruts (~900 Mo), non référencés par le site : inutile de les déployer
+public/slyd/*.mov
