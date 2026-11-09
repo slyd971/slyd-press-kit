@@ -13,7 +13,7 @@ const djslydPressKitEn: PressKitConfig = {
   youtube: {
     eyebrow: "YouTube",
     title: "SLY'D on video.",
-    description: "A video to discover the energy and world of DJ SLY'D.",
+    description: "A video to discover the world of DJ SLY'D.",
     items: [
       {
         id: "slyd-youtube-feature",
@@ -115,7 +115,7 @@ const djslydPressKitFr: PressKitConfig = {
   youtube: {
     eyebrow: "YouTube",
     title: "SLY'D en vidéo.",
-    description: "Une vidéo pour découvrir l'énergie et l'univers de DJ SLY'D.",
+    description: "Une vidéo pour découvrir l'univers de DJ SLY'D.",
     items: [
       {
         id: "slyd-youtube-feature",
