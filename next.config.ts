@@ -26,6 +26,16 @@ const buildOnlyPackages = [
 ];
 
 const nextConfig: NextConfig = {
+  async rewrites() {
+    return {
+      beforeFiles: [
+        { source: "/robots.txt", destination: "/seo-files/robots" },
+        { source: "/sitemap.xml", destination: "/seo-files/sitemap" },
+      ],
+      afterFiles: [],
+      fallback: [],
+    };
+  },
   experimental: {
     optimizePackageImports: ["lucide-react", "framer-motion"],
   },
