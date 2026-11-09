@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { AboutSection } from "@/components/press-kit/AboutSection";
 import { BrandsSection } from "@/components/press-kit/BrandsSection";
 import { ClubsSection } from "@/components/press-kit/ClubsSection";
+import { AvailabilitySection } from "@/components/press-kit/AvailabilitySection";
 import { ContactSection } from "@/components/press-kit/ContactSection";
 import { DevControlPanel } from "@/components/press-kit/DevControlPanel";
 import { Footer } from "@/components/press-kit/Footer";
@@ -39,6 +40,7 @@ import {
   getRequestedClientSlug,
   getRequiredRequestClient,
 } from "@/lib/clients/server";
+import { getAvailability } from "@/lib/availability";
 import { isLocalRequest } from "@/lib/is-local-request";
 import { buildClientMetadata } from "@/lib/seo";
 import { getSlydClubsTitle, getSlydPresentationClass, isSlydPoster } from "@/components/press-kit/slyd/presentation";
@@ -127,6 +129,12 @@ export default async function Home({ params, searchParams }: HomeProps) {
   const homeHref =
     client.languageSwitch?.find((item) => item.active)?.href ??
     getArtistHomeHref(pressKitEntry.id);
+  const availability = slydPoster
+    ? await getAvailability(client.slug, { allowDemo: showLocalSwitchers })
+    : null;
+  const availabilityBookingHref =
+    pressKitConfig.contact.methods.find((method) => method.href.startsWith("mailto:"))
+      ?.href ?? "#contact";
 
   return (
     <main
@@ -194,6 +202,16 @@ export default async function Home({ params, searchParams }: HomeProps) {
       )}
       {hasMediaKitContent(pressKitConfig) && pressKitConfig.mediaKit && (
         <MediaKitSection mediaKit={pressKitConfig.mediaKit} />
+      )}
+      {availability && availability.source !== "none" && (
+        <AvailabilitySection
+          busyDates={availability.busyDates}
+          today={new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Paris" }).format(new Date())}
+          bookingHref={availabilityBookingHref}
+          language={client.slug.endsWith("-en") ? "en" : "fr"}
+          demo={availability.source === "demo"}
+          unavailable={availability.source === "error"}
+        />
       )}
       <ContactSection contact={pressKitConfig.contact} />
       <Footer

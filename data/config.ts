@@ -640,16 +640,14 @@ export const pressKitConfig: PressKitConfig = {
       {
         src: "/press-kit/2025-12-29-22-28-27-905.jpg",
         alt: "DJ SLY'D night portrait in club lighting",
-        size: "md:col-span-1",
+        size: "md:col-span-1 md:row-span-2",
         position: "center 12%",
-        previewScale: 1.18,
       },
       {
         src: "/press-kit/1000019881.jpg",
         alt: "DJ SLY'D urban portrait",
-        size: "md:col-span-1",
+        size: "md:col-span-1 md:row-span-2",
         position: "center 10%",
-        previewScale: 1.2,
       },
       {
         src: "/press-kit/20250628_205905.jpg",
