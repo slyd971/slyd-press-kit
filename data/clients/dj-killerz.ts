@@ -426,7 +426,6 @@ const djKillerzPressKit: PressKitConfig = {
         details: [
           { label: "Lieu", value: "37 avenue de Friedland, Paris 8e" },
           { label: "Soirée", value: "Tous les jeudis" },
-          { label: "Ouverture", value: "Jeudi 5 novembre" },
         ],
         description: [
           "La Rockwell est une soirée hip-hop de qualité, imaginée par DJ KillerZ et ouverte chaque jeudi soir à Paris, avec un décor américain rétro-néon : pompe à essence, calandre de Chevrolet, cassette géante, vinyles et patins à roulettes.",
@@ -453,7 +452,7 @@ const djKillerzPressKit: PressKitConfig = {
       {
         slug: "la-boilerz",
         name: "La Boilerz",
-        tagline: "Killerz Birthday Bash",
+        tagline: "Killerz Birthday Bash · First Edition",
         details: [
           { label: "Lieu", value: "Adidas Arena, Paris" },
           { label: "Date", value: "Samedi 24 octobre, 00h – 06h" },
@@ -462,7 +461,7 @@ const djKillerzPressKit: PressKitConfig = {
         ],
         lineup: ["Natoxie", "Katsu", "Mjie", "MK", "Rplay", "Tfiish", "Seade", "Skaytah", "Will One"],
         description: [
-          "La Boilerz, c'est le Killerz Birthday Bash : l'anniversaire de DJ KillerZ, de minuit à 6 h à l'Adidas Arena, avec deux dress codes, Fashion et Full Black, et un line-up d'artistes invités.",
+          "La Boilerz, c'est le Killerz Birthday Bash, dont c'était la première édition : l'anniversaire de DJ KillerZ, de minuit à 6 h à l'Adidas Arena, avec deux dress codes, Fashion et Full Black, et un line-up d'artistes invités.",
         ],
         video: { src: "/dj-killerz/concepts/la-boilerz/video/boilerz-teaser.mp4", poster: "/dj-killerz/concepts/la-boilerz/video/boilerz-teaser-poster.jpg", title: "Teaser de La Boilerz — Killerz Birthday Bash" },
         gallery: [
@@ -942,7 +941,6 @@ const djKillerzPressKitEn: PressKitConfig = {
         details: [
           { label: "Venue", value: "37 avenue de Friedland, Paris 8th" },
           { label: "Night", value: "Every Thursday" },
-          { label: "Opening", value: "Thursday 5 November" },
         ],
         description: [
           "La Rockwell is a quality hip-hop night created by DJ KillerZ, open every Thursday evening in Paris, with a retro-neon American set: gas pump, Chevrolet grille, giant cassette, vinyl records and roller skates.",
@@ -969,7 +967,7 @@ const djKillerzPressKitEn: PressKitConfig = {
       {
         slug: "la-boilerz",
         name: "La Boilerz",
-        tagline: "Killerz Birthday Bash",
+        tagline: "Killerz Birthday Bash · First Edition",
         details: [
           { label: "Venue", value: "Adidas Arena, Paris" },
           { label: "Date", value: "Saturday 24 October, 12 am – 6 am" },
@@ -978,7 +976,7 @@ const djKillerzPressKitEn: PressKitConfig = {
         ],
         lineup: ["Natoxie", "Katsu", "Mjie", "MK", "Rplay", "Tfiish", "Seade", "Skaytah", "Will One"],
         description: [
-          "La Boilerz is the Killerz Birthday Bash: DJ KillerZ's birthday party, from midnight to 6 am at the Adidas Arena, with two dress codes, Fashion and Full Black, and a line-up of guest artists.",
+          "La Boilerz is the Killerz Birthday Bash, here in its first edition: DJ KillerZ's birthday party, from midnight to 6 am at the Adidas Arena, with two dress codes, Fashion and Full Black, and a line-up of guest artists.",
         ],
         video: { src: "/dj-killerz/concepts/la-boilerz/video/boilerz-teaser.mp4", poster: "/dj-killerz/concepts/la-boilerz/video/boilerz-teaser-poster.jpg", title: "La Boilerz teaser — Killerz Birthday Bash" },
         gallery: [
