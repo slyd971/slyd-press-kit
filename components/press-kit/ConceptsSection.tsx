@@ -40,11 +40,17 @@ export function ConceptsSection({ concepts, getHref }: ConceptsSectionProps) {
           ) : null}
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 md:gap-10">
+        <div className="grid gap-12 md:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)] md:gap-x-12 md:gap-y-10">
           {concepts.items.map((item) => (
             <article key={item.slug} className="flex flex-col">
               {item.video ? (
-                <div className={`relative overflow-hidden bg-black ${item.video.orientation === "portrait" ? "mx-auto aspect-[9/16] w-full max-w-[16rem] md:max-w-[22rem]" : "aspect-video"}`}>
+                <div
+                  className={`relative overflow-hidden border border-white/10 bg-black md:h-[26rem] ${
+                    item.video.orientation === "portrait"
+                      ? "mx-auto aspect-[9/16] w-full max-w-[16rem] md:mx-0 md:w-[14.625rem] md:max-w-none"
+                      : "aspect-video md:aspect-auto md:w-full"
+                  }`}
+                >
                   <video
                     controls
                     playsInline
