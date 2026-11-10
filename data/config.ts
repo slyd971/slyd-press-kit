@@ -210,7 +210,16 @@ export type PressKitConfig = {
       image?: { src: string; alt: string };
       description?: string[];
       details?: Array<{ label: string; value: string }>;
+      /** Teaser vidéo (lecteur avec contrôles, son à la demande). */
+      video?: { src: string; poster: string; title: string };
+      /** Line-up / invités, affichés en pastilles. */
+      lineup?: string[];
+      /** Photos de la soirée, avec visionneuse plein écran sur la page dédiée. */
+      gallery?: GalleryImage[];
     }>;
+    lineupLabel?: string;
+    galleryLabel?: string;
+    videoLabel?: string;
   };
   /** Optionnel : tournée et scènes clés (visuels d'affiches + détails), comme dans le press kit PDF. */
   tour?: {

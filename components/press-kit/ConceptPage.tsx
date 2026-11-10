@@ -4,10 +4,12 @@ import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import kitStyles from "@/components/press-kit/kit.module.css";
 import { ConceptCover } from "@/components/press-kit/ConceptsSection";
+import { GalleryClient } from "@/components/gallery/GalleryClient";
 import { DevControlPanel } from "@/components/press-kit/DevControlPanel";
 import { Footer } from "@/components/press-kit/Footer";
 import { Header } from "@/components/press-kit/Header";
 import { getSlydPresentationClass, isSlydPoster } from "@/components/press-kit/slyd/presentation";
+import type { PressKitConfig } from "@/data/config";
 import { getFontPreset, getFontStyle } from "@/data/font-presets";
 import {
   createPressKitEntry,
@@ -57,6 +59,56 @@ export async function generateConceptMetadata(props: ConceptPageProps): Promise<
     image: concept.image?.src ?? client.seo.ogImage,
     imageAlt: concept.image?.alt ?? concept.name,
   });
+}
+
+type ConceptItem = NonNullable<PressKitConfig["concepts"]>["items"][number];
+
+function ConceptHeader({ concept, eyebrow, lineupLabel }: { concept: ConceptItem; eyebrow: string; lineupLabel?: string }) {
+  return (
+    <div>
+      <div className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--pk-accent)] md:text-xs md:tracking-[0.35em]">
+        {eyebrow}
+      </div>
+      <h1 className="mt-3 text-4xl font-black uppercase leading-[0.95] md:text-6xl">{concept.name}</h1>
+      {concept.tagline ? (
+        <p className="mt-3 text-lg font-semibold uppercase tracking-[0.12em] text-white/60 md:text-xl">{concept.tagline}</p>
+      ) : null}
+
+      {concept.details?.length ? (
+        <dl className="mt-8 grid gap-x-8 gap-y-5 border-y border-white/10 py-6 sm:grid-cols-2">
+          {concept.details.map((detail) => (
+            <div key={detail.label}>
+              <dt className="text-[11px] font-semibold uppercase tracking-[0.24em] text-white/45">{detail.label}</dt>
+              <dd className="mt-1 text-lg font-semibold text-white">{detail.value}</dd>
+            </div>
+          ))}
+        </dl>
+      ) : null}
+
+      {concept.lineup?.length ? (
+        <div className="mt-8">
+          {lineupLabel ? (
+            <div className="mb-3 text-[11px] font-semibold uppercase tracking-[0.24em] text-white/45">{lineupLabel}</div>
+          ) : null}
+          <ul className="flex flex-wrap gap-2">
+            {concept.lineup.map((name) => (
+              <li key={name} className="border border-white/20 px-3 py-1.5 text-sm font-semibold uppercase tracking-[0.1em] text-white/85">
+                {name}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+
+      {concept.description?.length ? (
+        <div className="mt-8 max-w-2xl space-y-4 text-base leading-7 text-white/72 md:text-lg md:leading-8">
+          {concept.description.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
+      ) : null}
+    </div>
+  );
 }
 
 export async function ConceptPage(props: ConceptPageProps) {
@@ -109,60 +161,68 @@ export async function ConceptPage(props: ConceptPageProps) {
           {concepts.backLabel}
         </Link>
 
-        <div className="mt-8 grid gap-10 md:mt-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start lg:gap-16">
-          <div className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden bg-white/5 lg:mx-0">
-            {concept.image ? (
-              <img
-                src={concept.image.src}
-                alt={concept.image.alt}
-                className="absolute inset-0 h-full w-full object-cover"
-                style={{ height: "100%" }}
-              />
-            ) : (
-              <div className="absolute inset-0">
-                <ConceptCover name={concept.name} tagline={concept.tagline} />
-              </div>
-            )}
-          </div>
+        {concept.video ? (
+          <div className="mt-8 md:mt-12">
+            <ConceptHeader concept={concept} eyebrow={concepts.pageEyebrow} lineupLabel={concepts.lineupLabel} />
 
-          <div>
-            <div className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--pk-accent)] md:text-xs md:tracking-[0.35em]">
-              {concepts.pageEyebrow}
+            <div className="mt-10 md:mt-12">
+              {concepts.videoLabel ? (
+                <h2 className="mb-4 text-xs font-semibold uppercase tracking-[0.28em] text-white/55">{concepts.videoLabel}</h2>
+              ) : null}
+              <video
+                controls
+                playsInline
+                preload="metadata"
+                poster={concept.video.poster}
+                aria-label={concept.video.title}
+                className="aspect-video w-full max-w-4xl bg-black object-cover"
+              >
+                <source src={concept.video.src} type="video/mp4" />
+              </video>
             </div>
-            <h1 className="mt-3 text-4xl font-black uppercase leading-[0.95] md:text-6xl">{concept.name}</h1>
-            {concept.tagline ? (
-              <p className="mt-3 text-lg font-semibold uppercase tracking-[0.12em] text-white/60 md:text-xl">
-                {concept.tagline}
-              </p>
-            ) : null}
-
-            {concept.details?.length ? (
-              <dl className="mt-8 grid gap-4 border-y border-white/10 py-6 sm:grid-cols-2">
-                {concept.details.map((detail) => (
-                  <div key={detail.label}>
-                    <dt className="text-[11px] font-semibold uppercase tracking-[0.24em] text-white/45">{detail.label}</dt>
-                    <dd className="mt-1 text-lg font-semibold text-white">{detail.value}</dd>
-                  </div>
-                ))}
-              </dl>
-            ) : null}
-
-            {concept.description?.length ? (
-              <div className="mt-8 max-w-2xl space-y-4 text-base leading-7 text-white/72 md:text-lg md:leading-8">
-                {concept.description.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
-                ))}
-              </div>
-            ) : null}
-
-            <Link
-              href={contactHref}
-              className="mt-10 inline-flex items-center rounded bg-[var(--pk-accent)] px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-[var(--pk-accent-strong)]"
-            >
-              {concepts.bookLabel}
-            </Link>
           </div>
-        </div>
+        ) : (
+          <div className="mt-8 grid gap-10 md:mt-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start lg:gap-16">
+            <div className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden bg-white/5 lg:mx-0">
+              {concept.image ? (
+                <img
+                  src={concept.image.src}
+                  alt={concept.image.alt}
+                  className="absolute inset-0 h-full w-full object-cover"
+                  style={{ height: "100%" }}
+                />
+              ) : (
+                <div className="absolute inset-0">
+                  <ConceptCover name={concept.name} tagline={concept.tagline} />
+                </div>
+              )}
+            </div>
+            <ConceptHeader concept={concept} eyebrow={concepts.pageEyebrow} lineupLabel={concepts.lineupLabel} />
+          </div>
+        )}
+
+        {concept.gallery?.length ? (
+          <div className="mt-14 md:mt-20">
+            {concepts.galleryLabel ? (
+              <h2 className="mb-6 text-2xl font-black uppercase md:text-4xl">{concepts.galleryLabel}</h2>
+            ) : null}
+            <GalleryClient
+              images={concept.gallery}
+              viewLabel={pressKitConfig.ui.galleryViewLabel}
+              downloadLabel={pressKitConfig.ui.galleryDownloadLabel}
+              closeLabel={pressKitConfig.ui.galleryCloseLabel}
+              previousLabel={pressKitConfig.ui.galleryPreviousLabel}
+              nextLabel={pressKitConfig.ui.galleryNextLabel}
+            />
+          </div>
+        ) : null}
+
+        <Link
+          href={contactHref}
+          className="mt-12 inline-flex items-center rounded bg-[var(--pk-accent)] px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-[var(--pk-accent-strong)]"
+        >
+          {concepts.bookLabel}
+        </Link>
       </div>
 
       <Footer
