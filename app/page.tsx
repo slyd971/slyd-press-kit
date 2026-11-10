@@ -160,7 +160,8 @@ export default async function Home({ params, searchParams }: HomeProps) {
     getArtistHomeHref(pressKitEntry.id);
   const inlineBrandsBelowClubs =
     hasBrandsContent(pressKitConfig) && pressKitConfig.brands.inlineBelowClubs;
-  const availability = slydPoster
+  // Pas de bloc calendrier pour DJ KillerZ (FR/EN).
+  const availability = slydPoster && !client.slug.startsWith("dj-killerz")
     ? await getAvailability(client.slug, { allowDemo: showLocalSwitchers })
     : null;
   const availabilityBookingHref =
