@@ -510,6 +510,8 @@ const djKillerzPressKit: PressKitConfig = {
       { src: g(20), alt: "DJ KillerZ en veste noire et collier", position: "center 15%" },
       { src: g(1), alt: "DJ KillerZ en veste à capuche", position: "center 20%" },
       { src: g(2), alt: "DJ KillerZ en parka verte", position: "center 20%" },
+      { src: g(22), alt: "DJ KillerZ en parka léopard verte, capuche relevée", position: "center 25%" },
+      { src: g(23), alt: "DJ KillerZ en veste en cuir et chaîne, devant une toise", position: "center 25%" },
       { src: g(3), alt: "DJ KillerZ, portrait presse" },
       { src: g(4), alt: "DJ KillerZ, portrait presse" },
       { src: g(5), alt: "DJ KillerZ, portrait presse" },
@@ -545,6 +547,8 @@ const enGalleryAlts: Record<number, string> = {
   1: "DJ KillerZ in a hooded jacket",
   2: "DJ KillerZ in a green parka",
   10: "DJ KillerZ in a leopard bucket hat, striped jacket",
+  22: "DJ KillerZ in a green leopard-print parka, hood up",
+  23: "DJ KillerZ in a leather jacket and chain, in front of a height chart",
 };
 
 const enHeroStats: PressKitConfig["heroVariants"]["impact"]["stats"] = [
