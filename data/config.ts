@@ -211,7 +211,7 @@ export type PressKitConfig = {
       description?: string[];
       details?: Array<{ label: string; value: string }>;
       /** Teaser vidéo (lecteur avec contrôles, son à la demande). */
-      video?: { src: string; poster: string; title: string };
+      video?: { src: string; poster: string; title: string; /** "portrait" pour une vidéo verticale (9:16). */ orientation?: "portrait" | "landscape" };
       /** Line-up / invités, affichés en pastilles. */
       lineup?: string[];
       /** Photos de la soirée, avec visionneuse plein écran sur la page dédiée. */

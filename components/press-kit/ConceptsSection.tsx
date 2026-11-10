@@ -44,14 +44,14 @@ export function ConceptsSection({ concepts, getHref }: ConceptsSectionProps) {
           {concepts.items.map((item) => (
             <article key={item.slug} className="flex flex-col">
               {item.video ? (
-                <div className="relative aspect-video overflow-hidden bg-black">
+                <div className={`relative overflow-hidden bg-black ${item.video.orientation === "portrait" ? "mx-auto aspect-[9/16] w-full max-w-[22rem]" : "aspect-video"}`}>
                   <video
                     controls
                     playsInline
                     preload="metadata"
                     poster={item.video.poster}
                     aria-label={item.video.title}
-                    className="absolute inset-0 h-full w-full bg-black object-cover"
+                    className="absolute inset-0 h-full w-full bg-black object-contain"
                   >
                     <source src={item.video.src} type="video/mp4" />
                   </video>
