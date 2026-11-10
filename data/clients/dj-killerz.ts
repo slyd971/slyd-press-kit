@@ -105,7 +105,7 @@ const djKillerzPressKit: PressKitConfig = {
         { label: "Voir vidéos", href: "#youtube", variant: "secondary" },
       ],
       stats: [
-        { value: "23 000", label: "Stade Pierre-Aliker" },
+        { value: "42K+", label: "Followers Instagram" },
         { value: "2016", label: "DJ officiel de Kalash" },
         { value: "5M+", label: "Vues « Comptine Pour Pussy »" },
         { value: "17", label: "Pays et territoires" },
@@ -161,7 +161,7 @@ const djKillerzPressKit: PressKitConfig = {
         { label: "Voir photos", href: "#gallery", variant: "secondary" },
       ],
       stats: [
-        { value: "23 000", label: "Stade Pierre-Aliker" },
+        { value: "42K+", label: "Followers Instagram" },
         { value: "2016", label: "DJ officiel de Kalash" },
         { value: "5M+", label: "Vues « Comptine Pour Pussy »" },
         { value: "17", label: "Pays et territoires" },
@@ -554,7 +554,7 @@ const enGalleryAlts: Record<number, string> = {
 };
 
 const enHeroStats: PressKitConfig["heroVariants"]["impact"]["stats"] = [
-  { value: "23 000", label: "Stade Pierre-Aliker" },
+  { value: "42K+", label: "Instagram followers" },
   { value: "2016", label: "Official DJ of Kalash" },
   { value: "5M+", label: "Views on “Comptine Pour Pussy”" },
   { value: "17", label: "Countries & territories" },
