@@ -192,6 +192,26 @@ export type PressKitConfig = {
     artists: Array<{ name: string; image: string; /** zoom optionnel pour recadrer la pastille */ zoom?: number; position?: string }>;
     image?: { src: string; alt: string; position?: string };
   };
+  /** Optionnel : concepts de soirées de l'artiste (bloc d'accueil + une page dédiée par concept). */
+  concepts?: {
+    eyebrow: string;
+    title: string;
+    intro?: string;
+    ctaLabel: string;
+    backLabel: string;
+    bookLabel: string;
+    /** Libellé au-dessus du titre sur la page dédiée (ex. « Concept de soirée »). */
+    pageEyebrow: string;
+    items: Array<{
+      slug: string;
+      name: string;
+      tagline?: string;
+      /** Affiche / flyer (portrait conseillé). Sans image, une pochette typographique est affichée. */
+      image?: { src: string; alt: string };
+      description?: string[];
+      details?: Array<{ label: string; value: string }>;
+    }>;
+  };
   /** Optionnel : tournée et scènes clés (visuels d'affiches + détails), comme dans le press kit PDF. */
   tour?: {
     eyebrow: string;

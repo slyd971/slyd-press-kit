@@ -67,6 +67,7 @@ const djKillerzPressKit: PressKitConfig = {
       { label: "Tournée", href: "#tour" },
       { label: "Galerie", href: "#gallery" },
       { label: "Vidéos", href: "#youtube" },
+      { label: "Concepts", href: "#concepts" },
       { label: "Spotify", href: "#spotify" },
       { label: "Rider", href: "#rider" },
     ],
@@ -394,6 +395,29 @@ const djKillerzPressKit: PressKitConfig = {
       variant: "secondary",
     },
   },
+  concepts: {
+    eyebrow: "Concepts",
+    title: "Plus qu'un DJ,\nun créateur de concepts.",
+    intro:
+      "DJ KillerZ n'est pas seulement un DJ : il est aussi créateur de concepts de soirées.",
+    ctaLabel: "Découvrir le concept",
+    backLabel: "Retour aux concepts",
+    bookLabel: "Booker DJ KillerZ",
+    pageEyebrow: "Concept de soirée",
+    items: [
+      {
+        slug: "la-rockwell",
+        name: "La Rockwell",
+        tagline: "Concept de soirée",
+      },
+      {
+        slug: "la-boilerz",
+        name: "La Boilerz",
+        tagline: "Killerz Birthday Bash",
+        details: [{ label: "Lieu", value: "Adidas Arena" }],
+      },
+    ],
+  },
   spotify: {
     eyebrow: "Spotify",
     title: "Sorties & collaborations.",
@@ -583,6 +607,7 @@ const djKillerzPressKitEn: PressKitConfig = {
       { label: "Tour", href: "#tour" },
       { label: "Gallery", href: "#gallery" },
       { label: "Videos", href: "#youtube" },
+      { label: "Concepts", href: "#concepts" },
       { label: "Spotify", href: "#spotify" },
       { label: "Rider", href: "#rider" },
     ],
@@ -819,6 +844,28 @@ const djKillerzPressKitEn: PressKitConfig = {
       ][index],
     })),
     cta: { ...djKillerzPressKit.youtube!.cta, label: "YouTube channel" },
+  },
+  concepts: {
+    eyebrow: "Concepts",
+    title: "More than a DJ,\na concept creator.",
+    intro: "DJ KillerZ is not just a DJ: he is also a creator of party concepts.",
+    ctaLabel: "Discover the concept",
+    backLabel: "Back to concepts",
+    bookLabel: "Book DJ KillerZ",
+    pageEyebrow: "Party concept",
+    items: [
+      {
+        slug: "la-rockwell",
+        name: "La Rockwell",
+        tagline: "Party concept",
+      },
+      {
+        slug: "la-boilerz",
+        name: "La Boilerz",
+        tagline: "Killerz Birthday Bash",
+        details: [{ label: "Venue", value: "Adidas Arena" }],
+      },
+    ],
   },
   spotify: {
     ...djKillerzPressKit.spotify,

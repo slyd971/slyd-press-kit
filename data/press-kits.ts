@@ -49,6 +49,7 @@ const sectionHrefMap = {
   videos: "#videos",
   youtube: "#youtube",
   tour: "#tour",
+  concepts: "#concepts",
   sound: "#sound",
   vision: "#vision",
   spotify: "#spotify",
@@ -111,6 +112,18 @@ export function hasCollaborationsContent(config: PressKitConfig): boolean {
   return Boolean(config.collaborations && config.collaborations.artists.length > 0);
 }
 
+export function hasConceptsContent(config: PressKitConfig): boolean {
+  return Boolean(config.concepts && config.concepts.items.length > 0);
+}
+
+/** Lien vers la page dédiée d'un concept (en local, on garde `?client=` pour retrouver le bon client). */
+export function getConceptHref(clientSlug: string, conceptSlug: string): string {
+  const isEnglish = clientSlug.endsWith("-en");
+  const baseSlug = clientSlug.replace(/-en$/, "");
+  const path = `${isEnglish ? "/en" : ""}/concepts/${conceptSlug}`;
+  return baseSlug === getClients()[0].slug ? path : `${path}?client=${baseSlug}`;
+}
+
 export function hasSoundContent(config: PressKitConfig): boolean {
   return Boolean(config.sound.embedUrl || config.sound.cta.href);
 }
@@ -155,6 +168,7 @@ export function getResolvedNavigation(
   if (hasVideoContent(config)) visibleSections.add(sectionHrefMap.videos);
   if (hasYoutubeContent(config)) visibleSections.add(sectionHrefMap.youtube);
   if (hasTourContent(config)) visibleSections.add(sectionHrefMap.tour);
+  if (hasConceptsContent(config)) visibleSections.add(sectionHrefMap.concepts);
   if (hasSoundContent(config)) visibleSections.add(sectionHrefMap.sound);
   if (hasVisionContent(config)) visibleSections.add(sectionHrefMap.vision);
   if (hasSpotifyContent(config)) visibleSections.add(sectionHrefMap.spotify);

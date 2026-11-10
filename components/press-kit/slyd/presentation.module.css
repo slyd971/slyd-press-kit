@@ -256,6 +256,7 @@
 .poster[data-pk-alt-bg] :global(#collaborations) { background-color: #161616; }
 .poster[data-pk-alt-bg] :global(#gallery) { background-color: #000; max-width: none; padding-inline: max(1rem, calc((100% - 80rem) / 2 + 1.5rem)); }
 .poster[data-pk-alt-bg] :global(#youtube) { background-color: #161616; }
-.poster[data-pk-alt-bg] :global(#spotify) { background-color: #000; }
-.poster[data-pk-alt-bg] :global(#rider) { background-color: #161616; }
-.poster[data-pk-alt-bg] :global(#disponibilites) { background-color: #000; }
+.poster[data-pk-alt-bg] :global(#concepts) { background-color: #000; }
+.poster[data-pk-alt-bg] :global(#spotify) { background-color: #161616; }
+.poster[data-pk-alt-bg] :global(#rider) { background-color: #000; }
+.poster[data-pk-alt-bg] :global(#disponibilites) { background-color: #161616; }

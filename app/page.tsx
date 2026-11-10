@@ -19,6 +19,7 @@ import { VideoSection } from "@/components/press-kit/VideoSection";
 import { VisionSection } from "@/components/press-kit/VisionSection";
 import { YoutubeSection } from "@/components/press-kit/YoutubeSection";
 import { TourSection } from "@/components/press-kit/TourSection";
+import { ConceptsSection } from "@/components/press-kit/ConceptsSection";
 import { CollaborationsSection } from "@/components/press-kit/CollaborationsSection";
 import { getFontPreset, getFontStyle } from "@/data/font-presets";
 import {
@@ -39,6 +40,8 @@ import {
   hasVideoContent,
   hasYoutubeContent,
   hasTourContent,
+  hasConceptsContent,
+  getConceptHref,
   hasCollaborationsContent,
 } from "@/data/press-kits";
 import { getClientBySlug } from "@/data/clients";
@@ -228,6 +231,12 @@ export default async function Home({ params, searchParams }: HomeProps) {
       )}
       {hasYoutubeContent(pressKitConfig) && pressKitConfig.youtube && (
         <YoutubeSection youtube={pressKitConfig.youtube} />
+      )}
+      {hasConceptsContent(pressKitConfig) && pressKitConfig.concepts && (
+        <ConceptsSection
+          concepts={pressKitConfig.concepts}
+          getHref={(conceptSlug) => getConceptHref(client.slug, conceptSlug)}
+        />
       )}
       {hasVisionContent(pressKitConfig) && pressKitConfig.vision && (
         <VisionSection vision={pressKitConfig.vision} />

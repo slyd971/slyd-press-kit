@@ -189,6 +189,28 @@ export function buildClientSitemapEntries(
     });
   }
 
+  // Pages dédiées des concepts (FR ici, puis les autres langues déclarées).
+  for (const item of client.pressKit.concepts?.items ?? []) {
+    entries.push({
+      url: getCanonicalUrl(client, `/concepts/${item.slug}`),
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    });
+  }
+  for (const switchItem of client.languageSwitch ?? []) {
+    if (switchItem.active || !switchItem.clientSlug) continue;
+    const localized = getClientBySlug(switchItem.clientSlug);
+    for (const item of localized?.pressKit.concepts?.items ?? []) {
+      entries.push({
+        url: getCanonicalUrl(client, `/${switchItem.label.toLowerCase()}/concepts/${item.slug}`),
+        lastModified: now,
+        changeFrequency: "monthly",
+        priority: 0.6,
+      });
+    }
+  }
+
   if (client.pressKit.videos.items.length > 0) {
     entries.push({
       url: getCanonicalUrl(client, "/videos"),
