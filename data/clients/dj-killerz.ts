@@ -214,6 +214,17 @@ const djKillerzPressKit: PressKitConfig = {
         ],
       },
       {
+        title: "Ses soirées régulières",
+        icon: "globe",
+        display: "pairs",
+        items: [
+          "Sunday Groove — Barba Negra",
+          "All Stars Monday — Deflower",
+          "Rockwell — Boum Boum",
+          "Boilerz — Paris",
+        ],
+      },
+      {
         title: "Festivals été 2025",
         icon: "globe",
         display: "pairs",
@@ -758,6 +769,17 @@ const djKillerzPressKitEn: PressKitConfig = {
           "La Cigale",
           "Hippodrome de Vincennes",
           "Golden Karibbean",
+        ],
+      },
+      {
+        title: "His regular nights",
+        icon: "globe",
+        display: "pairs",
+        items: [
+          "Sunday Groove — Barba Negra",
+          "All Stars Monday — Deflower",
+          "Rockwell — Boum Boum",
+          "Boilerz — Paris",
         ],
       },
       {
