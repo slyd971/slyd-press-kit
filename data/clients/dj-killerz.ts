@@ -201,11 +201,12 @@ const djKillerzPressKit: PressKitConfig = {
       {
         title: "Scènes clés",
         icon: "map-pin",
+        display: "featured",
         items: [
-          "Stade Pierre-Aliker (Dillon)",
+          "Stade Pierre-Aliker (Dillon) | 23 000 personnes",
           "Yardland Festival (main stage)",
-          "Accor Arena (Bercy)",
-          "Olympia",
+          "Accor Arena (Bercy) | Kalash, Vybz Kartel",
+          "Olympia | Kalash",
           "La Cigale",
           "Hippodrome de Vincennes",
           "Golden Karibbean",
@@ -214,6 +215,7 @@ const djKillerzPressKit: PressKitConfig = {
       {
         title: "Festivals été 2025",
         icon: "globe",
+        display: "pairs",
         items: [
           "Afro Dom Festival — Paris",
           "Baccha Festival — Martinique",
@@ -666,11 +668,12 @@ const djKillerzPressKitEn: PressKitConfig = {
       {
         title: "Key stages",
         icon: "map-pin",
+        display: "featured",
         items: [
-          "Stade Pierre-Aliker (Dillon)",
+          "Stade Pierre-Aliker (Dillon) | 23,000 people",
           "Yardland Festival (main stage)",
-          "Accor Arena (Bercy)",
-          "Olympia",
+          "Accor Arena (Bercy) | Kalash, Vybz Kartel",
+          "Olympia | Kalash",
           "La Cigale",
           "Hippodrome de Vincennes",
           "Golden Karibbean",
@@ -679,6 +682,7 @@ const djKillerzPressKitEn: PressKitConfig = {
       {
         title: "Summer 2025 festivals",
         icon: "globe",
+        display: "pairs",
         items: [
           "Afro Dom Festival — Paris",
           "Baccha Festival — Martinique",

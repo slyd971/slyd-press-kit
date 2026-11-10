@@ -178,8 +178,9 @@ export type PressKitConfig = {
       title: string;
       icon: "map-pin" | "globe";
       items: string[];
-      /** Optionnel : "flags" affiche la liste en grande grille de drapeaux (items « 🇫🇷 France »). */
-      display?: "flags";
+      display?: "flags" | "pairs" | "featured";
+      // flags : grille de drapeaux (desktop : une rangée) ; pairs : « Nom — Ville » en lignes à deux colonnes ;
+      // featured : les items « Nom | note » sont mis en avant en grand (desktop).
       /** Avec display "flags" : dossier des drapeaux SVG nommés par code pays (ex. /x/flags → fr.svg). */
       flagsPath?: string;
     }>;

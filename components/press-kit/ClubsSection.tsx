@@ -71,10 +71,39 @@ export function ClubsSection({ clubs, brands, slydPoster = false, language = "fr
                 <h3 className={`${clubs.image ? "max-md:mb-5 " : ""}mb-4 flex items-center gap-3 text-2xl font-bold md:mb-6 md:text-3xl`}>
                   {!slydPoster && <Icon className="h-5 w-5 text-[var(--pk-accent)] md:h-6 md:w-6" />}
                   {region.title}
+                  {region.display === "flags" && (
+                    <span className="hidden text-base font-medium text-white/45 md:inline">{region.items.length}</span>
+                  )}
                 </h3>
 
                 {slydPoster && region.display === "flags" ? (
-                  <ul className="grid grid-cols-3 gap-x-3 gap-y-5 sm:grid-cols-6 md:grid-cols-9 md:gap-y-6">
+                  <>
+                  <ul className="hidden flex-wrap justify-between gap-y-5 md:flex">
+                    {region.items.map((item) => {
+                      const [flag, ...rest] = item.split(" ");
+                      const code = flagCode(flag);
+                      const name = rest.join(" ");
+                      return (
+                        <li key={item} title={name} className="group relative">
+                          {code && region.flagsPath ? (
+                            <img
+                              src={`${region.flagsPath}/${code}.svg`}
+                              alt=""
+                              loading="lazy"
+                              className="h-9 w-12 rounded-none object-cover opacity-95 saturate-[.85] transition group-hover:opacity-100 group-hover:saturate-100"
+                            />
+                          ) : (
+                            <span aria-hidden="true" className="text-4xl leading-none">{flag}</span>
+                          )}
+                          <span className="sr-only">{name}</span>
+                          <span aria-hidden="true" className="pointer-events-none absolute left-1/2 top-full z-10 mt-2 -translate-x-1/2 whitespace-nowrap bg-black px-2 py-1 text-[11px] font-medium uppercase tracking-[0.1em] text-white opacity-0 transition group-hover:opacity-100">
+                            {name}
+                          </span>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                  <ul className="grid grid-cols-3 gap-x-3 gap-y-5 sm:grid-cols-6 md:hidden">
                     {region.items.map((item) => {
                       const [flag, ...rest] = item.split(" ");
                       const code = flagCode(flag);
@@ -99,18 +128,56 @@ export function ClubsSection({ clubs, brands, slydPoster = false, language = "fr
                       );
                     })}
                   </ul>
+                  </>
                 ) : slydPoster ? (
                   region.icon === "globe" ? (
+                    <>
+                    {region.display === "pairs" && (
+                      <ul className="hidden grid-cols-2 gap-x-12 md:grid">
+                        {region.items.map((item) => {
+                          const [name, ...city] = item.split(" — ");
+                          return (
+                            <li key={item} className="flex items-baseline justify-between gap-4 border-b border-white/10 py-2.5 text-base">
+                              <span className="text-white/90">{name}</span>
+                              <span className="shrink-0 text-white/45">{city.join(" — ")}</span>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    )}
+                    <div className={region.display === "pairs" ? "md:hidden" : undefined}>
                     <ul data-pk-list data-pk-compact={clubs.image ? "" : undefined} className={`text-base leading-relaxed text-gray-300${clubs.image ? " max-md:text-[13px] max-md:leading-5" : ""}`}>
                       {region.items.map((item) => <li key={item}>{item}</li>)}
                     </ul>
+                    </div>
+                    </>
                   ) : (
                     <>
+                      {region.display === "featured" && (
+                        <div className="hidden md:block">
+                          <ul className="grid grid-cols-3 gap-x-8">
+                            {region.items.filter((item) => item.includes(" | ")).map((item) => {
+                              const [name, note] = item.split(" | ");
+                              return (
+                                <li key={item} className="border-t border-white/20 pt-4">
+                                  <div className="font-[family-name:var(--slyd-font-display)] text-[1.7rem] font-bold uppercase leading-[1.05] text-white">{name}</div>
+                                  <div className="mt-2 text-sm text-white/55">{note}</div>
+                                </li>
+                              );
+                            })}
+                          </ul>
+                          <ul className="mt-6 flex flex-wrap gap-x-10 gap-y-2 font-[family-name:var(--slyd-font-display)] text-base font-bold uppercase tracking-[0.02em] text-white/70">
+                            {region.items.filter((item) => !item.includes(" | ")).map((item) => <li key={item}>{item}</li>)}
+                          </ul>
+                        </div>
+                      )}
+                      <div className={region.display === "featured" ? "md:hidden" : undefined}>
                       <ul id={`${referencesId}-${region.title}`} data-slyd-references data-pk-compact={clubs.image ? "" : undefined} className="text-gray-300">
                         {region.items.map((item, index) => (
-                          <li key={item} hidden={index >= 8 && !expanded}>{item}</li>
+                          <li key={item} hidden={index >= 8 && !expanded}>{item.split(" | ")[0]}</li>
                         ))}
                       </ul>
+                      </div>
                       {region.items.length > 8 && (
                         <button
                           type="button"
@@ -167,7 +234,7 @@ export function ClubsSection({ clubs, brands, slydPoster = false, language = "fr
 
         <div className={slydPoster ? `grid gap-10 md:gap-12${clubs.image ? " max-md:gap-9" : ""}` : "grid gap-8 md:grid-cols-2 md:gap-16"}>
           {useSideImage && clubs.image && (
-            <div className="grid gap-10 lg:grid-cols-[1.25fr_0.75fr] lg:items-stretch lg:gap-14">
+            <div className="grid gap-10 lg:grid-cols-[1.4fr_0.6fr] lg:items-stretch lg:gap-14">
               <div className="relative aspect-[4/3] overflow-hidden lg:hidden">
                 <img
                   src={clubs.image.src}
