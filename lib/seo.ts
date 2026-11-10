@@ -15,6 +15,14 @@ function getInstagramHandle(instagramUrl?: string) {
   return handle ? `@${handle}` : undefined;
 }
 
+/** URL publique d'un lien de langue : sans les paramètres de dev `?client=` / `?artist=`. */
+function toPublicUrl(href: string, client: ClientConfig) {
+  const url = new URL(href, getCanonicalUrl(client));
+  url.searchParams.delete("client");
+  url.searchParams.delete("artist");
+  return url.toString();
+}
+
 function getLanguageAlternates(client: ClientConfig) {
   const switches = client.languageSwitch?.filter((item) => item.label && item.href);
 
@@ -25,7 +33,7 @@ function getLanguageAlternates(client: ClientConfig) {
       const localizedClient = getClientBySlug(item.clientSlug) ?? client;
       const locale = item.label.toLowerCase();
 
-      return [locale, new URL(item.href, getCanonicalUrl(localizedClient)).toString()];
+      return [locale, toPublicUrl(item.href, localizedClient)];
     })
   );
 
@@ -36,7 +44,7 @@ function getLanguageAlternates(client: ClientConfig) {
   return {
     ...languages,
     "x-default": defaultSwitch
-      ? new URL(defaultSwitch.href, getCanonicalUrl(defaultClient)).toString()
+      ? toPublicUrl(defaultSwitch.href, defaultClient)
       : getCanonicalUrl(client),
   };
 }
@@ -57,7 +65,10 @@ export function buildClientMetadata(
   const image = overrides?.image ?? client.seo.ogImage;
   const keywords = overrides?.keywords ?? client.seo.keywords;
   const imageAlt =
-    overrides?.imageAlt ?? `Aperçu du dossier de presse de ${client.name}`;
+    overrides?.imageAlt ??
+    (client.slug.endsWith("-en")
+      ? `Press kit preview of ${client.name}`
+      : `Aperçu du dossier de presse de ${client.name}`);
   const canonicalUrl = getCanonicalUrl(client, path);
   const imageUrl = new URL(image, canonicalUrl).toString();
   const languageAlternates = getLanguageAlternates(client);
@@ -164,6 +175,19 @@ export function buildClientSitemapEntries(
       images: galleryImages,
     },
   ];
+
+  // Pages des autres langues (ex. /en), avec les liens hreflang déjà déclarés dans le <head>.
+  for (const item of client.languageSwitch ?? []) {
+    if (item.active || !item.href || !item.clientSlug) continue;
+    const localized = getClientBySlug(item.clientSlug);
+    if (!localized) continue;
+    entries.push({
+      url: toPublicUrl(item.href, localized),
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    });
+  }
 
   if (client.pressKit.videos.items.length > 0) {
     entries.push({
