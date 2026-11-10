@@ -2,12 +2,14 @@
 
 import { ArrowUpRight } from "lucide-react";
 import type { PressKitConfig } from "@/data/config";
+import { MobileCarousel } from "./MobileCarousel";
 
 type YoutubeSectionProps = {
   youtube: NonNullable<PressKitConfig["youtube"]>;
 };
 
 export function YoutubeSection({ youtube }: YoutubeSectionProps) {
+  const slider = Boolean(youtube.mobileSlider && youtube.items.length > 1);
   return (
     <section
       id="youtube"
@@ -39,17 +41,15 @@ export function YoutubeSection({ youtube }: YoutubeSectionProps) {
           </a>
         </div>
 
-        <div
-          className={
-            youtube.items.length === 1
-              ? "mx-auto grid max-w-4xl gap-4"
-              : "grid gap-4 md:grid-cols-3 md:gap-5"
-          }
-        >
+        {slider ? (
+          <MobileCarousel
+            label={youtube.title}
+            className="no-scrollbar -mx-4 flex snap-x snap-mandatory scroll-px-4 gap-3 overflow-x-auto px-4 md:mx-0 md:grid md:snap-none md:grid-cols-3 md:gap-5 md:overflow-visible md:px-0"
+          >
           {youtube.items.map((video) => (
             <article
               key={video.id}
-              className="overflow-hidden rounded-[1.2rem] border border-white/10 bg-white/[0.03] shadow-xl shadow-black/20 transition hover:border-[rgb(var(--pk-accent-rgb)/0.4)] md:rounded-[1.5rem]"
+              className={`overflow-hidden rounded-[1.2rem] border border-white/10 bg-white/[0.03] shadow-xl shadow-black/20 transition hover:border-[rgb(var(--pk-accent-rgb)/0.4)] md:rounded-[1.5rem]${slider ? " w-[85%] shrink-0 snap-start md:w-full" : ""}`}
             >
               <div className="relative aspect-video bg-black">
                 <iframe
@@ -74,7 +74,45 @@ export function YoutubeSection({ youtube }: YoutubeSectionProps) {
               </div>
             </article>
           ))}
-        </div>
+          </MobileCarousel>
+        ) : (
+          <div
+            className={
+              youtube.items.length === 1
+                ? "mx-auto grid max-w-4xl gap-4"
+                : "grid gap-4 md:grid-cols-3 md:gap-5"
+            }
+          >
+          {youtube.items.map((video) => (
+            <article
+              key={video.id}
+              className={`overflow-hidden rounded-[1.2rem] border border-white/10 bg-white/[0.03] shadow-xl shadow-black/20 transition hover:border-[rgb(var(--pk-accent-rgb)/0.4)] md:rounded-[1.5rem]${slider ? " w-[85%] shrink-0 snap-start md:w-full" : ""}`}
+            >
+              <div className="relative aspect-video bg-black">
+                <iframe
+                  src={video.embedUrl}
+                  title={video.title}
+                  className="h-full w-full"
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
+              </div>
+              <div className="px-4 py-4">
+                <div className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[var(--pk-accent)]">
+                  {video.title}
+                </div>
+                {video.description ? (
+                  <p className="mt-2 text-sm leading-6 text-white/70">
+                    {video.description}
+                  </p>
+                ) : null}
+              </div>
+            </article>
+          ))}
+          </div>
+        )}
       </div>
     </section>
   );

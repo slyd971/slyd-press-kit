@@ -32,6 +32,15 @@ function ClubItem({
   return <>{item}</>;
 }
 
+/** « 🇫🇷 » → « fr » (indicateurs régionaux Unicode) ; null si ce n'est pas un drapeau. */
+function flagCode(flag: string) {
+  const points = Array.from(flag).map((char) => char.codePointAt(0) ?? 0);
+  if (points.length !== 2 || points.some((point) => point < 0x1f1e6 || point > 0x1f1ff)) {
+    return null;
+  }
+  return points.map((point) => String.fromCharCode(point - 0x1f1e6 + 97)).join("");
+}
+
 type ClubsSectionProps = {
   clubs: PressKitConfig["clubs"];
   brands?: PressKitConfig["brands"];
@@ -54,43 +63,50 @@ export function ClubsSection({ clubs, brands, slydPoster = false, language = "fr
       ) ?? [];
   const [expanded, setExpanded] = useState(false);
   const referencesId = useId();
-  return (
-    <section
-      id="clubs"
-      className="scroll-mt-24 bg-[#0a0a0a] px-4 py-10 md:px-6 md:py-20"
-    >
-      <div className="mx-auto max-w-6xl">
-        <div className="mb-8 max-w-4xl md:mb-14">
-          <div className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--pk-accent)] md:text-xs md:tracking-[0.35em]">
-            {clubs.eyebrow}
-          </div>
-          <h2 className="mt-3 text-3xl font-black uppercase md:text-5xl">
-            {clubs.title}
-          </h2>
-          <p className="mt-4 text-sm leading-6 text-white/62 md:mt-5 md:text-lg md:leading-8">
-            {clubs.description}
-          </p>
-        </div>
-
-        <div className={slydPoster ? "grid gap-10 md:gap-12" : "grid gap-8 md:grid-cols-2 md:gap-16"}>
-          {clubs.regions.map((region) => {
+  const renderRegion = (region: PressKitConfig["clubs"]["regions"][number]) => {
             const Icon = iconMap[region.icon];
 
             return (
               <div key={region.title}>
-                <h3 className="mb-4 flex items-center gap-3 text-2xl font-bold md:mb-6 md:text-3xl">
+                <h3 className={`${clubs.image ? "max-md:mb-5 " : ""}mb-4 flex items-center gap-3 text-2xl font-bold md:mb-6 md:text-3xl`}>
                   {!slydPoster && <Icon className="h-5 w-5 text-[var(--pk-accent)] md:h-6 md:w-6" />}
                   {region.title}
                 </h3>
 
-                {slydPoster ? (
+                {slydPoster && region.display === "flags" ? (
+                  <ul className="grid grid-cols-3 gap-x-3 gap-y-5 sm:grid-cols-6 md:grid-cols-9 md:gap-y-6">
+                    {region.items.map((item) => {
+                      const [flag, ...rest] = item.split(" ");
+                      const code = flagCode(flag);
+                      return (
+                        <li key={item} className="flex flex-col items-center text-center">
+                          {code && region.flagsPath ? (
+                            <img
+                              src={`${region.flagsPath}/${code}.svg`}
+                              alt=""
+                              loading="lazy"
+                              className="h-6 w-8 rounded-none object-cover opacity-95 saturate-[.85] md:h-7 md:w-9"
+                            />
+                          ) : (
+                            <span aria-hidden="true" className="text-3xl leading-none md:text-4xl">
+                              {flag}
+                            </span>
+                          )}
+                          <span className="mt-2 text-[11px] font-medium uppercase tracking-[0.1em] text-white/80 md:text-xs">
+                            {rest.join(" ")}
+                          </span>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                ) : slydPoster ? (
                   region.icon === "globe" ? (
-                    <ul data-pk-list className="text-base leading-relaxed text-gray-300">
+                    <ul data-pk-list data-pk-compact={clubs.image ? "" : undefined} className={`text-base leading-relaxed text-gray-300${clubs.image ? " max-md:text-[13px] max-md:leading-5" : ""}`}>
                       {region.items.map((item) => <li key={item}>{item}</li>)}
                     </ul>
                   ) : (
                     <>
-                      <ul id={`${referencesId}-${region.title}`} data-slyd-references className="text-gray-300">
+                      <ul id={`${referencesId}-${region.title}`} data-slyd-references data-pk-compact={clubs.image ? "" : undefined} className="text-gray-300">
                         {region.items.map((item, index) => (
                           <li key={item} hidden={index >= 8 && !expanded}>{item}</li>
                         ))}
@@ -125,7 +141,55 @@ export function ClubsSection({ clubs, brands, slydPoster = false, language = "fr
                 </div>}
               </div>
             );
-          })}
+            };
+
+  const useSideImage = Boolean(slydPoster && clubs.image);
+  const sideRegions = useSideImage ? clubs.regions.filter((region) => region.display !== "flags") : [];
+  const restRegions = useSideImage ? clubs.regions.filter((region) => region.display === "flags") : clubs.regions;
+
+  return (
+    <section
+      id="clubs"
+      className="scroll-mt-24 bg-[#0a0a0a] px-4 py-10 md:px-6 md:py-20"
+    >
+      <div className="mx-auto max-w-6xl">
+        <div className="mb-8 max-w-4xl md:mb-14">
+          <div className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--pk-accent)] md:text-xs md:tracking-[0.35em]">
+            {clubs.eyebrow}
+          </div>
+          <h2 className="mt-3 text-3xl font-black uppercase md:text-5xl">
+            {clubs.title}
+          </h2>
+          <p className="mt-4 text-sm leading-6 text-white/62 md:mt-5 md:text-lg md:leading-8">
+            {clubs.description}
+          </p>
+        </div>
+
+        <div className={slydPoster ? `grid gap-10 md:gap-12${clubs.image ? " max-md:gap-9" : ""}` : "grid gap-8 md:grid-cols-2 md:gap-16"}>
+          {useSideImage && clubs.image && (
+            <div className="grid gap-10 lg:grid-cols-[1.25fr_0.75fr] lg:items-stretch lg:gap-14">
+              <div className="relative aspect-[4/3] overflow-hidden lg:hidden">
+                <img
+                  src={clubs.image.src}
+                  alt={clubs.image.alt}
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover"
+                  style={{ height: "100%", objectPosition: clubs.image.mobilePosition ?? clubs.image.position ?? "center" }}
+                />
+              </div>
+              <div className="grid gap-9 md:gap-12">{sideRegions.map(renderRegion)}</div>
+              <div className="relative hidden min-h-[26rem] overflow-hidden lg:block">
+                <img
+                  src={clubs.image.src}
+                  alt={clubs.image.alt}
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover"
+                  style={{ height: "100%", objectPosition: clubs.image.position ?? "center" }}
+                />
+              </div>
+            </div>
+          )}
+          {restRegions.map(renderRegion)}
           {slydPoster && brandReferences?.length > 0 && (
             <BrandReferences items={brandReferences} language={language} />
           )}

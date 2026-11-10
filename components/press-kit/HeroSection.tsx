@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Disc3, Instagram, Music2, Play, Youtube } from "lucide-react";
+import { CountUpValue } from "@/components/press-kit/CountUpValue";
 import type { PressKitConfig } from "@/data/config";
 import type { TemplateVariantId } from "@/data/templates";
 
@@ -205,6 +206,7 @@ function HeroVariantBody({
 }: HeroSectionProps & { idOverride?: string; compactMobile?: boolean }) {
   const hero = heroVariants[variant];
   const hasHeroImage = Boolean(hero.image.src);
+  const light = Boolean(hero.fullScreen && hero.lightBackdrop);
   const hasEyebrow = Boolean(hero.eyebrow.trim());
   const hasStats = hero.stats.length > 0;
   const statGridClass = getHeroStatGridClass(variant, hero.stats.length);
@@ -365,26 +367,30 @@ function HeroVariantBody({
       <section
         id={idOverride}
         className={`relative scroll-mt-24 overflow-hidden ${hero.fullScreen ? "flex min-h-svh flex-col" : "pt-16 md:pt-20"}`}
+        {...(light ? { "data-pk-hero-light": "" } : {})}
+        style={light ? { backgroundColor: hero.lightBackdrop } : undefined}
       >
-        <div className={`absolute inset-x-0 ${hero.fullScreen ? "top-[69px] h-[80svh] md:inset-y-0 md:left-[38%] md:h-auto" : "inset-y-0"}`}>
+        <div className={`absolute inset-x-0 ${hero.fullScreen ? (light ? "top-[69px] h-[50svh] md:inset-y-0 md:left-[38%] md:top-0 md:h-auto" : "top-[69px] h-[80svh] md:inset-y-0 md:left-[38%] md:h-auto") : "inset-y-0"}`}>
           {hasHeroImage ? (
             <img
               src={hero.image.src}
               alt={hero.image.alt}
-              className="h-full w-full object-cover"
-              style={{ height: "100%", objectPosition: hero.image.position ?? "center" }}
+              className={`h-full w-full object-cover${hero.image.shiftX ? " md:translate-x-[var(--hero-shift)]" : ""}`}
+              style={{ height: "100%", objectPosition: hero.image.position ?? "center", ...(hero.image.shiftX ? ({ "--hero-shift": hero.image.shiftX } as React.CSSProperties) : {}), ...(light ? { maskImage: "linear-gradient(to right, transparent 0%, #000 22%)", WebkitMaskImage: "linear-gradient(to right, transparent 0%, #000 22%)" } : {}) }}
             />
           ) : (
             <div className="h-full w-full bg-[var(--pk-bg)]" />
           )}
-          <div className={`absolute inset-0 ${hero.fullScreen ? "bg-black/20 md:bg-black/15" : "bg-black/12"}`} />
+          {!light && <div className={`absolute inset-0 ${hero.fullScreen ? "bg-black/20 md:bg-black/15" : "bg-black/12"}`} />}
           {hero.mobileRightFade && (
             <div className="absolute inset-y-0 right-0 w-[42%] bg-[linear-gradient(to_left,var(--pk-bg)_0%,var(--pk-bg)_72%,transparent_100%)] md:hidden" />
           )}
+          {!light && (<>
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--pk-bg)] via-transparent to-transparent" />
           <div className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-black/72 via-black/38 to-transparent" />
+          </>)}
           {/* Desktop edge fades sit on top so the photo melts into the page with no visible seam. */}
-          {hero.fullScreen && (
+          {hero.fullScreen && !light && (
             <>
             <div className="absolute inset-y-0 left-0 hidden w-1/2 bg-[linear-gradient(to_right,var(--pk-bg)_0%,rgb(5_5_5/0.6)_40%,transparent_100%)] md:block" />
             {!hero.hideDesktopRightFade && (
@@ -395,7 +401,7 @@ function HeroVariantBody({
         </div>
 
         <div
-          className={`relative mx-auto flex max-w-7xl flex-col px-4 md:px-6 ${hero.fullScreen ? "w-full flex-1 justify-end pb-10 pt-[max(22rem,48svh)] md:justify-center md:pb-10 md:pt-28" : "min-h-[90svh] justify-center py-10 md:min-h-[84svh] md:py-12 lg:min-h-[82svh] lg:justify-start lg:pt-20 lg:pb-10"} ${
+          className={`relative mx-auto flex max-w-7xl flex-col px-4 md:px-6 ${hero.fullScreen ? (light ? "w-full flex-1 justify-end pb-10 pt-[calc(69px+50svh+1.5rem)] md:justify-center md:pb-10 md:pt-28" : "w-full flex-1 justify-end pb-10 pt-[max(22rem,48svh)] md:justify-center md:pb-10 md:pt-28") : "min-h-[90svh] justify-center py-10 md:min-h-[84svh] md:py-12 lg:min-h-[82svh] lg:justify-start lg:pt-20 lg:pb-10"} ${
             compactMobile ? "items-center justify-end pb-12 text-center md:items-stretch md:justify-start md:pb-10 md:text-left" : ""
           }`}
         >
@@ -452,14 +458,14 @@ function HeroVariantBody({
 
           {socialsPosition === "before-stats" && socialLinks}
           {hasStats && (
-            <div data-pk-stats className={`mt-8 grid gap-3 md:mt-10 md:gap-4 ${statGridClass}`}>
+            <div data-pk-stats className={`mt-8 grid gap-3 md:mt-10 md:gap-4 ${statGridClass}${light ? " md:max-w-[54%]" : ""}`}>
               {hero.stats.map((stat) => (
                 <div
                   key={stat.label}
                   className={`${getHeroStatCardClass(stat.value)} flex flex-col items-center text-center`}
                 >
                   <div className={getHeroStatValueClass(stat.value)}>
-                    {stat.value}
+                    {hero.animateStats ? <CountUpValue value={stat.value} /> : stat.value}
                   </div>
                   <div className={getHeroStatLabelClass(stat.label)}>
                     {stat.label}

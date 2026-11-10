@@ -218,3 +218,44 @@
     mask-image: linear-gradient(90deg, transparent 0%, #000 24%);
   }
 }
+
+/* Hero à fond clair (option lightBackdrop) : textes sombres, aucun voile noir. */
+.poster [data-pk-hero-light] :is([class*="text-white"], [class*="text-[var(--pk-accent"]) { color: #0a0a0a !important; }
+.poster [data-pk-hero-light] [class*="border-white"] { border-color: rgba(10, 10, 10, 0.18) !important; }
+.poster [data-pk-hero-light] [data-pk-stats] > div { background: rgba(10, 10, 10, 0.04) !important; box-shadow: none !important; }
+.poster [data-pk-hero-light] a[class*="bg-[var(--pk-accent)]"] { background: #0a0a0a !important; color: #ffffff !important; }
+
+/* Thème noir et blanc : l'accent est blanc, donc le texte des boutons pleins doit être sombre. */
+.poster :global([data-pk-theme="monochrome"]) [class*="bg-[var(--pk-accent)]"], .poster[data-pk-theme="monochrome"] [class*="bg-[var(--pk-accent)]"] { color: #050505; }
+
+/* Thème noir et blanc : la section contact a un fond blanc, ses textes clairs passent en sombre. */
+.poster[data-pk-theme="monochrome"] :global(#contact) [class*="text-white"] { color: rgba(10, 10, 10, 0.78); }
+.poster[data-pk-theme="monochrome"] :global(#contact) [class*="text-[var(--pk-accent)]"] { color: rgba(10, 10, 10, 0.55); }
+
+/* Pastilles rondes (collaborations artistes) : le look poster carré ne doit pas les écraser. */
+.poster [data-pk-round] { border-radius: 9999px !important; }
+
+/* Références compactes sur mobile (option clubs.image) : texte plus petit que le titre de section. */
+@media (max-width: 767px) {
+  .poster [data-slyd-references][data-pk-compact] { font-size: 0.95rem; gap: 1.1rem 1rem; line-height: 1.25; }
+}
+
+/* Références compactes, desktop (option clubs.image) : texte moins imposant, 3 colonnes à côté de la photo. */
+@media (min-width: 768px) {
+  .poster [data-slyd-references][data-pk-compact] {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    font-size: clamp(1.05rem, 1.35vw, 1.3rem);
+    gap: 1rem 1.5rem;
+  }
+}
+
+/* Alternance des fonds de sections (option KillerZ) : noir / gris foncé, du haut vers le bas. */
+.poster[data-pk-alt-bg] :global(#about) { background-color: #000; }
+.poster[data-pk-alt-bg] :global(#clubs) { background-color: #161616; }
+.poster[data-pk-alt-bg] :global(#tour) { background-color: #000; }
+.poster[data-pk-alt-bg] :global(#collaborations) { background-color: #161616; }
+.poster[data-pk-alt-bg] :global(#gallery) { background-color: #000; max-width: none; padding-inline: max(1rem, calc((100% - 80rem) / 2 + 1.5rem)); }
+.poster[data-pk-alt-bg] :global(#youtube) { background-color: #161616; }
+.poster[data-pk-alt-bg] :global(#spotify) { background-color: #000; }
+.poster[data-pk-alt-bg] :global(#rider) { background-color: #161616; }
+.poster[data-pk-alt-bg] :global(#disponibilites) { background-color: #000; }

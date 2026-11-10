@@ -31,7 +31,9 @@ export function isSlydPoster(client: ClientConfig) {
     client.slug === "djslyd" ||
     client.slug === "djslyd-en" ||
     client.slug === "wayans" ||
-    client.slug === "wayans-en"
+    client.slug === "wayans-en" ||
+    client.slug === "dj-killerz" ||
+    client.slug === "dj-killerz-en"
   );
 }
 

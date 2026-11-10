@@ -1,4 +1,5 @@
 import type { PressKitConfig } from "@/data/config";
+import { RiderGroupAccordion } from "./RiderGroupAccordion";
 
 type RiderSectionProps = {
   rider: NonNullable<PressKitConfig["rider"]>;
@@ -21,7 +22,16 @@ export function RiderSection({ rider }: RiderSectionProps) {
         </div>
 
         <div className="grid gap-4 md:grid-cols-3 md:gap-6">
-          {rider.groups.map((group) => (
+          {rider.mobileAccordion
+            ? rider.groups.map((group, index) => (
+                <RiderGroupAccordion
+                  key={group.title}
+                  title={group.title}
+                  items={group.items}
+                  defaultOpen={index === 0}
+                />
+              ))
+            : rider.groups.map((group) => (
             <div
               key={group.title}
               className="rounded-[1.2rem] border border-white/10 bg-white/[0.025] p-5 md:rounded-[1.5rem] md:p-7"
@@ -45,7 +55,7 @@ export function RiderSection({ rider }: RiderSectionProps) {
                 ))}
               </ul>
             </div>
-          ))}
+              ))}
         </div>
       </div>
     </section>

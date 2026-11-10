@@ -99,6 +99,29 @@ export function ContactSection({ contact }: ContactSectionProps) {
   const [primaryMethod, secondaryMethod, ...otherMethods] = contact.methods;
   const useLargeCardsOnly = contact.methods.length <= 3;
 
+  const cards = (
+    <div className="grid gap-3 md:gap-5">
+      {useLargeCardsOnly ? (
+        contact.methods.map((method) => (
+          <LargeContactCard key={method.href} method={method} />
+        ))
+      ) : (
+        <>
+          {primaryMethod && <LargeContactCard method={primaryMethod} />}
+          {secondaryMethod && <LargeContactCard method={secondaryMethod} />}
+        </>
+      )}
+
+      {!useLargeCardsOnly && otherMethods.length > 0 && (
+        <div className="grid gap-3 sm:grid-cols-2 md:gap-5">
+          {otherMethods.map((method) => (
+            <SmallContactCard key={method.href} method={method} />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+
   return (
     <section
       id="contact"
@@ -109,6 +132,30 @@ export function ContactSection({ contact }: ContactSectionProps) {
           {contact.eyebrow}
         </div>
 
+        {contact.image ? (
+          <div className="grid gap-8 md:gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-stretch lg:gap-14">
+            <div className="flex flex-col">
+              <h2 className="max-w-3xl text-3xl font-black uppercase leading-[0.95] sm:text-4xl md:text-7xl">
+                {contact.title}
+              </h2>
+
+              <p className="mt-5 max-w-2xl text-sm leading-6 text-white/85 md:mt-8 md:text-xl md:leading-9">
+                {contact.description}
+              </p>
+
+              <div className="mt-8 md:mt-10 lg:mt-auto lg:pt-10">{cards}</div>
+            </div>
+
+            <div className="relative aspect-[4/3] overflow-hidden border-2 border-black lg:aspect-auto lg:min-h-[28rem]">
+              <img
+                src={contact.image.src}
+                alt={contact.image.alt}
+                className="absolute inset-0 h-full w-full object-cover"
+                style={{ objectPosition: contact.image.position ?? "center" }}
+              />
+            </div>
+          </div>
+        ) : (
         <div className="grid gap-8 md:gap-10 lg:grid-cols-[1fr_0.95fr] lg:items-start">
           <div>
             <h2 className="max-w-3xl text-3xl font-black uppercase leading-[0.95] sm:text-4xl md:text-7xl">
@@ -120,27 +167,9 @@ export function ContactSection({ contact }: ContactSectionProps) {
             </p>
           </div>
 
-          <div className="grid gap-3 md:gap-5">
-            {useLargeCardsOnly ? (
-              contact.methods.map((method) => (
-                <LargeContactCard key={method.href} method={method} />
-              ))
-            ) : (
-              <>
-                {primaryMethod && <LargeContactCard method={primaryMethod} />}
-                {secondaryMethod && <LargeContactCard method={secondaryMethod} />}
-              </>
-            )}
-
-            {!useLargeCardsOnly && otherMethods.length > 0 && (
-              <div className="grid gap-3 sm:grid-cols-2 md:gap-5">
-                {otherMethods.map((method) => (
-                  <SmallContactCard key={method.href} method={method} />
-                ))}
-              </div>
-            )}
-          </div>
+          {cards}
         </div>
+        )}
       </div>
     </section>
   );

@@ -14,6 +14,7 @@ import {
   getMenuFooterLinks,
   getResolvedNavigation,
   hasGalleryContent,
+  hasVideoContent,
 } from "@/data/press-kits";
 import { getTemplateStyle, getTemplateTheme } from "@/data/templates";
 import {
@@ -78,13 +79,16 @@ export default async function GalleryPage({ searchParams }: GalleryPageProps) {
   );
   const homeHref = getArtistHomeHref(pressKitEntry.id);
   const galleryHref = getArtistGalleryHref(pressKitEntry.id);
-  const videosHref = getArtistVideosHref(pressKitEntry.id);
+  const videosHref = hasVideoContent(pressKitConfig)
+    ? getArtistVideosHref(pressKitEntry.id)
+    : "";
   const galleryJsonLd = buildGalleryJsonLd(client);
 
   return (
     <main
       style={{ ...getTemplateStyle(theme), ...getFontStyle(fontPreset) }}
       data-pk-font={resolvedSearchParams?.font ? "custom" : undefined}
+      data-pk-theme={theme.id === "monochrome" ? "monochrome" : undefined}
       className={`${kitStyles.kit} min-h-screen bg-[var(--pk-bg)] text-[var(--pk-text)]${isSlydPoster(client) ? ` ${getSlydPresentationClass(client)}` : ""}`}
     >
       <Header

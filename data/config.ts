@@ -58,6 +58,8 @@ export type SpotifyPlaylist = {
   id: string;
   title: string;
   embedUrl: string;
+  /** Optionnel : hauteur du lecteur sur desktop, en px (352 par défaut). */
+  height?: number;
 };
 
 export type VideoItemBase = {
@@ -97,6 +99,8 @@ export type PressKitConfig = {
   artist: {
     name: string;
     stageLabel: string;
+    /** Optionnel : affiche aussi le sous-titre (stageLabel) à côté du logo dans le header mobile. */
+    showStageLabelOnMobile?: boolean;
     logo: {
       src: string;
       alt: string;
@@ -119,6 +123,10 @@ export type PressKitConfig = {
       /** Optionnel : classes Tailwind ajoutées au bloc texte du hero (ex. padding-top pour descendre titre et sous-titre). */
       contentClassName?: string;
       fullScreen?: boolean;
+      /** Optionnel (hero plein écran) : fond clair uni (hex) à gauche de la photo, textes sombres, aucun voile noir ; la photo est décalée à droite. */
+      lightBackdrop?: string;
+      /** Optionnel : anime les chiffres du hero (compteur de 0 à la valeur) à leur apparition. */
+      animateStats?: boolean;
       /** Optionnel : fondu sur le bord droit de la photo en mobile (masque un élément gênant à droite). */
       mobileRightFade?: boolean;
       /** Optionnel : désactive le fondu sombre sur le bord droit du hero plein écran (desktop), pour un sujet placé à droite de la photo. */
@@ -133,6 +141,8 @@ export type PressKitConfig = {
         badge: string;
         caption: string;
         position?: string;
+        /** Optionnel : décale la photo vers la droite sur desktop (ex. "12%"), pour le hero plein écran. */
+        shiftX?: string;
       };
       ctas: CtaLink[];
       stats: StatItem[];
@@ -162,10 +172,39 @@ export type PressKitConfig = {
     title: string;
     description: string;
     itemIconOverrides?: Record<string, { src: string; alt: string }>;
+    /** Optionnel : photo affichée à côté des listes (desktop) pour casser le rythme du bloc. */
+    image?: { src: string; alt: string; position?: string; /** Cadrage vertical spécifique mobile (sinon `position`). */ mobilePosition?: string };
     regions: Array<{
       title: string;
       icon: "map-pin" | "globe";
       items: string[];
+      /** Optionnel : "flags" affiche la liste en grande grille de drapeaux (items « 🇫🇷 France »). */
+      display?: "flags";
+      /** Avec display "flags" : dossier des drapeaux SVG nommés par code pays (ex. /x/flags → fr.svg). */
+      flagsPath?: string;
+    }>;
+  };
+  /** Optionnel : collaborations artistes (pastilles rondes avec nom), comme dans le press kit PDF. */
+  collaborations?: {
+    eyebrow: string;
+    title: string;
+    artists: Array<{ name: string; image: string; /** zoom optionnel pour recadrer la pastille */ zoom?: number; position?: string }>;
+    image?: { src: string; alt: string; position?: string };
+  };
+  /** Optionnel : tournée et scènes clés (visuels d'affiches + détails), comme dans le press kit PDF. */
+  tour?: {
+    eyebrow: string;
+    title: string;
+    /** Libellé du lien « Voir le post » (défaut : Voir le post). */
+    linkLabel?: string;
+    items: Array<{
+      title: string;
+      date?: string;
+      venue?: string;
+      /** Optionnel : lien (post Instagram, etc.) ouvert depuis l'affiche. */
+      href?: string;
+      images: Array<{ src: string; alt: string }>;
+      groups: Array<{ title?: string; points: string[] }>;
     }>;
   };
   highlights?: {
@@ -201,6 +240,8 @@ export type PressKitConfig = {
     eyebrow: string;
     title: string;
     description: string;
+    /** Optionnel : affiche les vidéos en slider (swipe) sur mobile. */
+    mobileSlider?: boolean;
     items: YoutubeVideoItem[];
     cta: CtaLink;
   };
@@ -229,6 +270,8 @@ export type PressKitConfig = {
     playlists: SpotifyPlaylist[];
     badgeLabel: string;
     useThemeColor?: boolean;
+    /** Optionnel : photo affichée à côté du lecteur sur grand écran (xl), pour combler l'espace quand il n'y a qu'un lecteur. */
+    sideImage?: { src: string; alt: string; position?: string };
   };
   brands: {
     eyebrow: string;
@@ -272,6 +315,8 @@ export type PressKitConfig = {
   rider?: {
     eyebrow: string;
     title: string;
+    /** Optionnel : groupes repliables (accordéon) sur mobile pour gagner de la place. */
+    mobileAccordion?: boolean;
     groups: Array<{
       title: string;
       items: string[];
@@ -282,6 +327,8 @@ export type PressKitConfig = {
     title: string;
     description: string;
     methods: ContactMethod[];
+    /** Optionnel : photo affichée sous le texte de la section contact. */
+    image?: { src: string; alt: string; position?: string };
   };
   gallery: {
     eyebrow: string;
@@ -299,6 +346,8 @@ export type PressKitConfig = {
     languageLabel?: string;
     fullGalleryLabel?: string;
     allVideosLabel?: string;
+    /** Optionnel : bouton de téléchargement du press kit en PDF dans le footer. */
+    pressKitPdf?: { label: string; href: string };
   };
 };
 

@@ -6,6 +6,7 @@ import type { PressKitConfig } from "@/data/config";
 type AboutSectionProps = {
   about: PressKitConfig["about"];
   slydPoster?: boolean;
+  collapseOnDesktop?: boolean;
   language?: "fr" | "en";
 };
 
@@ -13,7 +14,7 @@ type AboutSectionProps = {
 // Sur desktop, la bio reste entièrement affichée (le bouton est masqué).
 const COLLAPSED_PARAGRAPHS = 1;
 
-export function AboutSection({ about, slydPoster = false, language = "fr" }: AboutSectionProps) {
+export function AboutSection({ about, slydPoster = false, collapseOnDesktop = false, language = "fr" }: AboutSectionProps) {
   const [expanded, setExpanded] = useState(false);
   const bioId = useId();
   const collapsible = slydPoster && about.paragraphs.length > COLLAPSED_PARAGRAPHS;
@@ -66,7 +67,7 @@ export function AboutSection({ about, slydPoster = false, language = "fr" }: Abo
               className="space-y-4 text-sm leading-6 text-white/72 md:space-y-6 md:text-lg md:leading-8"
             >
               {about.paragraphs.map((paragraph, index) => (
-                <p key={paragraph} className={collapsible && !expanded && index >= COLLAPSED_PARAGRAPHS ? "max-md:hidden" : undefined}>
+                <p key={paragraph} className={collapsible && !expanded && index >= COLLAPSED_PARAGRAPHS ? collapseOnDesktop ? "hidden" : "max-md:hidden" : undefined}>
                   {paragraph}
                 </p>
               ))}
@@ -77,7 +78,7 @@ export function AboutSection({ about, slydPoster = false, language = "fr" }: Abo
                 aria-expanded={expanded}
                 aria-controls={bioId}
                 onClick={() => setExpanded((value) => !value)}
-                className="mt-6 rounded border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/10 md:hidden"
+                className={`mt-6 rounded border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/10${collapseOnDesktop ? "" : " md:hidden"}`}
               >
                 {language === "en"
                   ? expanded ? "Show less" : "Read more"

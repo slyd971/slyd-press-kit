@@ -3,7 +3,7 @@ import {
   djMackClient,
   djMackEnClient,
 } from "@/data/clients/dj-mack";
-import { djKillerzClient } from "@/data/clients/dj-killerz";
+import { djKillerzClient, djKillerzEnClient } from "@/data/clients/dj-killerz";
 import { djFloClient, djFloEnClient } from "@/data/clients/dj-flo";
 import { djslydClient, djslydEnClient } from "@/data/clients/djslyd";
 import { paulKeranneClient } from "@/data/clients/paul-keranne";
@@ -26,6 +26,7 @@ export const clientRegistry = [
   djMackClient,
   djMackEnClient,
   djKillerzClient,
+  djKillerzEnClient,
   wayansClient,
   wayansEnClient,
 ] as const;

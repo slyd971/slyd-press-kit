@@ -206,7 +206,7 @@ export function Header({
             </div>
           </Link>
 
-          <div className="hidden max-w-[240px] flex-col text-[10px] font-medium uppercase leading-[1.35] tracking-[0.26em] text-white/48 xl:flex">
+          <div className={`${artist.showStageLabelOnMobile ? "flex max-w-[96px] text-[8px] leading-[1.3] tracking-[0.14em] sm:max-w-[240px] sm:text-[10px] sm:tracking-[0.26em]" : "hidden max-w-[240px] text-[10px] tracking-[0.26em] leading-[1.35]"} flex-col font-medium uppercase text-white/48 xl:flex xl:max-w-[240px] xl:text-[10px] xl:tracking-[0.26em]`}>
             {desktopStageLabelLines.map((line) => (
               <span key={line} className="block whitespace-normal">
                 {line}

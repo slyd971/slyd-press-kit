@@ -35,9 +35,10 @@ export function SpotifySection({ spotify }: SpotifySectionProps) {
           </div>
         </div>
 
+        <div className={spotify.sideImage ? "xl:grid xl:grid-cols-[minmax(0,1fr)_minmax(0,0.62fr)] xl:gap-6" : undefined}>
         <MobileCarousel
           label={spotify.title}
-          className="no-scrollbar -mx-4 mt-6 flex snap-x snap-mandatory scroll-px-4 gap-3 overflow-x-auto px-4 md:mx-0 md:mt-10 md:grid md:snap-none md:grid-cols-1 md:gap-6 md:overflow-visible md:px-0 xl:grid-cols-3"
+          className={`no-scrollbar -mx-4 mt-6 flex snap-x snap-mandatory scroll-px-4 gap-3 overflow-x-auto px-4 md:mx-0 md:mt-10 md:grid md:snap-none md:grid-cols-1 md:gap-6 md:overflow-visible md:px-0 ${spotify.sideImage ? "" : "xl:grid-cols-3"}`}
         >
           {spotify.playlists.map((playlist) => (
             <div
@@ -60,17 +61,29 @@ export function SpotifySection({ spotify }: SpotifySectionProps) {
                   title={playlist.title}
                   src={playlist.embedUrl}
                   width="100%"
-                  height="352"
+                  height={playlist.height ?? 352}
                   frameBorder="0"
                   allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                   loading="lazy"
-                  className="block h-[152px] w-full md:h-[352px]"
-                  style={iframeStyle}
+                  className="block h-[152px] w-full md:h-[var(--spotify-h)]"
+                  style={{ ...iframeStyle, "--spotify-h": `${playlist.height ?? 352}px` } as React.CSSProperties}
                 />
               </div>
             </div>
           ))}
         </MobileCarousel>
+        {spotify.sideImage && (
+          <div className="relative mt-6 hidden overflow-hidden rounded-[1.7rem] border border-white/10 xl:mt-10 xl:block">
+            <img
+              src={spotify.sideImage.src}
+              alt={spotify.sideImage.alt}
+              loading="lazy"
+              className="absolute inset-0 h-full w-full object-cover"
+              style={{ objectPosition: spotify.sideImage.position ?? "center" }}
+            />
+          </div>
+        )}
+        </div>
       </div>
     </section>
   );

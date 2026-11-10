@@ -48,6 +48,7 @@ const sectionHrefMap = {
   gallery: "#gallery",
   videos: "#videos",
   youtube: "#youtube",
+  tour: "#tour",
   sound: "#sound",
   vision: "#vision",
   spotify: "#spotify",
@@ -102,6 +103,14 @@ export function hasYoutubeContent(config: PressKitConfig): boolean {
   return Boolean(config.youtube && config.youtube.items.length > 0);
 }
 
+export function hasTourContent(config: PressKitConfig): boolean {
+  return Boolean(config.tour && config.tour.items.length > 0);
+}
+
+export function hasCollaborationsContent(config: PressKitConfig): boolean {
+  return Boolean(config.collaborations && config.collaborations.artists.length > 0);
+}
+
 export function hasSoundContent(config: PressKitConfig): boolean {
   return Boolean(config.sound.embedUrl || config.sound.cta.href);
 }
@@ -145,6 +154,7 @@ export function getResolvedNavigation(
   if (hasHighlightsContent(config)) visibleSections.add(sectionHrefMap.highlights);
   if (hasVideoContent(config)) visibleSections.add(sectionHrefMap.videos);
   if (hasYoutubeContent(config)) visibleSections.add(sectionHrefMap.youtube);
+  if (hasTourContent(config)) visibleSections.add(sectionHrefMap.tour);
   if (hasSoundContent(config)) visibleSections.add(sectionHrefMap.sound);
   if (hasVisionContent(config)) visibleSections.add(sectionHrefMap.vision);
   if (hasSpotifyContent(config)) visibleSections.add(sectionHrefMap.spotify);

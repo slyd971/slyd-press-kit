@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Download } from "lucide-react";
 import type { PressKitConfig } from "@/data/config";
 import type { ClientConfig } from "@/data/clients/types";
 
@@ -167,6 +168,16 @@ export function Footer({
               </a>
             ) : null}
           </div>
+          {footerLabels?.pressKitPdf ? (
+            <a
+              href={footerLabels.pressKitPdf.href}
+              download
+              className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/25 px-4 py-2.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-white transition hover:border-white hover:bg-white hover:text-black"
+            >
+              <Download className="h-4 w-4" aria-hidden="true" />
+              {footerLabels.pressKitPdf.label}
+            </a>
+          ) : null}
           {languageSwitch?.length ? (
             <div className="mt-5">
               <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--pk-accent)] md:tracking-[0.24em]">

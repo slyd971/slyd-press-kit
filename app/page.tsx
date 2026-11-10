@@ -18,6 +18,8 @@ import { SpotifySection } from "@/components/press-kit/SpotifySection";
 import { VideoSection } from "@/components/press-kit/VideoSection";
 import { VisionSection } from "@/components/press-kit/VisionSection";
 import { YoutubeSection } from "@/components/press-kit/YoutubeSection";
+import { TourSection } from "@/components/press-kit/TourSection";
+import { CollaborationsSection } from "@/components/press-kit/CollaborationsSection";
 import { getFontPreset, getFontStyle } from "@/data/font-presets";
 import {
   createPressKitEntry,
@@ -36,6 +38,8 @@ import {
   hasVisionContent,
   hasVideoContent,
   hasYoutubeContent,
+  hasTourContent,
+  hasCollaborationsContent,
 } from "@/data/press-kits";
 import { getClientBySlug } from "@/data/clients";
 import type { ClientConfig } from "@/data/clients/types";
@@ -165,6 +169,7 @@ export default async function Home({ params, searchParams }: HomeProps) {
       style={{ ...getTemplateStyle(theme), ...getFontStyle(fontPreset) }}
       data-pk-font={requestedFont ? "custom" : undefined}
       data-pk-theme={theme.id}
+      data-pk-alt-bg={client.slug.startsWith("dj-killerz") ? "" : undefined}
       data-pk-variant={variant.id}
       className={`${kitStyles.kit} relative overflow-x-hidden bg-[var(--pk-bg)] text-[var(--pk-text)] selection:bg-[var(--pk-accent)] selection:text-white${slydPoster ? ` ${getSlydPresentationClass(client)}` : ""}`}
     >
@@ -192,6 +197,7 @@ export default async function Home({ params, searchParams }: HomeProps) {
       <AboutSection
         about={pressKitConfig.about}
         slydPoster={slydPoster}
+        collapseOnDesktop={client.slug.startsWith("dj-killerz")}
         language={client.slug.endsWith("-en") ? "en" : "fr"}
       />
       <ClubsSection
@@ -201,6 +207,12 @@ export default async function Home({ params, searchParams }: HomeProps) {
         brandReferences={slydPoster ? pressKitConfig.brands.items : undefined}
         brands={inlineBrandsBelowClubs ? pressKitConfig.brands : undefined}
       />
+      {hasTourContent(pressKitConfig) && pressKitConfig.tour && (
+        <TourSection tour={pressKitConfig.tour} />
+      )}
+      {hasCollaborationsContent(pressKitConfig) && pressKitConfig.collaborations && (
+        <CollaborationsSection collaborations={pressKitConfig.collaborations} />
+      )}
       {hasHighlightsContent(pressKitConfig) && pressKitConfig.highlights && (
         <HighlightsSection highlights={pressKitConfig.highlights} />
       )}
