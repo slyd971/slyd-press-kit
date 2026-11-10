@@ -44,7 +44,7 @@ export function ConceptsSection({ concepts, getHref }: ConceptsSectionProps) {
           {concepts.items.map((item) => (
             <article key={item.slug} className="flex flex-col">
               {item.video ? (
-                <div className={`relative overflow-hidden bg-black ${item.video.orientation === "portrait" ? "mx-auto aspect-[9/16] w-full max-w-[22rem]" : "aspect-video"}`}>
+                <div className={`relative overflow-hidden bg-black ${item.video.orientation === "portrait" ? "mx-auto aspect-[9/16] w-full max-w-[16rem] md:max-w-[22rem]" : "aspect-video"}`}>
                   <video
                     controls
                     playsInline
