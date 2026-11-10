@@ -29,10 +29,12 @@ export function RiderGroupAccordion({ title, items, defaultOpen = false }: Rider
             {title}
           </span>
         </span>
-        <ChevronDown
-          aria-hidden="true"
-          className={`h-4 w-4 shrink-0 text-white/60 transition-transform md:hidden ${open ? "rotate-180" : ""}`}
-        />
+        <span className="shrink-0 md:hidden">
+          <ChevronDown
+            aria-hidden="true"
+            className={`h-4 w-4 text-white/60 transition-transform ${open ? "rotate-180" : ""}`}
+          />
+        </span>
       </button>
 
       <ul id={listId} className={`space-y-3 max-md:pt-4 ${open ? "" : "max-md:hidden"}`}>
