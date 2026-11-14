@@ -175,7 +175,9 @@ const soyumiPressKit: PressKitConfig = {
         title: "Paris",
         icon: "map-pin",
         items: [
+          "🇫🇷 Kong, Paris",
           "🇫🇷 Buddha Bar, Paris",
+          "🇫🇷 La Bringue, Paris",
           "🇫🇷 El Sueno, Paris",
           "🇫🇷 FMR, Paris",
           "🇫🇷 Paris Fashion Week 2026",
@@ -350,6 +352,18 @@ const soyumiPressKit: PressKitConfig = {
       {
         src: "/soyumi/gallery/gallery-soyumi-9.jpeg",
         alt: "Soyumi club energy",
+      },
+      {
+        src: "/soyumi/gallery/gallery-soyumi-10.jpeg",
+        alt: "Soyumi live set",
+      },
+      {
+        src: "/soyumi/gallery/gallery-soyumi-11.jpeg",
+        alt: "Soyumi behind the decks",
+      },
+      {
+        src: "/soyumi/gallery/gallery-soyumi-12.jpeg",
+        alt: "Soyumi smiling at the mixer, night view",
       },
     ],
   },
