@@ -206,14 +206,17 @@ export function Footer({
           <div className="mt-5 text-[10px] uppercase tracking-[0.18em] text-white/30">
             © {new Date().getFullYear()} {client.name} Press Kit
           </div>
-          <a
-            href="https://presskit.fr"
-            target="_blank"
-            rel="noreferrer"
-            className="mt-2 inline-flex text-[10px] uppercase tracking-[0.18em] text-white/30 transition hover:text-white/60"
-          >
-            Powered by Presskit.Fr
-          </a>
+          <div className="mt-2 text-[10px] uppercase tracking-[0.18em] text-white/30">
+            Press kit DJ réalisé par{" "}
+            <a
+              href="https://www.presskit.fr/dj"
+              target="_blank"
+              rel="noopener"
+              className="whitespace-nowrap underline underline-offset-4 transition hover:text-white/60"
+            >
+              PressKit For You
+            </a>
+          </div>
         </div>
       </div>
     </footer>
